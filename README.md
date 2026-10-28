@@ -30,3 +30,18 @@ flows (nothing is sent anywhere).
 
 `node --experimental-websocket tools/qa.mjs http://localhost:8329/ tools/probe.js out.json 375,768,1280 index.html …`
 runs the visual-QA probe; `tools/shot.mjs` takes screenshots through headless Chrome.
+
+## Direction B, for the client to choose
+
+`directions.html` sets the two directions side by side. Direction A, «الحِرْز», is the whole site above.
+Direction B, «المتن والحاشية», is a home page and an identity page in `b/`, built on the same records:
+every sentence of the text is numbered to its source in the margin, the luhaq (the copyist's hooked line)
+runs from the sentence being read to its source, and verification states are the copyists' collation signs
+(صح، معا، كذا، بلغ، خ). Its inner links still open direction A's pages.
+
+```
+python tools/b_brand.py      # wordmark, tile, the six signs (b/assets/brand)
+python tools/b_fonts.py      # Noto Naskh Arabic, Noto Kufi Arabic, Fragment Mono (b/assets/fonts)
+python tools/b_home.py       # b/index.html, b/identity.html
+python tools/directions.py   # directions.html
+```

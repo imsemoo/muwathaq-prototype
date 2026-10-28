@@ -39,6 +39,10 @@
       "Genocide Convention art. III(c)",
       "ICJ Statute art. 41"
     ],
+    "rule_ids": [
+      "GEN-II",
+      "GEN-III-c"
+    ],
     "uncertain": false
   },
   {
@@ -75,6 +79,9 @@
       "Genocide Convention art. II(c)",
       "ICJ Statute art. 41",
       "ICJ Rules of Court art. 76"
+    ],
+    "rule_ids": [
+      "GEN-II"
     ],
     "uncertain": false
   },
@@ -115,6 +122,9 @@
       "ICJ Statute art. 63",
       "ICJ Rules of Court art. 76"
     ],
+    "rule_ids": [
+      "GEN-II"
+    ],
     "uncertain": false
   },
   {
@@ -153,6 +163,10 @@
       "UN Charter art. 1(2)",
       "ICERD art. 3",
       "ILC Articles on State Responsibility art. 41"
+    ],
+    "rule_ids": [
+      "GCIV-49-6",
+      "HR-43"
     ],
     "uncertain": false
   },
@@ -197,6 +211,11 @@
       "UN Charter art. 105",
       "Convention on the Privileges and Immunities of the United Nations arts. II, V, VI, VII",
       "Customary IHL rule 53"
+    ],
+    "rule_ids": [
+      "GCIV-55",
+      "GCIV-59",
+      "CIHL-R53"
     ],
     "uncertain": false
   },
@@ -251,6 +270,14 @@
       "Rome Statute art. 25",
       "Rome Statute art. 28"
     ],
+    "rule_ids": [
+      "RS-8-2-b-xxv",
+      "RS-8-2-a-i",
+      "RS-8-2-b-i",
+      "RS-7-1-a",
+      "RS-7-1-h",
+      "RS-7-1-k"
+    ],
     "uncertain": false
   },
   {
@@ -299,6 +326,15 @@
       "Rome Statute art. 18(1)",
       "Rome Statute art. 19(2)"
     ],
+    "rule_ids": [
+      "RS-8-2-b-xxv",
+      "RS-8-2-b-i",
+      "RS-7-1-a",
+      "RS-7-1-h",
+      "RS-7-1-k",
+      "RS-25-3",
+      "RS-28-b"
+    ],
     "uncertain": false
   },
   {
@@ -344,6 +380,10 @@
       "Genocide Convention art. III(c)",
       "Genocide Convention art. IV"
     ],
+    "rule_ids": [
+      "GEN-II",
+      "GEN-III-c"
+    ],
     "uncertain": false
   },
   {
@@ -385,6 +425,10 @@
       "Genocide Convention art. II(d)",
       "Convention against Torture art. 1"
     ],
+    "rule_ids": [
+      "GEN-II",
+      "CAT-1-1"
+    ],
     "uncertain": false
   },
   {
@@ -425,6 +469,11 @@
       "Customary IHL rule 14",
       "Customary IHL rule 15"
     ],
+    "rule_ids": [
+      "GEN-II",
+      "CIHL-R1",
+      "CIHL-R14"
+    ],
     "uncertain": false
   },
   {
@@ -460,6 +509,9 @@
       "Genocide Convention art. I",
       "Genocide Convention art. II",
       "Fourth Geneva Convention art. 49"
+    ],
+    "rule_ids": [
+      "GEN-II"
     ],
     "uncertain": false
   },
@@ -498,6 +550,11 @@
       "Rome Statute art. 25(3)(c)",
       "Fourth Geneva Convention art. 49(6)"
     ],
+    "rule_ids": [
+      "GEN-III",
+      "RS-25-3",
+      "GCIV-49-6"
+    ],
     "uncertain": false
   },
   {
@@ -533,6 +590,12 @@
       "Fourth Geneva Convention art. 55",
       "Fourth Geneva Convention art. 59",
       "Customary IHL rule 53"
+    ],
+    "rule_ids": [
+      "RS-8-2-b-xxv",
+      "GCIV-55",
+      "GCIV-59",
+      "CIHL-R53"
     ],
     "uncertain": false
   },
@@ -571,6 +634,11 @@
       "Rome Statute art. 7(1)",
       "Genocide Convention art. II(c)"
     ],
+    "rule_ids": [
+      "RS-8-2-b-i",
+      "RS-8-2-b-xxv",
+      "GEN-II"
+    ],
     "uncertain": false
   },
   {
@@ -608,6 +676,9 @@
       "Genocide Convention art. II(b)",
       "Genocide Convention art. II(c)"
     ],
+    "rule_ids": [
+      "GEN-II"
+    ],
     "uncertain": false
   },
   {
@@ -643,6 +714,10 @@
       "Rome Statute art. 7(2)(b)",
       "Genocide Convention art. II(c)",
       "Rome Statute art. 8(2)(b)(xxv)"
+    ],
+    "rule_ids": [
+      "GEN-II",
+      "RS-8-2-b-xxv"
     ],
     "uncertain": false
   },
@@ -682,6 +757,11 @@
       "Fourth Geneva Convention art. 49",
       "Fourth Geneva Convention art. 147"
     ],
+    "rule_ids": [
+      "RS-7-1-d",
+      "RS-8-2-b-viii",
+      "GCIV-147"
+    ],
     "uncertain": false
   },
   {
@@ -716,6 +796,9 @@
     "rules_hint": [
       "Genocide Convention art. I",
       "Genocide Convention art. II"
+    ],
+    "rule_ids": [
+      "GEN-II"
     ],
     "uncertain": false
   },
@@ -755,6 +838,13 @@
       "Customary IHL rule 1",
       "Customary IHL rule 25"
     ],
+    "rule_ids": [
+      "RS-8-2-b-i",
+      "RS-8-2-b-xxiv",
+      "API-15",
+      "CIHL-R1",
+      "CIHL-R25"
+    ],
     "uncertain": false
   },
   {
@@ -789,6 +879,11 @@
       "Additional Protocol I art. 79",
       "Customary IHL rule 34",
       "Customary IHL rule 1"
+    ],
+    "rule_ids": [
+      "API-79",
+      "CIHL-R34",
+      "CIHL-R1"
     ],
     "uncertain": false
   }

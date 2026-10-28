@@ -335,11 +335,21 @@ def person_mini(p, rel, vtn=True):
 def person_tag(p, rel, lead=False, actions=True):
     label, by, main = person_status_line(p)
     st = state_of(p['id'], 'complete')
-    crimes = '؛ '.join(p.get('crimes_ar', [])) or '—'
+    # each act is read with its basis (warrant, inquiry finding, sanction); on the table only the first two, the rest in the file
+    full = not actions
+    crimes_all = p.get('crimes_ar', [])
+    def act(c):
+        what, _, basis = c.partition(' — ')
+        return f'<li><b>{esc(what)}</b>{f"<small>{esc(basis)}</small>" if basis else ""}</li>'
+    shown = crimes_all if full else crimes_all[:2]
+    more = len(crimes_all) - len(shown)
+    more_t = {1: 'وفعل آخر في الملف', 2: 'وفعلان آخران في الملف'}.get(more, f'و{more} أفعال أخرى في الملف')
+    crimes = ((f'<ul class="acts">{"".join(act(c) for c in shown)}</ul>' +
+               (f'<a class="acts-more" href="{rel}people/{slug(p["id"])}.html#status">{more_t}</a>' if more > 0 else '')) if crimes_all else '—')
     per = p.get('period') or []
-    period = f'من {date_ar(per[0])} إلى {date_ar(per[1])}' if len(per) == 2 and per[0] else '—'
-    others = [s for s in p.get('statuses', []) if s is not main][:2]
-    other = '؛ '.join(f'{s.get("body_ar", "")} ({date_ar(s.get("date"))})' for s in others) or '—'
+    period = (f'{date_ar(per[0])}' if per[0] == per[1] else f'من {date_ar(per[0])} إلى {date_ar(per[1])}') if len(per) == 2 and per[0] else ''
+    others = [s for s in p.get('statuses', []) if s is not main] if full else []   # on the table: the file holds the rest
+    other = '؛ '.join(f'{s.get("body_ar", "")} ({date_ar(s.get("date"))})' for s in others)
     symbol = main.get('doc_symbol') or '—'
     acts = ''
     if actions:
@@ -357,9 +367,9 @@ def person_tag(p, rel, lead=False, actions=True):
   <dl class="fields open-3">
    <div><dt>رقم الوثيقة أو الحالة</dt><dd>{mono(symbol)}</dd></div>
    <div><dt>حالة التحقق من الملف</dt><dd>{seal_row(st)}</dd></div>
-   <div><dt>الأفعال الواردة في الوثيقة</dt><dd>{esc(crimes)}</dd></div>
-   <div><dt>الفترة المشمولة</dt><dd>{esc(period)}</dd></div>
-   {f"<div><dt>ورد أيضًا في</dt><dd>{esc(other)}</dd></div>" if others else ""}
+   {f"<div><dt>الفترة المشمولة</dt><dd>{esc(period)}</dd></div>" if period else ""}
+   <div class="wide"><dt>الأفعال الواردة في الوثائق</dt><dd>{crimes}</dd></div>
+   {f'<div class="wide"><dt>ورد أيضًا في</dt><dd class="dd-more">{esc(other)}</dd></div>' if other else ""}
   </dl>
   {acts}
 </article>'''
@@ -384,10 +394,17 @@ def inc_mini_row(inc, rel):
             f'<span class="row-end">{seal_row(st, illus=False)}<span class="mono">{esc(inc["id"])}</span></span></a></li>')
 
 
+def doc_face(d):
+    """The few characters printed on a document's dark face: its docket or symbol, else who published it."""
+    s = (d.get('symbol') or '').split(';')[0].split(',')[0].replace('General List No.', 'ICJ No.').replace(' analysis', '').strip()
+    pub = (d.get('publisher_en') or '').split(' (')[0].strip()
+    return s or (pub if 0 < len(pub) <= 24 else d['id'])
+
+
 def doc_row(d, rel):
     return (f'<li data-cat="{esc(d.get("cat", ""))}" data-year="{d.get("date", "")[:4]}" data-text="{esc(d.get("title_ar", "") + " " + d.get("title_en", "") + " " + d.get("publisher_ar", ""))}">'
             f'<a class="row row-doc" href="{rel}reports/{slug(d["id"])}.html" data-cord-to="{d["id"]}">'
-            f'<span class="row-thumb is-blank doc-face" aria-hidden="true"><span class="mono">{esc((d.get("symbol") or d["id"])[:16])}</span></span>'
+            f'<span class="row-thumb is-blank doc-face" aria-hidden="true"><span class="mono">{esc(doc_face(d))}</span></span>'
             f'<span class="row-body"><span class="tag-kind">{esc(DOC_CAT.get(d.get("cat"), ""))}</span><h3>{esc(d.get("title_ar", ""))}</h3>'
             f'<span class="row-meta"><span>{esc(d.get("publisher_ar", ""))}</span><span>{esc(date_ar(d.get("date")))}</span></span></span>'
             f'<span class="row-end"><span class="nature">{esc(d.get("nature_ar", ""))}</span><span class="mono">{esc(d["id"])}</span></span></a></li>')

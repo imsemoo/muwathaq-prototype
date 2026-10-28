@@ -129,18 +129,31 @@
     const params = new URLSearchParams(location.search);
     const q = params.get('q') || '';
     const box = $('#q-page'); if (box) box.value = q;
+    const types = $$('#q-types input');
+    const start = $('#search-start');
+    const IDX = window.MW_INDEX || [];
+    /* totals per type come from the index itself, so the panel always matches what search can find */
+    types.forEach((inp) => { inp.dataset.total = inp.value ? IDX.filter((r) => r.type === inp.value).length : IDX.length; });
+    const totalEl = $('.panel .stamp-total b'); if (totalEl) totalEl.textContent = IDX.length;
     const draw = () => {
       const val = box ? box.value.trim() : q;
-      const type = ($('#q-type') || {}).value || '';
-      let res = val ? search(val, 200) : [];
-      if (type) res = res.filter((r) => r.type === type);
-      $('#results-count').innerHTML = val ? `<b>${res.length}</b> نتيجة لـ«${esc(val)}»` : 'اكتب كلمة للبحث في الملفات والوقائع والأدلة والتقارير والقواعد.';
-      results.innerHTML = res.map((r) => `<li><a class="row" href="${REL}${r.url}"><span class="row-thumb is-blank" aria-hidden="true"><svg class="seal" viewBox="0 0 40 40"><use href="#s-${r.seal || 'whole'}"/></svg></span><span class="row-body"><span class="tag-kind">${TYPES[r.type] || ''}</span><h3>${esc(r.title)}</h3><span class="row-meta">${esc(r.sub || '')}</span></span><span class="row-end"><span class="mono">${esc(r.id)}</span></span></a></li>`).join('');
+      const type = ($('#q-types input:checked') || {}).value || '';
+      const all = val ? search(val, 400) : [];
+      types.forEach((inp) => {
+        const n = val ? all.filter((r) => !inp.value || r.type === inp.value).length : +inp.dataset.total;
+        const opt = inp.closest('.facet-opt'); $('.facet-n', opt).textContent = n;
+        opt.classList.toggle('is-zero', n === 0 && !inp.checked);
+      });
+      const res = type ? all.filter((r) => r.type === type) : all;
+      $('#results-count').innerHTML = val ? `<b>${res.length}</b> نتيجة لـ«${esc(val)}»` : '';
+      results.innerHTML = res.slice(0, 200).map((r) => `<li><a class="row" href="${REL}${r.url}"><span class="row-thumb is-blank" aria-hidden="true"><svg class="seal" viewBox="0 0 40 40"><use href="#s-${r.seal || 'whole'}"/></svg></span><span class="row-body"><span class="tag-kind">${TYPES[r.type] || ''}</span><h3>${esc(r.title)}</h3><span class="row-meta">${esc(r.sub || '')}</span></span><span class="row-end"><span class="mono">${esc(r.id)}</span></span></a></li>`).join('');
       results.hidden = !res.length;
-      if (box && val !== q) history.replaceState(null, '', '?q=' + encodeURIComponent(val));
+      if (start) start.hidden = !!val;
+      if (box && val !== q) history.replaceState(null, '', val ? '?q=' + encodeURIComponent(val) : location.pathname);
     };
     if (box) box.addEventListener('input', draw);
-    const tsel = $('#q-type'); if (tsel) tsel.addEventListener('change', draw);
+    types.forEach((inp) => inp.addEventListener('change', draw));
+    $$('[data-try]').forEach((b) => b.addEventListener('click', () => { box.value = b.dataset.try; draw(); box.focus(); }));
     draw();
   }
 
@@ -150,15 +163,23 @@
     const count = document.getElementById(form.dataset.count);
     const items = $$(':scope > li', list);
     const empty = document.getElementById(form.dataset.empty);
+    const has = (li, key, v) => !v || (li.dataset[key] || '').split(' ').includes(v);
+    const picked = (f) => ($('input:checked', f) || {}).value || '';
     const apply = () => {
       const q = norm(($('[data-q]', form) || {}).value || '');
       const sels = $$('select[data-key]', form);
+      const facets = $$('fieldset[data-key]', form);
+      /* a record passes every filter except, when asked, one facet: that facet's counts are then "if you picked this" */
+      const passes = (li, skip) => (!q || norm(li.dataset.text || li.textContent).includes(q)) &&
+        sels.every((s) => has(li, s.dataset.key, s.value)) && facets.every((f) => f === skip || has(li, f.dataset.key, picked(f)));
       let shown = 0;
-      items.forEach((li) => {
-        const okQ = !q || norm(li.dataset.text || li.textContent).includes(q);
-        const okS = sels.every((s) => !s.value || (li.dataset[s.dataset.key] || '').split(' ').includes(s.value));
-        const ok = okQ && okS; li.hidden = !ok; if (ok) shown++;
-      });
+      items.forEach((li) => { const ok = passes(li); li.hidden = !ok; if (ok) shown++; });
+      facets.forEach((f) => $$('input', f).forEach((inp) => {
+        const n = items.filter((li) => passes(li, f) && has(li, f.dataset.key, inp.value)).length;
+        const opt = inp.closest('.facet-opt');
+        $('.facet-n', opt).textContent = n;
+        opt.classList.toggle('is-zero', n === 0 && !inp.checked);
+      }));
       if (count) count.innerHTML = `يظهر <b>${shown}</b> من ${items.length}`;
       if (empty) empty.hidden = shown !== 0;
     };

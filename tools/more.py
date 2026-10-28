@@ -1,7 +1,7 @@
 """The fixed pages: method, submit, donate, about, standards, search, identity, sources, 404."""
 import build as B
 import shell as S
-from pages import P
+from pages import P, archive_card
 from shell import esc, icon, seal, seal_row, knots, ext, mono, VERIF, STATUS, KNOTS
 
 STEPS = [
@@ -219,12 +219,35 @@ def standards():
 
 def search():
     rel = ''
-    opts = ''.join(f'<option value="{k}">{v}</option>' for k, v in [('person', 'ملفات الأشخاص'), ('incident', 'الوقائع'), ('evidence', 'الأدلة'), ('report', 'التقارير والوثائق'), ('rule', 'القواعد القانونية'), ('page', 'صفحات')])
+    types = [('person', 'ملفات الأشخاص', len(B.PERSONS)), ('incident', 'الوقائع', len(B.INCIDENTS)), ('evidence', 'الأدلة', len(B.EVIDENCE)),
+             ('report', 'التقارير والوثائق', len(B.DOCS)), ('rule', 'القواعد القانونية', len(B.RULES)), ('page', 'صفحات', 0)]
+    total = sum(n for *_, n in types)
+    opts = ''.join(f'<label class="facet-opt"><input type="radio" name="q-type" value="{k}"{" checked" if not k else ""}>'
+                   f'<span class="facet-mark" aria-hidden="true"></span><span class="facet-t">{esc(v)}</span><span class="facet-n" data-total-of="{k}">{n or ""}</span></label>'
+                   for k, v, n in [('', 'الكل', total)] + types)
+    tries = ['رفح', 'مذكرة توقيف', 'الهلال الأحمر', 'هند رجب', 'ICC-01/18', 'المادة 8', 'سلوان', 'المجاعة']
+    recent = sorted([(i['date'], B.inc_mini_row(i, rel)) for i in B.INCIDENTS] + [(d.get('date', ''), B.doc_row(d, rel)) for d in B.DOCS], reverse=True)[:6]
     main = f'''<div class="wrap">{S.crumbs(rel, [("البحث", None)])}</div>
 <section class="list-head"><div class="wrap"><h1 class="h1">البحث في موثّق</h1>
- <form class="search-page" role="search" onsubmit="return false"><div class="field grow"><label for="q-page">كلمة البحث</label><input class="input input-lg" id="q-page" type="search" placeholder="اسم، رقم ملف، واقعة، جهة، أو مادة قانونية" autofocus></div>
- <div class="field"><label for="q-type">النوع</label><select class="select" id="q-type"><option value="">الكل</option>{opts}</select></div></form></div></section>
-<section class="sec list-sec"><div class="wrap"><p class="count" id="results-count" aria-live="polite"></p><ul class="rows" id="results" hidden></ul></div></section>'''
+ <form class="search-page" role="search" onsubmit="return false"><div class="field grow"><label for="q-page">كلمة البحث</label><input class="input input-lg" id="q-page" type="search" placeholder="اسم، رقم ملف، واقعة، جهة، أو مادة قانونية" autofocus></div></form></div></section>
+<section class="sec list-sec"><div class="wrap list-grid">
+ <aside class="list-side" aria-label="نطاق البحث"><div class="side-sticky" data-lenis-prevent>
+  <div class="panel">{archive_card(total, 'مدخلا في فهرس البحث')}
+   <fieldset class="facet" id="q-types"><legend class="side-h">النوع</legend>{opts}</fieldset>
+   <p class="small mute search-tip">من أي صفحة: اضغط <kbd>/</kbd> لتبدأ البحث، والأسهم للتنقل بين النتائج.</p>
+  </div>
+ </div></aside>
+ <div class="list-main">
+  <p class="count" id="results-count" aria-live="polite"></p>
+  <ul class="rows" id="results" hidden></ul>
+  <div id="search-start">
+   <h2 class="side-h">جرّب</h2>
+   <div class="tries">{''.join(f'<button class="btn btn-line btn-sm" type="button" data-try="{esc(q)}">{esc(q)}</button>' for q in tries)}</div>
+   <h2 class="side-h">أحدث ما أضيف إلى الأرشيف</h2>
+   <ul class="rows">{''.join(r for _, r in recent)}</ul>
+  </div>
+ </div>
+</div></section>'''
     P(rel, 'search.html', 'البحث', 'ابحث في ملفات الأشخاص والوقائع والأدلة والوثائق والقواعد.', 'search', main)
 
 

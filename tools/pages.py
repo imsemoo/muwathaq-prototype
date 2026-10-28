@@ -39,7 +39,7 @@ def incident_tag(inc, rel, actions=True):
    <div><dt>حالة التحقق</dt><dd>{seal_row(st)}</dd></div>
    <div><dt>دقة الموقع</dt><dd>{precise}{(" — " + esc(inc["loc_note_ar"])) if inc.get("loc_note_ar") else ""}</dd></div>
    <div><dt>نوع الواقعة</dt><dd>{esc("، ".join(inc.get("type_ar", [])) or "—")}</dd></div>
-   <div><dt>الحصيلة كما وردت</dt><dd>{esc(toll)}</dd></div>
+   <div class="wide"><dt>الحصيلة كما وردت</dt><dd class="dd-more">{esc(toll)}</dd></div>
    {conflict}
   </dl>
   {acts}
@@ -61,9 +61,9 @@ def doc_tag(d, rel, actions=True):
   <p class="tag-en open-2" lang="en" dir="ltr">{esc(d.get("title_en", ""))}</p>
   <dl class="fields open-3">
    <div><dt>رمز الوثيقة</dt><dd>{mono(d.get("symbol") or "—")}</dd></div>
-   <div><dt>الطبيعة القانونية</dt><dd>{esc(d.get("nature_ar", ""))}</dd></div>
-   <div><dt>النطاق الزمني</dt><dd>{esc(d.get("period_ar") or "—")}</dd></div>
    <div><dt>سلامة النسخة</dt><dd>{seal_row("complete")}</dd></div>
+   <div class="wide"><dt>الطبيعة القانونية</dt><dd class="dd-more">{esc(d.get("nature_ar", ""))}</dd></div>
+   {f'<div class="wide"><dt>النطاق الزمني</dt><dd class="dd-more">{esc(d["period_ar"])}</dd></div>' if d.get("period_ar") else ""}
   </dl>
   {acts}
 </article>'''
@@ -86,6 +86,11 @@ def evidence_tag(ev, rel):
    <div><dt>المصدر الأصلي</dt><dd>{ext(ev["url"], "فتح المصدر") if ev.get("url") else "—"}</dd></div>
   </dl>
 </article>'''
+
+
+def person_row(p, rel):
+    return (f'<li><a class="row row-person" href="{rel}people/{slug(p["id"])}.html" data-cord-to="{p["id"]}"><span class="row-body">'
+            f'<span class="tag-kind">{esc(STATUS[p["status"]][0])}</span><h3>{esc(p["name_ar"])}</h3></span><span class="row-end"><span class="mono">{p["id"]}</span></span></a></li>')
 
 
 def side_list(title, items):
@@ -331,10 +336,14 @@ def home():
     incidents = f'''<section class="sec">
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2">وقائع موثقة</h2><p>لكل واقعة سجل مستقل: الروايات، والأدلة وحالة كل منها، والقواعد التي قد تنطبق وما يلزم إثباته.</p></div><a class="link-arrow" href="incidents/index.html">أرشيف الوقائع ({len(B.INCIDENTS)}) {icon("arrow")}</a></div>
-  <div class="inc-feature">{feature}<ul class="rows rows-5">{"".join(rows.split("</li>")[i] + "</li>" for i in range(min(5, rows.count("</li>"))))}</ul></div>
+  <div class="inc-feature">{feature}<ul class="rows rows-5">{"".join(rows.split("</li>")[i] + "</li>" for i in range(min(4, rows.count("</li>"))))}</ul></div>
  </div>
 </section>'''
     minis = ''.join(f'<li>{B.person_mini(p, rel, vtn=p is not p0)}</li>' for p in B.PERSONS)
+    # the row closes on how a file is opened, so an odd count never leaves a hole in the grid
+    minis += (f'<li><a class="mini mini-note" href="people/index.html"><span class="mini-status">كيف يُفتح ملف</span>'
+              f'<span class="mini-meta">بوضع قانوني رسمي قابل للاستشهاد فقط: مذكرة توقيف، أو اتهام، أو ورود في تحقيق أممي، أو قرار عقوبات.</span>'
+              f'<span class="link-arrow">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</span></a></li>')
     people = f'''<section class="sec">
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2">ملفات الأشخاص</h2><p>لا يُفتح ملف لشخص إلا بوضع قانوني رسمي قابل للاستشهاد. الحالة وجهتها وتاريخها قبل الاسم.</p></div><a class="link-arrow" href="people/index.html">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</a></div>
@@ -342,8 +351,8 @@ def home():
  </div>
 </section>'''
     top_docs = sorted(B.DOCS, key=lambda d: d.get('date', ''), reverse=True)[:6]
-    # the two lists stand side by side, so they hold the same number of rows
-    top_rules = sorted(B.RULES, key=lambda r: len(r['inc_ids']), reverse=True)[:max(3, len(top_docs))]
+    # the two lists stand side by side and end together: a document row runs a little taller than a rule row
+    top_rules = sorted(B.RULES, key=lambda r: len(r['inc_ids']), reverse=True)[:max(3, len(top_docs) + 1)]
     law = f'''<section class="sec">
  <div class="wrap two-lists">
   <div><div class="sec-head"><div><h2 class="h2">القواعد الأكثر ارتباطًا بالوقائع</h2><p>نص رسمي، وصياغة موجزة، وما يلزم إثباته قبل أي استنتاج.</p></div><a class="link-arrow" href="law/index.html">مكتبة القواعد {icon("arrow")}</a></div>
@@ -386,15 +395,44 @@ def home():
 
 
 # ---------- lists ----------
-def list_page(rel, path, active, title, lead, filters, items_html, list_id, extra='', cls='rows', before=''):
+def facet(key, legend, opts):
+    """One filter shown as a list of its values with how many records each holds; the counts follow the other filters."""
+    total = sum(n for *_, n in opts)
+    rows = [('', 'الكل', '', total)] + list(opts)
+    items = ''.join(f'<label class="facet-opt"><input type="radio" name="f-{key}" value="{esc(v)}"{" checked" if not v else ""}>'
+                    f'<span class="facet-mark" aria-hidden="true">{mark}</span><span class="facet-t">{esc(lab)}</span><span class="facet-n">{n}</span></label>'
+                    for v, lab, mark, n in rows)
+    return f'<fieldset class="facet" data-key="{key}"><legend class="side-h">{legend}</legend>{items}</fieldset>'
+
+
+def archive_card(total, noun, rng='', counts=()):
+    cells = ''.join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in counts if v)
+    return (f'<div class="stamp"><div class="stamp-top"><p class="stamp-total"><b>{total}</b> {noun}</p>{f"<span class=mono>{esc(rng)}</span>" if rng else ""}</div>'
+            f'{f"<dl class=stamp-counts>{cells}</dl>" if cells else ""}</div>')
+
+
+def id_range(ids):
+    ids = sorted(ids)
+    return f'{ids[0]} – {ids[-1]}' if len(ids) > 1 else (ids[0] if ids else '')
+
+
+def list_page(rel, path, active, title, lead, filters, items_html, list_id, extra='', cls='rows', before='', fac='', card=''):
+    """An archive: the records, and beside them a panel that stays in view: what the archive holds,
+    the search and filters, and one facet whose counts follow the other filters."""
     main = f'''<div class="wrap">{S.crumbs(rel, [(title, None)])}</div>
 <section class="list-head"><div class="wrap"><h1 class="h1">{esc(title)}</h1><p class="lead">{lead}</p>{before}</div></section>
-<section class="sec list-sec"><div class="wrap">
- <form class="filters" data-filter="{list_id}" data-count="{list_id}-count" data-empty="{list_id}-empty" role="search" aria-label="تصفية {esc(title)}">{filters}<button class="btn btn-line btn-sm" type="reset">إعادة الضبط</button></form>
- <p class="count" id="{list_id}-count" aria-live="polite"></p>
- <ul class="{cls}" id="{list_id}">{items_html}</ul>
- <div class="empty" id="{list_id}-empty" hidden>{seal("not_started", label=False)}<p><b>لا توجد سجلات تطابق هذا البحث.</b> غيّر المرشحات أو امسحها.</p></div>
- {extra}
+<section class="sec list-sec"><div class="wrap list-grid">
+ <aside class="list-side" aria-label="تصفية {esc(title)}"><div class="side-sticky" data-lenis-prevent>
+  <div class="panel">{card}
+   <form class="filters filters-side" data-filter="{list_id}" data-count="{list_id}-count" data-empty="{list_id}-empty" role="search" aria-label="تصفية {esc(title)}">{filters}{fac}<button class="btn btn-line btn-sm" type="reset">إعادة الضبط</button></form>
+  </div>
+ </div></aside>
+ <div class="list-main">
+  <p class="count" id="{list_id}-count" aria-live="polite"></p>
+  <ul class="{cls}" id="{list_id}">{items_html}</ul>
+  <div class="empty" id="{list_id}-empty" hidden>{seal("not_started", label=False)}<p><b>لا توجد سجلات تطابق هذا البحث.</b> غيّر المرشحات أو امسحها.</p></div>
+  {extra}
+ </div>
 </div></section>'''
     P(rel, path, title, lead, active, main)
 
@@ -414,7 +452,10 @@ def people_pages():
     statuses = [(k, STATUS[k][0]) for k in STATUS if any(p['status'] == k for p in B.PERSONS)]
     list_page(rel, 'people/index.html', 'people', 'ملفات الأشخاص',
               'ملفات لأشخاص لهم وضع قانوني رسمي قابل للاستشهاد: مذكرة توقيف، أو ورود في تحقيق أممي، أو قرار عقوبات حكومي. الحالة وجهتها وتاريخها تُقرأ قبل الاسم.',
-              q_field('اسم أو منصب') + sel('fs', 'الوضع القانوني', 'status', statuses), items, 'people-list', cls='minis',
+              q_field('اسم أو منصب'), items, 'people-list', cls='minis',
+              fac=facet('status', 'الوضع القانوني', [(k, v, f'<span class="mono">{STATUS[k][1]}/5</span>', sum(p['status'] == k for p in B.PERSONS)) for k, v in statuses]),
+              card=archive_card(len(B.PERSONS), 'ملف شخص', id_range([p['id'] for p in B.PERSONS]),
+                                (('وقائع مرتبطة', len({i for p in B.PERSONS for i in p['inc_ids']})), ('وثائق رسمية', len({d for p in B.PERSONS for d in p['doc_ids']})))),
               extra=f'<p class="note" style="margin-top:28px">{icon("info")}<span>لا يُدرج موثّق شخصًا دون مصدر رسمي لوضعه القانوني، ولا يستخدم أوصافًا تجريمية عامة على البطاقات. لأي شخص معني حق طلب التصحيح أو الرد.</span></p>')
     for p in B.PERSONS:
         person_page(p)
@@ -473,14 +514,17 @@ def incidents_pages():
         f'<a class="tr-knot" href="{slug(i["id"])}.html" data-id="{i["id"]}" data-label="{esc(date_ar(i["date"]))} — {esc(i["title_ar"])}" '
         f'style="inset-inline-start:{pos(i["date"]) * 100:.2f}%;top:{22 + 36 * pos(i["date"]) * (1 - pos(i["date"])):.1f}px">'
         f'<span class="sr">{esc(date_ar(i["date"]))}: {esc(i["title_ar"])}</span></a>' for i in incs)
-    years = ''.join(f'<span class="tr-year" style="inset-inline-start:{pos(f"{y}-01-01") * 100:.2f}%">{y}</span>' for y in (2024, 2025, 2026))
+    year_marks = ''.join(f'<span class="tr-year" style="inset-inline-start:{pos(f"{y}-01-01") * 100:.2f}%">{y}</span>' for y in (2024, 2025, 2026))
     rope = (f'<div class="timerope" data-timerope><p class="tr-cap">{len(incs)} واقعة على حبل الزمن، من أكتوبر 2023 إلى اليوم. قف على عقدة لترى الواقعة.</p>'
             f'<div class="tr-body"><svg class="tr-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q500 40 1000 22"/></svg>'
-            f'{knots_html}{years}<p class="tr-tip" hidden></p></div></div>')
+            f'{knots_html}{year_marks}<p class="tr-tip" hidden></p></div></div>')
     list_page(rel, 'incidents/index.html', 'incidents', 'أرشيف الوقائع',
               'لكل واقعة سجل مستقل يفصل بين ما حدث بحسب المصادر، والروايات المتعارضة، والأدلة وحالة كل منها، والتحليل القانوني. التحقق من الواقعة منفصل عن تحديد المسؤولية الفردية.',
-              q_field('عنوان أو مكان') + sel('fr', 'المنطقة', 'region', regions) + sel('fv', 'حالة التحقق', 'state', states) + sel('fy', 'السنة', 'year', [(y, y) for y in years]),
-              items, 'inc-list', before=rope)
+              q_field('عنوان أو مكان') + sel('fr', 'المنطقة', 'region', regions) + sel('fy', 'السنة', 'year', [(y, y) for y in years]),
+              items, 'inc-list', before=rope,
+              fac=facet('state', 'حالة التحقق', [(k, v, seal(k, label=False), sum(B.state_of(i['id']) == k for i in incs)) for k, v in states]),
+              card=archive_card(len(incs), 'سجل واقعة', id_range([i['id'] for i in incs]),
+                                (('أدلة', sum(len(i['ev_ids']) for i in incs)), ('مصادر', sum(len(i.get('sources', [])) for i in incs)), ('قواعد', len({r for i in incs for r in i['rule_ids']})))))
     for i in B.INCIDENTS:
         incident_page(i)
 
@@ -490,8 +534,8 @@ def incident_page(inc):
     evs = [B.EV_BY_ID[e] for e in inc['ev_ids']]
     rules = [B.RULE_BY_ID[r] for r in inc['rule_ids'] if r in B.RULE_BY_ID]
     persons = [B.P_BY_ID[p] for p in inc['pids']]
-    docs = [B.DOC_BY_ID[d] for d in B.PICKS.get('incident_docs', {}).get(inc['id'], []) if d in B.DOC_BY_ID]
-    side = (side_list('الأشخاص', [f'<li><a class="row row-person" href="{rel}people/{slug(p["id"])}.html" data-cord-to="{p["id"]}"><span class="row-body"><span class="tag-kind">{esc(STATUS[p["status"]][0])}</span><h3>{esc(p["name_ar"])}</h3></span><span class="row-end"><span class="mono">{p["id"]}</span></span></a></li>' for p in persons]) +
+    docs = [d for d in B.DOCS if inc['id'] in d['inc_ids']]
+    side = (side_list('الأشخاص', [person_row(p, rel) for p in persons]) +
             side_list('الأدلة', [B.ev_row(e, rel) for e in evs]) + side_list('القواعد', [B.rule_row(r, rel) for r in rules]) +
             side_list('الوثائق', [B.doc_row(d, rel) for d in docs]))
     ph = B.photo_of(inc['id'])
@@ -540,7 +584,10 @@ def evidence_pages():
     states = [(k, VERIF[k][0]) for k in VERIF if any(B.ev_state(e) == k for e in B.EVIDENCE)]
     list_page(rel, 'evidence/index.html', 'evidence', 'سجل الأدلة',
               'كل مادة مرتبطة بواقعة لها سجل: نوعها ومصدرها وسياقها وحدودها وحالة التحقق منها. للمواد المحفوظة على المنصة بصمة رقمية تستطيع مطابقتها بنفسك.',
-              q_field('وصف أو واقعة') + sel('ft', 'نوع المادة', 'type', types) + sel('fv', 'حالة التحقق', 'state', states), items, 'ev-list')
+              q_field('وصف أو واقعة') + sel('ft', 'نوع المادة', 'type', types), items, 'ev-list',
+              fac=facet('state', 'حالة التحقق', [(k, v, seal(k, label=False), sum(B.ev_state(e) == k for e in B.EVIDENCE)) for k, v in states]),
+              card=archive_card(len(B.EVIDENCE), 'مادة', id_range([e['id'] for e in B.EVIDENCE]),
+                                (('وقائع', len({e['incident'] for e in B.EVIDENCE})), ('بصمة محفوظة', sum(1 for e in B.EVIDENCE if B.EV_PHOTO.get(e['id']) in B.PHOTO_SIZE)))))
     for e in B.EVIDENCE:
         evidence_page(e)
 
@@ -590,8 +637,11 @@ def reports_pages():
     years = sorted({d.get('date', '')[:4] for d in docs}, reverse=True)
     list_page(rel, 'reports/index.html', 'reports', 'التقارير والوثائق',
               'مكتبة للوثائق القضائية والأممية والحقوقية، كل منها موسوم بطبيعته القانونية: التقرير الحقوقي ليس مذكرة توقيف، ومذكرة التوقيف ليست حكمًا نهائيًا، والتدابير المؤقتة تخص مسؤولية الدولة لا الأفراد.',
-              q_field('عنوان أو جهة') + sel('fc', 'نوع الجهة', 'cat', cats) + sel('fy', 'السنة', 'year', [(y, y) for y in years]),
-              ''.join(B.doc_row(d, rel) for d in docs), 'doc-list')
+              q_field('عنوان أو جهة') + sel('fy', 'السنة', 'year', [(y, y) for y in years]),
+              ''.join(B.doc_row(d, rel) for d in docs), 'doc-list',
+              fac=facet('cat', 'نوع الجهة', [(k, v, '', sum(d.get('cat') == k for d in docs)) for k, v in cats]),
+              card=archive_card(len(docs), 'وثيقة', id_range([d['id'] for d in docs]),
+                                (('جهات', len({d.get('publisher_ar') for d in docs})), ('وقائع مرتبطة', len({i for d in docs for i in d['inc_ids']})))))
     for d in B.DOCS:
         report_page(d)
 
@@ -601,7 +651,7 @@ def report_page(d):
     persons = [B.P_BY_ID[p] for p in d.get('persons', []) if p in B.P_BY_ID]
     rules = [B.RULE_BY_ID[r] for r in d['rule_ids'] if r in B.RULE_BY_ID]
     incs = [B.INC_BY_ID[i] for i in d['inc_ids'] if i in B.INC_BY_ID]
-    side = (side_list('الأشخاص', [f'<li><a class="row row-person" href="{rel}people/{slug(p["id"])}.html" data-cord-to="{p["id"]}"><span class="row-body"><span class="tag-kind">{esc(STATUS[p["status"]][0])}</span><h3>{esc(p["name_ar"])}</h3></span><span class="row-end"><span class="mono">{p["id"]}</span></span></a></li>' for p in persons]) +
+    side = (side_list('الأشخاص', [person_row(p, rel) for p in persons]) +
             side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs]) + side_list('القواعد', [B.rule_row(r, rel) for r in rules]))
     findings = ''.join(f'<li>{esc(f)}</li>' for f in d.get('findings_ar', []))
     tag = doc_tag(d, rel, actions=False).replace('<p class="tag-status', '<h1 class="tag-status', 1).replace('</p>\n  <p class="tag-by', '</h1>\n  <p class="tag-by', 1)
@@ -628,7 +678,9 @@ def law_pages():
     branches = [(k, v) for k, v in B.BRANCH.items() if any(r.get('branch') == k for r in B.RULES)]
     list_page(rel, 'law/index.html', 'law', 'مكتبة القواعد القانونية',
               'النصوص الرسمية للمواد التي تُربط بها الوقائع، مع صياغة موجزة. الربط بمادة تحليل بحثي أولي يوضح وجه الصلة وما يلزم إثباته، ولا يفترض انطباقها لمجرد التشابه.',
-              q_field('مادة أو موضوع') + sel('fb', 'الفرع', 'branch', branches), ''.join(B.rule_row(r, rel) for r in B.RULES), 'rule-list')
+              q_field('مادة أو موضوع'), ''.join(B.rule_row(r, rel) for r in B.RULES), 'rule-list',
+              fac=facet('branch', 'فرع القانون', [(k, v, '', sum(r.get('branch') == k for r in B.RULES)) for k, v in branches]),
+              card=archive_card(len(B.RULES), 'مادة وقاعدة', counts=(('صكوك', len({r.get('instrument_ar') for r in B.RULES})), ('مرتبطة بوقائع', sum(1 for r in B.RULES if r['inc_ids'])))))
     for r in B.RULES:
         rule_page(r)
 
@@ -645,8 +697,8 @@ def rule_page(r):
                 prove.append((i, L['to_prove_ar']))
     # other articles of the same instrument, for moving along the text (not a link between records, so no cord)
     kin = [x for x in B.RULES if x.get('instrument_ar') == r.get('instrument_ar') and x['id'] != r['id']]
-    side = (side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs]) + side_list('الوثائق', [B.doc_row(d, rel) for d in docs]) +
-            side_list('من الصك نفسه', [B.rule_row(x, rel).replace(f' data-cord-to="{x["id"]}"', '') for x in kin[:5]]))
+    side = (side_list('الأشخاص', [person_row(p, rel) for p in persons]) + side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs]) +
+            side_list('الوثائق', [B.doc_row(d, rel) for d in docs]) + side_list('من الصك نفسه', [B.rule_row(x, rel).replace(f' data-cord-to="{x["id"]}"', '') for x in kin[:5]]))
     tag = f'''<article class="tag is-reversed"{B.vt(r["id"])} aria-label="قاعدة قانونية">
   <span class="tag-hole" aria-hidden="true"></span>
   <div class="tag-top"><span class="tag-no">{esc(r.get("article_en", r["id"]))}</span><span class="tag-kind">{esc(B.BRANCH.get(r.get("branch"), ""))}</span></div>
@@ -669,8 +721,9 @@ def rule_page(r):
  <h2 class="h2">بصياغة موجزة</h2>
  <div class="prose"><p>{esc(r.get("paraphrase_ar", ""))}</p></div>
  {f'<h2 class="h2">ما يلزم إثباته في الوقائع المرتبطة</h2><ul class="prove">{prove_html}</ul>' if prove_html else ''}
- <h2 class="h2">الوقائع المرتبطة ({len(incs)})</h2>
- {f'<ul class="rows">{"".join(B.inc_mini_row(i, rel) for i in incs)}</ul>' if incs else '<p class="small mute">لا وقائع مرتبطة بهذه المادة في النموذج.</p>'}
+ {f'<h2 class="h2">الوقائع المرتبطة ({len(incs)})</h2><ul class="rows">{"".join(B.inc_mini_row(i, rel) for i in incs)}</ul>' if incs else ''}
+ {f'<h2 class="h2">الأشخاص المرتبطون ({len(persons)})</h2><p class="small mute">ربطت وثيقة رسمية وضعهم القانوني بهذه المادة؛ الربط لا يعني ثبوت المسؤولية.</p><ul class="rows">{"".join(person_row(p, rel).replace(f' data-cord-to="{p["id"]}"', '') for p in persons)}</ul>' if persons else ''}
+ {'' if incs or persons else '<h2 class="h2">الوقائع المرتبطة</h2><p class="small mute">لا وقائع مرتبطة بهذه المادة في النموذج بعد.</p>'}
 {cite_block(rel, r["id"], f'{r.get("instrument_ar", "")}، {r.get("article_ar_official") or r.get("article_ar", "")}: «{r.get("title_ar", "")}». في مكتبة قواعد موثّق برقم {r["id"]}.')}
 </div></section>'''
     card = stamp(r.get('article_en') or r['id'], None, (('الوقائع', len(incs)), ('الوثائق', len(docs)), ('الأشخاص', len(persons))), f'<p class="stamp-status">{esc(B.BRANCH.get(r.get("branch"), ""))}</p>')

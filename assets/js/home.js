@@ -109,6 +109,13 @@
     });
     setInert();
     addEventListener('resize', setInert);
+    /* the exhibit in front is scaled to the table, however long its real content runs */
+    const fit = () => {
+      const room = pile.clientHeight - 28;
+      exs.forEach((el) => { const h = $('.tag', el).offsetHeight; if (h) el.style.setProperty('--fit', Math.min(0.8, room / h).toFixed(3)); });
+    };
+    fit(); (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
+    addEventListener('resize', fit);
 
     /* parallax: exhibits sit at different heights above the table */
     let mx = 0, my = 0, px = 0, py = 0;

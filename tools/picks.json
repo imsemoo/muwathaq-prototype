@@ -15,16 +15,87 @@
   "about": "gaza-sheikh-ijlin-2025-01-29",
   "method": "satellite-gaza-2023-10-07"
  },
- "states": {},
+ "states": {
+  "INC-0001": "complete",
+  "INC-0002": "complete",
+  "INC-0003": "specific",
+  "INC-0004": "complete",
+  "INC-0005": "specific",
+  "INC-0006": "specific",
+  "INC-0007": "complete",
+  "INC-0008": "specific",
+  "INC-0009": "in_progress",
+  "INC-0010": "specific",
+  "INC-0011": "partial",
+  "INC-0012": "specific",
+  "INC-0013": "partial",
+  "INC-0014": "specific",
+  "INC-0015": "complete",
+  "INC-0016": "complete",
+  "INC-0017": "specific",
+  "INC-0018": "partial"
+ },
  "home": {
   "person": "P-0001",
   "incident": "INC-0012",
-  "doc": "R-0001",
+  "doc": "R-0007",
   "feature_incident": "INC-0006",
   "hint_rule": "RS-8-2-b-xxv"
  },
- "person_rules": {},
- "doc_incidents": {},
+ "person_rules": {
+  "P-0001": [
+   "RS-8-2-b-xxv",
+   "RS-8-2-b-i",
+   "RS-7-1-a",
+   "RS-7-1-h",
+   "RS-7-1-k",
+   "RS-25-3",
+   "RS-28-b",
+   "GEN-III-c",
+   "RS-25-3-e"
+  ],
+  "P-0002": [
+   "RS-8-2-b-xxv",
+   "RS-8-2-b-i",
+   "RS-7-1-a",
+   "RS-7-1-h",
+   "RS-7-1-k",
+   "RS-25-3",
+   "RS-28-b",
+   "GEN-III-c",
+   "RS-25-3-e"
+  ],
+  "P-0005": [
+   "GEN-III-c",
+   "RS-25-3-e"
+  ]
+ },
+ "doc_incidents": {
+  "R-0001": [
+   "INC-0001"
+  ],
+  "R-0006": [
+   "INC-0001"
+  ],
+  "R-0007": [
+   "INC-0001"
+  ],
+  "R-0008": [
+   "INC-0001"
+  ],
+  "R-0016": [
+   "INC-0001"
+  ],
+  "R-0014": [
+   "INC-0013"
+  ],
+  "R-0019": [
+   "INC-0004"
+  ],
+  "R-0020": [
+   "INC-0002"
+  ]
+ },
  "incident_docs": {},
  "photo": {
   "INC-0006": "shifa-surgery-after-2025-02-23",

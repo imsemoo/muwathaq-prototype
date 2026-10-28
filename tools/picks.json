@@ -1,0 +1,48 @@
+{
+ "portrait_by_name": {
+  "Netanyahu": "portrait-netanyahu-2023-02-01",
+  "Gallant": "portrait-gallant-2023-01-15",
+  "Herzog": "portrait-herzog-2021-07-11",
+  "Ben-Gvir": "portrait-ben-gvir-2022-04-05",
+  "Ben Gvir": "portrait-ben-gvir-2022-04-05",
+  "Smotrich": "portrait-smotrich-2023-02-20"
+ },
+ "doc_photo_by_cat": {
+  "icc": "icc-building-2024-04-29",
+  "icj": "icj-peace-palace-2024-08-05"
+ },
+ "section": {
+  "about": "gaza-sheikh-ijlin-2025-01-29",
+  "method": "satellite-gaza-2023-10-07"
+ },
+ "states": {},
+ "home": {
+  "person": "P-0001",
+  "incident": "INC-0012",
+  "doc": "R-0001",
+  "feature_incident": "INC-0006",
+  "hint_rule": "RS-8-2-b-xxv"
+ },
+ "person_rules": {},
+ "doc_incidents": {},
+ "incident_docs": {},
+ "photo": {
+  "INC-0006": "shifa-surgery-after-2025-02-23",
+  "INC-0001": "gaza-rimal-2023-10-10",
+  "INC-0007": "wck-memorial-washington-2024-04-25",
+  "INC-0015": "umm-al-kheir-outpost-2025-04-07",
+  "INC-0018": "silwan-2023-04-23"
+ },
+ "extra_ev": {
+  "INC-0006": [
+   {
+    "photo": "shifa-surgery-after-2025-02-23"
+   }
+  ],
+  "INC-0001": [
+   {
+    "photo": "gaza-rimal-2023-10-10"
+   }
+  ]
+ }
+}

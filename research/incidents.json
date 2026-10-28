@@ -1,0 +1,2065 @@
+[
+  {
+    "id": "INC-0001",
+    "title_ar": "إعلان «الحصار الشامل» على قطاع غزة وقطع الكهرباء والوقود والمياه",
+    "date": "2023-10-09",
+    "date_to": null,
+    "place_ar": "قطاع غزة بأكمله",
+    "region": "gaza",
+    "precise": false,
+    "loc_note_ar": "إجراء يشمل القطاع كله ولا يرتبط بنقطة محددة على الخريطة.",
+    "summary_ar": "في 9 أكتوبر 2023 أعلن وزير الدفاع الإسرائيلي آنذاك يوآف غالانت فرض «حصار شامل» على قطاع غزة، وقال بحسب تايمز أوف إسرائيل: «لن تكون هناك كهرباء ولا طعام ولا وقود، كل شيء مغلق»، وتورد هيومن رايتس ووتش التصريح نفسه مع ذكر الماء. وسجل مكتب الأمم المتحدة لتنسيق الشؤون الإنسانية (أوتشا) أن إسرائيل أوقفت إمداد القطاع بالكهرباء والوقود في 8 أكتوبر، وأن المياه القادمة من إسرائيل قطعت منذ مساء اليوم نفسه. وفي 11 أكتوبر توقفت محطة الكهرباء الوحيدة في غزة بعد نفاد وقودها، فانقطعت الكهرباء عن القطاع كله وتعطل تشغيل آبار المياه ومحطات التحلية والصرف الصحي بحسب أوتشا. وتقول هيومن رايتس ووتش إن مساعدات محدودة بدأت تدخل عبر معبر رفح في 21 أكتوبر، وإن دخول الوقود ظل ممنوعا حتى 15 نوفمبر 2023.",
+    "toll_ar": "لا ترتبط بالإعلان نفسه حصيلة قتلى مباشرة؛ وقدر أوتشا في 11 أكتوبر 2023 أن قطع المياه القادمة من إسرائيل سبب نقصا حادا في مياه الشرب لأكثر من 650 ألف شخص.",
+    "official_account_ar": "قدم المسؤولون الإسرائيليون القيود بوصفها جزءا من الحرب على حماس بعد هجوم 7 أكتوبر 2023، ونقلت هيومن رايتس ووتش عن وزير الطاقة آنذاك يسرائيل كاتس قوله في 12 أكتوبر إنه لن يشغل أي مفتاح ولن يفتح أي صمام قبل عودة الرهائن. وتنفي السلطات الإسرائيلية، ومنها منسق أعمال الحكومة في المناطق (كوغات)، أنها تتعمد تجويع السكان المدنيين بحسب هيومن رايتس ووتش، وقد طعنت إسرائيل في اختصاص المحكمة الجنائية الدولية وطلبت سحب مذكرتي التوقيف.",
+    "findings_ar": "خلصت هيومن رايتس ووتش في 18 ديسمبر 2023 إلى أن إسرائيل تستخدم تجويع المدنيين أسلوبا للحرب في غزة، مستندة إلى تصريحات مسؤولين ومنع المياه والغذاء والوقود وعرقلة المساعدات وتجريف أراض زراعية. وفي 21 نوفمبر 2024 أصدرت الدائرة التمهيدية الأولى في المحكمة الجنائية الدولية مذكرتي توقيف بحق بنيامين نتنياهو ويوآف غالانت، بعد أن وجدت أسبابا معقولة للاعتقاد بمسؤوليتهما عن جريمة الحرب المتمثلة في التجويع أسلوبا للحرب، وعن الجرائم ضد الإنسانية المتمثلة في القتل والاضطهاد وأفعال لاإنسانية أخرى، وبمسؤوليتهما بصفتهما رئيسين مدنيين عن جريمة حرب تعمد توجيه هجوم ضد السكان المدنيين، عن الفترة من 8 أكتوبر 2023 على الأقل حتى 20 مايو 2024 على الأقل؛ ولم تتمكن الدائرة، استنادا إلى المواد المقدمة حتى 20 مايو 2024، من تقرير توافر جميع أركان جريمة «الإبادة» (extermination) بوصفها جريمة ضد الإنسانية، وهي جريمة مختلفة عن الإبادة الجماعية. وفي 16 يوليو 2025 رفضت الدائرة طلب إسرائيل سحب المذكرتين، وبقي طعنها في الاختصاص قيد النظر بحسب آخر ما رصدناه. والمذكرة قرار يستند إلى معيار «الأسباب المعقولة» وليست حكما بالإدانة.",
+    "conflict": true,
+    "type_ar": [
+      "حصار وقطع إمدادات أساسية",
+      "قيود على المساعدات الإنسانية"
+    ],
+    "persons": [
+      "بنيامين نتنياهو (Benjamin Netanyahu)",
+      "يوآف غالانت (Yoav Gallant)"
+    ],
+    "evidence": [
+      {
+        "type": "official",
+        "desc_ar": "تصريح وزير الدفاع الإسرائيلي بإعلان الحصار الشامل في 9 أكتوبر 2023 كما نقلته تايمز أوف إسرائيل",
+        "source": "Times of Israel",
+        "date": "2023-10-09",
+        "url": "https://www.timesofisrael.com/liveblog_entry/defense-minister-announces-complete-siege-of-gaza-no-power-food-or-fuel/"
+      },
+      {
+        "type": "report",
+        "desc_ar": "تحديث أوتشا العاجل رقم 5 الذي يوثق وقف الكهرباء والوقود والمياه وتوقف محطة الكهرباء الوحيدة",
+        "source": "OCHA oPt",
+        "date": "2023-10-11",
+        "url": "https://www.ochaopt.org/content/hostilities-gaza-strip-and-israel-flash-update-5"
+      },
+      {
+        "type": "document",
+        "desc_ar": "بيان المحكمة الجنائية الدولية بإصدار مذكرتي التوقيف وتحديد الجرائم والفترة الزمنية",
+        "source": "ICC Pre-Trial Chamber I",
+        "date": "2024-11-21",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Defense minister announces ‘complete siege’ of Gaza: No power, food or fuel",
+        "publisher": "Times of Israel",
+        "date": "2023-10-09",
+        "url": "https://www.timesofisrael.com/liveblog_entry/defense-minister-announces-complete-siege-of-gaza-no-power-food-or-fuel/",
+        "kind": "media"
+      },
+      {
+        "title": "Hostilities in the Gaza Strip and Israel | Flash Update #5",
+        "publisher": "OCHA oPt",
+        "date": "2023-10-11",
+        "url": "https://www.ochaopt.org/content/hostilities-gaza-strip-and-israel-flash-update-5",
+        "kind": "un"
+      },
+      {
+        "title": "Israel: Starvation Used as Weapon of War in Gaza",
+        "publisher": "Human Rights Watch",
+        "date": "2023-12-18",
+        "url": "https://www.hrw.org/news/2023/12/18/israel-starvation-used-weapon-war-gaza",
+        "kind": "ngo"
+      },
+      {
+        "title": "Gaza: Israel’s Imposed Starvation Deadly for Children",
+        "publisher": "Human Rights Watch",
+        "date": "2024-04-09",
+        "url": "https://www.hrw.org/news/2024/04/09/gaza-israels-imposed-starvation-deadly-children",
+        "kind": "ngo"
+      },
+      {
+        "title": "Situation in the State of Palestine: ICC Pre-Trial Chamber I rejects the State of Israel’s challenges to jurisdiction and issues warrants of arrest for Benjamin Netanyahu and Yoav Gallant",
+        "publisher": "International Criminal Court",
+        "date": "2024-11-21",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges",
+        "kind": "court"
+      },
+      {
+        "title": "ICC judges reject Israel’s request to withdraw Netanyahu arrest warrant",
+        "publisher": "Al-Monitor (Reuters)",
+        "date": "2025-07-16",
+        "url": "https://www.al-monitor.com/originals/2025/07/icc-judges-reject-israels-request-withdraw-netanyahu-arrest-warrant",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "قطع الكهرباء والوقود والمياه ومنع دخول الغذاء عن سكان القطاع",
+        "rules": [
+          "Rome Statute 8(2)(b)(xxv)",
+          "AP I art. 54",
+          "ICRC CIHL Rule 53",
+          "ICRC CIHL Rule 55",
+          "GC IV art. 55",
+          "GC IV art. 59",
+          "Rome Statute 25(3)"
+        ],
+        "why_ar": "قد يثير الإجراء حظر تجويع المدنيين أسلوبا للحرب وحظر حرمانهم من الأعيان التي لا غنى عنها لبقائهم، وواجب السماح بمرور الإغاثة وتسهيله، وواجبات دولة الاحتلال في تموين السكان. وقد وجدت الدائرة التمهيدية أسبابا معقولة تتصل بهذه الجريمة، وهو معيار إصدار مذكرة لا معيار إدانة.",
+        "to_prove_ar": "يلزم أمام محكمة مختصة إثبات القصد أو العلم بأن الحرمان سيقع في المجرى العادي للأحداث، والصلة بين القرارات والحرمان الفعلي من الغذاء والماء والوقود، وشكل المسؤولية الفردية لكل شخص."
+      },
+      {
+        "act_ar": "وفيات المدنيين الناجمة عن نقص الغذاء والماء والكهرباء والوقود والإمدادات الطبية",
+        "rules": [
+          "Rome Statute 7(1)(a)",
+          "Rome Statute 7(1)(h)",
+          "Rome Statute 7(1)(k)",
+          "Rome Statute 25(3)"
+        ],
+        "why_ar": "ربطت الدائرة التمهيدية بين هذا الحرمان ووفاة مدنيين بينهم أطفال بسبب سوء التغذية والجفاف، ووجدت أسبابا معقولة لجريمة القتل بوصفها جريمة ضد الإنسانية، ووجدت كذلك أسبابا معقولة لجريمتي الاضطهاد والأفعال اللاإنسانية الأخرى، ونسبت المسؤولية إلى الشخصين المطلوبين بوصفهما مرتكبين مشاركين؛ وهي نتائج بمعيار «الأسباب المعقولة» قد تثبت أو تنفى في مرحلة لاحقة، لا حكم إدانة.",
+        "to_prove_ar": "يلزم إثبات وجود هجوم واسع النطاق أو منهجي ضد السكان المدنيين عملا بسياسة دولة، وعلاقة السببية بين القيود والوفيات، وعلم الشخصين المطلوبين بالهجوم."
+      },
+      {
+        "act_ar": "فرض القيود على السكان المدنيين جملة",
+        "rules": [
+          "GC IV art. 33"
+        ],
+        "why_ar": "قد يثير الإجراء حظر العقوبات الجماعية إذا ثبت أن القيود فرضت على المدنيين بسبب أفعال لم يرتكبوها، دون أن تبررها ضرورة عسكرية محددة.",
+        "to_prove_ar": "يلزم إثبات أن القيود لم توجه إلى هدف عسكري مشروع، وأن غرضها أو أثرها المتوقع معاقبة السكان، وانطباق قانون الاحتلال على الحالة."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: Gaza's sole power plant (Nuseirat) idle in mid-October 2023, residents filling jerrycans at a water point shot from behind, or the closed Rafah / Kerem Shalom crossing gate. No casualties. Search: 'Gaza power plant shut down October 11 2023', 'Gaza water shortage jerrycans October 2023', 'Rafah crossing closed October 2023'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0002",
+    "title_ar": "مقتل الصحفي عصام عبد الله وإصابة ستة صحفيين قرب علما الشعب جنوب لبنان",
+    "date": "2023-10-13",
+    "date_to": null,
+    "place_ar": "تلة مكشوفة قرب بلدة علما الشعب، قضاء صور، جنوب لبنان",
+    "region": "lebanon",
+    "precise": true,
+    "loc_note_ar": "حددت تحقيقات رويترز ومعهد TNO وقوة يونيفيل موقع الصحفيين على التلة، وحدد TNO نقطة الإطلاق داخل موقع عسكري إسرائيلي في جرديخ قرب الخط الأزرق بهامش خطأ 17 مترا.",
+    "summary_ar": "مساء 13 أكتوبر 2023 كانت مجموعة من سبعة صحفيين من رويترز ووكالة فرانس برس والجزيرة تصور تبادل القصف عبر الحدود من تلة قرب علما الشعب منذ قرابة ساعة. وبحسب تحقيق رويترز أصابت المجموعة قذيفتان من عيار 120 ملم أطلقتا من داخل إسرائيل بفارق 37 ثانية، فقتل مصور رويترز عصام عبد الله (37 عاما) وأصيب ستة آخرون، بينهم مصورة فرانس برس كريستينا عاصي التي أصيبت إصابة بالغة. وخلص تحقيق قوة الأمم المتحدة المؤقتة في لبنان (يونيفيل) إلى أن دبابة إسرائيلية أطلقت قذيفتين على صحفيين «يمكن التعرف عليهم بوضوح»، في انتهاك للقرار 1701 والقانون الدولي بحسب ما نقلته رويترز والجزيرة.",
+    "toll_ar": "قتيل واحد هو الصحفي عصام عبد الله، وستة جرحى من الصحفيين، بحسب رويترز وهيومن رايتس ووتش.",
+    "official_account_ar": "قال المتحدث الدولي باسم الجيش الإسرائيلي ريتشارد هيخت لرويترز: «نحن لا نستهدف الصحفيين»، وقال الجيش إن حزب الله هاجم قواته قرب حانيتا في ذلك اليوم بحسب الجزيرة. وتقول لجنة حماية الصحفيين إن الجيش أبلغ السناتور الأمريكي بيتر ويلش في يونيو 2025 بأن مراجعته خلصت إلى أن الجنود لم يخالفوا التعليمات أو قواعد الاشتباك، ثم قال لوكالة فرانس برس في أكتوبر 2025 وللجنة في ديسمبر 2025 إن الحادث «لا يزال قيد الفحص».",
+    "findings_ar": "خلص تحقيق رويترز (7 ديسمبر 2023)، بالاستناد إلى فحص معهد TNO الهولندي لزعنفة ذيل قذيفة دبابة عيار 120 ملم، إلى أن القذيفتين أطلقتا من مدفع دبابة على بعد 1.34 كيلومتر داخل إسرائيل. وفي اليوم نفسه رأت هيومن رايتس ووتش، بعد التحقق من 49 مقطعا مصورا وصور أقمار صناعية، أن الضربتين كانتا «على ما يبدو هجوما متعمدا على مدنيين»، وطالبت منظمة العفو الدولية بالتحقيق فيهما بوصفهما جريمة حرب. ووجد تقرير يونيفيل أنه لم يسجل أي تبادل لإطلاق النار عبر الحدود لأكثر من 40 دقيقة قبل إطلاق الدبابة النار. وتقول لجنة حماية الصحفيين إن أحدا لم يحاسب حتى ديسمبر 2025.",
+    "conflict": true,
+    "type_ar": [
+      "قتل صحفيين",
+      "هجوم أوقع ضحايا مدنيين"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "تقرير يونيفيل عن الحادث، قدم إلى الأمم المتحدة في 28 فبراير 2024 وكشفته رويترز في مارس (نسخة نشرتها لجنة حماية الصحفيين)",
+        "source": "UNIFIL",
+        "date": "2024-02-28",
+        "url": "https://cpj.org/wp-content/uploads/2024/03/UNIFIL.pdf"
+      },
+      {
+        "type": "report",
+        "desc_ar": "تحقيق رويترز الخاص مع تحليل TNO للشظايا والصوت وتثليث نقطة الإطلاق",
+        "source": "Reuters / TNO",
+        "date": "2023-12-07",
+        "url": "https://today.lorientlejour.com/article/1360046/special-report-israeli-tank-fire-killed-reuters-journalist-issam-abdallah-in-lebanon.html"
+      },
+      {
+        "type": "video",
+        "desc_ar": "تحقق هيومن رايتس ووتش من 49 مقطعا مصورا وعشرات الصور وصور أقمار صناعية للموقع",
+        "source": "Human Rights Watch",
+        "date": "2023-12-07",
+        "url": "https://www.hrw.org/news/2023/12/07/israel-strikes-journalists-lebanon-apparently-deliberate"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Israel: Strikes on Journalists in Lebanon Apparently Deliberate",
+        "publisher": "Human Rights Watch",
+        "date": "2023-12-07",
+        "url": "https://www.hrw.org/news/2023/12/07/israel-strikes-journalists-lebanon-apparently-deliberate",
+        "kind": "ngo"
+      },
+      {
+        "title": "Lebanon: Deadly Israeli attack on journalists must be investigated as a war crime",
+        "publisher": "Amnesty International",
+        "date": "2023-12-07",
+        "url": "https://www.amnesty.org/en/latest/news/2023/12/lebanon-deadly-israeli-attack-on-journalists-must-be-investigated-as-a-war-crime/",
+        "kind": "ngo"
+      },
+      {
+        "title": "Israeli tank fire killed Reuters journalist Issam Abdallah in Lebanon (Reuters special report, republished)",
+        "publisher": "Reuters via L'Orient Today",
+        "date": "2023-12-07",
+        "url": "https://today.lorientlejour.com/article/1360046/special-report-israeli-tank-fire-killed-reuters-journalist-issam-abdallah-in-lebanon.html",
+        "kind": "media"
+      },
+      {
+        "title": "Israeli strike killed ‘clearly identifiable’ reporter in Lebanon: UN probe",
+        "publisher": "Al Jazeera",
+        "date": "2024-03-14",
+        "url": "https://www.aljazeera.com/news/2024/3/14/israeli-strike-killed-clearly-identifiable-reporter-in-lebanon-un-probe",
+        "kind": "media"
+      },
+      {
+        "title": "UN Report on Israeli Killing of Journalist in Lebanon",
+        "publisher": "Human Rights Watch",
+        "date": "2024-03-29",
+        "url": "https://www.hrw.org/news/2024/03/29/un-report-israeli-killing-journalist-lebanon",
+        "kind": "ngo"
+      },
+      {
+        "title": "US senator’s revelations show Israel does not investigate war crimes against journalists",
+        "publisher": "Committee to Protect Journalists",
+        "date": "2025-12-11",
+        "url": "https://cpj.org/2025/12/us-senators-revelations-show-israel-does-not-investigate-war-crimes-against-journalists-us-and-international-community-must-step-in/",
+        "kind": "ngo"
+      },
+      {
+        "title": "Lebanon: Seek Justice for Journalists Killed by Israeli Forces",
+        "publisher": "Human Rights Watch",
+        "date": "2025-10-13",
+        "url": "https://www.hrw.org/news/2025/10/13/lebanon-seek-justice-for-journalists-killed-by-israeli-forces",
+        "kind": "ngo"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إطلاق قذيفتي دبابة على مجموعة صحفيين مكشوفين",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "AP I art. 51(2)",
+          "AP I art. 79",
+          "ICRC CIHL Rule 1",
+          "ICRC CIHL Rule 34"
+        ],
+        "why_ar": "الصحفيون مدنيون يتمتعون بالحماية ما لم يشاركوا مباشرة في الأعمال العدائية. وإذا ثبت أن القوة المهاجمة كانت تعلم أو كان ينبغي أن تعلم بصفتهم المدنية، كما ترجح تحقيقات يونيفيل وهيومن رايتس ووتش، فقد يثير الهجوم حظر توجيه الهجمات ضد المدنيين.",
+        "to_prove_ar": "يلزم إثبات هوية الوحدة ومن أصدر أمر الإطلاق، وما كان متاحا لها من معلومات عن هوية المجموعة، وغياب أي هدف عسكري في الموقع، والقصد."
+      },
+      {
+        "act_ar": "غياب تحقيق جنائي فعال في الحادث",
+        "rules": [
+          "ICRC CIHL Rule 158"
+        ],
+        "why_ar": "تلزم القاعدة العرفية الدول بالتحقيق في جرائم الحرب المشتبه بارتكابها من رعاياها أو قواتها وملاحقة المشتبه بهم؛ وقد يثير إغلاق المراجعة دون مقابلة صحفي مصاب أو طلب أدلة المنظمات، بحسب لجنة حماية الصحفيين، هذا الواجب.",
+        "to_prove_ar": "يلزم الاطلاع على نطاق المراجعة العسكرية ونتائجها، ومدى استقلالها، وما إذا أحيلت إلى جهة تحقيق جنائي."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: the open hilltop near Alma al-Shaab overlooking the border, a memorial or vigil for Issam Abdallah with press vests and candles in Beirut, or the damaged Reuters car photographed later without people. Search: 'Alma al-Shaab hill journalists memorial', 'Issam Abdallah vigil Beirut press vests', 'Alma al-Shaab border view'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0003",
+    "title_ar": "غارة جوية على مربع سكني في مخيم جباليا للاجئين",
+    "date": "2023-10-31",
+    "date_to": null,
+    "place_ar": "مخيم جباليا للاجئين، محافظة شمال غزة",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "مربع سكني محدد داخل المخيم؛ نشرت Airwars إحداثيات الموقع، ووصفت مفوضية حقوق الإنسان رقعة الدمار ومساحتها.",
+    "summary_ar": "نحو الساعة 14:20 من يوم 31 أكتوبر 2023 ضرب الجيش الإسرائيلي مربعا سكنيا في مخيم جباليا المكتظ، فسوى بالأرض مساحة لا تقل عن 2500 متر مربع ودمر 10 مبان وألحق أضرارا بعشرة مبان أخرى على الأقل، بحسب تقرير مفوضية الأمم المتحدة السامية لحقوق الإنسان. وأكد الجيش تنفيذ الضربة قائلا إنها قتلت إبراهيم البياري، قائد كتيبة جباليا المركزية في حماس. وتعرض المخيم لضربة أخرى في اليوم التالي، وأعربت المفوضية في 1 نوفمبر 2023 عن «مخاوف جدية» من أن تكون هذه «هجمات غير متناسبة قد ترقى إلى جرائم حرب».",
+    "toll_ar": "تحققت المفوضية السامية لحقوق الإنسان من مقتل 56 شخصا بينهم 12 امرأة و23 طفلا، مع معلومات عن 43 قتيلا آخرين؛ ويقدر سجل Airwars عدد القتلى المدنيين بين 149 و156 بينهم 85 طفلا.",
+    "official_account_ar": "قال الجيش الإسرائيلي إن الضربة قتلت إبراهيم البياري، الذي يتهمه بالضلوع في هجوم 7 أكتوبر، و«عددا كبيرا من الإرهابيين» كانوا معه، وإن «بنية تحتية إرهابية تحت الأرض» انهارت بعد الضربة، بحسب ما أورده تقرير المفوضية. ووصف الجيش الهدف بأنه «هدف مشروع»، وقال المتحدث دانيال هغاري إن انهيار الأنفاق زاد حجم الدمار، بحسب CNN.",
+    "findings_ar": "قدر تقرير المفوضية الموضوعي (19 يونيو 2024)، استنادا إلى حجم الدمار والحفر، أن الضربة استخدمت على الأرجح أربع قنابل من طراز GBU-32 على الأقل دون استبعاد قنابل GBU-31 الأكبر، وأدرجها ضمن أمثلة الهجمات التي قد تكون عشوائية، مشيرا إلى أن وجود قائد واحد أو عدة مقاتلين لا يجعل حيا بأكمله هدفا عسكريا. وصنفت Airwars الأذى المدني «مؤكدا» بعد إقرار الجيش بالضربة.",
+    "conflict": true,
+    "type_ar": [
+      "غارة على منطقة سكنية مكتظة",
+      "هجوم أوقع ضحايا مدنيين"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "تقرير المفوضية الموضوعي عن الهجمات بين أكتوبر وديسمبر 2023، ويتضمن وصف الموقع والدمار وتقدير الذخائر ونص بيان الجيش",
+        "source": "OHCHR",
+        "date": "2024-06-19",
+        "url": "https://www.ohchr.org/sites/default/files/documents/countries/opt/20240619-ohchr-thematic-report-indiscrim-disprop-attacks-gaza-oct-dec2023.pdf"
+      },
+      {
+        "type": "report",
+        "desc_ar": "سجل Airwars للحادث ISPT0783 مع إحداثيات الموقع وقوائم الضحايا ومصادر التغطية (سجل محدث، والتاريخ هنا تاريخ الحادث)",
+        "source": "Airwars",
+        "date": "2023-10-31",
+        "url": "https://airwars.org/civilian-casualties/ispt0783-october-31-2023/"
+      },
+      {
+        "type": "testimony",
+        "desc_ar": "شهادة شاهد عيان عن آثار الضربة نقلتها CNN في يوم الحادث",
+        "source": "CNN",
+        "date": "2023-10-31",
+        "url": "https://www.cnn.com/2023/10/31/middleeast/jabalya-blast-gaza-intl/index.html"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Thematic Report – Indiscriminate and disproportionate attacks during the conflict in Gaza (October – December 2023)",
+        "publisher": "OHCHR",
+        "date": "2024-06-19",
+        "url": "https://www.ohchr.org/sites/default/files/documents/countries/opt/20240619-ohchr-thematic-report-indiscrim-disprop-attacks-gaza-oct-dec2023.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Israel-Palestine crisis: First evacuations from Gaza; outrage grows over refugee camp strikes",
+        "publisher": "UN News",
+        "date": "2023-11-01",
+        "url": "https://news.un.org/en/story/2023/11/1143077",
+        "kind": "un"
+      },
+      {
+        "title": "ISPT0783 – October 31, 2023",
+        "publisher": "Airwars",
+        "date": "2023-10-31",
+        "url": "https://airwars.org/civilian-casualties/ispt0783-october-31-2023/",
+        "kind": "ngo"
+      },
+      {
+        "title": "Gaza’s Jabalya refugee camp: Witness describes aftermath of Israeli strike",
+        "publisher": "CNN",
+        "date": "2023-10-31",
+        "url": "https://www.cnn.com/2023/10/31/middleeast/jabalya-blast-gaza-intl/index.html",
+        "kind": "media"
+      },
+      {
+        "title": "IDF defends strike on Jabalya refugee camp, calling it a “legitimate target” (live updates)",
+        "publisher": "CNN",
+        "date": "2023-11-01",
+        "url": "https://www.cnn.com/middleeast/live-news/israel-hamas-war-gaza-news-11-01-23/h_a94d5b1ef91bff3bd9cca500ba011c0e",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "استخدام قنابل جوية ثقيلة ضد مربع سكني مكتظ لاستهداف قائد عسكري",
+        "rules": [
+          "Rome Statute 8(2)(b)(iv)",
+          "AP I art. 51(5)(b)",
+          "AP I art. 57(1)",
+          "ICRC CIHL Rule 14"
+        ],
+        "why_ar": "حتى لو كان الهدف المعلن عسكريا، قد يثير حجم الخسائر المدنية المتوقعة مقارنة بالميزة العسكرية الملموسة والمباشرة قاعدة التناسب، كما قد يثير مدى اتخاذ الاحتياطات الممكنة في اختيار الوسائل والأساليب وتوقيت الضربة.",
+        "to_prove_ar": "يلزم إثبات ما كان يعلمه القادة وقت القرار عن وجود المدنيين، والتقدير المسبق للأضرار الجانبية، والميزة العسكرية المتوقعة، ووجود وسائل بديلة ممكنة."
+      },
+      {
+        "act_ar": "هجوم بأسلحة واسعة الأثر في منطقة مكتظة بالسكان",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "AP I art. 48",
+          "AP I art. 51(2)",
+          "ICRC CIHL Rule 1"
+        ],
+        "why_ar": "رأت المفوضية أن استخدام أسلحة واسعة الأثر في مناطق مكتظة قد يشكل هجوما عشوائيا لا يميز بين المدنيين والأهداف العسكرية؛ وهذا تقييم أممي يحتاج إلى تحقق قضائي.",
+        "to_prove_ar": "يلزم إثبات نوع الذخائر ونطاق أثرها المتوقع، وأن الهجوم لم يوجه إلى هدف عسكري محدد أو لم يكن بالإمكان حصر آثاره."
+      }
+    ],
+    "photo_hint_en": "Non-graphic wide or aerial view of the crater and flattened residential block in Jabalia camp after 31 Oct 2023, or a satellite before/after comparison; avoid frames with casualties. Search: 'Jabalia camp crater aerial November 1 2023', 'Jabalia strike satellite image', 'Jabalia refugee camp rubble wide shot'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0004",
+    "title_ar": "مقتل الطفلة هند رجب وستة من أقاربها ومسعفين اثنين في تل الهوا",
+    "date": "2024-01-29",
+    "date_to": null,
+    "place_ar": "حي تل الهوا، جنوب غرب مدينة غزة",
+    "region": "gaza",
+    "precise": false,
+    "loc_note_ar": "يعرض الموقع على مستوى الحي؛ حددت التحقيقات المنشورة موقع السيارة وسيارة الإسعاف بدقة أعلى.",
+    "summary_ar": "في 29 يناير 2024 تعرضت سيارة كانت تقل الطفلة هند رجب، وعمرها خمسة أعوام بحسب تاريخ ميلادها وذكرت تغطيات كثيرة أنها في السادسة، مع ستة من أقاربها لإطلاق نار في حي تل الهوا، بحسب بي بي سي. وبعد مقتل قريبتها ليان حمادة (15 عاما) التي اتصلت أولا، بقيت هند على الهاتف مع مشغلي جمعية الهلال الأحمر الفلسطيني نحو ثلاث ساعات إلى أن سمح بإرسال سيارة إسعاف جرى تنسيق حركتها. وانقطع الاتصال بالمسعفين يوسف زينو وأحمد المدهون عند اقترابهما من الموقع. وفي 10 فبراير 2024 عثرت العائلة على السيارة وجثامين من فيها، ووجدت سيارة الإسعاف مدمرة على بعد نحو 50 مترا منها بحسب واشنطن بوست.",
+    "toll_ar": "قتل سبعة من ركاب السيارة بينهم هند رجب، إضافة إلى المسعفين يوسف زينو وأحمد المدهون، بحسب بي بي سي وجمعية الهلال الأحمر الفلسطيني.",
+    "official_account_ar": "قال الجيش الإسرائيلي في 24 فبراير 2024 إن مراجعته الأولية تشير إلى أن قواته «لم تكن موجودة قرب المركبة» ولا ضمن مدى إطلاق النار عليها، وإنه لم تكن هناك حاجة إلى تنسيق خاص، بحسب تايمز أوف إسرائيل. وفي 19 أغسطس 2026 أقر لأول مرة بأن «قوات الجيش أطلقت النار على مركبة» كانت تتحرك «بعكس الإشعار المسبق» الذي نشره المتحدث باسمه للسكان، وأعلن فتح تحقيق جنائي لدى شعبة التحقيقات في الشرطة العسكرية بسبب «إخفاقات مزعومة» في تنسيق حركة سيارة إسعاف الهلال الأحمر، بحسب بي بي سي.",
+    "findings_ar": "وجد تحقيق واشنطن بوست (أبريل 2024)، استنادا إلى صور أقمار صناعية وتسجيلات الإرسال ومقابلات، أن مدرعات إسرائيلية كانت في محيط الموقع، وأن الضرر في سيارة الإسعاف يتسق مع قذيفة دبابة إسرائيلية، وأن حطامها كان على مسار حددته جهة التنسيق الإسرائيلية (كوغات). وخلصت Forensic Architecture بالشراكة مع Earshot (يونيو 2024) إلى رصد 335 ثقب رصاص في السيارة، ورجحت أن دبابة إسرائيلية أطلقت النار وأن مطلقها كان قادرا على رؤية الركاب، وقدر التحليل الصوتي لإحدى الطلقات المسجلة في المكالمة أن مصدرها كان على بعد 13 إلى 23 مترا، كما رجحت أن دبابة استهدفت سيارة الإسعاف أيضا. وأعلنت مؤسسة هند رجب أنها «لا تثق» بالتحقيق العسكري.",
+    "conflict": true,
+    "type_ar": [
+      "قتل أطفال",
+      "إطلاق نار على مركبة مدنية",
+      "هجوم على طواقم إسعاف"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "إعادة البناء المكاني والصوتي للحادث لدى Forensic Architecture، وتشمل نموذجا ثلاثي الأبعاد للسيارة وتحليل اتجاه الإطلاق",
+        "source": "Forensic Architecture",
+        "date": "2024-06-21",
+        "url": "https://forensic-architecture.org/investigation/the-killing-of-hind-rajab"
+      },
+      {
+        "type": "report",
+        "desc_ar": "التحليل الصوتي لتسجيل المكالمة الذي قدر المسافة بين مصدر النار والسيارة",
+        "source": "Earshot",
+        "date": "2024-06-21",
+        "url": "https://www.earshot.ngo/investigations/the-killing-of-layan-hamada-and-hind-rajab"
+      },
+      {
+        "type": "satellite",
+        "desc_ar": "صور أقمار صناعية تظهر مدرعات إسرائيلية قرب الموقع ضمن تحقيق واشنطن بوست",
+        "source": "The Washington Post",
+        "date": "2024-04-16",
+        "url": "https://www.washingtonpost.com/world/interactive/2024/hind-rajab-israel-gaza-killing-timeline/"
+      },
+      {
+        "type": "official",
+        "desc_ar": "بيان الجيش الإسرائيلي في أغسطس 2026 بالإقرار بإطلاق النار على المركبة وفتح تحقيق جنائي",
+        "source": "IDF via BBC News",
+        "date": "2026-08-19",
+        "url": "https://www.bbc.com/news/articles/crl7yjlpx2po"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Hind Rajab, 5, found dead in Gaza days after phone calls for help",
+        "publisher": "BBC News",
+        "date": "2024-02-10",
+        "url": "https://www.bbc.com/news/world-middle-east-68261286",
+        "kind": "media"
+      },
+      {
+        "title": "IDF says probe indicates no troops were in area where 6-year-old Gazan girl was killed",
+        "publisher": "Times of Israel",
+        "date": "2024-02-25",
+        "url": "https://www.timesofisrael.com/idf-says-probe-indicates-no-troops-were-in-area-where-6-year-old-gazan-girl-was-killed/",
+        "kind": "media"
+      },
+      {
+        "title": "Hind Rajab: timeline of the killing (visual investigation)",
+        "publisher": "The Washington Post",
+        "date": "2024-04-16",
+        "url": "https://www.washingtonpost.com/world/interactive/2024/hind-rajab-israel-gaza-killing-timeline/",
+        "kind": "media"
+      },
+      {
+        "title": "The Killing of Hind Rajab",
+        "publisher": "Forensic Architecture",
+        "date": "2024-06-21",
+        "url": "https://forensic-architecture.org/investigation/the-killing-of-hind-rajab",
+        "kind": "forensic"
+      },
+      {
+        "title": "The killing of Layan Hamada and Hind Rajab",
+        "publisher": "Earshot",
+        "date": "2024-06-21",
+        "url": "https://www.earshot.ngo/investigations/the-killing-of-layan-hamada-and-hind-rajab",
+        "kind": "forensic"
+      },
+      {
+        "title": "IDF to open criminal inquiry into Gaza’s Hind Rajab case, closes probe of World Central Kitchen deaths",
+        "publisher": "Times of Israel",
+        "date": "2026-08-19",
+        "url": "https://www.timesofisrael.com/idf-closes-gaza-probe-of-world-central-kitchen-deaths-inquiry-into-killing-of-hind-rajab-ongoing/",
+        "kind": "media"
+      },
+      {
+        "title": "Israel confirms soldiers fired at car in which Hind Rajab was killed and opens criminal investigation",
+        "publisher": "BBC News",
+        "date": "2026-08-20",
+        "url": "https://www.bbc.com/news/articles/crl7yjlpx2po",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إطلاق النار على سيارة مدنية تقل أطفالا",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "AP I art. 51(2)",
+          "AP I art. 57(1)",
+          "ICRC CIHL Rule 1"
+        ],
+        "why_ar": "إذا ثبت أن مطلقي النار كانوا قادرين على تمييز وجود مدنيين بينهم أطفال، كما ترجح Forensic Architecture، فقد يثير ذلك حظر توجيه الهجمات ضد المدنيين. ويحتج الجيش بأن المركبة كانت تتحرك بعكس إشعار الإخلاء، وهو ما يتطلب فحص أساس الاشتباه ومدى التحقق والتدرج قبل إطلاق النار.",
+        "to_prove_ar": "يلزم إثبات هوية الوحدة وتسلسل الأوامر، وما رآه الجنود وما كان يمكنهم رؤيته، ووجود تهديد وشيك أو غيابه، ونتائج تحقيق الشرطة العسكرية أو أي جهة قضائية مستقلة."
+      },
+      {
+        "act_ar": "إصابة سيارة إسعاف منسقة الحركة وقتل طاقمها",
+        "rules": [
+          "Rome Statute 8(2)(b)(xxiv)",
+          "AP I art. 15",
+          "AP I art. 21",
+          "ICRC CIHL Rule 25"
+        ],
+        "why_ar": "تتمتع سيارات الإسعاف وطواقمها التي تحمل الشارة المميزة بحماية خاصة، وقد يثير إصابة إسعاف جرى تنسيق حركته مسبقا هذه القواعد، وهو ما يتصل بإحالة الجيش نفسه «إخفاقات التنسيق» إلى التحقيق الجنائي.",
+        "to_prove_ar": "يلزم إثبات مصدر القذيفة ووقت إطلاقها، وعلم القوة بالتنسيق وبهوية المركبة، وعدم استخدام المركبة في أعمال ضارة بالعدو."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: the bullet-riddled black Kia shown as a public memorial (e.g., the August 2026 Berlin display) or the burnt PRCS ambulance shell photographed in daylight without bodies; a Tel al-Hawa street view. Search: 'Hind Rajab car memorial Berlin', 'PRCS ambulance Hind Rajab wreckage daylight', 'Tel al-Hawa Gaza City street 2024'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0005",
+    "title_ar": "قتل وإصابة طالبي مساعدات قرب دوار النابلسي في شارع الرشيد",
+    "date": "2024-02-29",
+    "date_to": null,
+    "place_ar": "دوار النابلسي، شارع الرشيد الساحلي، جنوب غرب مدينة غزة",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "موقع عام محدد على الطريق الساحلي؛ تشير إليه تقارير الأمم المتحدة بحادث «طريق الرشيد».",
+    "summary_ar": "فجر 29 فبراير 2024 تجمع آلاف الفلسطينيين حول قافلة من 38 شاحنة مساعدات غذائية على شارع الرشيد جنوب غرب مدينة غزة، وأطلقت القوات الإسرائيلية النار في محيط القافلة. وأعلنت وزارة الصحة في غزة لاحقا مقتل 118 شخصا وإصابة 760، بحسب ما نقله أوتشا. وقال رئيس مكتب أوتشا الفرعي في غزة بعد زيارة مستشفى الشفاء في 1 مارس: «رأينا أشخاصا مصابين بطلقات نارية». وتعرف الحادثة في تغطيات إعلامية باسم «مجزرة الطحين».",
+    "toll_ar": "118 قتيلا و760 جريحا بحسب وزارة الصحة في غزة كما نقلها أوتشا (4 مارس 2024)؛ وقال الجيش الإسرائيلي في مراجعته الأولية إن أقل من 10 إصابات نتجت عن نيرانه.",
+    "official_account_ar": "قالت مراجعة القيادة التي عرضت على رئيس الأركان في 8 مارس 2024 إن نحو 12 ألف شخص اندفعوا نحو الشاحنات، وإن القوات أطلقت «نيرانا تحذيرية» ثم أطلقت النار «بدقة» على «مشتبه بهم» اقتربوا منها وشكلوا تهديدا، وإنها لم تطلق النار على القافلة نفسها، وإن معظم الأضرار المدنية نتجت عن التدافع ودهس الشاحنات للناس، بحسب تايمز أوف إسرائيل. وأحيل الحادث إلى آلية تقصي الحقائق التابعة لهيئة الأركان.",
+    "findings_ar": "خلص تحقيق CNN (9 أبريل 2024)، المستند إلى شهادات 22 شاهدا وعشرات المقاطع وتحليل خبير في صوتيات إطلاق النار، إلى أن إطلاق نار آلي كثيف بدأ قبل التوقيت الذي حدده الجيش لعبور القافلة، إذ سجل أحد المقاطع في 4:22 صباحا، وأن طلقات أطلقت من مسافة قريبة من الحشود؛ وأشار التحقيق إلى أن الجيش رفض تقديم لقطات المسيرة الكاملة غير المحررة وأن جميع المقاطع صورت في الظلام. وأكد مكتب أوتشا وجود مصابين بطلقات نارية بين من كانوا يعالجون في مستشفى الشفاء.",
+    "conflict": true,
+    "type_ar": [
+      "قتل طالبي مساعدات",
+      "إطلاق نار على حشود مدنية"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "video",
+        "desc_ar": "مقاطع شهود عيان جمعتها CNN وحللت بياناتها الوصفية وأصوات إطلاق النار فيها",
+        "source": "CNN",
+        "date": "2024-04-09",
+        "url": "https://www.cnn.com/2024/04/09/middleeast/gaza-food-aid-convoy-deaths-eyewitness-intl-investigation-cmd/index.html"
+      },
+      {
+        "type": "official",
+        "desc_ar": "الجدول الزمني لمراجعة الجيش الإسرائيلي المعلن في 8 مارس 2024",
+        "source": "IDF via Times of Israel",
+        "date": "2024-03-08",
+        "url": "https://www.timesofisrael.com/idf-probe-into-aid-chaos-says-shots-fired-at-gazans-nearing-troops-not-trucks/"
+      },
+      {
+        "type": "report",
+        "desc_ar": "تحديث أوتشا العاجل رقم 131 بالحصيلة وملاحظات الفريق الأممي في مستشفى الشفاء",
+        "source": "OCHA oPt",
+        "date": "2024-03-04",
+        "url": "https://www.ochaopt.org/content/hostilities-gaza-strip-and-israel-flash-update-131"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Gaza aid delivery: Videos and eyewitness accounts cast doubt on Israel’s timeline of food distribution that turned deadly",
+        "publisher": "CNN",
+        "date": "2024-04-09",
+        "url": "https://www.cnn.com/2024/04/09/middleeast/gaza-food-aid-convoy-deaths-eyewitness-intl-investigation-cmd/index.html",
+        "kind": "media"
+      },
+      {
+        "title": "IDF’s probe into aid chaos says it fired shots at Gazans nearing troops – not trucks",
+        "publisher": "Times of Israel",
+        "date": "2024-03-08",
+        "url": "https://www.timesofisrael.com/idf-probe-into-aid-chaos-says-shots-fired-at-gazans-nearing-troops-not-trucks/",
+        "kind": "media"
+      },
+      {
+        "title": "Hostilities in the Gaza Strip and Israel | Flash Update #131",
+        "publisher": "OCHA oPt",
+        "date": "2024-03-04",
+        "url": "https://www.ochaopt.org/content/hostilities-gaza-strip-and-israel-flash-update-131",
+        "kind": "un"
+      },
+      {
+        "title": "Daily Press Briefing by the Office of the Spokesperson for the Secretary-General",
+        "publisher": "United Nations",
+        "date": "2024-03-01",
+        "url": "https://press.un.org/en/2024/db240301.doc.htm",
+        "kind": "un"
+      },
+      {
+        "title": "Flour massacre: How Gaza food killings unfolded, and Israel’s story changed",
+        "publisher": "Al Jazeera",
+        "date": "2024-03-01",
+        "url": "https://www.aljazeera.com/news/2024/3/1/flour-massacre-how-gaza-food-killings-unfolded-and-israels-story-changed",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إطلاق النار على مدنيين متجمعين حول شاحنات المساعدات",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "AP I art. 51(2)",
+          "AP I art. 57(1)",
+          "ICRC CIHL Rule 1"
+        ],
+        "why_ar": "طالبو المساعدات مدنيون محميون، وقد يثير إطلاق النار عليهم أو بصورة لا تميز بينهم حظر الهجمات على المدنيين؛ أما الادعاء بوجود تهديد فيتطلب تقييم كل حالة على حدة، ومدى الضرورة والتناسب في استخدام القوة.",
+        "to_prove_ar": "يلزم إثبات توقيت إطلاق النار ومصدره واتجاهه، وطبيعة التهديد المزعوم، وأسباب الوفاة لكل ضحية بتقارير طبية، والاطلاع على لقطات الجيش الكاملة."
+      },
+      {
+        "act_ar": "ظروف إيصال المساعدات وتأمينها التي سبقت الحادث",
+        "rules": [
+          "ICRC CIHL Rule 55",
+          "GC IV art. 59",
+          "ICJ Order of 26 January 2024 (South Africa v. Israel)"
+        ],
+        "why_ar": "قد يثير الحادث التزامات السماح بمرور الإغاثة الإنسانية وتسهيله وتوزيعها بأمان، والتدبير المؤقت الذي أمرت به محكمة العدل الدولية في 26 يناير 2024 بتمكين وصول المساعدات الإنسانية الملحة.",
+        "to_prove_ar": "يلزم إثبات الترتيبات التي وضعت لتأمين القافلة ومدى كفايتها، والجهة المسؤولة عن التنسيق، وأثر القيود العامة على المساعدات في تجمع الحشود."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: aid trucks on al-Rashid coastal road or the Nabulsi roundabout area in daylight; crowds waiting for aid seen from a distance with no identifiable faces; flour sacks. Search: 'al-Rashid street Gaza aid trucks February 2024', 'Nabulsi roundabout Gaza City', 'Gaza flour aid convoy crowd distance'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0006",
+    "title_ar": "العملية العسكرية في مجمع الشفاء الطبي وما وثقته بعثة منظمة الصحة العالمية",
+    "date": "2024-03-18",
+    "date_to": "2024-04-01",
+    "place_ar": "مجمع الشفاء الطبي، حي الرمال، مدينة غزة",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "منشأة طبية عامة معروفة الموقع.",
+    "summary_ar": "بدأ الجيش الإسرائيلي في 18 مارس 2024 عملية عسكرية ثانية داخل مجمع الشفاء، أكبر مستشفيات غزة، استمرت نحو أسبوعين حتى انسحابه في 1 أبريل، بعد عملية أولى في نوفمبر 2023. وتقول منظمة الصحة العالمية إن محاولاتها للوصول إلى المستشفى لإجلاء المرضى والطواقم رفضت أو أخرت أو عرقلت ست مرات بين 25 مارس و1 أبريل. وعندما وصلت بعثتها في 5 أبريل وجدت المستشفى «قوقعة فارغة» بلا مرضى، ومعظم مبانيه مدمرة بشدة، ومحطة الأكسجين مدمرة، وشاهدت خمس جثث على الأقل.",
+    "toll_ar": "قال الجيش الإسرائيلي إنه قتل أكثر من 200 مسلح واعتقل نحو 900 مشتبه به، قال إن أكثر من 500 منهم عناصر في فصائل مسلحة؛ ونقلت منظمة الصحة العالمية عن المدير المكلف للمستشفى أن 20 مريضا على الأقل توفوا خلال الحصار لغياب الرعاية؛ وأورد تقرير مفوضية حقوق الإنسان أن ثلاث مقابر جماعية عثر عليها لاحقا في المستشفى بحسب التقارير، وانتشلت منها 80 جثة على الأقل.",
+    "official_account_ar": "وصف الجيش الإسرائيلي العملية بأنها «دقيقة» واستندت إلى معلومات استخباراتية عن عودة عناصر من حماس إلى المجمع، وقال إنه قتل أكثر من 200 مسلح واحتجز نحو 900 مشتبه به أكد أن أكثر من 500 منهم عناصر في فصائل مسلحة، وعثر على أسلحة ووثائق، وإنه تجنب إيذاء المرضى، بحسب تايمز أوف إسرائيل وCNN.",
+    "findings_ar": "وثقت بعثة منظمة الصحة العالمية (6 أبريل 2024) احتراق ما لا يقل عن 115 سريرا في قسم الطوارئ وتدمير 14 حاضنة، ووصف المدير العام للمنظمة المجمع بأنه «قوقعة فارغة فيها قبور بشرية». وفي 23 أبريل 2024 عبر المفوض السامي لحقوق الإنسان فولكر تورك عن فزعه من تدمير مستشفيي ناصر والشفاء ومن التقارير عن مقابر جماعية، وطالب بتحقيقات مستقلة. وخلص تقرير المفوضية (31 ديسمبر 2024) إلى أن الادعاءات الإسرائيلية بالاستخدام العسكري للمستشفيات لم تدعمها حتى الآن معلومات كافية وظلت «مبهمة وعامة»، وأن بعض الجثث المنتشلة من الشفاء وجدت بحسب التقارير وعليها قساطر وكانيولات.",
+    "conflict": true,
+    "type_ar": [
+      "عملية عسكرية داخل منشأة طبية",
+      "تدمير منشأة طبية",
+      "وفيات مرضى"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "تقرير بعثة منظمة الصحة العالمية إلى المجمع في 5 أبريل 2024",
+        "source": "WHO",
+        "date": "2024-04-06",
+        "url": "https://www.who.int/news/item/06-04-2024-six-months-of-war-leave-al-shifa-hospital-in-ruins--who-mission-reports"
+      },
+      {
+        "type": "report",
+        "desc_ar": "تقرير المفوضية عن نمط الهجمات على مستشفيات غزة بين أكتوبر 2023 ويونيو 2024",
+        "source": "OHCHR",
+        "date": "2024-12-31",
+        "url": "https://www.ohchr.org/en/press-releases/2024/12/pattern-israeli-attacks-gaza-hospitals-raises-grave-concerns-report"
+      },
+      {
+        "type": "official",
+        "desc_ar": "إعلان الجيش الإسرائيلي انتهاء العملية وحصيلته المعلنة",
+        "source": "IDF via Times of Israel",
+        "date": "2024-04-01",
+        "url": "https://www.timesofisrael.com/idf-ends-shifa-hospital-raid-after-arresting-or-killing-hundreds-of-terror-operatives/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Six months of war leave Al-Shifa hospital in ruins, WHO mission reports",
+        "publisher": "World Health Organization",
+        "date": "2024-04-06",
+        "url": "https://www.who.int/news/item/06-04-2024-six-months-of-war-leave-al-shifa-hospital-in-ruins--who-mission-reports",
+        "kind": "un"
+      },
+      {
+        "title": "Pattern of Israeli attacks on Gaza hospitals raises grave concerns – report",
+        "publisher": "OHCHR",
+        "date": "2024-12-31",
+        "url": "https://www.ohchr.org/en/press-releases/2024/12/pattern-israeli-attacks-gaza-hospitals-raises-grave-concerns-report",
+        "kind": "un"
+      },
+      {
+        "title": "UN rights chief ‘horrified’ by mass grave reports at Gaza hospitals",
+        "publisher": "UN News",
+        "date": "2024-04-23",
+        "url": "https://news.un.org/en/story/2024/04/1148876",
+        "kind": "un"
+      },
+      {
+        "title": "IDF ends Shifa Hospital raid, says it killed 200 terror operatives, arrested 500 more",
+        "publisher": "Times of Israel",
+        "date": "2024-04-01",
+        "url": "https://www.timesofisrael.com/idf-ends-shifa-hospital-raid-after-arresting-or-killing-hundreds-of-terror-operatives/",
+        "kind": "media"
+      },
+      {
+        "title": "Israeli troops end Al-Shifa hospital raid, leaving behind bodies and trail of destruction",
+        "publisher": "CNN",
+        "date": "2024-04-01",
+        "url": "https://www.cnn.com/2024/04/01/middleeast/israel-idf-withdraws-al-shifa-hospital-intl-hnk",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "شن عملية عسكرية داخل مستشفى وتدمير مرافقه",
+        "rules": [
+          "Rome Statute 8(2)(b)(ix)",
+          "GC IV art. 18",
+          "GC IV art. 19",
+          "AP I art. 12",
+          "Rome Statute 8(2)(a)(iv)"
+        ],
+        "why_ar": "المستشفيات محمية ولا تفقد حمايتها إلا إذا استخدمت للقيام بأعمال ضارة بالعدو خارج وظيفتها الإنسانية، وبعد إنذار يحدد مهلة معقولة؛ وقد تثار هذه القواعد إذا لم تتحقق شروط فقدان الحماية، أو إذا تجاوز التدمير ما تقتضيه الضرورة العسكرية.",
+        "to_prove_ar": "يلزم إثبات ما إذا كان المستشفى قد استخدم فعلا لأغراض عسكرية وفي أي أجزائه، وهل وجهت إنذارات، ومدى تناسب الأضرار، ومن قرر تدمير المرافق والمعدات."
+      },
+      {
+        "act_ar": "وفاة مرضى وعرقلة الإجلاء الطبي خلال العملية",
+        "rules": [
+          "GC IV art. 16",
+          "GC IV art. 17",
+          "ICRC CIHL Rule 110"
+        ],
+        "why_ar": "قد تثار واجبات حماية الجرحى والمرضى وتوفير الرعاية لهم وتيسير إجلائهم إذا ثبت أن الوفيات نجمت عن منع الرعاية أو الإمدادات أو الإجلاء خلال العملية.",
+        "to_prove_ar": "يلزم إثبات أسباب وفاة كل مريض، والقيود المفروضة على الإمداد والإجلاء، والجهة التي فرضتها."
+      },
+      {
+        "act_ar": "المقابر الجماعية في ساحة المستشفى",
+        "rules": [
+          "ICRC CIHL Rule 112",
+          "ICRC CIHL Rule 115",
+          "ICRC CIHL Rule 116"
+        ],
+        "why_ar": "تفرض القواعد العرفية البحث عن الموتى وجمعهم ودفنهم باحترام وتمييز قبورهم وتسجيل هوياتهم؛ وقد تثير تقارير المقابر الجماعية هذه القواعد، وهي تتطلب تحقيقا مستقلا كما طالب المفوض السامي.",
+        "to_prove_ar": "يلزم إثبات هوية الضحايا وأسباب الوفاة وتوقيتها، ومن دفنهم، عبر تحقيق طبي شرعي مستقل."
+      }
+    ],
+    "photo_hint_en": "Non-graphic exterior of al-Shifa Medical Complex after the April 2024 withdrawal: burnt and collapsed buildings, damaged courtyard, WHO mission vehicles; avoid any images of exhumations or bodies. Search: 'al-Shifa hospital damage April 2024 exterior', 'Shifa medical complex destroyed buildings WHO mission', 'al-Shifa burnt surgical building'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0007",
+    "title_ar": "ضربات بطائرة مسيرة على قافلة المطبخ المركزي العالمي في دير البلح",
+    "date": "2024-04-01",
+    "date_to": null,
+    "place_ar": "الطريق الساحلي، منطقة دير البلح، وسط قطاع غزة",
+    "region": "gaza",
+    "precise": false,
+    "loc_note_ar": "أصيبت ثلاث مركبات على امتداد مسار القافلة في منطقة دير البلح؛ يعرض الموقع على مستوى المنطقة.",
+    "summary_ar": "ليل 1 أبريل 2024 أصابت ضربات إسرائيلية بطائرة مسيرة ثلاث مركبات تابعة لمنظمة المطبخ المركزي العالمي (WCK) بعد مغادرتها مستودعا في دير البلح، فقتل سبعة من عامليها: فلسطيني وأسترالية وبولندي وثلاثة بريطانيين ومواطن أمريكي كندي، بحسب NBC News. وأقر الجيش الإسرائيلي في 5 أبريل بأن الضربات «خطأ جسيم» ناجم عن خطأ في تحديد الهوية، وأقال ضابطين ووبخ قادة آخرين. وفي 19 أغسطس 2026 قررت النيابة العسكرية عدم فتح تحقيق جنائي، فاستدعت أستراليا السفير الإسرائيلي.",
+    "toll_ar": "سبعة قتلى من عاملي الإغاثة بحسب المنظمة والجيش الإسرائيلي.",
+    "official_account_ar": "قال الجيش الإسرائيلي في 5 أبريل 2024 إن الضربات كانت «خطأ جسيما ناجما عن إخفاق خطير بسبب خطأ في تحديد الهوية» ونفذت بالمخالفة لإجراءات التشغيل، بحسب NBC News. وفي 19 أغسطس 2026 قالت النيابة العسكرية إن القوات رصدت مسلحا على إحدى شاحنات القافلة وإن حراس المنظمة المسلحين لم ينسق وجودهم مع الجيش، وإن مركبات خرجت عن المسار المنسق، وخلصت إلى أن قرارات القادة «لم تتجاوز العتبة الجنائية» رغم «إخفاقات خطيرة»، دون إجراءات إضافية على ما سبق اتخاذه، بحسب واي نت وتايمز أوف إسرائيل.",
+    "findings_ar": "خلصت مراجعة المستشار الخاص للحكومة الأسترالية مارك بينسكين (2 أغسطس 2024) إلى «إخفاقات خطيرة في اتباع إجراءات الجيش الإسرائيلي» و«انهيار كبير في الوعي بالموقف» وخطأ في تحديد الهوية عززه على الأرجح «انحياز التأكيد»، لكنها رأت أن الضربة «لم توجه عن علم أو عمد» ضد المنظمة، وأوصت باعتذار مناسب للعائلات. وطالبت المنظمة بلجنة تحقيق مستقلة قائلة إن الجيش «لا يستطيع التحقيق بمصداقية في إخفاقه». وبعد قرار أغسطس 2026 قالت وزيرة الخارجية الأسترالية إنها «غاضبة» واستدعت السفير الإسرائيلي، بحسب ABC الأسترالية والمونيتور.",
+    "conflict": false,
+    "type_ar": [
+      "هجوم على عاملي إغاثة",
+      "هجوم على قافلة إنسانية"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "official",
+        "desc_ar": "نتائج تحقيق الجيش الإسرائيلي المعلنة في 5 أبريل 2024",
+        "source": "IDF via NBC News",
+        "date": "2024-04-05",
+        "url": "https://www.nbcnews.com/news/world/idf-announces-results-probe-strikes-world-central-kitchen-aid-convoy-rcna146533"
+      },
+      {
+        "type": "report",
+        "desc_ar": "خلاصات المراجعة الأسترالية المستقلة (النسخة غير السرية) كما نشرتها ABC",
+        "source": "Australian Government Special Adviser (Mark Binskin)",
+        "date": "2024-08-02",
+        "url": "https://www.abc.net.au/news/2024-08-02/australia-review-idf-world-central-kitchen-death/104175546"
+      },
+      {
+        "type": "official",
+        "desc_ar": "قرار النيابة العسكرية الإسرائيلية بعدم فتح تحقيق جنائي وأسبابه",
+        "source": "IDF Military Advocate General via Times of Israel",
+        "date": "2026-08-19",
+        "url": "https://www.timesofisrael.com/idf-closes-gaza-probe-of-world-central-kitchen-deaths-inquiry-into-killing-of-hind-rajab-ongoing/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "IDF dismisses 2 senior officers over killing of Gaza aid workers; World Central Kitchen demands independent probe",
+        "publisher": "NBC News",
+        "date": "2024-04-05",
+        "url": "https://www.nbcnews.com/news/world/idf-announces-results-probe-strikes-world-central-kitchen-aid-convoy-rcna146533",
+        "kind": "media"
+      },
+      {
+        "title": "‘Serious’ IDF failures led to death of World Central Kitchen aid workers in Gaza, Australian review finds",
+        "publisher": "ABC News (Australia)",
+        "date": "2024-08-02",
+        "url": "https://www.abc.net.au/news/2024-08-02/australia-review-idf-world-central-kitchen-death/104175546",
+        "kind": "media"
+      },
+      {
+        "title": "IDF orders criminal probes into Hind Rajab and Rafah paramedic killings, clears WCK strike",
+        "publisher": "Ynetnews",
+        "date": "2026-08-19",
+        "url": "https://www.ynetnews.com/article/b1bgqfmpmx",
+        "kind": "media"
+      },
+      {
+        "title": "Israel’s military clears soldiers of criminal wrongdoing in Gaza strike that killed Zomi Frankcom",
+        "publisher": "ABC News (Australia)",
+        "date": "2026-08-19",
+        "url": "https://www.abc.net.au/news/2026-08-19/idf-clears-soldiers-of-criminal-wrongdoing/107056204",
+        "kind": "media"
+      },
+      {
+        "title": "Australia says relations with Israel ‘difficult’ after aid worker death",
+        "publisher": "Al-Monitor",
+        "date": "2026-08-19",
+        "url": "https://al-monitor.com/originals/2026/08/australia-says-relations-israel-difficult-after-aid-worker-death",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "ضرب مركبات قافلة إغاثة إنسانية",
+        "rules": [
+          "Rome Statute 8(2)(b)(iii)",
+          "AP I art. 71(2)",
+          "ICRC CIHL Rule 31"
+        ],
+        "why_ar": "يتمتع موظفو الإغاثة الإنسانية ومركباتهم بحماية المدنيين، وقد يثير ضربها هذه القواعد؛ غير أن المسؤولية الجنائية تتطلب القصد أو العلم، وقد خلصت المراجعتان الإسرائيلية والأسترالية إلى خطأ في تحديد الهوية لا إلى استهداف متعمد.",
+        "to_prove_ar": "يلزم إثبات ما كان متاحا للقادة من معلومات عن هوية القافلة وتنسيقها، وما إذا كان الخطأ ناجما عن إهمال جسيم يرقى إلى التهور، مع إتاحة المواد الكاملة بما فيها التسجيلات الصوتية للمسيرة التي تقول أستراليا إنها لم تتسلمها."
+      },
+      {
+        "act_ar": "تتابع الضربات على ثلاث مركبات متتالية",
+        "rules": [
+          "AP I art. 57(1)",
+          "AP I art. 57(2)(c)",
+          "ICRC CIHL Rule 14"
+        ],
+        "why_ar": "يفرض القانون الإنساني رعاية متواصلة لتجنب المدنيين، والتحقق من الهدف قبل كل هجوم، وإلغاء الهجوم أو تعليقه إذا تبين أنه ليس هدفا عسكريا؛ وقد يثار هذا الواجب بشأن الضربات التالية للضربة الأولى.",
+        "to_prove_ar": "يلزم إثبات المعلومات التي توافرت بعد كل ضربة، وما إذا كانت كافية لكشف الخطأ قبل الضربة التالية."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: the burnt WCK car with the logo visible on its roof photographed in daylight in Deir al-Balah (no bodies), or a vigil for the seven aid workers. Search: 'World Central Kitchen car Deir al-Balah April 2 2024 roof logo', 'WCK convoy strike vehicle wreckage', 'WCK aid workers vigil'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0008",
+    "title_ar": "غارة على مخيم للنازحين في تل السلطان برفح وحريق أعقبها",
+    "date": "2024-05-26",
+    "date_to": null,
+    "place_ar": "مخيم «السلام الكويتي» للنازحين، تل السلطان، غرب رفح",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "حددت CNN موقع المقطع المصور جغرافيا بمطابقة لافتة مدخل المخيم وبلاط الأرض.",
+    "summary_ar": "مساء 26 مايو 2024 نفذ الجيش الإسرائيلي غارتين جويتين على مخيم «السلام الكويتي» للنازحين في تل السلطان غرب رفح، وامتد حريق في الخيام بعد الضربة. وجاءت الغارة بعد يومين من أمر محكمة العدل الدولية في 24 مايو بأن توقف إسرائيل فورا هجومها العسكري وأي عمل آخر في محافظة رفح قد يفرض على الفلسطينيين في غزة ظروفا معيشية قد تؤدي إلى تدميرهم المادي كليا أو جزئيا. ووصف رئيس الوزراء الإسرائيلي ما جرى بأنه «خطأ مأساوي»، بحسب CNN.",
+    "toll_ar": "45 قتيلا بحسب السلطات الصحية في غزة كما نقلتها CNN؛ ووثقت منظمة العفو الدولية مقتل 36 شخصا على الأقل بينهم ستة أطفال وإصابة أكثر من 100، وكان أربعة على الأقل من القتلى مقاتلين.",
+    "official_account_ar": "قال الجيش الإسرائيلي إنه استهدف قياديين في حماس هما ياسين ربيعة وخالد النجار، وإن الضربة نفذت بذخيرتين صغيرتين تحمل كل منهما 17 كيلوغراما من المتفجرات، وإنه يحقق في احتمال أن يكون انفجار ثانوي لأسلحة مخزنة قرب الموقع قد تسبب في الحريق؛ وتقول CNN إنه لم يقدم أدلة قابلة للتحقق على هذه الفرضية.",
+    "findings_ar": "حدد تحليل CNN بمشاركة أربعة خبراء أسلحة ذيل قنبلة أمريكية الصنع من طراز GBU-39 في مقطع مصور من الموقع، ورأت الشبكة أن ذلك يتسق مع حجم الرأس الحربي الذي ذكره الجيش. وخلصت منظمة العفو الدولية (27 أغسطس 2024) إلى أن الغارتين استهدفتا قائدين في حماس كانا بين النازحين، وأن استخدام قنبلتين من طراز GBU-39 تنشران شظايا قاتلة على مساحة واسعة في مخيم مكتظ بملاجئ مؤقتة كان على الأرجح هجوما غير متناسب وعشوائيا ينبغي التحقيق فيه بوصفه جريمة حرب؛ كما رأت أن وجود المقاتلين بين النازحين قد يخالف واجب تجنب وضعهم في مناطق مكتظة.",
+    "conflict": true,
+    "type_ar": [
+      "غارة على مخيم نازحين",
+      "هجوم أوقع ضحايا مدنيين"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "video",
+        "desc_ar": "مقطع من الموقع يظهر ذيل قنبلة GBU-39 حللته CNN مع خبراء أسلحة",
+        "source": "CNN",
+        "date": "2024-05-28",
+        "url": "https://www.cnn.com/2024/05/28/middleeast/gaza-us-munitions-rafah-strike-analysis-intl-hnk/index.html"
+      },
+      {
+        "type": "report",
+        "desc_ar": "تحقيق منظمة العفو الدولية في غارتي 26 و28 مايو 2024 على مخيمات النازحين في رفح",
+        "source": "Amnesty International",
+        "date": "2024-08-27",
+        "url": "https://www.amnesty.org/en/latest/news/2024/08/israel-opt-israeli-attacks-targeting-hamas-and-other-armed-group-fighters-that-killed-scores-of-displaced-civilians-in-rafah-should-be-investigated-as-war-crimes/"
+      },
+      {
+        "type": "document",
+        "desc_ar": "أمر محكمة العدل الدولية بتاريخ 24 مايو 2024 في قضية جنوب أفريقيا ضد إسرائيل",
+        "source": "International Court of Justice",
+        "date": "2024-05-24",
+        "url": "https://www.icj-cij.org/node/204091"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Israeli strike that killed 45 at camp for displaced Palestinians in Rafah a ‘tragic error,’ Netanyahu says",
+        "publisher": "CNN",
+        "date": "2024-05-27",
+        "url": "https://www.cnn.com/2024/05/27/middleeast/gaza-rafah-displaced-people-camp-israel-strike-mime-intl/index.html",
+        "kind": "media"
+      },
+      {
+        "title": "US-made munitions used in deadly strike on Rafah tent camp, CNN analysis shows",
+        "publisher": "CNN",
+        "date": "2024-05-28",
+        "url": "https://www.cnn.com/2024/05/28/middleeast/gaza-us-munitions-rafah-strike-analysis-intl-hnk/index.html",
+        "kind": "media"
+      },
+      {
+        "title": "Israel/OPT: Israeli attacks targeting Hamas and other armed group fighters that killed scores of displaced civilians in Rafah should be investigated as war crimes",
+        "publisher": "Amnesty International",
+        "date": "2024-08-27",
+        "url": "https://www.amnesty.org/en/latest/news/2024/08/israel-opt-israeli-attacks-targeting-hamas-and-other-armed-group-fighters-that-killed-scores-of-displaced-civilians-in-rafah-should-be-investigated-as-war-crimes/",
+        "kind": "ngo"
+      },
+      {
+        "title": "Order of 24 May 2024 (South Africa v. Israel)",
+        "publisher": "International Court of Justice",
+        "date": "2024-05-24",
+        "url": "https://www.icj-cij.org/node/204091",
+        "kind": "court"
+      },
+      {
+        "title": "The Court reaffirms its previous provisional measures and indicates new measures",
+        "publisher": "International Court of Justice",
+        "date": "2024-05-24",
+        "url": "https://www.icj-cij.org/index.php/node/204099",
+        "kind": "court"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "استخدام قنابل في مخيم مكتظ بالنازحين لاستهداف قياديين",
+        "rules": [
+          "Rome Statute 8(2)(b)(iv)",
+          "AP I art. 51(5)(b)",
+          "AP I art. 57(1)",
+          "ICRC CIHL Rule 14"
+        ],
+        "why_ar": "قد تثير الخسائر المدنية المتوقعة في مخيم من الخيام، وفق تقييم منظمة العفو الدولية، قاعدة التناسب وقاعدة التمييز وواجب اختيار وسائل تقلل الأذى العارض.",
+        "to_prove_ar": "يلزم إثبات التقدير المسبق للأضرار الجانبية، وما كان معروفا عن كثافة النازحين في المخيم، والميزة العسكرية المتوقعة، وسبب الحريق."
+      },
+      {
+        "act_ar": "تنفيذ الغارة بعد أمر محكمة العدل الدولية المتعلق برفح",
+        "rules": [
+          "ICJ Order of 24 May 2024 (South Africa v. Israel)"
+        ],
+        "why_ar": "التدابير المؤقتة التي تأمر بها محكمة العدل الدولية ملزمة للأطراف، وقد يثار سؤال الامتثال لها؛ ويختلف القضاة في نطاق التدبير المتعلق برفح، كما يظهر في إعلان القاضي نولته.",
+        "to_prove_ar": "يلزم تحديد نطاق التدبير بدقة، وما إذا كان الفعل يندرج ضمن ما أمرت المحكمة بوقفه، وهي مسألة تفصل فيها المحكمة نفسها."
+      },
+      {
+        "act_ar": "وجود قادة ومقاتلين داخل مخيم للنازحين",
+        "rules": [
+          "ICRC CIHL Rule 23",
+          "ICRC CIHL Rule 24"
+        ],
+        "why_ar": "رأت منظمة العفو الدولية أن وجود المقاتلين بين النازحين قد يخالف واجب تجنب وضع أهداف عسكرية داخل المناطق المكتظة أو قربها، دون أن يعفي ذلك المهاجم من التزاماته.",
+        "to_prove_ar": "يلزم إثبات سبب وجود المقاتلين في المخيم وطبيعة نشاطهم، وما إذا كان بالإمكان تجنب ذلك."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: burnt tents and charred ground at the Kuwaiti Peace Camp in Tal al-Sultan the morning after (27 May 2024), wide shot without casualties, or the camp entrance sign. Search: 'Tal al-Sultan camp fire aftermath May 27 2024', 'Kuwaiti Peace Camp Rafah burnt tents', 'Rafah tent camp strike aftermath wide'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0009",
+    "title_ar": "اعتداء على محتجز في سدي تيمان والتقارير عن المعاملة والوفيات في الاحتجاز",
+    "date": "2024-07-05",
+    "date_to": null,
+    "place_ar": "قاعدة سدي تيمان العسكرية قرب بئر السبع، النقب",
+    "region": "detention",
+    "precise": true,
+    "loc_note_ar": "قاعدة عسكرية معروفة الموقع؛ لا يعرض السجل أي بيانات تعريفية عن المحتجزين.",
+    "summary_ar": "بعد 7 أكتوبر 2023 استخدم الجيش الإسرائيلي قاعدة سدي تيمان في النقب لاحتجاز معتقلين من غزة، كثير منهم دون تهمة. وفي 5 يوليو 2024 تعرض محتجز فلسطيني في المعسكر لاعتداء نسب إلى جنود احتياط، فاعتقلت الشرطة العسكرية تسعة جنود احتياط في 29 يوليو، واقتحم حشد القاعدة في محاولة على ما يبدو لمنع الاعتقالات، ثم بثت القناة 12 الإسرائيلية في 6 أغسطس مقطعا من كاميرات المراقبة، بحسب تايمز أوف إسرائيل. وفي 19 فبراير 2025 وجهت النيابة العسكرية إلى خمسة جنود احتياط تهمتي التسبب في إصابة خطيرة والاعتداء في ظروف مشددة، ثم ألغى المدعي العسكري العام لائحة الاتهام في 12 مارس 2026. ويضع السجل الواقعة في سياق ما وثقته الأمم المتحدة ومنظمات حقوقية عن المعاملة في مرافق الاحتجاز.",
+    "toll_ar": "وثقت منظمة أطباء لحقوق الإنسان - إسرائيل وفاة 98 فلسطينيا على الأقل في الاحتجاز الإسرائيلي بين 7 أكتوبر 2023 ونوفمبر 2025، بينهم 29 في سدي تيمان، بحسب ما نقلته NBC News عن تقريرها، وتقول المنظمة إن العدد الفعلي على الأرجح أعلى؛ وكانت مفوضية حقوق الإنسان قد أحصت 53 وفاة على الأقل حتى يوليو 2024.",
+    "official_account_ar": "قال الجيش الإسرائيلي إنه «على علم بوفاة بعض المحتجزين» ومنهم مصابون بأمراض سابقة أو بجروح قتالية، وإن ادعاءات الإساءة تقيم ويعاقب المخالفون ويحال بعضها إلى تحقيق جنائي، وإن المحتجزين يحصلون على ثلاث وجبات يوميا ويفحصهم طبيب عند وصولهم، بحسب ما نقلته NBC News عن AP. وعند إلغاء لائحة الاتهام عزا المدعي العسكري العام إيتاي أوفير القرار إلى «تعقيد الأدلة»، وإطلاق سراح المحتجز إلى غزة ضمن اتفاق أكتوبر 2025 دون أن يدلي بشهادته، وادعاء الدفاع «إساءة استخدام الإجراءات» بعد تسريب المقطع الذي أقرت المدعية العسكرية السابقة بالموافقة عليه واستقالت في 31 أكتوبر 2025.",
+    "findings_ar": "نقلت CNN في 10 مايو 2024 عن ثلاثة مبلغين إسرائيليين عملوا في المعسكر وصفهم لمحتجزين مقيدين ومعصوبي الأعين باستمرار، ومصابين يربطون إلى أسرتهم، وقول أحدهم إن أطرافا بترت بسبب إصابات ناجمة عن التقييد المستمر. وفي 31 يوليو 2024 نشرت مفوضية حقوق الإنسان تقريرا عن احتجاز آلاف الفلسطينيين تعسفيا وبمعزل عن العالم، يتضمن شهادات عن الحرمان من الطعام والنوم والماء والصعق الكهربائي والحرق بالسجائر والعنف الجنسي. ووصفت بتسيلم في تقريرها «أهلا بكم في الجحيم» (أغسطس 2024)، المستند إلى شهادات 55 معتقلا، مرافق الاحتجاز بأنها تحولت إلى شبكة معسكرات للإساءة، وقالت إن سدي تيمان «ليس سوى قمة جبل الجليد». وخلصت لجنة التحقيق الدولية المستقلة (10 أكتوبر 2024) إلى أن إسرائيل مسؤولة عن التعذيب والعنف الجنسي ضد المحتجزين الفلسطينيين، وقالت منظمة يش دين إن إلغاء لائحة الاتهام «يثبت أن إسرائيل غير راغبة وغير قادرة» على ملاحقة جنود يشتبه في ارتكابهم انتهاكات جسيمة.",
+    "conflict": true,
+    "type_ar": [
+      "احتجاز دون تهمة",
+      "ادعاءات تعذيب وسوء معاملة",
+      "وفيات في الاحتجاز"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "testimony",
+        "desc_ar": "شهادات ثلاثة مبلغين إسرائيليين عملوا في المعسكر",
+        "source": "CNN",
+        "date": "2024-05-10",
+        "url": "https://www.cnn.com/2024/05/10/middleeast/israel-sde-teiman-detention-whistleblowers-intl-cmd"
+      },
+      {
+        "type": "testimony",
+        "desc_ar": "شهادات 55 معتقلا أفرج عنهم، جمعتها بتسيلم ونشرتها في تقرير «أهلا بكم في الجحيم»",
+        "source": "B'Tselem",
+        "date": "2024-08-05",
+        "url": "https://www.btselem.org/publications/202408_welcome_to_hell"
+      },
+      {
+        "type": "report",
+        "desc_ar": "تقرير مفوضية حقوق الإنسان عن الاحتجاز في سياق الأعمال العدائية في غزة",
+        "source": "OHCHR",
+        "date": "2024-07-31",
+        "url": "https://www.ohchr.org/en/press-releases/2024/07/un-report-palestinian-detainees-held-arbitrarily-and-secretly-subjected"
+      },
+      {
+        "type": "document",
+        "desc_ar": "قرار المدعي العسكري العام إلغاء لائحة الاتهام ضد خمسة جنود احتياط وأسبابه",
+        "source": "Israeli Military Advocate General via CNN",
+        "date": "2026-03-12",
+        "url": "https://www.cnn.com/2026/03/12/middleeast/israel-charges-dismissed-sde-teiman-intl"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Sde Teiman: Israeli whistleblowers detail abuse of Palestinians in shadowy detention center",
+        "publisher": "CNN",
+        "date": "2024-05-10",
+        "url": "https://www.cnn.com/2024/05/10/middleeast/israel-sde-teiman-detention-whistleblowers-intl-cmd",
+        "kind": "media"
+      },
+      {
+        "title": "UN report: Palestinian detainees held arbitrarily and secretly, subjected to torture and mistreatment",
+        "publisher": "OHCHR",
+        "date": "2024-07-31",
+        "url": "https://www.ohchr.org/en/press-releases/2024/07/un-report-palestinian-detainees-held-arbitrarily-and-secretly-subjected",
+        "kind": "un"
+      },
+      {
+        "title": "Welcome to Hell: The Israeli Prison System as a Network of Torture Camps",
+        "publisher": "B'Tselem",
+        "date": "2024-08-05",
+        "url": "https://www.btselem.org/publications/202408_welcome_to_hell",
+        "kind": "ngo"
+      },
+      {
+        "title": "UN Commission finds war crimes and crimes against humanity in Israeli attacks on Gaza health facilities and treatment of detainees, hostages",
+        "publisher": "OHCHR (UN Commission of Inquiry)",
+        "date": "2024-10-10",
+        "url": "https://www.ohchr.org/en/press-releases/2024/10/un-commission-finds-war-crimes-and-crimes-against-humanity-israeli-attacks",
+        "kind": "un"
+      },
+      {
+        "title": "Timeline of a scandal: The 17 months of the Sde Teiman abuse and video leak affair",
+        "publisher": "Times of Israel",
+        "date": "2025-11-03",
+        "url": "https://www.timesofisrael.com/timeline-of-a-scandal-the-17-months-of-the-sde-teiman-abuse-and-video-leak-affair/",
+        "kind": "media"
+      },
+      {
+        "title": "Palestinian deaths in Israeli custody have surged, physicians rights group finds",
+        "publisher": "NBC News (AP)",
+        "date": "2025-11-17",
+        "url": "https://www.nbcnews.com/world/middle-east/israel-prisons-palestinian-prisoner-deaths-surge-physicians-report-rcna244426",
+        "kind": "media"
+      },
+      {
+        "title": "Assault charges against Israeli soldiers dropped in controversial end to a yearlong scandal",
+        "publisher": "CNN",
+        "date": "2026-03-12",
+        "url": "https://www.cnn.com/2026/03/12/middleeast/israel-charges-dismissed-sde-teiman-intl",
+        "kind": "media"
+      },
+      {
+        "title": "IDF top lawyer cancels charges against troops accused of abusing Palestinian detainee",
+        "publisher": "Times of Israel",
+        "date": "2026-03-12",
+        "url": "https://www.timesofisrael.com/idf-top-lawyer-nixes-charges-against-troops-accused-of-abusing-palestinian-detainee/",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "التعذيب وسوء المعاملة والعنف الجنسي ضد المحتجزين",
+        "rules": [
+          "Rome Statute 8(2)(a)(ii)",
+          "GC IV art. 27",
+          "GC IV art. 32",
+          "GC IV art. 147",
+          "CAT art. 1(1)",
+          "ICCPR art. 7"
+        ],
+        "why_ar": "حظر التعذيب مطلق ولا يقبل الاستثناء، وتصف الشهادات والتقارير المستقلة أفعالا قد تندرج ضمن التعذيب أو المعاملة القاسية أو اللاإنسانية أو العنف الجنسي؛ وهي ادعاءات موثقة تتطلب تحقيقا جنائيا فعالا.",
+        "to_prove_ar": "يلزم إثبات الأفعال المحددة وهوية مرتكبيها وتوقيتها بأدلة طبية وشهادات متطابقة، وتحديد مسؤولية القادة عن العلم والتقصير في المنع أو المعاقبة وفق المادة 28 من نظام روما."
+      },
+      {
+        "act_ar": "الاحتجاز المطول دون تهمة وبمعزل عن العالم الخارجي",
+        "rules": [
+          "GC IV art. 78",
+          "AP I art. 75",
+          "ICCPR art. 9(1)"
+        ],
+        "why_ar": "يسمح القانون الإنساني بالاعتقال لأسباب أمنية قهرية وفق إجراءات مراجعة دورية، وقد يثار حظر الحرمان التعسفي من الحرية إذا غابت المراجعة الفردية أو حرم المحتجزون من المحامين ومن زيارات اللجنة الدولية للصليب الأحمر.",
+        "to_prove_ar": "يلزم إثبات غياب الأساس القانوني الفردي للاحتجاز أو إجراءات مراجعته، ومدة العزل عن العالم الخارجي."
+      },
+      {
+        "act_ar": "الوفيات في الاحتجاز وإلغاء الملاحقة",
+        "rules": [
+          "GC IV art. 131",
+          "ICCPR art. 6(1)",
+          "ICRC CIHL Rule 158"
+        ],
+        "why_ar": "تفرض اتفاقية جنيف الرابعة إجراء تحقيق رسمي في وفيات المعتقلين، وقد يثير إلغاء لائحة الاتهام الوحيدة المعروفة وندرة الملاحقات واجب التحقيق والملاحقة في جرائم الحرب المشتبه بها.",
+        "to_prove_ar": "يلزم إثبات أسباب كل وفاة بتشريح مستقل، وتتبع ما اتخذ من إجراءات تحقيق ونتائجها."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: exterior or satellite view of the Sde Teiman base fences and gate in the Negev; protest or court hearing outside; no detainees or identifiable persons in custody. Search: 'Sde Teiman base entrance', 'Sde Teiman aerial satellite', 'Sde Teiman Supreme Court petition hearing'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0010",
+    "title_ar": "اقتحام مستشفى كمال عدوان واحتجاز مديره الدكتور حسام أبو صفية",
+    "date": "2024-12-27",
+    "date_to": null,
+    "place_ar": "مستشفى كمال عدوان، بيت لاهيا، محافظة شمال غزة",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "منشأة طبية عامة معروفة الموقع.",
+    "summary_ar": "في 27 ديسمبر 2024 اقتحمت القوات الإسرائيلية مستشفى كمال عدوان، آخر مستشفى رئيسي عامل في شمال غزة بحسب منظمة الصحة العالمية، وأخرجته من الخدمة. وقالت المنظمة إن أجزاء من المستشفى احترقت وتضررت بشدة، منها المختبر والوحدة الجراحية وغرفة العمليات والمخزن الطبي، وإن 15 مريضا في حالة حرجة و50 مرافقا و20 عاملا صحيا نقلوا إلى المستشفى الإندونيسي الذي يفتقر إلى التجهيزات. واحتجز خلال الاقتحام مدير المستشفى، طبيب الأطفال حسام أبو صفية، وكان لا يزال محتجزا دون تهمة بموجب قانون «المقاتلين غير الشرعيين» في يوليو 2026 بحسب منظمة العفو الدولية، بعد أن رفضت المحكمة العليا الإسرائيلية في 16 يونيو 2026 التماسه وأبقت احتجازه حتى أكتوبر 2026 على الأقل؛ ولم نعثر حتى 28 أكتوبر 2026 على ما يفيد الإفراج عنه.",
+    "toll_ar": "قال الجيش الإسرائيلي إنه قتل 19 مسلحا ولا يعلم بسقوط مدنيين، بينما قالت السلطات الصحية التي تديرها حماس إن 50 شخصا قتلوا، بحسب تايمز أوف إسرائيل؛ ولم تتحقق جهة مستقلة من أي من الرقمين.",
+    "official_account_ar": "قال الجيش الإسرائيلي إن المستشفى عاد ليصبح «معقلا رئيسيا للمنظمات الإرهابية»، وإنه اعتقل نحو 240 مشتبها بانتمائهم إلى حماس والجهاد الإسلامي، وإن أبو صفية «يشتبه في أنه عنصر في حماس»، وإن نحو 350 مريضا ومرافقا وعاملا طبيا أجلوا قبل الاقتحام بتنسيق من كوغات، بحسب تايمز أوف إسرائيل؛ وتقول CNN إن الجيش لم يقدم أدلة على هذه الادعاءات. وتذكر تايمز أوف إسرائيل أنه يحمل رتبة عقيد في «الخدمات الطبية العسكرية» التابعة لحماس استنادا إلى هذه الخدمات وتقارير إعلامية فلسطينية، وأنه لم يوجه إليه اتهام حتى يونيو 2026.",
+    "findings_ar": "قالت منظمة الصحة العالمية إنها تحققت من 50 هجوما على الأقل على الرعاية الصحية في المستشفى أو قربه منذ أوائل أكتوبر 2024. ورأت مفوضية حقوق الإنسان (31 ديسمبر 2024) أن الاقتحام يعكس نمط الهجمات على المستشفيات الذي وثقته، وأن الادعاءات الإسرائيلية بشأن الاستخدام العسكري للمستشفيات ظلت «مبهمة وعامة» ولم تدعمها معلومات كافية. وفي 8 يوليو 2026 طالبت لجنة التحقيق الدولية المستقلة بالإفراج الفوري عن أبو صفية وجميع العاملين الطبيين المحتجزين تعسفيا، مشيرة إلى تقارير موثوقة عن تعرضه لإساءة شديدة ومستمرة، ونقلت منظمة العفو الدولية في 6 يوليو 2026 عن محامي منظمة أطباء لحقوق الإنسان رواية عن ضرب يومي وتهديدات بعد نقله إلى مرفق «راكيفت» تحت الأرض.",
+    "conflict": true,
+    "type_ar": [
+      "اقتحام منشأة طبية",
+      "احتجاز عاملين طبيين",
+      "احتجاز دون تهمة"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "بيان منظمة الصحة العالمية حول خروج المستشفى من الخدمة وأوضاع المرضى والطواقم",
+        "source": "WHO",
+        "date": "2024-12-28",
+        "url": "https://www.who.int/news/item/28-12-2024-kamal-adwan-hospital-out-of-service-following-a-raid-today-and-repeated-attacks-since-october"
+      },
+      {
+        "type": "official",
+        "desc_ar": "إعلان الجيش الإسرائيلي انتهاء الاقتحام وعدد المعتقلين واتهامه لمدير المستشفى",
+        "source": "IDF via Times of Israel",
+        "date": "2024-12-28",
+        "url": "https://www.timesofisrael.com/idf-completes-raid-on-north-gaza-hospital-says-some-240-terror-suspects-arrested/"
+      },
+      {
+        "type": "testimony",
+        "desc_ar": "إفادة محامي منظمة أطباء لحقوق الإنسان بعد زيارة أبو صفية في 2 يوليو 2026، كما نشرتها منظمة العفو الدولية",
+        "source": "Amnesty International / PHRI",
+        "date": "2026-07-06",
+        "url": "https://www.amnesty.org/en/latest/news/2026/07/israel-opt-fears-mounting-for-arbitrarily-detained-palestinian-doctor-hussam-abu-safiya-amidst-reports-his-life-is-in-grave-danger/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Kamal Adwan Hospital out of service following a raid yesterday and repeated attacks since October",
+        "publisher": "World Health Organization",
+        "date": "2024-12-28",
+        "url": "https://www.who.int/news/item/28-12-2024-kamal-adwan-hospital-out-of-service-following-a-raid-today-and-repeated-attacks-since-october",
+        "kind": "un"
+      },
+      {
+        "title": "Israel arrests hospital director and other staff in raid on last functioning facility in northern Gaza, health officials say",
+        "publisher": "CNN",
+        "date": "2024-12-28",
+        "url": "https://www.cnn.com/2024/12/28/middleeast/kamal-adwan-israel-arrests-hospital-director-gaza-intl/index.html",
+        "kind": "media"
+      },
+      {
+        "title": "IDF completes raid on north Gaza hospital, says some 240 terror suspects arrested",
+        "publisher": "Times of Israel",
+        "date": "2024-12-28",
+        "url": "https://www.timesofisrael.com/idf-completes-raid-on-north-gaza-hospital-says-some-240-terror-suspects-arrested/",
+        "kind": "media"
+      },
+      {
+        "title": "IDF: 19 terrorists, no known civilians, killed in Gaza hospital raid; Hamas said 50 dead",
+        "publisher": "Times of Israel",
+        "date": "2024-12-29",
+        "url": "https://www.timesofisrael.com/idf-19-terrorists-no-known-civilians-killed-in-gaza-hospital-raid-hamas-said-50-dead/",
+        "kind": "media"
+      },
+      {
+        "title": "Pattern of Israeli attacks on Gaza hospitals raises grave concerns – report",
+        "publisher": "OHCHR",
+        "date": "2024-12-31",
+        "url": "https://www.ohchr.org/en/press-releases/2024/12/pattern-israeli-attacks-gaza-hospitals-raises-grave-concerns-report",
+        "kind": "un"
+      },
+      {
+        "title": "Gaza hospital chief Abu Safiya, a Hamas officer held in Israel, looks thinner in 1st photo since Feb. 2025",
+        "publisher": "Times of Israel",
+        "date": "2026-06-10",
+        "url": "https://www.timesofisrael.com/liveblog_entry/gaza-hospital-chief-abu-safiya-a-hamas-officer-held-in-israel-looks-thinner-in-1st-photo-since-feb-2025/",
+        "kind": "media"
+      },
+      {
+        "title": "Israel/OPT: Fears mounting for arbitrarily detained Palestinian doctor Hussam Abu Safiya amidst reports his life is in grave danger",
+        "publisher": "Amnesty International",
+        "date": "2026-07-06",
+        "url": "https://www.amnesty.org/en/latest/news/2026/07/israel-opt-fears-mounting-for-arbitrarily-detained-palestinian-doctor-hussam-abu-safiya-amidst-reports-his-life-is-in-grave-danger/",
+        "kind": "ngo"
+      },
+      {
+        "title": "Israel must release Dr. Hussam Abu Safiya and all Palestinian medical personnel arbitrarily detained and adhere to international law, UN Commission of Inquiry says",
+        "publisher": "OHCHR (UN Commission of Inquiry)",
+        "date": "2026-07-08",
+        "url": "https://www.ohchr.org/en/press-releases/2026/07/israel-must-release-dr-hussam-abu-safiya-and-all-palestinian-medical",
+        "kind": "un"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "اقتحام آخر مستشفى رئيسي عامل في الشمال وإخراجه من الخدمة",
+        "rules": [
+          "Rome Statute 8(2)(b)(ix)",
+          "GC IV art. 18",
+          "GC IV art. 19",
+          "AP I art. 12"
+        ],
+        "why_ar": "قد يثير إخراج المستشفى من الخدمة ونقل مرضاه الحرجين إلى منشأة غير مجهزة قواعد حماية المستشفيات، ما لم تتحقق شروط فقدان الحماية بعد إنذار ومهلة معقولة.",
+        "to_prove_ar": "يلزم إثبات وجود استخدام عسكري فعلي للمستشفى وتوجيه إنذار ومهلة، ومن أمر بالحرق والإتلاف المبلغ عنهما، ومدى تناسب ذلك مع أي ميزة عسكرية."
+      },
+      {
+        "act_ar": "احتجاز مدير المستشفى دون تهمة وادعاءات إساءة معاملته",
+        "rules": [
+          "AP I art. 16",
+          "GC IV art. 78",
+          "GC IV art. 32",
+          "ICCPR art. 9(1)",
+          "CAT art. 1(1)"
+        ],
+        "why_ar": "يحمي القانون الإنساني العاملين الطبيين من العقاب على أداء مهامهم الطبية، ويقيد الاعتقال لأسباب أمنية بضرورات قهرية ومراجعة دورية؛ وقد تثار هذه القواعد وحظر التعذيب إذا ثبتت الروايات عن الإساءة والاحتجاز المطول دون اتهام أو محاكمة.",
+        "to_prove_ar": "يلزم الاطلاع على الأساس الفردي للاحتجاز والأدلة السرية التي يستند إليها، وإجراء فحص طبي مستقل لادعاءات الإساءة، وتمكين اللجنة الدولية للصليب الأحمر من زيارته."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: exterior of Kamal Adwan Hospital in Beit Lahia showing fire damage after the 27 December 2024 raid, or public vigils and posters calling for Dr Abu Safiya's release; no injured people. Search: 'Kamal Adwan hospital exterior December 2024 damage', 'Kamal Adwan hospital burnt building', 'Free Dr Hussam Abu Safiya vigil'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0011",
+    "title_ar": "عملية «السور الحديدي» وتهجير سكان مخيمات جنين وطولكرم ونور شمس",
+    "date": "2025-01-21",
+    "date_to": null,
+    "place_ar": "مخيمات جنين وطولكرم ونور شمس للاجئين، شمال الضفة الغربية",
+    "region": "westbank",
+    "precise": false,
+    "loc_note_ar": "ثلاثة مخيمات ومحيطها؛ يعرض الموقع على مستوى المخيم.",
+    "summary_ar": "في 21 يناير 2025 أطلق الجيش الإسرائيلي عملية «السور الحديدي» في مخيم جنين ثم وسعها إلى مخيمي طولكرم ونور شمس. وتقدر هيومن رايتس ووتش أن نحو 32 ألف شخص هجروا من المخيمات الثلاثة خلال يناير وفبراير 2025، في أكبر تهجير للفلسطينيين في الضفة الغربية في عملية واحدة منذ 1967 بحسب المنظمة. وفي 23 فبراير 2025 قال وزير الدفاع يسرائيل كاتس إنه أوعز للجيش بالاستعداد لبقاء طويل في المخيمات التي أخليت «للعام المقبل» وعدم السماح للسكان بالعودة، مشيرا إلى إخلاء 40 ألف فلسطيني منها. وفي 12 أكتوبر 2026 قبلت المحكمة العليا الإسرائيلية بأن الظروف الأمنية لا تسمح بعد بعودة السكان، لكنها طلبت من وزارة الدفاع والجيش تقديم جدول زمني للعودة، فيما وصف كاتس وجود الجيش في المخيمات بأنه «دائم».",
+    "toll_ar": "نحو 32 ألف مهجر بحسب هيومن رايتس ووتش، و40 ألفا بحسب تصريح وزير الدفاع الإسرائيلي؛ وأكثر من 850 منزلا ومبنى آخر دمرت أو تضررت بشدة بعد ستة أشهر بحسب تحليل صور الأقمار الصناعية لدى هيومن رايتس ووتش.",
+    "official_account_ar": "قالت السلطات الإسرائيلية إن العملية أطلقت «في ضوء التهديدات الأمنية التي تشكلها هذه المخيمات وتزايد وجود عناصر إرهابية داخلها»، بحسب ما نقلته هيومن رايتس ووتش. ويقول وزير الدفاع إن وجود الجيش أسهم في خفض معدل «الإرهاب» في الضفة الغربية إلى أدنى مستوى، وإن قرار البقاء أمني وعملياتي «ليس من شأن المحكمة العليا» التدخل فيه، بحسب تايمز أوف إسرائيل.",
+    "findings_ar": "خلصت هيومن رايتس ووتش في تقرير من 105 صفحات (20 نوفمبر 2025)، استند إلى مقابلات مع 31 لاجئا مهجرا وتحليل صور أقمار صناعية وأوامر هدم عسكرية، إلى أن التهجير القسري لسكان المخيمات الثلاثة يرقى إلى جرائم حرب وجرائم ضد الإنسانية، وأن المسؤولين الإسرائيليين لم يوضحوا سبب ضرورة ترحيل جميع السكان أو منعهم من العودة. وفي 21 يناير 2026 قالت المنظمة إن المخيمات بقيت خالية بعد عام دون أن يحدد المسؤولون موعدا لعودة السكان.",
+    "conflict": false,
+    "type_ar": [
+      "تهجير قسري",
+      "هدم منازل وممتلكات",
+      "منع العودة"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "satellite",
+        "desc_ar": "تحليل صور أقمار صناعية للمخيمات الثلاثة يظهر تدمير أو تضرر أكثر من 850 مبنى بعد ستة أشهر",
+        "source": "Human Rights Watch",
+        "date": "2025-11-20",
+        "url": "https://www.hrw.org/report/2025/11/20/all-my-dreams-have-been-erased/israels-forced-displacement-of-palestinians-in-the"
+      },
+      {
+        "type": "testimony",
+        "desc_ar": "مقابلات مع 31 لاجئا مهجرا من المخيمات الثلاثة",
+        "source": "Human Rights Watch",
+        "date": "2025-11-20",
+        "url": "https://www.hrw.org/report/2025/11/20/all-my-dreams-have-been-erased/israels-forced-displacement-of-palestinians-in-the"
+      },
+      {
+        "type": "official",
+        "desc_ar": "تصريح وزير الدفاع الإسرائيلي بشأن البقاء في المخيمات ومنع عودة السكان",
+        "source": "Israeli Ministry of Defense via Times of Israel",
+        "date": "2025-02-23",
+        "url": "https://www.timesofisrael.com/liveblog_entry/katz-says-he-instructed-idf-to-stay-for-year-in-west-bank-refugee-camps-and-not-allow-40000-residents-home/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "West Bank: Israel Emptying Refugee Camps a Crime Against Humanity",
+        "publisher": "Human Rights Watch",
+        "date": "2025-11-20",
+        "url": "https://www.hrw.org/news/2025/11/20/west-bank-israel-emptying-refugee-camps-a-crime-against-humanity",
+        "kind": "ngo"
+      },
+      {
+        "title": "“All My Dreams Have Been Erased”: Israel’s Forced Displacement of Palestinians in the West Bank",
+        "publisher": "Human Rights Watch",
+        "date": "2025-11-20",
+        "url": "https://www.hrw.org/report/2025/11/20/all-my-dreams-have-been-erased/israels-forced-displacement-of-palestinians-in-the",
+        "kind": "ngo"
+      },
+      {
+        "title": "Katz says he instructed IDF to stay for year in West Bank refugee camps and not allow 40,000 residents home",
+        "publisher": "Times of Israel",
+        "date": "2025-02-23",
+        "url": "https://www.timesofisrael.com/liveblog_entry/katz-says-he-instructed-idf-to-stay-for-year-in-west-bank-refugee-camps-and-not-allow-40000-residents-home/",
+        "kind": "media"
+      },
+      {
+        "title": "Israel is Illegally Forcing Out Thousands of West Bank Palestinians",
+        "publisher": "Human Rights Watch",
+        "date": "2026-01-21",
+        "url": "https://www.hrw.org/news/2026/01/21/israel-is-illegally-forcing-out-thousands-of-west-bank-palestinians",
+        "kind": "ngo"
+      },
+      {
+        "title": "Describing IDF presence in depopulated West Bank camps as ‘permanent,’ Katz says not High Court’s business to intervene",
+        "publisher": "Times of Israel",
+        "date": "2026-10-12",
+        "url": "https://www.timesofisrael.com/liveblog_entry/describing-idf-presence-in-depopulated-west-bank-camps-as-permanent-katz-says-not-high-courts-business-to-intervene/",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "تهجير سكان المخيمات ومنع عودتهم",
+        "rules": [
+          "GC IV art. 49(1)",
+          "GC IV art. 147",
+          "Rome Statute 8(2)(b)(viii)",
+          "Rome Statute 7(1)(d)",
+          "ICRC CIHL Rule 129"
+        ],
+        "why_ar": "تجيز اتفاقية جنيف الرابعة الإخلاء الكلي أو الجزئي لمنطقة محتلة لأمن السكان أو لأسباب عسكرية قهرية فقط، مع إعادة السكان فور توقف الأعمال العدائية في المنطقة؛ وقد يثير التهجير الجماعي المطول وإعلان البقاء «الدائم» حظر النقل القسري.",
+        "to_prove_ar": "يلزم إثبات انتفاء الضرورة العسكرية القهرية لكل جزء من المخيمات، وطابع الإكراه في الإخلاء، ولإثبات الجريمة ضد الإنسانية يلزم إثبات أن التهجير جزء من هجوم واسع النطاق أو منهجي ضد السكان المدنيين."
+      },
+      {
+        "act_ar": "هدم مئات المنازل والمباني داخل المخيمات",
+        "rules": [
+          "GC IV art. 53",
+          "Rome Statute 8(2)(a)(iv)"
+        ],
+        "why_ar": "يحظر على دولة الاحتلال تدمير الممتلكات إلا إذا اقتضت العمليات الحربية ذلك حتما، وقد يثير الهدم الواسع بعد توقف القتال، وفق أوامر الهدم التي حللتها هيومن رايتس ووتش، هذا الحظر.",
+        "to_prove_ar": "يلزم إثبات توقيت كل عملية هدم والغرض المعلن منها، وصلتها بضرورة عسكرية آنية، ونطاق التدمير."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: wide shots of newly bulldozed roads and demolished blocks in Jenin or Nur Shams camp (2025), empty alleys, or satellite before/after imagery; displaced families shown from behind. Search: 'Jenin camp demolitions 2025 wide', 'Nur Shams camp bulldozed road', 'Tulkarm camp empty streets 2025 satellite'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0012",
+    "title_ar": "مقتل 15 من المسعفين وعناصر الدفاع المدني وموظف أممي قرب تل السلطان في رفح",
+    "date": "2025-03-23",
+    "date_to": null,
+    "place_ar": "منطقة الحشاشين قرب تل السلطان، غرب رفح",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "حددت Forensic Architecture وEarshot مواقع المركبات والجنود بدقة استنادا إلى التسجيلات وصور الأقمار الصناعية.",
+    "summary_ar": "فجر 23 مارس 2025 تعرضت سيارة إسعاف تابعة لجمعية الهلال الأحمر الفلسطيني لإطلاق نار قرب رفح، ثم تعرضت قافلة إنقاذ وصلت إلى الموقع، تضم سيارات إسعاف وسيارة إطفاء ومركبة للدفاع المدني ومركبة أممية، لإطلاق نار كثيف. وبعد العثور على جثمان أحدهم في 27 مارس، انتشل فريق أممي وفلسطيني في 30 مارس جثامين الأربعة عشر الآخرين من مقبرة جماعية ضحلة إلى جانب مركباتهم المسحوقة والمطمورة بالرمال، وقال مدير أوتشا في الأرض الفلسطينية المحتلة جوناثان ويتال إن الوصول إلى الموقع لم يسمح به إلا بعد خمسة أيام. وأظهر مقطع صوره المسعف رفعت رضوان، نشرته نيويورك تايمز وتناولته CNN في أوائل أبريل، أن المركبات كانت تضيء أنوارها وإشاراتها عند إطلاق النار عليها.",
+    "toll_ar": "15 قتيلا: ثمانية من الهلال الأحمر الفلسطيني، وستة من الدفاع المدني الفلسطيني، وموظف في الأونروا، بحسب الأمم المتحدة؛ ونجا اثنان من مسعفي الهلال الأحمر أدليا بشهادتيهما للمحققين المستقلين.",
+    "official_account_ar": "قال الجيش الإسرائيلي في البداية إن المركبات «تقدمت بشكل مريب» دون أضواء أو إشارات طوارئ، ثم أقر بعد نشر المقطع بأن روايته الأولى غير دقيقة وأنها استندت إلى شهادات الجنود. وخلص تحقيقه في 20 أبريل 2025 إلى «إخفاقات مهنية» وخرق للأوامر وعدم الإبلاغ الكامل، فأقال نائب قائد كتيبة استطلاع غولاني ووبخ قائد اللواء 14، وقال إن ستة من القتلى من عناصر حماس دون تقديم أدلة، ونفى محاولة إخفاء ما حدث، بحسب CNN وتايمز أوف إسرائيل. وفي 19 أغسطس 2026 أعلن فتح تحقيق جنائي لدى الشرطة العسكرية بعدما وجد أن إطلاق النار «يثير اشتباها معقولا بارتكاب جريمة».",
+    "findings_ar": "خلص تقرير مشترك أعدته Earshot وForensic Architecture (23 فبراير 2026)، استند إلى تحليل صوتي لمقطع رضوان ومكالمتين مسجلتين ونموذج ثلاثي الأبعاد ومقابلات مع الناجيين، إلى أن الجنود أخضعوا القافلة لإطلاق نار متواصل لأكثر من ساعتين بين 5:09 و7:13 صباحا دون أي تبادل لإطلاق النار أو تهديد ملموس، وأن 910 طلقات على الأقل وثقت في التسجيلات، وجه 93 في المئة على الأقل من طلقات الدقائق الخمس والنصف الأولى مباشرة نحو المركبات وعمال الإغاثة. ووجد التقرير أن الجنود تقدموا نحو الضحايا وأطلقوا النار على عدد منهم من مسافة قريبة، وأن أضواء المركبات وعلاماتها كانت ظاهرة بوضوح، وأن القوات دفنت الجثث وسحقت المركبات وحولت الموقع بالجرافات، وأن أحد الناجيين احتجز 37 يوما دون تهمة في سدي تيمان، وأن المنطقة استخدمت لاحقا لإقامة موقع توزيع تابع «لمؤسسة غزة الإنسانية».",
+    "conflict": true,
+    "type_ar": [
+      "هجوم على طواقم إسعاف وإنقاذ",
+      "قتل موظف أممي",
+      "دفن جثث وتدمير مركبات"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "video",
+        "desc_ar": "مقطع مدته نحو ست دقائق صوره المسعف رفعت رضوان من داخل القافلة وعثر عليه في هاتفه، نشرته نيويورك تايمز وتناولته CNN",
+        "source": "The New York Times / CNN",
+        "date": "2025-04-05",
+        "url": "https://edition.cnn.com/2025/04/05/middleeast/gaza-aid-workers-video-israel-intl"
+      },
+      {
+        "type": "report",
+        "desc_ar": "التقرير المشترك مع التحليل الصوتي للطلقات والنموذج ثلاثي الأبعاد وشهادات الناجيين",
+        "source": "Earshot & Forensic Architecture",
+        "date": "2026-02-23",
+        "url": "https://content.forensic-architecture.org/wp-content/uploads/2026/02/Israeli-Executions-of-Palestinian-Aid-Workers.pdf"
+      },
+      {
+        "type": "official",
+        "desc_ar": "نتائج تحقيق الجيش الإسرائيلي في 20 أبريل 2025 والإجراءات التأديبية",
+        "source": "IDF via Times of Israel",
+        "date": "2025-04-20",
+        "url": "https://www.timesofisrael.com/idf-ousts-officer-over-killing-of-15-rescue-workers-in-gazas-rafah/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Gaza aid worker killings: One humanitarian still missing in mass grave",
+        "publisher": "UN News",
+        "date": "2025-04-01",
+        "url": "https://news.un.org/en/story/2025/04/1161736",
+        "kind": "un"
+      },
+      {
+        "title": "Video showing final moments of Gaza emergency workers casts doubt on Israeli account of killings",
+        "publisher": "CNN",
+        "date": "2025-04-05",
+        "url": "https://edition.cnn.com/2025/04/05/middleeast/gaza-aid-workers-video-israel-intl",
+        "kind": "media"
+      },
+      {
+        "title": "‘Professional failures’ led to killing of Palestinian medics in Gaza, says Israeli military",
+        "publisher": "CNN",
+        "date": "2025-04-20",
+        "url": "https://www.cnn.com/2025/04/20/middleeast/israeli-military-professional-failures-gaza-medics-intl",
+        "kind": "media"
+      },
+      {
+        "title": "Admitting ‘errors,’ IDF fires officer over killing of 15 rescue workers in Gaza’s Rafah",
+        "publisher": "Times of Israel",
+        "date": "2025-04-20",
+        "url": "https://www.timesofisrael.com/idf-ousts-officer-over-killing-of-15-rescue-workers-in-gazas-rafah/",
+        "kind": "media"
+      },
+      {
+        "title": "Israeli Executions of Palestinian Aid Workers and Efforts to Conceal Evidence: Tel al-Sultan, Gaza Strip, 23 March 2025",
+        "publisher": "Earshot & Forensic Architecture",
+        "date": "2026-02-23",
+        "url": "https://content.forensic-architecture.org/wp-content/uploads/2026/02/Israeli-Executions-of-Palestinian-Aid-Workers.pdf",
+        "kind": "forensic"
+      },
+      {
+        "title": "Israeli Executions of Palestinian Aid Workers",
+        "publisher": "Earshot",
+        "date": "2026-02-23",
+        "url": "https://www.earshot.ngo/investigations/israeli-executions-of-palestinian-aid-workers",
+        "kind": "forensic"
+      },
+      {
+        "title": "Israel confirms soldiers fired at car in which Hind Rajab was killed and opens criminal investigation",
+        "publisher": "BBC News",
+        "date": "2026-08-20",
+        "url": "https://www.bbc.com/news/articles/crl7yjlpx2po",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إطلاق النار على قافلة إسعاف وإنقاذ واضحة العلامات",
+        "rules": [
+          "Rome Statute 8(2)(b)(xxiv)",
+          "Rome Statute 8(2)(b)(iii)",
+          "AP I art. 15",
+          "AP I art. 21",
+          "AP I art. 62",
+          "ICRC CIHL Rule 25"
+        ],
+        "why_ar": "تحظى طواقم الإسعاف والدفاع المدني والعاملون الإنسانيون ومركباتهم بحماية خاصة، وقد يثير إطلاق النار عليهم مع وضوح الأضواء والعلامات، كما يظهر المقطع ويؤكده التحليل الجنائي، هذه القواعد.",
+        "to_prove_ar": "يلزم إثبات ما رآه الجنود وما علموه عن هوية المركبات، وتسلسل الأوامر، ونتائج تحقيق الشرطة العسكرية الذي فتح في أغسطس 2026."
+      },
+      {
+        "act_ar": "قتل عمال إغاثة من مسافة قريبة بعد إطلاق نار متواصل",
+        "rules": [
+          "Rome Statute 8(2)(a)(i)",
+          "GC IV art. 32",
+          "GC IV art. 147",
+          "ICRC CIHL Rule 89"
+        ],
+        "why_ar": "إذا ثبتت نتيجة Earshot وForensic Architecture بأن عددا من الضحايا قتلوا من مسافة قريبة في غياب أي تهديد، فقد يثير ذلك حظر القتل العمد للأشخاص المحميين، وهو من المخالفات الجسيمة.",
+        "to_prove_ar": "يلزم إثبات مواقع الضحايا والجنود لحظة كل إطلاق، وحالة الضحايا، ونتائج التشريح، وهوية مطلقي النار وأوامرهم."
+      },
+      {
+        "act_ar": "دفن الجثث في حفرة وسحق المركبات وتغيير معالم الموقع",
+        "rules": [
+          "ICRC CIHL Rule 112",
+          "ICRC CIHL Rule 115",
+          "ICRC CIHL Rule 158"
+        ],
+        "why_ar": "تفرض القواعد العرفية البحث عن الموتى ودفنهم باحترام وتمييز قبورهم، ويتطلب واجب التحقيق صون الأدلة؛ وقد يثير الدفن في حفرة وسحق المركبات مسألة طمس الأدلة، بينما ينفي الجيش أي محاولة إخفاء ويقول إنه أبلغ الأمم المتحدة بموقع الدفن.",
+        "to_prove_ar": "يلزم إثبات من أمر بالدفن والسحق وأعمال التجريف والغرض منها، ومتى أبلغت الجهات المعنية بالموقع."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: the crushed ambulances and fire truck being excavated from sand near Tal al-Sultan on 30 March 2025, photographed from a distance with no remains visible; a public PRCS memorial with the victims' official portraits. Search: 'Rafah crushed ambulances sand March 30 2025', 'PRCS memorial 15 paramedics Rafah', 'Tal al-Sultan rescue vehicles buried'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0013",
+    "title_ar": "قتل فلسطينيين قرب مواقع توزيع المساعدات التي أدارتها «مؤسسة غزة الإنسانية»",
+    "date": "2025-05-27",
+    "date_to": "2025-10-10",
+    "place_ar": "محيط مواقع التوزيع في رفح وخان يونس ووسط قطاع غزة، وطرق قوافل الإمداد",
+    "region": "gaza",
+    "precise": false,
+    "loc_note_ar": "نمط متكرر في عدة مواقع وطرق؛ يعرض على مستوى المناطق.",
+    "summary_ar": "بدأت «مؤسسة غزة الإنسانية» المدعومة من الولايات المتحدة وإسرائيل في 27 مايو 2025 تشغيل أربعة مواقع لتوزيع الغذاء، في مقابل نحو 400 نقطة كان يديرها نظام الأمم المتحدة بحسب ذا ناشونال، ووصفت مفوضية حقوق الإنسان هذه الآلية بأنها «آلية مساعدة إنسانية معسكرة». ووثقت مفوضية حقوق الإنسان أن 1857 فلسطينيا قتلوا أثناء سعيهم إلى الغذاء بين 27 مايو و17 أغسطس 2025، منهم 1021 قرب مواقع المؤسسة و836 على طرق شاحنات الإمداد، وقالت إن معظم عمليات القتل هذه تبدو من فعل الجيش الإسرائيلي. وأغلقت المؤسسة مواقعها بعد بدء وقف إطلاق النار في 10 أكتوبر 2025، وأعلنت إنهاء مهمتها في 24 نوفمبر 2025.",
+    "toll_ar": "1857 قتيلا حتى 17 أغسطس 2025 بحسب مفوضية حقوق الإنسان (1021 قرب مواقع المؤسسة و836 على طرق الإمداد)؛ وقالت الأمم المتحدة لاحقا إن أكثر من 2100 فلسطيني قتلوا أثناء سعيهم إلى المساعدات، بحسب ما نقلته ذا ناشونال.",
+    "official_account_ar": "رفض الجيش الإسرائيلي ما نشرته هآرتس عن أوامر بإطلاق النار على الحشود وقال إنه «لم يأمر القوات بإطلاق النار عمدا على المدنيين»، مع إقراره بإطلاق «طلقات تحذيرية» قرب مواقع التوزيع وتعهده بفحص أي ادعاء بمخالفة القانون، بحسب JTA. ورفضت المؤسسة أرقام الأمم المتحدة وقالت إنه لم يقع إطلاق نار في مواقعها، بحسب ذا ناشونال.",
+    "findings_ar": "وصفت مفوضية حقوق الإنسان في 24 يونيو 2025 قتل المدنيين وإصابتهم نتيجة الاستخدام غير المشروع للأسلحة النارية بأنه «خرق جسيم للقانون الدولي وجريمة حرب»، ورأت أن آلية المساعدات المعسكرة تخالف المعايير الدولية لتوزيع المساعدات. ونقلت هآرتس في 27 يونيو 2025 عن ضباط وجنود قولهم إنهم أمروا بإطلاق النار على حشود غير مسلحة قرب المواقع حتى في غياب تهديد، ووصف أحدهم طرق الوصول بأنها «حقل قتل»، وذكرت أن النيابة العسكرية طلبت فحص الأمر. وخلصت هيومن رايتس ووتش في 1 أغسطس 2025 إلى أن عمليات القتل هذه ترقى إلى جرائم حرب، ودعا خبراء أمميون في 5 أغسطس 2025 إلى تفكيك المؤسسة فورا.",
+    "conflict": true,
+    "type_ar": [
+      "قتل طالبي مساعدات",
+      "إطلاق نار على حشود مدنية",
+      "عسكرة توزيع المساعدات"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "إحصاء مفوضية حقوق الإنسان للقتلى قرب مواقع التوزيع وعلى طرق القوافل حتى 17 أغسطس 2025",
+        "source": "OHCHR",
+        "date": "2025-08-19",
+        "url": "https://www.ohchr.org/en/press-briefing-notes/2025/08/occupied-palestinian-territory-marwan-barghouthi-and-human-rights"
+      },
+      {
+        "type": "testimony",
+        "desc_ar": "شهادات ضباط وجنود إسرائيليين لصحيفة هآرتس عن أوامر إطلاق النار قرب مواقع التوزيع",
+        "source": "Haaretz",
+        "date": "2025-06-27",
+        "url": "https://www.haaretz.com/israel-news/2025-06-27/ty-article-magazine/.premium/idf-soldiers-ordered-to-shoot-deliberately-at-unarmed-gazans-waiting-for-humanitarian-aid/00000197-ad8e-de01-a39f-ffbe33780000"
+      },
+      {
+        "type": "official",
+        "desc_ar": "رد الجيش الإسرائيلي على تقرير هآرتس",
+        "source": "IDF via JTA",
+        "date": "2025-06-27",
+        "url": "https://www.jta.org/2025/06/27/israel/report-israeli-soldiers-say-they-are-ordered-to-shoot-at-unarmed-gazans-seeking-aid"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Gaza: Palestinians seeking food continue to be killed by Israeli military",
+        "publisher": "OHCHR",
+        "date": "2025-06-24",
+        "url": "https://www.ohchr.org/en/press-briefing-notes/2025/06/gaza-palestinians-seeking-food-continue-be-killed-israeli-military",
+        "kind": "un"
+      },
+      {
+        "title": "Occupied Palestinian territory: Marwan Barghouthi, and human rights situation in Gaza",
+        "publisher": "OHCHR",
+        "date": "2025-08-19",
+        "url": "https://www.ohchr.org/en/press-briefing-notes/2025/08/occupied-palestinian-territory-marwan-barghouthi-and-human-rights",
+        "kind": "un"
+      },
+      {
+        "title": "‘It’s a Killing Field’: IDF Soldiers Ordered to Shoot Deliberately at Unarmed Gazans Waiting for Humanitarian Aid",
+        "publisher": "Haaretz",
+        "date": "2025-06-27",
+        "url": "https://www.haaretz.com/israel-news/2025-06-27/ty-article-magazine/.premium/idf-soldiers-ordered-to-shoot-deliberately-at-unarmed-gazans-waiting-for-humanitarian-aid/00000197-ad8e-de01-a39f-ffbe33780000",
+        "kind": "media"
+      },
+      {
+        "title": "Report: Israeli soldiers say they are ordered to shoot at unarmed Gazans seeking aid",
+        "publisher": "Jewish Telegraphic Agency",
+        "date": "2025-06-27",
+        "url": "https://www.jta.org/2025/06/27/israel/report-israeli-soldiers-say-they-are-ordered-to-shoot-at-unarmed-gazans-seeking-aid",
+        "kind": "media"
+      },
+      {
+        "title": "Gaza: Israeli Killings of Palestinians Seeking Food Are War Crimes",
+        "publisher": "Human Rights Watch",
+        "date": "2025-08-01",
+        "url": "https://www.hrw.org/news/2025/08/01/gaza-israeli-killings-of-palestinians-seeking-food-are-war-crimes",
+        "kind": "ngo"
+      },
+      {
+        "title": "UN experts call for immediate dismantling of Gaza Humanitarian Foundation",
+        "publisher": "OHCHR",
+        "date": "2025-08-05",
+        "url": "https://www.ohchr.org/en/press-releases/2025/08/un-experts-call-immediate-dismantling-gaza-humanitarian-foundation",
+        "kind": "un"
+      },
+      {
+        "title": "Gaza Humanitarian Foundation ‘ends mission’ after hundreds killed near its food banks",
+        "publisher": "The National",
+        "date": "2025-11-24",
+        "url": "https://www.thenationalnews.com/news/mena/2025/11/24/gaza-humanitarian-foundation-ends-mission-after-hundreds-killed-near-its-food-banks",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إطلاق النار على مدنيين في طريقهم إلى مواقع توزيع الغذاء",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "AP I art. 51(2)",
+          "ICRC CIHL Rule 1"
+        ],
+        "why_ar": "طالبو الغذاء مدنيون لا يشاركون في الأعمال العدائية، وقد يثير إطلاق النار عليهم دون تهديد وشيك، كما يرد في شهادات الجنود، حظر الهجمات على المدنيين.",
+        "to_prove_ar": "يلزم ربط كل حادثة بقوة محددة، وإثبات غياب التهديد، وطبيعة الأوامر الصادرة ومستواها القيادي."
+      },
+      {
+        "act_ar": "آلية توزيع مقيدة ومعسكرة في ظل نقص حاد في الغذاء",
+        "rules": [
+          "Rome Statute 8(2)(b)(xxv)",
+          "AP I art. 54",
+          "ICRC CIHL Rule 55",
+          "GC IV art. 55",
+          "GC IV art. 59"
+        ],
+        "why_ar": "رأت مفوضية حقوق الإنسان أن الآلية تخالف المعايير الدولية لتوزيع المساعدات وتعرض المدنيين للخطر، وقد تثير قواعد تسهيل الإغاثة وحظر التجويع إذا ثبت أن تقييد التوزيع كان متعمدا.",
+        "to_prove_ar": "يلزم إثبات أثر القيود في وصول الغذاء إلى السكان، والقصد منها، والجهة صاحبة القرار."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: crowds walking toward a GHF distribution site at dawn seen from afar, fenced distribution compounds and sand berms, empty food boxes; no injured people. Search: 'GHF distribution site Rafah crowds distance June 2025', 'Gaza Humanitarian Foundation site fence', 'Gaza aid seekers walking at dawn 2025'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0014",
+    "title_ar": "مقتل الأمريكي الفلسطيني سيف الدين مصلط ومحمد الشلبي في سنجل",
+    "date": "2025-07-11",
+    "date_to": null,
+    "place_ar": "أراض قرب بلدة سنجل، شمال شرق رام الله",
+    "region": "westbank",
+    "precise": false,
+    "loc_note_ar": "يعرض على مستوى البلدة وأراضيها، قرب بؤرة استيطانية جديدة بحسب الروايات الفلسطينية.",
+    "summary_ar": "في 11 يوليو 2025 توجه سيف الدين مصلط (Sayfollah Musallet)، وهو مواطن أمريكي يبلغ 20 عاما من فلوريدا كان يزور عائلته، مع فلسطينيين آخرين إلى أراض عائلية قرب سنجل احتجاجا على إقامة بؤرة استيطانية جديدة، بحسب CNN وتايمز أوف إسرائيل. وقال شهود لشبكة CNN إن مجموعة من المستوطنين ضربته بالهراوات، وتقول عائلته إن مستوطنين منعوا سيارة إسعاف من الوصول إليه فتوفي قبل وصوله إلى المستشفى. وقالت وزارة الصحة الفلسطينية إن محمد رزق حسين الشلبي (23 عاما) أصيب بالرصاص و«ترك ينزف لساعات». ودعا السفير الأمريكي لدى إسرائيل مايك هاكابي إلى التحقيق «بقوة» فيما وصفه بأنه «عمل إجرامي وإرهابي».",
+    "toll_ar": "قتيلان هما سيف الدين مصلط ومحمد الشلبي، بحسب وزارة الصحة الفلسطينية وتايمز أوف إسرائيل.",
+    "official_account_ar": "قال الجيش الإسرائيلي إن «مواجهة عنيفة» اندلعت بعد أن رشق فلسطينيون إسرائيليين بالحجارة فأصابوا اثنين بجروح طفيفة، وشملت تخريبا وإحراقا واشتباكات، وإن القوات استخدمت وسائل تفريق. وقالت الشرطة إنها تحقق مع جهاز الأمن العام والشرطة العسكرية، وأوقفت فلسطينيا من سنجل وناشطين يساريين ومستوطنين اثنين وجندي احتياط قالت إنه أطلق النار في الهواء ثم أفرجت عنه، بحسب تايمز أوف إسرائيل.",
+    "findings_ar": "لم نعثر على تحقيق مستقل منشور في الحادثة. وقال والد سيف الدين لشبكة CNN في يوليو 2026 إن أحدا لم يعتقل في قضية مقتله، ولم نعثر حتى 28 أكتوبر 2026 على ما يفيد توجيه اتهامات.",
+    "conflict": false,
+    "type_ar": [
+      "عنف مستوطنين",
+      "قتل مدنيين"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "testimony",
+        "desc_ar": "شهادات شهود عيان لشبكة CNN عن الضرب وتأخر وصول الإسعاف",
+        "source": "CNN",
+        "date": "2025-07-14",
+        "url": "https://www.cnn.com/2025/07/14/middleeast/palestinian-american-beaten-funeral-intl"
+      },
+      {
+        "type": "official",
+        "desc_ar": "رواية الجيش والشرطة الإسرائيلية وقائمة الموقوفين",
+        "source": "IDF / Israel Police via Times of Israel",
+        "date": "2025-07-12",
+        "url": "https://www.timesofisrael.com/family-of-us-palestinian-man-allegedly-killed-by-settlers-urges-state-department-probe/"
+      },
+      {
+        "type": "official",
+        "desc_ar": "تصريح السفير الأمريكي لدى إسرائيل مايك هاكابي",
+        "source": "US Ambassador to Israel via Al Jazeera",
+        "date": "2025-07-15",
+        "url": "https://www.aljazeera.com/news/2025/7/15/us-asks-israel-to-probe-terrorist-killing-of-american-citizen-by-settlers"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Family of American-Palestinian man allegedly beaten to death by settlers urges US probe",
+        "publisher": "Times of Israel",
+        "date": "2025-07-12",
+        "url": "https://www.timesofisrael.com/family-of-us-palestinian-man-allegedly-killed-by-settlers-urges-state-department-probe/",
+        "kind": "media"
+      },
+      {
+        "title": "Family of American citizen killed by Israeli settlers demands US probe",
+        "publisher": "Al Jazeera",
+        "date": "2025-07-12",
+        "url": "https://www.aljazeera.com/news/2025/7/12/family-of-american-citizen-killed-by-israeli-settlers-demands-us-probe",
+        "kind": "media"
+      },
+      {
+        "title": "‘Why are you not preventing settler terrorism’: Palestinians call out IDF following American citizen beaten to death by Israeli settlers",
+        "publisher": "CNN",
+        "date": "2025-07-14",
+        "url": "https://www.cnn.com/2025/07/14/middleeast/palestinian-american-beaten-funeral-intl",
+        "kind": "media"
+      },
+      {
+        "title": "US asks Israel to probe ‘terrorist’ killing of American citizen by settlers",
+        "publisher": "Al Jazeera",
+        "date": "2025-07-15",
+        "url": "https://www.aljazeera.com/news/2025/7/15/us-asks-israel-to-probe-terrorist-killing-of-american-citizen-by-settlers",
+        "kind": "media"
+      },
+      {
+        "title": "West Bank: Israeli settlers attack journalists, including CNN, on the anniversary of deadly beating",
+        "publisher": "CNN",
+        "date": "2026-07-11",
+        "url": "https://www.cnn.com/2026/07/11/middleeast/settlers-arrested-attack-on-journalists-intl",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "قتل مدنيين خلال هجوم مستوطنين وغياب الملاحقة",
+        "rules": [
+          "Hague Regulations art. 43",
+          "GC IV art. 27",
+          "ICCPR art. 6(1)"
+        ],
+        "why_ar": "تتحمل إسرائيل بوصفها قوة احتلال واجب حماية السكان المحميين من العنف، بما في ذلك عنف المستوطنين، وواجب التحقيق الفعال والملاحقة؛ وقد يثار الإخلال بهذا الواجب إذا ثبت التقصير في المنع أو في التحقيق.",
+        "to_prove_ar": "يلزم تحديد هوية المعتدين بأدلة جنائية، وسبب الوفاة بتشريح، ودور القوات الحاضرة، ومسار التحقيق الرسمي ونتائجه."
+      },
+      {
+        "act_ar": "إعاقة وصول سيارة الإسعاف إلى المصاب",
+        "rules": [
+          "GC IV art. 16",
+          "ICRC CIHL Rule 110"
+        ],
+        "why_ar": "إذا ثبت منع الإسعاف بعلم القوات الموجودة أو بتقاعسها، فقد يثير ذلك واجب حماية الجرحى وتيسير إسعافهم؛ والرواية حتى الآن رواية العائلة والشهود.",
+        "to_prove_ar": "يلزم توثيق توقيت وصول الإسعاف ومن منعه وموقف القوات الأمنية الحاضرة."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: landscape of Sinjil farmland and the hilltop with the new outpost, or the funeral procession in al-Mazra'a ash-Sharqiya seen from a distance; no injury images. Search: 'Sinjil village land outpost 2025', 'Sinjil West Bank hills', 'Mazraa ash-Sharqiya funeral July 2025'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0015",
+    "title_ar": "مقتل الناشط عودة الهذالين برصاص مستوطن في أم الخير",
+    "date": "2025-07-28",
+    "date_to": null,
+    "place_ar": "قرية أم الخير، تلال جنوب الخليل (منطقة مسافر يطا)",
+    "region": "westbank",
+    "precise": true,
+    "loc_note_ar": "داخل القرية قرب مركزها المجتمعي بحسب بتسيلم؛ القرية ملاصقة لمستوطنة كرمل.",
+    "summary_ar": "في 28 يوليو 2025 أطلق مستوطن النار خلال مواجهة مع سكان أم الخير الذين حاولوا منع حفارة من شق طريق عبر أراض فلسطينية قرب القرية، فأصيب عودة الهذالين، المعلم والناشط الذي ساهم في الفيلم الوثائقي الحائز جائزة الأوسكار «لا أرض أخرى»، وتوفي. وصور الهذالين لحظة إصابته، كما صور ساكن آخر مطلق النار بحسب مفوضية حقوق الإنسان. وأوقفت الشرطة المستوطن ينون ليفي ثم أفرج عنه بعد أيام، وفي 6 أغسطس 2026 قدمت نيابة المنطقة الجنوبية لائحة اتهام ضده أمام محكمة بئر السبع المركزية بتهمة القتل بتهور، إضافة إلى التعدي وهو مسلح والإضرار المتعمد بالممتلكات، بحسب جيروزاليم بوست ورويترز.",
+    "toll_ar": "قتيل واحد بحسب بتسيلم ومفوضية حقوق الإنسان.",
+    "official_account_ar": "دفع ليفي أمام المحكمة بأنه تصرف دفاعا عن النفس وبأن الهذالين قتل برصاص سلاح آخر، وينفي إطلاق الرصاصة القاتلة، بحسب تايمز أوف إسرائيل ورويترز. وتقول بتسيلم إن محكمة قبلت ادعاء الدفاع عن النفس في مرحلة التوقيف فأفرج عنه إلى الحبس المنزلي، بينما تقول لائحة الاتهام إنه أطلق النار نحو منطقة تجمع فيها قرويون بينهم أطفال بعد أن أمر سائق الحفارة بشق طريق غير مرخص عبر أرض فلسطينية خاصة.",
+    "findings_ar": "تقول بتسيلم، التي كان الهذالين متطوعا لديها، إن ليفي أطلق النار على سكان تجمعوا في المكان، وإن الجنود اعتقلوا أقارب الضحية بناء على طلبه، وإن الشرطة رفضت تسليم الجثمان إلا بشروط مشددة على الجنازة. وقالت مفوضية حقوق الإنسان في 7 نوفمبر 2025 إن المتهم وضع رهن الحبس المنزلي ثلاثة أيام ثم أفرج عنه «دون عواقب أخرى» حتى ذلك الحين، وطالبت بوقف أوامر هدم 11 منزلا ومرافق حيوية في القرية. ونقلت رويترز عن بتسيلم أن لائحة الاتهام هي الأولى من نوعها منذ 7 أكتوبر 2023، وقالت العائلة إن التهمة غير كافية ووصف شقيقه الوفاة بأنها «قتل متعمد في وضح النهار مع سبق الإصرار»، بحسب تايمز أوف إسرائيل.",
+    "conflict": true,
+    "type_ar": [
+      "عنف مستوطنين",
+      "قتل مدافع عن حقوق الإنسان",
+      "أوامر هدم"
+    ],
+    "persons": [
+      "ينون ليفي (Yinon Levi)"
+    ],
+    "evidence": [
+      {
+        "type": "video",
+        "desc_ar": "مقطعان: أحدهما صوره الهذالين لحظة إصابته، والآخر صوره أحد السكان ويظهر مطلق النار",
+        "source": "B'Tselem",
+        "date": "2025-08-10",
+        "url": "https://www.btselem.org/video/20250810_the_killing_of_awdah_al_hathaleen_in_um_al_kheir_south_hebron_hills"
+      },
+      {
+        "type": "document",
+        "desc_ar": "لائحة اتهام نيابة المنطقة الجنوبية أمام محكمة بئر السبع المركزية كما عرضتها جيروزاليم بوست",
+        "source": "Israeli Southern District Attorney's Office via The Jerusalem Post",
+        "date": "2026-08-06",
+        "url": "https://www.jpost.com/israel-news/article-904756"
+      },
+      {
+        "type": "report",
+        "desc_ar": "بيان مكتب حقوق الإنسان الأممي حول أوامر الهدم الجماعي في أم الخير",
+        "source": "OHCHR oPt",
+        "date": "2025-11-07",
+        "url": "https://palestine.un.org/en/304850-mass-demolition-orders-threaten-forced-displacement-umm-al-khair%E2%80%93south-hebron-hills"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Israeli settler accused of killing Palestinian activist out on house arrest",
+        "publisher": "Al Jazeera",
+        "date": "2025-07-29",
+        "url": "https://www.aljazeera.com/news/2025/7/29/israeli-settler-kills-west-bank-activist-who-worked-on-oscar-winning-film",
+        "kind": "media"
+      },
+      {
+        "title": "Um al-Kheir, South Hebron Hills: A settler shot and killed peace activist Awdah al-Hathaleen, and soldiers arrested the victim’s relatives on his orders",
+        "publisher": "B'Tselem",
+        "date": "2025-08-10",
+        "url": "https://www.btselem.org/video/20250810_the_killing_of_awdah_al_hathaleen_in_um_al_kheir_south_hebron_hills",
+        "kind": "ngo"
+      },
+      {
+        "title": "Mass demolition orders threaten forced displacement in Umm Al Khair–South Hebron Hills",
+        "publisher": "OHCHR oPt (UN in Palestine)",
+        "date": "2025-11-07",
+        "url": "https://palestine.un.org/en/304850-mass-demolition-orders-threaten-forced-displacement-umm-al-khair%E2%80%93south-hebron-hills",
+        "kind": "un"
+      },
+      {
+        "title": "Israeli settler indicted for reckless homicide in killing of Awdah Hathaleen",
+        "publisher": "The Jerusalem Post",
+        "date": "2026-08-06",
+        "url": "https://www.jpost.com/israel-news/article-904756",
+        "kind": "media"
+      },
+      {
+        "title": "Settler charged over killing of Palestinian activist in rare West Bank indictment",
+        "publisher": "BusinessDay (Reuters)",
+        "date": "2026-08-06",
+        "url": "https://www.businessday.co.za/world/middle-east/2026-08-06-settler-charged-over-killing-of-palestinian-activist-in-rare-west-bank-indictment/",
+        "kind": "media"
+      },
+      {
+        "title": "Extremist settler charged with reckless homicide over death of Palestinian activist",
+        "publisher": "Times of Israel",
+        "date": "2026-08-06",
+        "url": "https://www.timesofisrael.com/extremist-settler-charged-with-reckless-homicide-over-death-of-palestinian-activist/",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إطلاق مستوطن النار على مدنيين فلسطينيين وقتل أحدهم",
+        "rules": [
+          "Hague Regulations art. 43",
+          "GC IV art. 27",
+          "ICCPR art. 6(1)"
+        ],
+        "why_ar": "القتل محل ملاحقة جنائية داخلية بتهمة القتل بتهور، والمسؤولية الفردية تحددها المحكمة. ومن منظور القانون الدولي قد يثار واجب دولة الاحتلال في حماية السكان من عنف المستوطنين وفي التحقيق الفعال، في ضوء الإفراج السريع عن المشتبه به وانتظار عام لتوجيه الاتهام.",
+        "to_prove_ar": "تفصل محكمة بئر السبع في المسؤولية الجنائية الفردية؛ ولتقييم مسؤولية الدولة يلزم إثبات ما إذا قصرت السلطات في المنع أو التحقيق أو مكنت العنف."
+      },
+      {
+        "act_ar": "شق طريق استيطاني عبر أرض فلسطينية وأوامر هدم في القرية",
+        "rules": [
+          "GC IV art. 49(6)",
+          "GC IV art. 53",
+          "Rome Statute 8(2)(b)(viii)",
+          "UNSC Res. 2334 (2016)",
+          "ICJ Advisory Opinion of 19 July 2024"
+        ],
+        "why_ar": "يحظر على دولة الاحتلال نقل أجزاء من سكانها المدنيين إلى الأرض المحتلة وتدمير الممتلكات دون ضرورة عسكرية، وقد تثير أعمال التوسع الاستيطاني وأوامر الهدم في أم الخير هذه القواعد كما فسرتها محكمة العدل الدولية في رأيها الاستشاري.",
+        "to_prove_ar": "يلزم إثبات وضع الأرض وملكيتها، والجهة التي رخصت الأعمال أو تغاضت عنها، والصلة بين التوسع الاستيطاني والضغط على السكان للرحيل."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: Umm al-Kheir village with the Carmel settlement fence behind, the community center, or a public memorial portrait of Awdah Hathaleen; no injury footage. Search: 'Umm al-Khair village Carmel settlement fence', 'Awdah Hathaleen memorial Umm al-Kheir', 'Masafer Yatta Umm al-Khair 2025'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0016",
+    "title_ar": "مقتل مراسل الجزيرة أنس الشريف وزملاء له في خيمة للصحفيين قرب مستشفى الشفاء",
+    "date": "2025-08-10",
+    "date_to": null,
+    "place_ar": "خيمة للصحفيين قرب البوابة الرئيسية لمجمع الشفاء الطبي، مدينة غزة",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "خيمة إعلامية قرب بوابة المستشفى بحسب لجنة حماية الصحفيين.",
+    "summary_ar": "ليل 10 أغسطس 2025 أصابت غارة إسرائيلية خيمة تؤوي صحفيين قرب البوابة الرئيسية لمجمع الشفاء في مدينة غزة، فقتلت مراسل الجزيرة أنس الشريف والمراسل محمد قريقع والمصورين إبراهيم ظاهر ومحمد نوفل بحسب خبراء الأمم المتحدة، إضافة إلى صحفيين مستقلين بحسب لجنة حماية الصحفيين. وأقر الجيش الإسرائيلي بأن الضربة استهدفت الشريف. وكانت المقررة الخاصة المعنية بحرية الرأي والتعبير إيرين خان قد نددت في 31 يوليو 2025 بتهديدات واتهامات متكررة من الجيش الإسرائيلي ضده، محذرة من أن صحفيين في غزة قتلوا استنادا إلى ادعاءات غير مثبتة.",
+    "toll_ar": "ستة من العاملين في الإعلام بحسب لجنة حماية الصحفيين: أربعة من طاقم الجزيرة في المدينة سماهم خبراء الأمم المتحدة، وصحفيان مستقلان.",
+    "official_account_ar": "قال الجيش الإسرائيلي إن الشريف «إرهابي يعمل تحت غطاء صحفي»، وإنه رئيس خلية في حماس كان مسؤولا عن الدفع بهجمات صاروخية على مدنيين وقوات إسرائيلية، ونشر وثائق قال إنها قوائم أفراد وكشوف رواتب تثبت ذلك، بحسب تايمز أوف إسرائيل ولجنة حماية الصحفيين.",
+    "findings_ar": "قالت لجنة حماية الصحفيين إنها لا تعد الصور المنشورة ذات مصداقية لأنها «ليست وثائق أصلية بوضوح»، وإن للجيش «نمطا طويلا من الادعاءات غير المثبتة»، ووصفت مقتله بأنه قتل متعمد في ضربة إسرائيلية موجهة. وطالب خبراء أمميون في 12 أغسطس 2025 بتحقيق مستقل فوري، ورأوا أن قتل الصحفيين مع إعلان إسرائيل خطة السيطرة على مدينة غزة «ليس مصادفة بل محاولة متعمدة لإسكات» من يوثقون ما يجري.",
+    "conflict": true,
+    "type_ar": [
+      "قتل صحفيين",
+      "غارة على خيمة إعلامية"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "official",
+        "desc_ar": "بيان الجيش الإسرائيلي والوثائق التي نشرها لتبرير الضربة",
+        "source": "IDF via Times of Israel",
+        "date": "2025-08-11",
+        "url": "https://www.timesofisrael.com/idf-strike-on-gaza-city-kills-al-jazeera-reporter-accused-of-being-a-hamas-cell-leader/"
+      },
+      {
+        "type": "report",
+        "desc_ar": "ملف لجنة حماية الصحفيين عن الشريف وتقييمها للوثائق المنشورة والتهديدات السابقة",
+        "source": "Committee to Protect Journalists",
+        "date": "2025-08-11",
+        "url": "https://cpj.org/data/people/anas-al-sharif/"
+      },
+      {
+        "type": "document",
+        "desc_ar": "بيان المقررة الخاصة إيرين خان في 31 يوليو 2025 بشأن التهديدات ضد الشريف",
+        "source": "OHCHR",
+        "date": "2025-07-31",
+        "url": "https://www.ohchr.org/en/press-releases/2025/07/gaza-un-expert-denounces-serious-threats-israeli-army-against-al-jazeera"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Gaza: UN expert denounces serious threats by Israeli army against Al Jazeera correspondent",
+        "publisher": "OHCHR",
+        "date": "2025-07-31",
+        "url": "https://www.ohchr.org/en/press-releases/2025/07/gaza-un-expert-denounces-serious-threats-israeli-army-against-al-jazeera",
+        "kind": "un"
+      },
+      {
+        "title": "Gaza: UN experts appalled by murder of Al Jazeera correspondents in Israeli strike",
+        "publisher": "OHCHR",
+        "date": "2025-08-12",
+        "url": "https://www.ohchr.org/en/press-releases/2025/08/gaza-un-experts-appalled-murder-al-jazeera-correspondents-israeli-strike",
+        "kind": "un"
+      },
+      {
+        "title": "Anas al-Sharif",
+        "publisher": "Committee to Protect Journalists",
+        "date": "2025-08-11",
+        "url": "https://cpj.org/data/people/anas-al-sharif/",
+        "kind": "ngo"
+      },
+      {
+        "title": "IDF strike on Gaza City kills Al Jazeera reporter accused of being a Hamas cell leader",
+        "publisher": "Times of Israel",
+        "date": "2025-08-11",
+        "url": "https://www.timesofisrael.com/idf-strike-on-gaza-city-kills-al-jazeera-reporter-accused-of-being-a-hamas-cell-leader/",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "غارة على خيمة صحفيين قرب مستشفى لقتل صحفي يتهمه الجيش بالانتماء إلى جماعة مسلحة",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "Rome Statute 8(2)(b)(iv)",
+          "AP I art. 79",
+          "AP I art. 51(2)",
+          "ICRC CIHL Rule 34"
+        ],
+        "why_ar": "الصحفي مدني ما لم يشارك مباشرة في الأعمال العدائية وطوال مدة مشاركته، ويفترض الوضع المدني عند الشك؛ ويقع على الجهة المهاجمة إثبات أن الشريف كان هدفا عسكريا مشروعا وقت الضربة، كما قد تثير وفاة بقية الصحفيين في الخيمة قاعدة التناسب.",
+        "to_prove_ar": "يلزم إثبات صحة الوثائق المنشورة ومصدرها، وأي دور قتالي مباشر وقت الضربة، والتقدير المسبق للأضرار الجانبية على بقية الموجودين في الخيمة."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: the press tent area outside al-Shifa's gate in daylight after the strike, press vests and helmets laid at a vigil, or a public memorial portrait; no bodies. Search: 'al-Shifa journalists tent August 2025 aftermath', 'Anas al-Sharif vigil press vests', 'Gaza journalists memorial Al Jazeera 2025'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0017",
+    "title_ar": "ضربات على مجمع ناصر الطبي في خان يونس أودت بصحفيين وعمال إنقاذ",
+    "date": "2025-08-25",
+    "date_to": null,
+    "place_ar": "مجمع ناصر الطبي، خان يونس، جنوب قطاع غزة",
+    "region": "gaza",
+    "precise": true,
+    "loc_note_ar": "منشأة طبية عامة؛ أصابت المقذوفات درج المبنى وطابقه الرابع بحسب تحليل الفيديو.",
+    "summary_ar": "صباح 25 أغسطس 2025 أصابت ضربة إسرائيلية مجمع ناصر الطبي في خان يونس، فقتل مصور رويترز المتعاقد حسام المصري وانقطع البث المباشر الذي كان يديره من المبنى. ثم أصابت ضربة ثانية المكان بينما كان صحفيون وعمال إنقاذ يتوافدون إليه، فقتلت أربعة صحفيين آخرين هم مريم أبو دقة المتعاونة مع أسوشيتد برس، ومحمد سلامة مصور الجزيرة، وأحمد أبو عزيز، ومعاذ أبو طه، بحسب لجنة حماية الصحفيين. ووجد تحليل لشبكة NBC News أن المستشفى أصيب أربع مرات على الأقل خلال الهجوم.",
+    "toll_ar": "20 قتيلا على الأقل بينهم خمسة صحفيين بحسب لجنة حماية الصحفيين، و22 قتيلا بحسب تحليل NBC News.",
+    "official_account_ar": "قال الجيش الإسرائيلي في تحقيقه الأولي (26 أغسطس 2025) إن قوات لواء غولاني رصدت كاميرا «وضعتها حماس» في أرض المستشفى لمراقبة القوات فضربتها لإزالة «تهديد فوري»، وإن ستة من القتلى عناصر في حماس، وإن صحفيي رويترز وأسوشيتد برس لم يكونوا هدفا. وأقر بأن القوات نفذت الضربة دون الإذن المطلوب واستخدمت قذائف بدلا من ذخائر دقيقة التوجيه، وأمر رئيس الأركان إيال زامير بتعميق التحقيق في عملية الموافقة، ووصف رئيس الوزراء ما جرى بأنه «حادث مأساوي»، بحسب تايمز أوف إسرائيل وواي نت.",
+    "findings_ar": "قال شهود بينهم صحفيون وأطباء لشبكة NBC News إن الكاميرا الوحيدة على سطح المستشفى كانت كاميرا رويترز التي يشغلها المصري، وإن الجيش لم يقدم دليلا على ادعائه بشأن كاميرا لحماس، ورأى خبير أسلحة استشارته الشبكة أن الأضرار تتسق مع قذائف دبابة متعددة الأغراض. وقالت رويترز إن الجيش كان «على علم تام» بأن فريقها وصحفيين آخرين يعملون من المستشفى.",
+    "conflict": true,
+    "type_ar": [
+      "هجوم على منشأة طبية",
+      "قتل صحفيين",
+      "ضربة متكررة على مستجيبين"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "video",
+        "desc_ar": "لقطات حصلت عليها NBC News وتحققت منها تظهر مقذوفين إضافيين أصابا درج الطابق الرابع",
+        "source": "NBC News",
+        "date": "2025-08-29",
+        "url": "https://www.nbcnews.com/world/gaza/israel-gazas-nasser-hospital-four-missiles-rcna227939"
+      },
+      {
+        "type": "official",
+        "desc_ar": "نتائج التحقيق الأولي للجيش الإسرائيلي",
+        "source": "IDF via Times of Israel",
+        "date": "2025-08-26",
+        "url": "https://www.timesofisrael.com/liveblog_entry/idf-nasser-hospital-strike-targeted-hamas-camera-probe-will-investigate-approval-process/"
+      },
+      {
+        "type": "report",
+        "desc_ar": "توثيق لجنة حماية الصحفيين لأسماء الصحفيين القتلى والجرحى وتسلسل الضربات",
+        "source": "Committee to Protect Journalists",
+        "date": "2025-08-25",
+        "url": "https://cpj.org/2025/08/at-least-5-gazan-journalists-killed-in-israeli-strike-on-nasser-hospital/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "At least 5 Gazan journalists killed in Israeli strikes on Nasser Hospital",
+        "publisher": "Committee to Protect Journalists",
+        "date": "2025-08-25",
+        "url": "https://cpj.org/2025/08/at-least-5-gazan-journalists-killed-in-israeli-strike-on-nasser-hospital/",
+        "kind": "ngo"
+      },
+      {
+        "title": "IDF: Nasser hospital strike targeted Hamas camera; further probe will investigate approval process, munitions used in attack",
+        "publisher": "Times of Israel",
+        "date": "2025-08-26",
+        "url": "https://www.timesofisrael.com/liveblog_entry/idf-nasser-hospital-strike-targeted-hamas-camera-probe-will-investigate-approval-process/",
+        "kind": "media"
+      },
+      {
+        "title": "IDF probe finds troops acted without authorization in Gaza hospital strike",
+        "publisher": "Ynetnews",
+        "date": "2025-08-26",
+        "url": "https://www.ynetnews.com/article/hkstjpjkle",
+        "kind": "media"
+      },
+      {
+        "title": "NBC News analysis finds that Israel hit Gaza hospital four times",
+        "publisher": "NBC News",
+        "date": "2025-08-29",
+        "url": "https://www.nbcnews.com/world/gaza/israel-gazas-nasser-hospital-four-missiles-rcna227939",
+        "kind": "media"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "ضرب مستشفى بقذائف دبابة دون الإذن المطلوب",
+        "rules": [
+          "Rome Statute 8(2)(b)(ix)",
+          "Rome Statute 8(2)(b)(iv)",
+          "GC IV art. 18",
+          "GC IV art. 19",
+          "AP I art. 57(1)"
+        ],
+        "why_ar": "حتى لو صح وجود كاميرا تستخدم لأغراض عسكرية، فإن ضرب مستشفى مأهول يستلزم احتياطات مشددة وتقديرا للتناسب، وقد يثير استخدام قذائف أقل دقة دون الإذن المطلوب هذه القواعد.",
+        "to_prove_ar": "يلزم إثبات وجود الكاميرا المزعومة وتبعيتها، والميزة العسكرية المتوقعة، وتسلسل الأوامر وأسباب تجاوز إجراءات الموافقة."
+      },
+      {
+        "act_ar": "ضربة لاحقة أصابت صحفيين وعمال إنقاذ توافدوا بعد الضربة الأولى",
+        "rules": [
+          "Rome Statute 8(2)(b)(i)",
+          "Rome Statute 8(2)(b)(xxiv)",
+          "AP I art. 51(2)",
+          "AP I art. 79",
+          "ICRC CIHL Rule 25"
+        ],
+        "why_ar": "الصحفيون وعمال الإنقاذ مدنيون محميون، وقد تثير الضربة التي أصابت من توافدوا إلى المكان حظر الهجمات على المدنيين وعلى الطواقم الطبية، ما لم يثبت وجود هدف عسكري مشروع جديد وقتها.",
+        "to_prove_ar": "يلزم إثبات ما كانت القوات تعلمه عن هوية الموجودين عند الضربة الثانية والغرض منها، وهوية القتلى الستة الذين قال الجيش إنهم عناصر في حماس."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: exterior of Nasser Medical Complex showing the damaged external staircase on the fourth floor after 25 August 2025, or a tribute to the slain journalists with press vests; no bodies. Search: 'Nasser hospital staircase damage August 2025', 'Nasser Medical Complex exterior Khan Younis', 'Hussam al-Masri Reuters tribute'.",
+    "uncertain": false
+  },
+  {
+    "id": "INC-0018",
+    "title_ar": "إخلاء عائلات فلسطينية من منازلها في بطن الهوى بسلوان",
+    "date": "2026-03-20",
+    "date_to": "2026-03-25",
+    "place_ar": "حي بطن الهوى، سلوان، القدس الشرقية",
+    "region": "jerusalem",
+    "precise": false,
+    "loc_note_ar": "يعرض على مستوى الحي حماية للعائلات التي أخليت أو تواجه الإخلاء.",
+    "summary_ar": "في 20 و22 و25 مارس 2026 أخلت القوات الإسرائيلية قسرا 15 أسرة فلسطينية تضم 70 شخصا من منازلها في بطن الهوى بسلوان، بحسب أوتشا، لتمكين جمعية «عطيرت كوهنيم» الاستيطانية من الاستيلاء على العقارات بعد أن أيدت المحاكم الإسرائيلية دعاوى ملكيتها؛ وتحدث مكتب الأمم المتحدة لحقوق الإنسان عن 16 أسرة على الأقل بين 22 و25 مارس. وبحسب المكتب، هجرت السلطات الإسرائيلية منذ 7 أكتوبر 2023 ما لا يقل عن 28 أسرة تضم نحو 160 شخصا من الحي، مع تسارع حاد منذ أوائل 2025. ووصف الفريق القطري الإنساني في 26 مارس ما يجري بأنه «تصعيد خطير في عمليات الإخلاء القسري غير المشروعة».",
+    "toll_ar": "لا قتلى؛ 70 شخصا من 15 أسرة بينهم أطفال بحسب أوتشا (يرد عدد الأطفال في التقرير نفسه مرة 21 ومرة 29)، و16 أسرة على الأقل بحسب مكتب حقوق الإنسان.",
+    "official_account_ar": "تستند عمليات الإخلاء إلى أحكام محاكم إسرائيلية قبلت دعاوى رفعتها «عطيرت كوهنيم» تدعي ملكية يهودية للأرض تعود إلى أكثر من قرن، بحسب أوتشا؛ وكانت المحكمة العليا الإسرائيلية قد صادقت في يونيو 2025 على إخلاء خمس أسر في الحي.",
+    "findings_ar": "يرى مكتب الأمم المتحدة لحقوق الإنسان أن هذه القضايا أمثلة على حملة منهجية يقودها مستوطنون وتطبق فيها قوانين بصورة تمييزية، منها قانون أملاك الغائبين وقانون الشؤون القانونية والإدارية لعام 1970، لاقتلاع الفلسطينيين والاستيلاء على ممتلكاتهم وزرع مستوطنين في قلب أحيائهم، وأن القانون الإنساني يحظر على إسرائيل فرض قوانينها في الأرض المحتلة. وقال أوتشا إن سبل الانتصاف القانونية «استنفدت إلى حد كبير»، وإن عشرات الأسر الأخرى مهددة بالإخلاء، وكان المكتب قد أحصى في يوليو 2024 نحو 87 أسرة تواجه دعاوى إخلاء في الحي.",
+    "conflict": false,
+    "type_ar": [
+      "إخلاء قسري",
+      "استيلاء استيطاني على منازل"
+    ],
+    "persons": [],
+    "evidence": [
+      {
+        "type": "report",
+        "desc_ar": "تقرير أوتشا الإنساني عن عمليات الإخلاء في 20 و22 و25 مارس 2026",
+        "source": "OCHA oPt",
+        "date": "2026-03-27",
+        "url": "https://www.ochaopt.org/content/humanitarian-situation-report-27-march-2026"
+      },
+      {
+        "type": "document",
+        "desc_ar": "بيان مكتب حقوق الإنسان الأممي بشأن إخلاء 16 أسرة في أسبوع واحد",
+        "source": "OHCHR oPt",
+        "date": "2026-03-27",
+        "url": "https://palestine.un.org/en/312611-escalating-forced-evictions-batn-al%E2%80%91hawa-silwan-16-families-removed-one-week"
+      },
+      {
+        "type": "document",
+        "desc_ar": "بيان مكتب حقوق الإنسان الأممي (30 يوليو 2024) عن قضايا الإخلاء في بطن الهوى والقوانين المطبقة",
+        "source": "OHCHR oPt",
+        "date": "2024-07-30",
+        "url": "https://www.un.org/unispal/wp-content/uploads/2024/07/Practices-of-forced-eviction-East-Jerusalem-EN.pdf"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Humanitarian Situation Report | 27 March 2026",
+        "publisher": "OCHA oPt",
+        "date": "2026-03-27",
+        "url": "https://www.ochaopt.org/content/humanitarian-situation-report-27-march-2026",
+        "kind": "un"
+      },
+      {
+        "title": "Escalating Forced Evictions in Batn al-Hawa, Silwan: 16 Families Removed in One Week",
+        "publisher": "OHCHR oPt (UN in Palestine)",
+        "date": "2026-03-27",
+        "url": "https://palestine.un.org/en/312611-escalating-forced-evictions-batn-al%E2%80%91hawa-silwan-16-families-removed-one-week",
+        "kind": "un"
+      },
+      {
+        "title": "Israel must immediately end practices of forced eviction that threaten to displace more than eighty Palestinian families from their homes in Batn al-Hawa, Silwan, East Jerusalem",
+        "publisher": "OHCHR oPt",
+        "date": "2024-07-30",
+        "url": "https://www.un.org/unispal/wp-content/uploads/2024/07/Practices-of-forced-eviction-East-Jerusalem-EN.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Humanitarian Situation Update #350 | West Bank",
+        "publisher": "OCHA oPt",
+        "date": "2025-12-23",
+        "url": "https://www.ochaopt.org/content/humanitarian-situation-update-350-west-bank",
+        "kind": "un"
+      }
+    ],
+    "legal": [
+      {
+        "act_ar": "إخلاء سكان محميين من منازلهم في أرض محتلة لصالح مستوطنين",
+        "rules": [
+          "GC IV art. 49(1)",
+          "GC IV art. 49(6)",
+          "GC IV art. 147",
+          "Rome Statute 8(2)(b)(viii)",
+          "ICJ Advisory Opinion of 19 July 2024",
+          "UNSC Res. 2334 (2016)"
+        ],
+        "why_ar": "تعد القدس الشرقية أرضا محتلة وفق القانون الدولي، وقد يثير إخلاء السكان المحميين ونقل مستوطنين إلى منازلهم حظر النقل القسري وحظر نقل دولة الاحتلال سكانها إلى الأرض المحتلة؛ وقد عدت محكمة العدل الدولية في رأيها الاستشاري سياسات الاستيطان مخالفة للقانون الدولي.",
+        "to_prove_ar": "يلزم إثبات الطابع القسري لكل عملية إخلاء، وصلتها بسياسة توطين، ومسؤولية الجهات الرسمية التي نفذتها أو مكنتها."
+      },
+      {
+        "act_ar": "تطبيق قوانين تتيح استعادة أملاك ما قبل 1948 لليهود دون الفلسطينيين",
+        "rules": [
+          "Hague Regulations art. 43",
+          "ICCPR art. 26",
+          "ICCPR art. 17",
+          "ICESCR art. 11"
+        ],
+        "why_ar": "يرى مكتب حقوق الإنسان أن هذه القوانين تمييزية بطبيعتها، وقد يثير تطبيقها حظر التمييز والحق في السكن وعدم التدخل التعسفي في المنزل، إضافة إلى حظر فرض قوانين دولة الاحتلال على الأرض المحتلة.",
+        "to_prove_ar": "يلزم تحليل الأحكام وطريقة تطبيق القوانين في كل قضية، ومقارنة معاملة مطالبات الفلسطينيين المماثلة بأملاكهم السابقة."
+      }
+    ],
+    "photo_hint_en": "Non-graphic: wide view of Batn al-Hawa hillside houses in Silwan with the Old City walls behind, Israeli flags on taken-over buildings, or belongings on the street seen from behind; no identifiable children. Search: 'Batn al-Hawa Silwan houses view', 'Silwan eviction March 2026', 'Batn al-Hawa settler flags building'.",
+    "uncertain": false
+  }
+]

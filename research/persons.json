@@ -1,0 +1,1459 @@
+[
+  {
+    "id": "P-0001",
+    "name_ar": "بنيامين نتنياهو",
+    "name_en": "Benjamin Netanyahu",
+    "role_ar": "رئيس وزراء إسرائيل",
+    "role_now_ar": "رئيس الحكومة الإسرائيلية؛ جرت انتخابات الكنيست في 27 أكتوبر 2026 ولم تكن نتائجها النهائية قد أعلنت عند إعداد هذا الملف",
+    "status": "warrant",
+    "statuses": [
+      {
+        "type": "warrant",
+        "body_ar": "المحكمة الجنائية الدولية — الدائرة التمهيدية الأولى",
+        "body_en": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2024-11-21",
+        "doc_title_en": "Situation in the State of Palestine: ICC Pre-Trial Chamber I rejects the State of Israel’s challenges to jurisdiction and issues warrants of arrest for Benjamin Netanyahu and Yoav Gallant",
+        "doc_title_ar": "الحالة في دولة فلسطين: الدائرة التمهيدية الأولى في المحكمة الجنائية الدولية ترفض طعون دولة إسرائيل في اختصاصها وتصدر أمرين بالقبض على بنيامين نتنياهو ويوآف غالانت",
+        "doc_title_ar_official": true,
+        "doc_symbol": "ICC-01/18",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges",
+        "summary_ar": "أصدرت الدائرة أمر قبض بعد أن وجدت أسبابا معقولة للاعتقاد بأنه يتحمل المسؤولية الجنائية، بصفته مشاركا في ارتكاب الأفعال مع آخرين، عن جريمة الحرب المتمثلة في التجويع كأسلوب من أساليب الحرب والجرائم ضد الإنسانية المتمثلة في القتل والاضطهاد والأفعال اللاإنسانية الأخرى، وبصفته رئيسا مدنيا عن جريمة الحرب المتمثلة في تعمد توجيه هجوم ضد السكان المدنيين. وتغطي الوقائع الفترة من 8 أكتوبر 2023 على الأقل حتى 20 مايو 2024 على الأقل، وأمر القبض مصنف سريا ونشرت الدائرة مضمونه العام.",
+        "quote_en": "each bear criminal responsibility for the following crimes as co-perpetrators for committing the acts jointly with others"
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — دائرة الاستئناف",
+        "body_en": "International Criminal Court — Appeals Chamber",
+        "date": "2025-04-24",
+        "doc_title_en": "Situation in the State of Palestine: Appeals Chamber reverses the Pre-Trial Chamber’s decision on Israel’s challenge to the jurisdiction of the Court and remands the matter to the Pre-Trial Chamber",
+        "doc_title_ar": "الحالة في دولة فلسطين: دائرة الاستئناف تنقض قرار الدائرة التمهيدية بشأن طعن إسرائيل في اختصاص المحكمة وتعيد المسألة إليها",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18 OA2",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-appeals-chamber-reverses-pre-trial-chambers-decision-israels",
+        "summary_ar": "رأت دائرة الاستئناف أن الدائرة التمهيدية أخطأت قانونا حين لم تتناول بما يكفي حجة إسرائيل بأحقيتها في الطعن بموجب المادة 19(2)(ج)، فنقضت قرار رفض الطعن بوصفه سابقا لأوانه وأعادته للبت في موضوعه، ورفضت لانتفاء الغرض طلب إسرائيل وقف أثر أمري القبض. ولم يلغ هذا الحكم أمري القبض."
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — الدائرة التمهيدية الأولى",
+        "body_en": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-07-16",
+        "doc_title_en": "Decision on the State of Israel’s request to have arrest warrants withdrawn, vacated or declared of no force or effect and to suspend the Prosecutor’s investigation",
+        "doc_title_ar": "قرار بشأن طلب دولة إسرائيل سحب أوامر القبض أو إبطالها أو إعلانها عديمة الأثر ووقف تحقيق المدعي العام",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180c1587a.pdf",
+        "summary_ar": "رفضت الدائرة طلب إسرائيل سحب أمري القبض أو إبطالهما أو إعلانهما عديمي الأثر ووقف التحقيق، وقالت بحسب ما نقلته وسائل الإعلام إنه لا يوجد أساس قانوني لذلك في هذه المرحلة، وإن أثر طعن إسرائيل في الاختصاص على الأوامر، إن وجد، لا يتحدد إلا بعد البت في موضوعه.",
+        "quote_en": "There is no legal basis for withdrawing, vacating or declaring them of no force or effect at this point in time"
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — الدائرة التمهيدية الأولى",
+        "body_en": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-10-17",
+        "doc_title_en": "Decision on Israel’s request for leave to appeal the “Decision on the State of Israel’s request to have arrest warrants withdrawn, vacated or declared of no force or effect and to suspend the Prosecutor’s investigation”",
+        "doc_title_ar": "قرار بشأن طلب إسرائيل الإذن باستئناف قرار رفض سحب أوامر القبض ووقف التحقيق",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180ccfb3b.pdf",
+        "summary_ar": "رفضت الدائرة طلب إسرائيل الإذن باستئناف قرار 16 يوليو 2025، معتبرة بحسب التغطيات الصحفية أن المسألة بالصيغة التي طرحتها إسرائيل ليست مسألة قابلة للاستئناف، فبقي أمرا القبض ساريين."
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — دائرة الاستئناف",
+        "body_en": "International Criminal Court — Appeals Chamber",
+        "date": "2025-12-15",
+        "doc_title_en": "Judgment on the appeal of the State of Israel against Pre-Trial Chamber I’s “Decision on Israel’s request for an order to the Prosecution to give an Article 18(1) notice”",
+        "doc_title_ar": "حكم في استئناف دولة إسرائيل ضد قرار الدائرة التمهيدية الأولى بشأن طلبها إلزام الادعاء بتوجيه إخطار بموجب المادة 18(1)",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18-481 (OA3)",
+        "url": "https://www.icc-cpi.int/court-record/icc-01/18-481",
+        "summary_ar": "أكدت دائرة الاستئناف بالأغلبية، مع رأيين مخالفين للقاضيتين إيبانيث كارانثا وبوسا، قرار الدائرة التمهيدية الذي رفض طلب إسرائيل إلزام المدعي العام بإخطار جديد، ورأت أن التحقيق في الوقائع اللاحقة لـ7 أكتوبر 2023 يقع ضمن نطاق الحالة القائمة وأن إحالات 2023 و2024 لم تنشئ حالة جديدة."
+      },
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل (مجلس حقوق الإنسان)",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2025-09-16",
+        "doc_title_en": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide",
+        "doc_title_ar": "تحليل قانوني لسلوك إسرائيل في غزة بموجب اتفاقية منع جريمة الإبادة الجماعية والمعاقبة عليها",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/60/CRP.3",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "summary_ar": "خلصت اللجنة إلى أن الرئيس يتسحاق هرتسوغ ورئيس الوزراء بنيامين نتنياهو ووزير الدفاع آنذاك يوآف غالانت حرضوا على ارتكاب الإبادة الجماعية، وأن السلطات الإسرائيلية لم تتخذ إجراءات لمعاقبتهم على هذا التحريض. واستندت اللجنة في حالته إلى خطاب متلفز في 28 أكتوبر 2023 استحضر فيه قصة «عماليق»، وإلى رسالة إلى الجنود في 3 نوفمبر 2023.",
+        "quote_en": "have incited the commission of genocide and that Israeli authorities have failed to take action against them to punish this incitement"
+      }
+    ],
+    "crimes_ar": [
+      "جريمة الحرب المتمثلة في التجويع كأسلوب من أساليب الحرب — بصفة مشارك في الارتكاب (أمر قبض من المحكمة الجنائية الدولية)",
+      "الجرائم ضد الإنسانية المتمثلة في القتل والاضطهاد والأفعال اللاإنسانية الأخرى — بصفة مشارك في الارتكاب (أمر قبض)",
+      "جريمة الحرب المتمثلة في تعمد توجيه هجوم ضد السكان المدنيين — بصفة رئيس مدني (أمر قبض)",
+      "التحريض المباشر والعلني على ارتكاب الإبادة الجماعية — استنتاج لجنة التحقيق الأممية، وليس اتهاما قضائيا"
+    ],
+    "period": [
+      "2023-10-08",
+      "2024-05-20"
+    ],
+    "timeline": [
+      {
+        "date": "2023-10-28",
+        "event_ar": "ألقى خطابا متلفزا استحضر فيه قصة «عماليق»، وقيمته لجنة التحقيق الأممية لاحقا ضمن تحليلها للتحريض.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf"
+      },
+      {
+        "date": "2024-05-20",
+        "event_ar": "قدم المدعي العام للمحكمة الجنائية الدولية كريم خان طلبات إلى الدائرة التمهيدية الأولى لإصدار أوامر قبض، منها طلب بحقه.",
+        "url": "https://www.icc-cpi.int/news/statement-icc-prosecutor-karim-aa-khan-kc-applications-arrest-warrants-situation-state"
+      },
+      {
+        "date": "2024-09-26",
+        "event_ar": "قدمت إسرائيل طعنا في اختصاص المحكمة بموجب المادة 19(2) وطلبا بموجب المادة 18(1)، والتمست وقف النظر في طلبات أوامر القبض.",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges"
+      },
+      {
+        "date": "2024-11-21",
+        "event_ar": "رفضت الدائرة التمهيدية الأولى الطلبين الإسرائيليين وأصدرت أمري قبض بحق نتنياهو وغالانت.",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges"
+      },
+      {
+        "date": "2025-04-24",
+        "event_ar": "نقضت دائرة الاستئناف قرار رفض طعن إسرائيل في الاختصاص بوصفه سابقا لأوانه وأعادته إلى الدائرة التمهيدية، ورفضت لانتفاء الغرض طلب وقف أثر أمري القبض.",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-appeals-chamber-reverses-pre-trial-chambers-decision-israels"
+      },
+      {
+        "date": "2025-07-16",
+        "event_ar": "رفضت الدائرة التمهيدية الأولى طلب إسرائيل سحب أمري القبض أو إبطالهما ووقف التحقيق.",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180c1587a.pdf"
+      },
+      {
+        "date": "2025-09-16",
+        "event_ar": "خلصت لجنة التحقيق الدولية المستقلة إلى أن هرتسوغ ونتنياهو وغالانت حرضوا على ارتكاب الإبادة الجماعية في غزة.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf"
+      },
+      {
+        "date": "2025-10-17",
+        "event_ar": "رفضت الدائرة التمهيدية الأولى طلب إسرائيل الإذن باستئناف قرار 16 يوليو 2025.",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180ccfb3b.pdf"
+      },
+      {
+        "date": "2025-11-17",
+        "event_ar": "قدمت إسرائيل إلى دائرة الاستئناف طلبا بتنحية المدعي العام كريم خان عن القضايا المتعلقة بها وإعلان أوامر القبض عديمة الأثر؛ ولم يتح التحقق من صدور قرار فيه حتى أكتوبر 2026.",
+        "url": "https://english.alarabiya.net/News/middle-east/2025/11/20/icc-says-israel-wants-top-prosecutor-disqualified"
+      },
+      {
+        "date": "2025-12-15",
+        "event_ar": "أكدت دائرة الاستئناف بالأغلبية رفض طلب إسرائيل إلزام الادعاء بإخطار جديد بموجب المادة 18(1).",
+        "url": "https://www.icc-cpi.int/court-record/icc-01/18-481"
+      },
+      {
+        "date": "2026-07-24",
+        "event_ar": "عزلت جمعية الدول الأطراف المدعي العام كريم خان بعد أن وجدت أنه ارتكب سوء سلوك جسيما؛ وأوامر القبض قرارات صادرة عن الدائرة التمهيدية لا عن المدعي العام.",
+        "url": "https://news.un.org/en/story/2026/07/1168025"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Situation in the State of Palestine: ICC Pre-Trial Chamber I rejects the State of Israel’s challenges to jurisdiction and issues warrants of arrest for Benjamin Netanyahu and Yoav Gallant",
+        "publisher": "International Criminal Court",
+        "date": "2024-11-21",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges",
+        "kind": "court"
+      },
+      {
+        "title": "Statement of ICC Prosecutor Karim A.A. Khan KC: Applications for arrest warrants in the situation in the State of Palestine",
+        "publisher": "International Criminal Court — Office of the Prosecutor",
+        "date": "2024-05-20",
+        "url": "https://www.icc-cpi.int/news/statement-icc-prosecutor-karim-aa-khan-kc-applications-arrest-warrants-situation-state",
+        "kind": "court"
+      },
+      {
+        "title": "Situation in the State of Palestine: Appeals Chamber reverses the Pre-Trial Chamber’s decision on Israel’s challenge to the jurisdiction of the Court and remands the matter to the Pre-Trial Chamber",
+        "publisher": "International Criminal Court",
+        "date": "2025-04-24",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-appeals-chamber-reverses-pre-trial-chambers-decision-israels",
+        "kind": "court"
+      },
+      {
+        "title": "Decision on the State of Israel’s request to have arrest warrants withdrawn, vacated or declared of no force or effect and to suspend the Prosecutor’s investigation (ICC-01/18)",
+        "publisher": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-07-16",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180c1587a.pdf",
+        "kind": "court"
+      },
+      {
+        "title": "Decision on Israel’s request for leave to appeal (ICC-01/18)",
+        "publisher": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-10-17",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180ccfb3b.pdf",
+        "kind": "court"
+      },
+      {
+        "title": "Judgment on the appeal of the State of Israel against Pre-Trial Chamber I’s “Decision on Israel’s request for an order to the Prosecution to give an Article 18(1) notice” (ICC-01/18-481)",
+        "publisher": "International Criminal Court — Appeals Chamber",
+        "date": "2025-12-15",
+        "url": "https://www.icc-cpi.int/court-record/icc-01/18-481",
+        "kind": "court"
+      },
+      {
+        "title": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide (A/HRC/60/CRP.3)",
+        "publisher": "UN Independent International Commission of Inquiry on the OPT and Israel",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Israel has committed genocide in the Gaza Strip, UN Commission finds",
+        "publisher": "OHCHR",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/en/press-releases/2025/09/israel-has-committed-genocide-gaza-strip-un-commission-finds",
+        "kind": "un"
+      },
+      {
+        "title": "ICC says Israel wants top prosecutor disqualified",
+        "publisher": "Al Arabiya English (AFP)",
+        "date": "2025-11-20",
+        "url": "https://english.alarabiya.net/News/middle-east/2025/11/20/icc-says-israel-wants-top-prosecutor-disqualified",
+        "kind": "media"
+      },
+      {
+        "title": "International Criminal Court Prosecutor Karim Khan dismissed",
+        "publisher": "UN News",
+        "date": "2026-07-24",
+        "url": "https://news.un.org/en/story/2026/07/1168025",
+        "kind": "un"
+      },
+      {
+        "title": "Israeli election results (live coverage)",
+        "publisher": "CNN",
+        "date": "2026-10-27",
+        "url": "https://www.cnn.com/2026/10/27/world/live-news/israel-elections-live-results-latest-votes-intl",
+        "kind": "media"
+      }
+    ],
+    "limits_ar": "أمر القبض قرار قضائي أولي يقوم على معيار «أسباب معقولة للاعتقاد»، وليس اتهاما مؤكدا ولا إدانة، والشخص بريء حتى تثبت إدانته أمام المحكمة. ولم يعثر حتى أكتوبر 2026 على قرار منشور للدائرة التمهيدية في موضوع طعن إسرائيل في الاختصاص الذي أعادته إليها دائرة الاستئناف في أبريل 2025، كما لم يتح التحقق من صدور قرار في طلب إسرائيل تنحية المدعي العام. واستنتاج لجنة التحقيق بشأن التحريض نتيجة تحقيق أممي وليس حكما قضائيا ولا اتهاما من مدع عام.",
+    "uncertain": false
+  },
+  {
+    "id": "P-0002",
+    "name_ar": "يوآف غالانت",
+    "name_en": "Yoav Gallant",
+    "role_ar": "وزير الدفاع الإسرائيلي",
+    "role_now_ar": "وزير دفاع سابق؛ أقيل من الحكومة في نوفمبر 2024 واستقال من الكنيست في يناير 2025",
+    "status": "warrant",
+    "statuses": [
+      {
+        "type": "warrant",
+        "body_ar": "المحكمة الجنائية الدولية — الدائرة التمهيدية الأولى",
+        "body_en": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2024-11-21",
+        "doc_title_en": "Situation in the State of Palestine: ICC Pre-Trial Chamber I rejects the State of Israel’s challenges to jurisdiction and issues warrants of arrest for Benjamin Netanyahu and Yoav Gallant",
+        "doc_title_ar": "الحالة في دولة فلسطين: الدائرة التمهيدية الأولى في المحكمة الجنائية الدولية ترفض طعون دولة إسرائيل في اختصاصها وتصدر أمرين بالقبض على بنيامين نتنياهو ويوآف غالانت",
+        "doc_title_ar_official": true,
+        "doc_symbol": "ICC-01/18",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges",
+        "summary_ar": "أصدرت الدائرة أمر قبض بعد أن وجدت أسبابا معقولة للاعتقاد بأنه يتحمل المسؤولية الجنائية، بصفته مشاركا في ارتكاب الأفعال مع آخرين، عن جريمة الحرب المتمثلة في التجويع كأسلوب من أساليب الحرب والجرائم ضد الإنسانية المتمثلة في القتل والاضطهاد والأفعال اللاإنسانية الأخرى، وبصفته رئيسا مدنيا عن جريمة الحرب المتمثلة في تعمد توجيه هجوم ضد السكان المدنيين. وتغطي الوقائع الفترة من 8 أكتوبر 2023 على الأقل حتى 20 مايو 2024 على الأقل، وأمر القبض مصنف سريا ونشرت الدائرة مضمونه العام.",
+        "quote_en": "each bear criminal responsibility for the following crimes as co-perpetrators for committing the acts jointly with others"
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — دائرة الاستئناف",
+        "body_en": "International Criminal Court — Appeals Chamber",
+        "date": "2025-04-24",
+        "doc_title_en": "Situation in the State of Palestine: Appeals Chamber reverses the Pre-Trial Chamber’s decision on Israel’s challenge to the jurisdiction of the Court and remands the matter to the Pre-Trial Chamber",
+        "doc_title_ar": "الحالة في دولة فلسطين: دائرة الاستئناف تنقض قرار الدائرة التمهيدية بشأن طعن إسرائيل في اختصاص المحكمة وتعيد المسألة إليها",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18 OA2",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-appeals-chamber-reverses-pre-trial-chambers-decision-israels",
+        "summary_ar": "رأت دائرة الاستئناف أن الدائرة التمهيدية أخطأت قانونا حين لم تتناول بما يكفي حجة إسرائيل بأحقيتها في الطعن بموجب المادة 19(2)(ج)، فنقضت قرار رفض الطعن بوصفه سابقا لأوانه وأعادته للبت في موضوعه، ورفضت لانتفاء الغرض طلب إسرائيل وقف أثر أمري القبض. ولم يلغ هذا الحكم أمري القبض."
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — الدائرة التمهيدية الأولى",
+        "body_en": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-07-16",
+        "doc_title_en": "Decision on the State of Israel’s request to have arrest warrants withdrawn, vacated or declared of no force or effect and to suspend the Prosecutor’s investigation",
+        "doc_title_ar": "قرار بشأن طلب دولة إسرائيل سحب أوامر القبض أو إبطالها أو إعلانها عديمة الأثر ووقف تحقيق المدعي العام",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180c1587a.pdf",
+        "summary_ar": "رفضت الدائرة طلب إسرائيل سحب أمري القبض أو إبطالهما أو إعلانهما عديمي الأثر ووقف التحقيق، وقالت بحسب ما نقلته وسائل الإعلام إنه لا يوجد أساس قانوني لذلك في هذه المرحلة، وإن أثر طعن إسرائيل في الاختصاص على الأوامر، إن وجد، لا يتحدد إلا بعد البت في موضوعه.",
+        "quote_en": "There is no legal basis for withdrawing, vacating or declaring them of no force or effect at this point in time"
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — الدائرة التمهيدية الأولى",
+        "body_en": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-10-17",
+        "doc_title_en": "Decision on Israel’s request for leave to appeal the “Decision on the State of Israel’s request to have arrest warrants withdrawn, vacated or declared of no force or effect and to suspend the Prosecutor’s investigation”",
+        "doc_title_ar": "قرار بشأن طلب إسرائيل الإذن باستئناف قرار رفض سحب أوامر القبض ووقف التحقيق",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180ccfb3b.pdf",
+        "summary_ar": "رفضت الدائرة طلب إسرائيل الإذن باستئناف قرار 16 يوليو 2025، معتبرة بحسب التغطيات الصحفية أن المسألة بالصيغة التي طرحتها إسرائيل ليست مسألة قابلة للاستئناف، فبقي أمرا القبض ساريين."
+      },
+      {
+        "type": "procedural",
+        "body_ar": "المحكمة الجنائية الدولية — دائرة الاستئناف",
+        "body_en": "International Criminal Court — Appeals Chamber",
+        "date": "2025-12-15",
+        "doc_title_en": "Judgment on the appeal of the State of Israel against Pre-Trial Chamber I’s “Decision on Israel’s request for an order to the Prosecution to give an Article 18(1) notice”",
+        "doc_title_ar": "حكم في استئناف دولة إسرائيل ضد قرار الدائرة التمهيدية الأولى بشأن طلبها إلزام الادعاء بتوجيه إخطار بموجب المادة 18(1)",
+        "doc_title_ar_official": false,
+        "doc_symbol": "ICC-01/18-481 (OA3)",
+        "url": "https://www.icc-cpi.int/court-record/icc-01/18-481",
+        "summary_ar": "أكدت دائرة الاستئناف بالأغلبية، مع رأيين مخالفين للقاضيتين إيبانيث كارانثا وبوسا، قرار الدائرة التمهيدية الذي رفض طلب إسرائيل إلزام المدعي العام بإخطار جديد، ورأت أن التحقيق في الوقائع اللاحقة لـ7 أكتوبر 2023 يقع ضمن نطاق الحالة القائمة وأن إحالات 2023 و2024 لم تنشئ حالة جديدة."
+      },
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل (مجلس حقوق الإنسان)",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2025-09-16",
+        "doc_title_en": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide",
+        "doc_title_ar": "تحليل قانوني لسلوك إسرائيل في غزة بموجب اتفاقية منع جريمة الإبادة الجماعية والمعاقبة عليها",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/60/CRP.3",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "summary_ar": "خلصت اللجنة إلى أن الرئيس يتسحاق هرتسوغ ورئيس الوزراء بنيامين نتنياهو ووزير الدفاع آنذاك يوآف غالانت حرضوا على ارتكاب الإبادة الجماعية، وأن السلطات الإسرائيلية لم تتخذ إجراءات لمعاقبتهم على هذا التحريض. ورأت اللجنة أن خطابه في 9 أكتوبر 2023، الذي أعلن فيه حصارا كاملا، كان موجها إلى سكان غزة بأكملهم، وأنه قال للجنود في اليوم التالي «سنقضي على كل شيء».",
+        "quote_en": "have incited the commission of genocide and that Israeli authorities have failed to take action against them to punish this incitement"
+      }
+    ],
+    "crimes_ar": [
+      "جريمة الحرب المتمثلة في التجويع كأسلوب من أساليب الحرب — بصفة مشارك في الارتكاب (أمر قبض من المحكمة الجنائية الدولية)",
+      "الجرائم ضد الإنسانية المتمثلة في القتل والاضطهاد والأفعال اللاإنسانية الأخرى — بصفة مشارك في الارتكاب (أمر قبض)",
+      "جريمة الحرب المتمثلة في تعمد توجيه هجوم ضد السكان المدنيين — بصفة رئيس مدني (أمر قبض)",
+      "التحريض المباشر والعلني على ارتكاب الإبادة الجماعية — استنتاج لجنة التحقيق الأممية، وليس اتهاما قضائيا"
+    ],
+    "period": [
+      "2023-10-08",
+      "2024-05-20"
+    ],
+    "timeline": [
+      {
+        "date": "2023-10-09",
+        "event_ar": "أعلن بعد تقييم للوضع في قيادة المنطقة الجنوبية في بئر السبع أنه أمر بفرض «حصار كامل» على قطاع غزة يشمل قطع الكهرباء والغذاء والوقود، بحسب ما نقلته تايمز أوف إسرائيل.",
+        "url": "https://www.timesofisrael.com/liveblog_entry/defense-minister-announces-complete-siege-of-gaza-no-power-food-or-fuel/",
+        "quote_en": "I have ordered a complete siege on the Gaza Strip. There will be no electricity, no food, no fuel, everything is closed"
+      },
+      {
+        "date": "2024-01-26",
+        "event_ar": "اقتبس أمر التدابير المؤقتة الصادر عن محكمة العدل الدولية إعلانه الحصار الكامل وتصريحه للجنود في 10 أكتوبر 2023 (الفقرة 52) ضمن تصريحات مسؤولين إسرائيليين كبار.",
+        "url": "https://www.icj-cij.org/sites/default/files/case-related/192/192-20240126-ord-01-00-en.pdf"
+      },
+      {
+        "date": "2024-05-20",
+        "event_ar": "قدم المدعي العام للمحكمة الجنائية الدولية كريم خان طلبات إلى الدائرة التمهيدية الأولى لإصدار أوامر قبض، منها طلب بحقه.",
+        "url": "https://www.icc-cpi.int/news/statement-icc-prosecutor-karim-aa-khan-kc-applications-arrest-warrants-situation-state"
+      },
+      {
+        "date": "2024-09-26",
+        "event_ar": "قدمت إسرائيل طعنا في اختصاص المحكمة بموجب المادة 19(2) وطلبا بموجب المادة 18(1)، والتمست وقف النظر في طلبات أوامر القبض.",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges"
+      },
+      {
+        "date": "2024-11-21",
+        "event_ar": "رفضت الدائرة التمهيدية الأولى الطلبين الإسرائيليين وأصدرت أمري قبض بحق نتنياهو وغالانت.",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges"
+      },
+      {
+        "date": "2025-01-01",
+        "event_ar": "أعلن استقالته من الكنيست بعد إقالته من منصب وزير الدفاع في نوفمبر 2024.",
+        "url": "https://www.voanews.com/a/israel-s-former-defense-chief-gallant-quits-parliament/7921315.html"
+      },
+      {
+        "date": "2025-04-24",
+        "event_ar": "نقضت دائرة الاستئناف قرار رفض طعن إسرائيل في الاختصاص بوصفه سابقا لأوانه وأعادته إلى الدائرة التمهيدية، ورفضت لانتفاء الغرض طلب وقف أثر أمري القبض.",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-appeals-chamber-reverses-pre-trial-chambers-decision-israels"
+      },
+      {
+        "date": "2025-07-16",
+        "event_ar": "رفضت الدائرة التمهيدية الأولى طلب إسرائيل سحب أمري القبض أو إبطالهما ووقف التحقيق.",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180c1587a.pdf"
+      },
+      {
+        "date": "2025-09-16",
+        "event_ar": "خلصت لجنة التحقيق الدولية المستقلة إلى أن هرتسوغ ونتنياهو وغالانت حرضوا على ارتكاب الإبادة الجماعية في غزة.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf"
+      },
+      {
+        "date": "2025-10-17",
+        "event_ar": "رفضت الدائرة التمهيدية الأولى طلب إسرائيل الإذن باستئناف قرار 16 يوليو 2025.",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180ccfb3b.pdf"
+      },
+      {
+        "date": "2025-11-17",
+        "event_ar": "قدمت إسرائيل إلى دائرة الاستئناف طلبا بتنحية المدعي العام كريم خان عن القضايا المتعلقة بها وإعلان أوامر القبض عديمة الأثر؛ ولم يتح التحقق من صدور قرار فيه حتى أكتوبر 2026.",
+        "url": "https://english.alarabiya.net/News/middle-east/2025/11/20/icc-says-israel-wants-top-prosecutor-disqualified"
+      },
+      {
+        "date": "2025-12-15",
+        "event_ar": "أكدت دائرة الاستئناف بالأغلبية رفض طلب إسرائيل إلزام الادعاء بإخطار جديد بموجب المادة 18(1).",
+        "url": "https://www.icc-cpi.int/court-record/icc-01/18-481"
+      },
+      {
+        "date": "2026-07-24",
+        "event_ar": "عزلت جمعية الدول الأطراف المدعي العام كريم خان بعد أن وجدت أنه ارتكب سوء سلوك جسيما؛ وأوامر القبض قرارات صادرة عن الدائرة التمهيدية لا عن المدعي العام.",
+        "url": "https://news.un.org/en/story/2026/07/1168025"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Defense minister announces ‘complete siege’ of Gaza: No power, food or fuel (liveblog entry)",
+        "publisher": "The Times of Israel",
+        "date": "2023-10-09",
+        "url": "https://www.timesofisrael.com/liveblog_entry/defense-minister-announces-complete-siege-of-gaza-no-power-food-or-fuel/",
+        "kind": "media"
+      },
+      {
+        "title": "Application of the Genocide Convention in the Gaza Strip (South Africa v. Israel), Order of 26 January 2024",
+        "publisher": "International Court of Justice",
+        "date": "2024-01-26",
+        "url": "https://www.icj-cij.org/sites/default/files/case-related/192/192-20240126-ord-01-00-en.pdf",
+        "kind": "court"
+      },
+      {
+        "title": "Israel’s former defense chief Gallant quits parliament",
+        "publisher": "VOA (Reuters)",
+        "date": "2025-01-01",
+        "url": "https://www.voanews.com/a/israel-s-former-defense-chief-gallant-quits-parliament/7921315.html",
+        "kind": "media"
+      },
+      {
+        "title": "Situation in the State of Palestine: ICC Pre-Trial Chamber I rejects the State of Israel’s challenges to jurisdiction and issues warrants of arrest for Benjamin Netanyahu and Yoav Gallant",
+        "publisher": "International Criminal Court",
+        "date": "2024-11-21",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-icc-pre-trial-chamber-i-rejects-state-israels-challenges",
+        "kind": "court"
+      },
+      {
+        "title": "Statement of ICC Prosecutor Karim A.A. Khan KC: Applications for arrest warrants in the situation in the State of Palestine",
+        "publisher": "International Criminal Court — Office of the Prosecutor",
+        "date": "2024-05-20",
+        "url": "https://www.icc-cpi.int/news/statement-icc-prosecutor-karim-aa-khan-kc-applications-arrest-warrants-situation-state",
+        "kind": "court"
+      },
+      {
+        "title": "Situation in the State of Palestine: Appeals Chamber reverses the Pre-Trial Chamber’s decision on Israel’s challenge to the jurisdiction of the Court and remands the matter to the Pre-Trial Chamber",
+        "publisher": "International Criminal Court",
+        "date": "2025-04-24",
+        "url": "https://www.icc-cpi.int/news/situation-state-palestine-appeals-chamber-reverses-pre-trial-chambers-decision-israels",
+        "kind": "court"
+      },
+      {
+        "title": "Decision on the State of Israel’s request to have arrest warrants withdrawn, vacated or declared of no force or effect and to suspend the Prosecutor’s investigation (ICC-01/18)",
+        "publisher": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-07-16",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180c1587a.pdf",
+        "kind": "court"
+      },
+      {
+        "title": "Decision on Israel’s request for leave to appeal (ICC-01/18)",
+        "publisher": "International Criminal Court — Pre-Trial Chamber I",
+        "date": "2025-10-17",
+        "url": "https://www.icc-cpi.int/sites/default/files/CourtRecords/0902ebd180ccfb3b.pdf",
+        "kind": "court"
+      },
+      {
+        "title": "Judgment on the appeal of the State of Israel against Pre-Trial Chamber I’s “Decision on Israel’s request for an order to the Prosecution to give an Article 18(1) notice” (ICC-01/18-481)",
+        "publisher": "International Criminal Court — Appeals Chamber",
+        "date": "2025-12-15",
+        "url": "https://www.icc-cpi.int/court-record/icc-01/18-481",
+        "kind": "court"
+      },
+      {
+        "title": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide (A/HRC/60/CRP.3)",
+        "publisher": "UN Independent International Commission of Inquiry on the OPT and Israel",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Israel has committed genocide in the Gaza Strip, UN Commission finds",
+        "publisher": "OHCHR",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/en/press-releases/2025/09/israel-has-committed-genocide-gaza-strip-un-commission-finds",
+        "kind": "un"
+      },
+      {
+        "title": "ICC says Israel wants top prosecutor disqualified",
+        "publisher": "Al Arabiya English (AFP)",
+        "date": "2025-11-20",
+        "url": "https://english.alarabiya.net/News/middle-east/2025/11/20/icc-says-israel-wants-top-prosecutor-disqualified",
+        "kind": "media"
+      },
+      {
+        "title": "International Criminal Court Prosecutor Karim Khan dismissed",
+        "publisher": "UN News",
+        "date": "2026-07-24",
+        "url": "https://news.un.org/en/story/2026/07/1168025",
+        "kind": "un"
+      }
+    ],
+    "limits_ar": "أمر القبض قرار قضائي أولي يقوم على معيار «أسباب معقولة للاعتقاد»، وليس اتهاما مؤكدا ولا إدانة، والشخص بريء حتى تثبت إدانته أمام المحكمة. ولم يعثر حتى أكتوبر 2026 على قرار منشور للدائرة التمهيدية في موضوع طعن إسرائيل في الاختصاص الذي أعادته إليها دائرة الاستئناف في أبريل 2025، كما لم يتح التحقق من صدور قرار في طلب إسرائيل تنحية المدعي العام. واستنتاج لجنة التحقيق بشأن التحريض نتيجة تحقيق أممي وليس حكما قضائيا ولا اتهاما من مدع عام.",
+    "uncertain": false
+  },
+  {
+    "id": "P-0003",
+    "name_ar": "ينون ليفي",
+    "name_en": "Yinon Levi (also spelled Yinon Levy)",
+    "role_ar": "مستوطن إسرائيلي في الضفة الغربية، وصفته قوائم العقوبات البريطانية والأوروبية بأنه قائد بؤرة «مزرعة ميتاريم» أو مؤسسها",
+    "role_now_ar": "متهم أمام المحكمة المركزية في بئر السبع منذ 6 أغسطس 2026، ولم يصدر حكم",
+    "status": "charged",
+    "statuses": [
+      {
+        "type": "charged",
+        "body_ar": "إسرائيل — النيابة العامة (نيابة لواء الجنوب)",
+        "body_en": "Israel — State Attorney’s Office (Southern District Attorney’s Office)",
+        "date": "2026-08-06",
+        "doc_title_en": "Indictment filed with the Beersheba District Court (as reported by the press)",
+        "doc_title_ar": "لائحة اتهام مقدمة إلى المحكمة المركزية في بئر السبع (بحسب التقارير الصحفية)",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.timesofisrael.com/extremist-settler-charged-with-reckless-homicide-over-death-of-palestinian-activist/",
+        "summary_ar": "أفادت تقارير صحفية بأن النيابة قدمت لائحة اتهام تنسب إليه القتل بتهور والتعدي مع حمل سلاح والإضرار المتعمد بالممتلكات، في واقعة مقتل الناشط الفلسطيني عودة الهذالين في أم الخير يوم 28 يوليو 2025، وتزعم أنه أطلق النار باتجاه منطقة يوجد فيها أشخاص. ويدفع ليفي بأنه تصرف دفاعا عن النفس وبأن رصاصة من سلاح آخر هي التي قتلت الهذالين."
+      },
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2026-05-08",
+        "doc_title_en": "Report of the Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "doc_title_ar": "تقرير لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/62/22",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf",
+        "summary_ar": "أورد التقرير الواقعة مثالا على أوجه قصور في إنفاذ القانون والقضاء، مشيرا إلى اعتقال 19 فلسطينيا في الموقع واحتجازهم أسبوعين مقابل تأخر اعتقال مطلق النار الإسرائيلي، وإلى رفع محكمة الصلح في القدس شروط الحبس المنزلي عنه بعد وقت قصير بحجة ضعف الأدلة واحتمال أنه تصرف دفاعا عن النفس.",
+        "quote_en": "The killing of a Palestinian man by a settler, Yinon Levy, in Um-Al-Kheir village in Masafer Yatta on 28 July 2025"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "الولايات المتحدة — وزارة الخارجية",
+        "body_en": "United States — Department of State",
+        "date": "2024-02-01",
+        "doc_title_en": "Announcement of Further Measures to Promote Peace, Security, and Stability in the West Bank",
+        "doc_title_ar": "إعلان تدابير إضافية لتعزيز السلام والأمن والاستقرار في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "E.O. 14115",
+        "url": "https://2021-2025.state.gov/announcement-of-further-measures-to-promote-peace-security-and-stability-in-the-west-bank/",
+        "summary_ar": "فرضت عليه وزارة الخارجية عقوبات بموجب الأمر التنفيذي 14115، وقالت إنه قاد مجموعات من المستوطنين من بؤرة ميتاريم اعتدت على مدنيين فلسطينيين وبدو، وهددتهم بمزيد من العنف إن لم يغادروا منازلهم، وأحرقت حقولهم ودمرت ممتلكاتهم."
+      },
+      {
+        "type": "procedural",
+        "body_ar": "الولايات المتحدة — الرئيس (أمر تنفيذي)",
+        "body_en": "United States — President (Executive Order)",
+        "date": "2025-01-20",
+        "doc_title_en": "Executive Order 14148, Initial Rescissions of Harmful Executive Orders and Actions",
+        "doc_title_ar": "الأمر التنفيذي 14148 بشأن الإلغاءات الأولية لأوامر وإجراءات تنفيذية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "E.O. 14148, sec. 2(hhh); 90 FR 8237",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2025-01-28/html/2025-01901.htm",
+        "summary_ar": "ألغى الأمر التنفيذي 14148 الأمر 14115 الذي استندت إليه العقوبات الأمريكية على مستوطنين في الضفة الغربية، ورفعت إدارة ترامب العقوبات المفروضة عليه."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "المملكة المتحدة — وزارة الخارجية والكومنولث والتنمية",
+        "body_en": "United Kingdom — Foreign, Commonwealth & Development Office",
+        "date": "2024-02-12",
+        "doc_title_en": "UK sanctions extremist settlers in the West Bank",
+        "doc_title_ar": "المملكة المتحدة تفرض عقوبات على مستوطنين متطرفين في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Global Human Rights Sanctions Regulations 2020",
+        "url": "https://www.gov.uk/government/news/uk-sanctions-extremist-settlers-in-the-west-bank",
+        "summary_ar": "أخضعته الحكومة البريطانية لتجميد الأصول وحظر السفر والتأشيرة، ووصفته بأنه قائد بؤرة «مزرعة ميتاريم» التي أسست عام 2021 واستخدم مستوطنوها العنف الجسدي وتدمير الممتلكات لتهجير تجمعات فلسطينية، منها زنوتا في أكتوبر 2023."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "الاتحاد الأوروبي — مجلس الاتحاد الأوروبي",
+        "body_en": "European Union — Council of the European Union",
+        "date": "2024-04-19",
+        "doc_title_en": "Council Implementing Regulation (EU) 2024/1172 of 19 April 2024 implementing Regulation (EU) 2020/1998 concerning restrictive measures against serious human rights violations and abuses",
+        "doc_title_ar": "اللائحة التنفيذية لمجلس الاتحاد الأوروبي رقم 2024/1172 بتاريخ 19 أبريل 2024 بشأن التدابير التقييدية ضد الانتهاكات والتجاوزات الجسيمة لحقوق الإنسان",
+        "doc_title_ar_official": false,
+        "doc_symbol": "(EU) 2024/1172, Annex I, entry 107",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401172",
+        "summary_ar": "أدرجه المجلس في نظام العقوبات العالمي لحقوق الإنسان، وقال إنه شارك من مقر إقامته في بؤرة «مزرعة ميتاريم» في أعمال عنف متعددة ضد قرى مجاورة، منها اقتحام منازل عائلات فلسطينية وإتلافها وإطلاق كلاب على رعاة فلسطينيين، وإنه بذلك مسؤول عن انتهاكات جسيمة لحقوق الفلسطينيين في السلامة الجسدية والنفسية والملكية والحياة الخاصة والأسرية.",
+        "quote_en": "has taken part in multiple violent acts against neighbouring villages from his residence in the Mitarim farm illegal outpost"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "كندا — وزارة الشؤون العالمية",
+        "body_en": "Canada — Global Affairs Canada",
+        "date": "2024-05-16",
+        "doc_title_en": "Backgrounder: Canada imposes sanctions on perpetrators of extremist settler violence against civilians in West Bank",
+        "doc_title_ar": "خلفية: كندا تفرض عقوبات على مرتكبي عنف المستوطنين المتطرفين ضد المدنيين في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Special Economic Measures (Extremist Settler Violence) Regulations, SOR/2024-91",
+        "url": "https://www.canada.ca/en/global-affairs/news/2024/05/backgrounder-canada-imposes-sanctions-on-perpetrators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "summary_ar": "أدرجته كندا ضمن أول أربعة أشخاص بموجب لوائح التدابير الاقتصادية الخاصة (عنف المستوطنين المتطرفين)، ما يحظر التعامل معه ويجعله غير مقبول الدخول إلى كندا، بسبب ما وصفته بأفعال عنيفة ومزعزعة للاستقرار ضد مدنيين فلسطينيين وممتلكاتهم في الضفة الغربية."
+      }
+    ],
+    "crimes_ar": [
+      "القتل بتهور والتعدي مع حمل سلاح والإضرار المتعمد بالممتلكات — تهم في لائحة اتهام إسرائيلية (أغسطس 2026) لم يصدر فيها حكم",
+      "انتهاكات جسيمة لحقوق الفلسطينيين في السلامة الجسدية والنفسية والملكية والحياة الخاصة والأسرية — أساس إدراجه في عقوبات الاتحاد الأوروبي (تدبير إداري لا حكم قضائي)"
+    ],
+    "period": [
+      "2025-07-28",
+      "2025-07-28"
+    ],
+    "timeline": [
+      {
+        "date": "2024-02-01",
+        "event_ar": "فرضت عليه الولايات المتحدة عقوبات بموجب الأمر التنفيذي 14115.",
+        "url": "https://2021-2025.state.gov/announcement-of-further-measures-to-promote-peace-security-and-stability-in-the-west-bank/"
+      },
+      {
+        "date": "2024-02-12",
+        "event_ar": "فرضت عليه المملكة المتحدة تجميد الأصول وحظر السفر.",
+        "url": "https://www.gov.uk/government/news/uk-sanctions-extremist-settlers-in-the-west-bank"
+      },
+      {
+        "date": "2024-04-19",
+        "event_ar": "أدرجه الاتحاد الأوروبي في نظام العقوبات العالمي لحقوق الإنسان.",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401172"
+      },
+      {
+        "date": "2024-05-16",
+        "event_ar": "أدرجته كندا في أول قائمة بموجب لوائح عنف المستوطنين المتطرفين.",
+        "url": "https://www.canada.ca/en/global-affairs/news/2024/05/backgrounder-canada-imposes-sanctions-on-perpetrators-of-extremist-settler-violence-against-civilians-in-west-bank.html"
+      },
+      {
+        "date": "2025-01-20",
+        "event_ar": "ألغي الأمر التنفيذي الأمريكي 14115 الذي فرضت بموجبه العقوبات الأمريكية.",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2025-01-28/html/2025-01901.htm"
+      },
+      {
+        "date": "2025-07-28",
+        "event_ar": "قتل الناشط الفلسطيني عودة الهذالين برصاصة في قرية أم الخير بمسافر يطا. وأفادت وكالة أسوشيتد برس بأن مقطعا صوره شاهد فلسطيني يظهر ليفي وهو يلوح بمسدس ويطلق النار مرتين، دون أن يظهر المقطع موضع إصابة الرصاص، وبأن شهودا قالوا إنهم رأوه يطلق النار على الهذالين.",
+        "url": "https://www.yahoo.com/news/articles/settler-allegedly-killed-palestinian-theres-192353572.html"
+      },
+      {
+        "date": "2025-07-29",
+        "event_ar": "رفضت محكمة طلب الشرطة تمديد احتجازه وأمرت بالإفراج عنه إلى الحبس المنزلي، بحسب أسوشيتد برس.",
+        "url": "https://www.yahoo.com/news/articles/settler-allegedly-killed-palestinian-theres-192353572.html"
+      },
+      {
+        "date": "2025-08-01",
+        "event_ar": "قضت القاضية حافي توكر بإنهاء حبسه المنزلي، وكتبت بحسب أسوشيتد برس أنه لا خلاف على أنه أطلق النار، لكنه ربما تصرف دفاعا عن النفس، وأن المحكمة لم تستطع إثبات أن طلقاته قتلت الهذالين، ومنعته من التواصل مع سكان القرية لمدة شهر.",
+        "url": "https://www.yahoo.com/news/articles/settler-accused-killing-palestinian-activist-164253085.html"
+      },
+      {
+        "date": "2025-08-10",
+        "event_ar": "نشرت منظمة بتسيلم مقطعا قالت إن الهذالين صوره بنفسه، وأفادت أسوشيتد برس بأنه يبدو أنه يظهر لحظة مقتله أثناء إطلاق ليفي النار باتجاه مصور المقطع.",
+        "url": "https://www.news4jax.com/news/world/2025/08/11/video-appears-to-show-the-moment-a-palestinian-activist-is-killed-as-an-israeli-settler-opens-fire/"
+      },
+      {
+        "date": "2026-05-08",
+        "event_ar": "أورد تقرير لجنة التحقيق الدولية المستقلة الواقعة مثالا على أوجه القصور في إنفاذ القانون بحق المستوطنين.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf"
+      },
+      {
+        "date": "2026-08-06",
+        "event_ar": "قدمت النيابة الإسرائيلية لائحة اتهام بحقه إلى المحكمة المركزية في بئر السبع بتهم القتل بتهور والتعدي مع حمل سلاح والإضرار المتعمد بالممتلكات، بحسب تايمز أوف إسرائيل وجيروزاليم بوست.",
+        "url": "https://www.timesofisrael.com/extremist-settler-charged-with-reckless-homicide-over-death-of-palestinian-activist/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Extremist settler charged with reckless homicide over death of Palestinian activist",
+        "publisher": "The Times of Israel",
+        "date": "2026-08-06",
+        "url": "https://www.timesofisrael.com/extremist-settler-charged-with-reckless-homicide-over-death-of-palestinian-activist/",
+        "kind": "media"
+      },
+      {
+        "title": "Israeli settler indicted for reckless homicide in killing of Awdah Hathaleen",
+        "publisher": "The Jerusalem Post",
+        "date": "2026-08-06",
+        "url": "https://www.jpost.com/israel-news/article-904756",
+        "kind": "media"
+      },
+      {
+        "title": "A settler allegedly killed a Palestinian, and there’s video. Israel released him to house arrest",
+        "publisher": "Associated Press (via Yahoo News)",
+        "date": "2025-07-29",
+        "url": "https://www.yahoo.com/news/articles/settler-allegedly-killed-palestinian-theres-192353572.html",
+        "kind": "media"
+      },
+      {
+        "title": "A settler accused of killing a Palestinian activist is to be freed. Israel still holds the body",
+        "publisher": "Associated Press (via Yahoo News)",
+        "date": "2025-08-01",
+        "url": "https://www.yahoo.com/news/articles/settler-accused-killing-palestinian-activist-164253085.html",
+        "kind": "media"
+      },
+      {
+        "title": "Video appears to show the moment a Palestinian activist is killed as an Israeli settler opens fire",
+        "publisher": "Associated Press (via News4JAX)",
+        "date": "2025-08-11",
+        "url": "https://www.news4jax.com/news/world/2025/08/11/video-appears-to-show-the-moment-a-palestinian-activist-is-killed-as-an-israeli-settler-opens-fire/",
+        "kind": "media"
+      },
+      {
+        "title": "Report of the Independent International Commission of Inquiry on the OPT, including East Jerusalem, and Israel (A/HRC/62/22)",
+        "publisher": "UN Independent International Commission of Inquiry",
+        "date": "2026-05-08",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Announcement of Further Measures to Promote Peace, Security, and Stability in the West Bank",
+        "publisher": "U.S. Department of State",
+        "date": "2024-02-01",
+        "url": "https://2021-2025.state.gov/announcement-of-further-measures-to-promote-peace-security-and-stability-in-the-west-bank/",
+        "kind": "government"
+      },
+      {
+        "title": "Executive Order 14148: Initial Rescissions of Harmful Executive Orders and Actions (90 FR 8237)",
+        "publisher": "Federal Register / GovInfo",
+        "date": "2025-01-28",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2025-01-28/html/2025-01901.htm",
+        "kind": "government"
+      },
+      {
+        "title": "UK sanctions extremist settlers in the West Bank",
+        "publisher": "UK Foreign, Commonwealth & Development Office",
+        "date": "2024-02-12",
+        "url": "https://www.gov.uk/government/news/uk-sanctions-extremist-settlers-in-the-west-bank",
+        "kind": "government"
+      },
+      {
+        "title": "Council Implementing Regulation (EU) 2024/1172",
+        "publisher": "Council of the European Union (EUR-Lex)",
+        "date": "2024-04-19",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202401172",
+        "kind": "government"
+      },
+      {
+        "title": "Backgrounder: Canada imposes sanctions on perpetrators of extremist settler violence against civilians in West Bank",
+        "publisher": "Global Affairs Canada",
+        "date": "2024-05-16",
+        "url": "https://www.canada.ca/en/global-affairs/news/2024/05/backgrounder-canada-imposes-sanctions-on-perpetrators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "kind": "government"
+      },
+      {
+        "title": "Special Economic Measures (Extremist Settler Violence) Regulations, Schedule (consolidated, current to 2026-09-30)",
+        "publisher": "Justice Laws Website (Canada)",
+        "date": "2026-09-30",
+        "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2024-91/page-2.html",
+        "kind": "government"
+      }
+    ],
+    "limits_ar": "لائحة الاتهام اتهام لا إدانة، ولم تصدر المحكمة حكما حتى أكتوبر 2026، ويدفع المتهم بأنه تصرف دفاعا عن النفس. وتستند وقائع التحقيق والإفراج إلى تقارير وكالات أنباء لا إلى نصوص الأحكام. والعقوبات تدابير إدارية تتخذها حكومات والاتحاد الأوروبي وفق معاييرها، وليست أحكاما قضائية، وقد رفعت العقوبات الأمريكية في يناير 2025.",
+    "uncertain": false
+  },
+  {
+    "id": "P-0004",
+    "name_ar": "إيتمار بن غفير",
+    "name_en": "Itamar Ben-Gvir",
+    "role_ar": "وزير الأمن القومي الإسرائيلي",
+    "role_now_ar": "وزير الأمن القومي ورئيس حزب «عوتسما يهوديت» حتى انتخابات الكنيست في 27 أكتوبر 2026",
+    "status": "convicted",
+    "statuses": [
+      {
+        "type": "convicted",
+        "body_ar": "إسرائيل — محكمة الصلح في القدس",
+        "body_en": "Israel — Jerusalem Magistrate’s Court",
+        "date": "2007-06-25",
+        "doc_title_en": "Conviction for incitement to racism and support for a terrorist organization (court record not available online; as reported by Ynet)",
+        "doc_title_ar": "إدانة بالتحريض على العنصرية ودعم منظمة إرهابية (نص الحكم غير متاح على الإنترنت؛ بحسب Ynet)",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.ynetnews.com/articles/0,7340,L-3417226,00.html",
+        "summary_ar": "أفاد موقع Ynet بأن المحكمة أدانته بالتحريض على العنصرية ودعم منظمة إرهابية، على خلفية لافتة كتب عليها «اطردوا العدو العربي» وملصق كتب عليه «كان الحاخام كهانا محقا، النواب العرب طابور خامس»، وبرأته من تهم أخرى بينها الهتاف «الموت للعرب»."
+      },
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2025-03-13",
+        "doc_title_en": "\"More than a human can bear\": Israel’s systematic use of sexual, reproductive and other forms of gender-based violence since 7 October 2023",
+        "doc_title_ar": "«أكثر مما يحتمله إنسان»: استخدام إسرائيل الممنهج للعنف الجنسي والإنجابي وغيره من أشكال العنف القائم على النوع الاجتماعي منذ 7 أكتوبر 2023",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/58/CRP.6",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session58/a-hrc-58-crp-6.pdf",
+        "summary_ar": "خلصت اللجنة إلى أن الاحتجاز الإسرائيلي يتسم بانتهاكات واسعة النطاق ومنهجية تشمل العنف الجنسي والقائم على النوع الاجتماعي، وأن حدة هذه الممارسات وتواترها ازدادا بشكل كبير منذ 7 أكتوبر 2023 في أعقاب أوامر وتصريحات وزير الأمن القومي المسؤول عن السجون.",
+        "quote_en": "following orders and statements of the Minister for National Security Ben Gvir who is in charge of prisons"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "المملكة المتحدة — وزارة الخارجية والكومنولث والتنمية",
+        "body_en": "United Kingdom — Foreign, Commonwealth & Development Office",
+        "date": "2025-06-10",
+        "doc_title_en": "UK and partners unite to sanction ministers inciting West Bank violence",
+        "doc_title_ar": "المملكة المتحدة وشركاؤها يتحدون لفرض عقوبات على وزيرين يحرضان على العنف في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Global Human Rights Sanctions Regulations 2020",
+        "url": "https://www.gov.uk/government/news/uk-and-partners-unite-to-sanction-ministers-inciting-west-bank-violence",
+        "summary_ar": "أدرجته المملكة المتحدة بصفته الشخصية بموجب لوائح العقوبات العالمية لحقوق الإنسان لعام 2020، لمسؤوليته بحسب الحكومة البريطانية عن نشاط يرقى إلى انتهاك جسيم لحق الأفراد في عدم التعرض للمعاملة القاسية أو اللاإنسانية أو المهينة، سواء بالانخراط فيه أو التحريض عليه أو الترويج له أو دعمه، ولا سيما أعمال العدوان والعنف ضد أفراد فلسطينيين في الضفة الغربية. ويشمل ذلك تجميد الأصول وحظر السفر وحظر تولي إدارة الشركات.",
+        "quote_en": "have incited extremist violence and serious abuses of Palestinian human rights"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "كندا — وزارة الشؤون العالمية",
+        "body_en": "Canada — Global Affairs Canada",
+        "date": "2025-06-10",
+        "doc_title_en": "Canada imposes fourth round of sanctions on facilitators of extremist settler violence against civilians in West Bank",
+        "doc_title_ar": "كندا تفرض الجولة الرابعة من العقوبات على ميسري عنف المستوطنين المتطرفين ضد المدنيين في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Special Economic Measures (Extremist Settler Violence) Regulations, SOR/2025-137",
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/06/canada-imposes-fourth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "summary_ar": "أدرجته كندا مع وزير آخر لما وصفته بدورهما الحاسم في تسهيل التوسع الكبير للمستوطنات والبؤر في الضفة الغربية وتوفير غطاء سياسي لمرتكبي عنف المستوطنين، وقالت في الخلفية الرسمية إن لديها أسبابا معقولة للاعتقاد بأنهما سهلا أو دعما أو مولا أو ساهما في هذا العنف. ويحظر التدبير التعامل معه ويجعله غير مقبول الدخول إلى كندا."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "أستراليا — وزيرة الخارجية",
+        "body_en": "Australia — Minister for Foreign Affairs",
+        "date": "2025-06-10",
+        "doc_title_en": "Joint statement by the Foreign Ministers of Australia, Canada, New Zealand, Norway and the United Kingdom on measures targeting Itamar Ben-Gvir and Bezalel Smotrich",
+        "doc_title_ar": "بيان مشترك لوزراء خارجية أستراليا وكندا ونيوزيلندا والنرويج والمملكة المتحدة بشأن إجراءات تستهدف إيتمار بن غفير وبتسلئيل سموتريتش",
+        "doc_title_ar_official": true,
+        "doc_symbol": null,
+        "url": "https://www.foreignminister.gov.au/minister/penny-wong/media-release/joint-statement-foreign-ministers-australia-canada-new-zealand-norway-and-united-kingdom-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich",
+        "summary_ar": "أعلنت أستراليا ضمن بيان مشترك مع كندا ونيوزيلندا والنرويج والمملكة المتحدة فرض عقوبات وتدابير أخرى عليه بسبب التحريض على العنف ضد الفلسطينيين في الضفة الغربية."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "نيوزيلندا — وزير الخارجية",
+        "body_en": "New Zealand — Minister of Foreign Affairs",
+        "date": "2025-06-11",
+        "doc_title_en": "NZ places travel ban on extremist Israeli politicians",
+        "doc_title_ar": "نيوزيلندا تفرض حظر سفر على سياسيين إسرائيليين متطرفين",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.beehive.govt.nz/release/nz-places-travel-ban-extremist-israeli-politicians",
+        "summary_ar": "فرضت نيوزيلندا حظر سفر يمنعه من دخول أراضيها، وقال وزير خارجيتها إن الوزيرين يستخدمان منصبيهما لتقويض السلام وفرص حل الدولتين عبر الدعوة إلى ضم الأراضي الفلسطينية وتوسيع المستوطنات غير القانونية مع التحريض على العنف والتهجير القسري."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "النرويج — الحكومة",
+        "body_en": "Norway — Government",
+        "date": "2025-06-10",
+        "doc_title_en": "Norge innfører sanksjoner mot den israelske regjeringen",
+        "doc_title_ar": "النرويج تفرض عقوبات على الحكومة الإسرائيلية",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.regjeringen.no/no/aktuelt/norge-innforer-sanksjoner-mot-den-israelske-regjeringen/id3108544/",
+        "summary_ar": "أعلنت النرويج، ضمن الإجراءات المنسقة مع الدول الأربع الأخرى، منعه من دخول أراضيها، بحسب بيان الحكومة النرويجية وتغطية وكالة فرانس برس."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "سلوفينيا — حكومة جمهورية سلوفينيا",
+        "body_en": "Slovenia — Government of the Republic of Slovenia",
+        "date": "2025-07-17",
+        "doc_title_en": "162nd Regular Session of the Government of the Republic of Slovenia",
+        "doc_title_ar": "الجلسة العادية الـ162 لحكومة جمهورية سلوفينيا",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.gov.si/en/news/2025-07-17-162nd-regular-session-of-the-government-of-the-republic-of-slovenia/",
+        "summary_ar": "اعتمدت الحكومة السلوفينية منطلقات لاتخاذ تدابير ضده وضد سموتريتش، وقالت إنهما أدليا بتصريحات وصفتها بالإبادية وحرضا على عنف شديد وانتهاكات جسيمة لحقوق الإنسان ضد الفلسطينيين، وإنها تعتزم بهذا الإجراء إعلانهما شخصين غير مرغوب فيهما."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "هولندا — وزير الخارجية (رسالة إلى مجلس النواب)",
+        "body_en": "Netherlands — Minister of Foreign Affairs (letter to the House of Representatives)",
+        "date": "2025-07-28",
+        "doc_title_en": "De situatie in het Midden-Oosten — Brief van de Minister van Buitenlandse Zaken",
+        "doc_title_ar": "الوضع في الشرق الأوسط — رسالة وزير الخارجية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Kamerstuk 23 432, nr. 569",
+        "url": "https://www.tweedekamer.nl/downloads/document?id=2025D34482",
+        "summary_ar": "أبلغ وزير الخارجية البرلمان بأن الحكومة قررت إعلانه وسموتريتش شخصين غير مرغوب فيهما، والسعي إلى تسجيلهما أجنبيين غير مرغوب فيهما في نظام معلومات شنغن، لأنهما بحسب الرسالة حرضا مرارا على عنف المستوطنين ضد الفلسطينيين، ويدعوان باستمرار إلى توسيع المستوطنات غير القانونية وإلى التطهير العرقي في قطاع غزة."
+      },
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2026-05-08",
+        "doc_title_en": "Report of the Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "doc_title_ar": "تقرير لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/62/22",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf",
+        "summary_ar": "ذكر التقرير أن وزير المالية سموتريتش ووزيرة الاستيطان والمشاريع الوطنية ستروك ووزير الأمن القومي بن غفير ووزير الدفاع كاتس شخصيات رئيسية مسؤولة عن تمويل البؤر الاستيطانية وحمايتها، بما فيها بؤر تنطلق منها هجمات عنيفة، وأنهم سمحوا صراحة بعنف المستوطنين أو تغاضوا عنه أداة لتحقيق أجندة أوسع.",
+        "quote_en": "key figures who are responsible for funding and protecting outposts"
+      }
+    ],
+    "crimes_ar": [
+      "التحريض على العنصرية ودعم منظمة إرهابية — إدانة صادرة عن محكمة إسرائيلية عام 2007",
+      "التحريض على العنف ضد الفلسطينيين في الضفة الغربية — أساس عقوبات وتدابير حكومية عام 2025 (تدابير إدارية لا أحكام قضائية)"
+    ],
+    "period": null,
+    "timeline": [
+      {
+        "date": "2007-06-25",
+        "event_ar": "أدانته محكمة الصلح في القدس بالتحريض على العنصرية ودعم منظمة إرهابية، بحسب Ynet.",
+        "url": "https://www.ynetnews.com/articles/0,7340,L-3417226,00.html"
+      },
+      {
+        "date": "2025-03-13",
+        "event_ar": "ربطت لجنة التحقيق الدولية المستقلة ازدياد الانتهاكات في مرافق الاحتجاز بأوامره وتصريحاته بصفته الوزير المسؤول عن السجون.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session58/a-hrc-58-crp-6.pdf"
+      },
+      {
+        "date": "2025-06-10",
+        "event_ar": "أعلنت المملكة المتحدة وكندا وأستراليا ونيوزيلندا والنرويج في بيان مشترك عقوبات وتدابير أخرى بحقه وبحق الوزير الآخر بسبب التحريض على العنف ضد الفلسطينيين في الضفة الغربية.",
+        "url": "https://www.gov.uk/government/news/foreign-ministers-joint-statement-on-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich"
+      },
+      {
+        "date": "2025-07-17",
+        "event_ar": "اعتمدت حكومة سلوفينيا منطلقات لتدابير بحقه وأعلنت عزمها إعلانه شخصا غير مرغوب فيه.",
+        "url": "https://www.gov.si/en/news/2025-07-17-162nd-regular-session-of-the-government-of-the-republic-of-slovenia/"
+      },
+      {
+        "date": "2025-07-28",
+        "event_ar": "أعلنت الحكومة الهولندية في رسالة إلى البرلمان إعلانه شخصا غير مرغوب فيه والسعي إلى تسجيله في نظام معلومات شنغن.",
+        "url": "https://www.tweedekamer.nl/downloads/document?id=2025D34482"
+      },
+      {
+        "date": "2025-09-09",
+        "event_ar": "أعلن وزير الخارجية الإسباني منعه ومنع الوزير الآخر من دخول الأراضي الإسبانية، بحسب وكالة فرانس برس.",
+        "url": "https://www.thelocal.es/20250909/spain-bars-two-far-right-israeli-ministers"
+      },
+      {
+        "date": "2025-09-16",
+        "event_ar": "قالت لجنة التحقيق الدولية المستقلة في تحليلها القانوني بشأن الإبادة الجماعية إنها لم تقيم تصريحاته تقييما كاملا، وإنه ينبغي تقييمها لتحديد ما إذا كانت تشكل تحريضا على الإبادة.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf"
+      },
+      {
+        "date": "2026-05-08",
+        "event_ar": "ذكره تقرير لجنة التحقيق الدولية المستقلة بين الشخصيات الرئيسية المسؤولة عن تمويل البؤر الاستيطانية وحمايتها.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Ben-Gvir convicted of incitement (Jerusalem Magistrates Court)",
+        "publisher": "Ynetnews",
+        "date": "2007-06-25",
+        "url": "https://www.ynetnews.com/articles/0,7340,L-3417226,00.html",
+        "kind": "media"
+      },
+      {
+        "title": "\"More than a human can bear\" (A/HRC/58/CRP.6)",
+        "publisher": "UN Independent International Commission of Inquiry",
+        "date": "2025-03-13",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session58/a-hrc-58-crp-6.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Foreign ministers’ joint statement on measures targeting Itamar Ben-Gvir and Bezalel Smotrich",
+        "publisher": "UK Government (GOV.UK)",
+        "date": "2025-06-10",
+        "url": "https://www.gov.uk/government/news/foreign-ministers-joint-statement-on-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich",
+        "kind": "government"
+      },
+      {
+        "title": "UK and partners unite to sanction ministers inciting West Bank violence",
+        "publisher": "UK Foreign, Commonwealth & Development Office",
+        "date": "2025-06-10",
+        "url": "https://www.gov.uk/government/news/uk-and-partners-unite-to-sanction-ministers-inciting-west-bank-violence",
+        "kind": "government"
+      },
+      {
+        "title": "Canada imposes fourth round of sanctions on facilitators of extremist settler violence against civilians in West Bank",
+        "publisher": "Global Affairs Canada",
+        "date": "2025-06-10",
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/06/canada-imposes-fourth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "kind": "government"
+      },
+      {
+        "title": "Backgrounder - Canada imposes fourth round of sanctions on facilitators of extremist settler violence against civilians in the West Bank",
+        "publisher": "Global Affairs Canada",
+        "date": "2025-06-10",
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/06/backgrounder---canada-imposes-fourth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-civilians-in-the-west-bank.html",
+        "kind": "government"
+      },
+      {
+        "title": "Joint statement by the Foreign Ministers of Australia, Canada, New Zealand, Norway and the United Kingdom on measures targeting Itamar Ben-Gvir and Bezalel Smotrich",
+        "publisher": "Australian Minister for Foreign Affairs",
+        "date": "2025-06-10",
+        "url": "https://www.foreignminister.gov.au/minister/penny-wong/media-release/joint-statement-foreign-ministers-australia-canada-new-zealand-norway-and-united-kingdom-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich",
+        "kind": "government"
+      },
+      {
+        "title": "NZ places travel ban on extremist Israeli politicians",
+        "publisher": "New Zealand Government (Beehive)",
+        "date": "2025-06-11",
+        "url": "https://www.beehive.govt.nz/release/nz-places-travel-ban-extremist-israeli-politicians",
+        "kind": "government"
+      },
+      {
+        "title": "Norge innfører sanksjoner mot den israelske regjeringen",
+        "publisher": "Government of Norway (regjeringen.no)",
+        "date": "2025-06-10",
+        "url": "https://www.regjeringen.no/no/aktuelt/norge-innforer-sanksjoner-mot-den-israelske-regjeringen/id3108544/",
+        "kind": "government"
+      },
+      {
+        "title": "Norway and four others sanction right-wing Israeli ministers",
+        "publisher": "The Local Norway (AFP)",
+        "date": "2025-06-10",
+        "url": "https://www.thelocal.no/20250610/norway-and-four-others-sanction-right-wing-israeli-ministers",
+        "kind": "media"
+      },
+      {
+        "title": "162nd Regular Session of the Government of the Republic of Slovenia",
+        "publisher": "Government of the Republic of Slovenia",
+        "date": "2025-07-17",
+        "url": "https://www.gov.si/en/news/2025-07-17-162nd-regular-session-of-the-government-of-the-republic-of-slovenia/",
+        "kind": "government"
+      },
+      {
+        "title": "Kamerstuk 23 432, nr. 569 — Brief van de Minister van Buitenlandse Zaken (De situatie in het Midden-Oosten)",
+        "publisher": "Tweede Kamer der Staten-Generaal",
+        "date": "2025-07-28",
+        "url": "https://www.tweedekamer.nl/downloads/document?id=2025D34482",
+        "kind": "government"
+      },
+      {
+        "title": "Spain bars two far-right Israeli ministers",
+        "publisher": "The Local Spain (AFP)",
+        "date": "2025-09-09",
+        "url": "https://www.thelocal.es/20250909/spain-bars-two-far-right-israeli-ministers",
+        "kind": "media"
+      },
+      {
+        "title": "Report of the Independent International Commission of Inquiry on the OPT, including East Jerusalem, and Israel (A/HRC/62/22)",
+        "publisher": "UN Independent International Commission of Inquiry",
+        "date": "2026-05-08",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide (A/HRC/60/CRP.3)",
+        "publisher": "UN Independent International Commission of Inquiry",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "kind": "un"
+      }
+    ],
+    "limits_ar": "الإدانة صادرة عام 2007 عن محكمة إسرائيلية في تهم التحريض على العنصرية ودعم منظمة إرهابية، ولا تتصل بوقائع ما بعد أكتوبر 2023 ولا تعد حكما في جرائم دولية، ومصدرها هنا تقرير صحفي لا نص الحكم. والعقوبات وحظر الدخول وإعلان الشخص غير مرغوب فيه تدابير سياسية وإدارية تتخذها حكومات، لا أحكام قضائية. ولا توجد بحقه مذكرة قبض علنية من المحكمة الجنائية الدولية، وقالت لجنة التحقيق إنها لم تقيم تصريحاته تقييما كاملا.",
+    "uncertain": false
+  },
+  {
+    "id": "P-0005",
+    "name_ar": "يتسحاق هرتسوغ",
+    "name_en": "Isaac Herzog",
+    "role_ar": "رئيس دولة إسرائيل",
+    "role_now_ar": "رئيس دولة إسرائيل",
+    "status": "named",
+    "statuses": [
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل (مجلس حقوق الإنسان)",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2025-09-16",
+        "doc_title_en": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide",
+        "doc_title_ar": "تحليل قانوني لسلوك إسرائيل في غزة بموجب اتفاقية منع جريمة الإبادة الجماعية والمعاقبة عليها",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/60/CRP.3",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "summary_ar": "خلصت اللجنة إلى أن الرئيس يتسحاق هرتسوغ ورئيس الوزراء بنيامين نتنياهو ووزير الدفاع آنذاك يوآف غالانت حرضوا على ارتكاب الإبادة الجماعية، وأن السلطات الإسرائيلية لم تتخذ إجراءات لمعاقبتهم على هذا التحريض. ورأت اللجنة أن تصريحه في 13 أكتوبر 2023 بأن «أمة بأكملها» مسؤولة لم يدع صراحة إلى الإبادة، لكنه يمكن أن يفسر بشكل معقول تحريضا لأفراد قوات الأمن على استهداف الفلسطينيين في غزة بوصفهم مذنبين جماعيا، واعتبرت توضيحه اللاحق محاولة للتنصل من المسؤولية.",
+        "quote_en": "have incited the commission of genocide and that Israeli authorities have failed to take action against them to punish this incitement"
+      }
+    ],
+    "crimes_ar": [
+      "التحريض المباشر والعلني على ارتكاب الإبادة الجماعية (المادة الثالثة (ج) من اتفاقية منع الإبادة الجماعية) — استنتاج لجنة التحقيق الأممية، وليس اتهاما قضائيا"
+    ],
+    "period": [
+      "2023-10-13",
+      "2023-10-13"
+    ],
+    "timeline": [
+      {
+        "date": "2023-10-12",
+        "event_ar": "قال في تصريح بشأن غزة إن «أمة بأكملها» هي المسؤولة؛ وأورد أمر محكمة العدل الدولية الصادر في 26 يناير 2024 التصريح بتاريخ 12 أكتوبر 2023 (الفقرة 52)، فيما أرخته لجنة التحقيق بـ13 أكتوبر 2023.",
+        "url": "https://www.icj-cij.org/sites/default/files/case-related/192/192-20240126-ord-01-00-en.pdf",
+        "quote_en": "It is an entire nation out there that is responsible"
+      },
+      {
+        "date": "2025-09-16",
+        "event_ar": "خلصت لجنة التحقيق الدولية المستقلة إلى أنه حرض على ارتكاب الإبادة الجماعية، إلى جانب نتنياهو وغالانت.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide (A/HRC/60/CRP.3)",
+        "publisher": "UN Independent International Commission of Inquiry on the OPT and Israel",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Israel has committed genocide in the Gaza Strip, UN Commission finds",
+        "publisher": "OHCHR",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/en/press-releases/2025/09/israel-has-committed-genocide-gaza-strip-un-commission-finds",
+        "kind": "un"
+      },
+      {
+        "title": "Application of the Genocide Convention in the Gaza Strip (South Africa v. Israel), Order of 26 January 2024",
+        "publisher": "International Court of Justice",
+        "date": "2024-01-26",
+        "url": "https://www.icj-cij.org/sites/default/files/case-related/192/192-20240126-ord-01-00-en.pdf",
+        "kind": "court"
+      }
+    ],
+    "limits_ar": "استنتاج لجنة التحقيق نتيجة تحقيق أممي وليس حكما قضائيا ولا اتهاما من مدع عام، ولم يصدر بحقه أي أمر قبض أو اتهام من محكمة. وأشارت اللجنة نفسها إلى أن تصريحه لم يدع صراحة إلى الإبادة الجماعية. ويختلف تاريخ التصريح بين أمر محكمة العدل الدولية (12 أكتوبر 2023) وتقرير اللجنة (13 أكتوبر 2023).",
+    "uncertain": false
+  },
+  {
+    "id": "P-0006",
+    "name_ar": "بتسلئيل سموتريتش",
+    "name_en": "Bezalel Smotrich (Bezalel Yoel Smotrich)",
+    "role_ar": "وزير المالية ووزير إضافي في وزارة الدفاع الإسرائيلية",
+    "role_now_ar": "وزير المالية حتى انتخابات الكنيست في 27 أكتوبر 2026",
+    "status": "sanctioned",
+    "statuses": [
+      {
+        "type": "sanctioned",
+        "body_ar": "المملكة المتحدة — وزارة الخارجية والكومنولث والتنمية",
+        "body_en": "United Kingdom — Foreign, Commonwealth & Development Office",
+        "date": "2025-06-10",
+        "doc_title_en": "UK and partners unite to sanction ministers inciting West Bank violence",
+        "doc_title_ar": "المملكة المتحدة وشركاؤها يتحدون لفرض عقوبات على وزيرين يحرضان على العنف في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Global Human Rights Sanctions Regulations 2020",
+        "url": "https://www.gov.uk/government/news/uk-and-partners-unite-to-sanction-ministers-inciting-west-bank-violence",
+        "summary_ar": "أدرجته المملكة المتحدة بصفته الشخصية بموجب لوائح العقوبات العالمية لحقوق الإنسان لعام 2020، لمسؤوليته بحسب الحكومة البريطانية عن نشاط يرقى إلى انتهاك جسيم لحق الأفراد في عدم التعرض للمعاملة القاسية أو اللاإنسانية أو المهينة، سواء بالانخراط فيه أو التحريض عليه أو الترويج له أو دعمه، ولا سيما أعمال العدوان والعنف ضد أفراد فلسطينيين في الضفة الغربية. ويشمل ذلك تجميد الأصول وحظر السفر وحظر تولي إدارة الشركات.",
+        "quote_en": "have incited extremist violence and serious abuses of Palestinian human rights"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "كندا — وزارة الشؤون العالمية",
+        "body_en": "Canada — Global Affairs Canada",
+        "date": "2025-06-10",
+        "doc_title_en": "Canada imposes fourth round of sanctions on facilitators of extremist settler violence against civilians in West Bank",
+        "doc_title_ar": "كندا تفرض الجولة الرابعة من العقوبات على ميسري عنف المستوطنين المتطرفين ضد المدنيين في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Special Economic Measures (Extremist Settler Violence) Regulations, SOR/2025-137",
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/06/canada-imposes-fourth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "summary_ar": "أدرجته كندا مع وزير آخر لما وصفته بدورهما الحاسم في تسهيل التوسع الكبير للمستوطنات والبؤر في الضفة الغربية وتوفير غطاء سياسي لمرتكبي عنف المستوطنين، وقالت في الخلفية الرسمية إن لديها أسبابا معقولة للاعتقاد بأنهما سهلا أو دعما أو مولا أو ساهما في هذا العنف. ويحظر التدبير التعامل معه ويجعله غير مقبول الدخول إلى كندا."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "أستراليا — وزيرة الخارجية",
+        "body_en": "Australia — Minister for Foreign Affairs",
+        "date": "2025-06-10",
+        "doc_title_en": "Joint statement by the Foreign Ministers of Australia, Canada, New Zealand, Norway and the United Kingdom on measures targeting Itamar Ben-Gvir and Bezalel Smotrich",
+        "doc_title_ar": "بيان مشترك لوزراء خارجية أستراليا وكندا ونيوزيلندا والنرويج والمملكة المتحدة بشأن إجراءات تستهدف إيتمار بن غفير وبتسلئيل سموتريتش",
+        "doc_title_ar_official": true,
+        "doc_symbol": null,
+        "url": "https://www.foreignminister.gov.au/minister/penny-wong/media-release/joint-statement-foreign-ministers-australia-canada-new-zealand-norway-and-united-kingdom-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich",
+        "summary_ar": "أعلنت أستراليا ضمن بيان مشترك مع كندا ونيوزيلندا والنرويج والمملكة المتحدة فرض عقوبات وتدابير أخرى عليه بسبب التحريض على العنف ضد الفلسطينيين في الضفة الغربية."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "نيوزيلندا — وزير الخارجية",
+        "body_en": "New Zealand — Minister of Foreign Affairs",
+        "date": "2025-06-11",
+        "doc_title_en": "NZ places travel ban on extremist Israeli politicians",
+        "doc_title_ar": "نيوزيلندا تفرض حظر سفر على سياسيين إسرائيليين متطرفين",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.beehive.govt.nz/release/nz-places-travel-ban-extremist-israeli-politicians",
+        "summary_ar": "فرضت نيوزيلندا حظر سفر يمنعه من دخول أراضيها، وقال وزير خارجيتها إن الوزيرين يستخدمان منصبيهما لتقويض السلام وفرص حل الدولتين عبر الدعوة إلى ضم الأراضي الفلسطينية وتوسيع المستوطنات غير القانونية مع التحريض على العنف والتهجير القسري."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "النرويج — الحكومة",
+        "body_en": "Norway — Government",
+        "date": "2025-06-10",
+        "doc_title_en": "Norge innfører sanksjoner mot den israelske regjeringen",
+        "doc_title_ar": "النرويج تفرض عقوبات على الحكومة الإسرائيلية",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.regjeringen.no/no/aktuelt/norge-innforer-sanksjoner-mot-den-israelske-regjeringen/id3108544/",
+        "summary_ar": "أعلنت النرويج، ضمن الإجراءات المنسقة مع الدول الأربع الأخرى، منعه من دخول أراضيها، بحسب بيان الحكومة النرويجية وتغطية وكالة فرانس برس."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "سلوفينيا — حكومة جمهورية سلوفينيا",
+        "body_en": "Slovenia — Government of the Republic of Slovenia",
+        "date": "2025-07-17",
+        "doc_title_en": "162nd Regular Session of the Government of the Republic of Slovenia",
+        "doc_title_ar": "الجلسة العادية الـ162 لحكومة جمهورية سلوفينيا",
+        "doc_title_ar_official": false,
+        "doc_symbol": null,
+        "url": "https://www.gov.si/en/news/2025-07-17-162nd-regular-session-of-the-government-of-the-republic-of-slovenia/",
+        "summary_ar": "اعتمدت الحكومة السلوفينية منطلقات لاتخاذ تدابير ضده وضد بن غفير، وقالت إنهما أدليا بتصريحات وصفتها بالإبادية وحرضا على عنف شديد وانتهاكات جسيمة لحقوق الإنسان ضد الفلسطينيين، وإنها تعتزم بهذا الإجراء إعلانهما شخصين غير مرغوب فيهما."
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "هولندا — وزير الخارجية (رسالة إلى مجلس النواب)",
+        "body_en": "Netherlands — Minister of Foreign Affairs (letter to the House of Representatives)",
+        "date": "2025-07-28",
+        "doc_title_en": "De situatie in het Midden-Oosten — Brief van de Minister van Buitenlandse Zaken",
+        "doc_title_ar": "الوضع في الشرق الأوسط — رسالة وزير الخارجية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Kamerstuk 23 432, nr. 569",
+        "url": "https://www.tweedekamer.nl/downloads/document?id=2025D34482",
+        "summary_ar": "أبلغ وزير الخارجية البرلمان بأن الحكومة قررت إعلانه وبن غفير شخصين غير مرغوب فيهما، والسعي إلى تسجيلهما أجنبيين غير مرغوب فيهما في نظام معلومات شنغن، لأنهما بحسب الرسالة حرضا مرارا على عنف المستوطنين ضد الفلسطينيين، ويدعوان باستمرار إلى توسيع المستوطنات غير القانونية وإلى التطهير العرقي في قطاع غزة."
+      },
+      {
+        "type": "named",
+        "body_ar": "لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "body_en": "UN Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "date": "2026-05-08",
+        "doc_title_en": "Report of the Independent International Commission of Inquiry on the Occupied Palestinian Territory, including East Jerusalem, and Israel",
+        "doc_title_ar": "تقرير لجنة التحقيق الدولية المستقلة المعنية بالأرض الفلسطينية المحتلة، بما فيها القدس الشرقية، وإسرائيل",
+        "doc_title_ar_official": false,
+        "doc_symbol": "A/HRC/62/22",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf",
+        "summary_ar": "ذكر التقرير أن وزير المالية سموتريتش ووزيرة الاستيطان والمشاريع الوطنية ستروك ووزير الأمن القومي بن غفير ووزير الدفاع كاتس شخصيات رئيسية مسؤولة عن تمويل البؤر الاستيطانية وحمايتها، بما فيها بؤر تنطلق منها هجمات عنيفة، وأنهم سمحوا صراحة بعنف المستوطنين أو تغاضوا عنه أداة لتحقيق أجندة أوسع.",
+        "quote_en": "key figures who are responsible for funding and protecting outposts"
+      }
+    ],
+    "crimes_ar": [
+      "التحريض على العنف ضد الفلسطينيين في الضفة الغربية وتسهيل توسيع المستوطنات والبؤر — أساس عقوبات وتدابير حكومية (تدابير إدارية لا أحكام قضائية)"
+    ],
+    "period": null,
+    "timeline": [
+      {
+        "date": "2025-06-10",
+        "event_ar": "أعلنت المملكة المتحدة وكندا وأستراليا ونيوزيلندا والنرويج في بيان مشترك عقوبات وتدابير أخرى بحقه وبحق الوزير الآخر بسبب التحريض على العنف ضد الفلسطينيين في الضفة الغربية.",
+        "url": "https://www.gov.uk/government/news/foreign-ministers-joint-statement-on-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich"
+      },
+      {
+        "date": "2025-07-17",
+        "event_ar": "اعتمدت حكومة سلوفينيا منطلقات لتدابير بحقه وأعلنت عزمها إعلانه شخصا غير مرغوب فيه.",
+        "url": "https://www.gov.si/en/news/2025-07-17-162nd-regular-session-of-the-government-of-the-republic-of-slovenia/"
+      },
+      {
+        "date": "2025-07-28",
+        "event_ar": "أعلنت الحكومة الهولندية في رسالة إلى البرلمان إعلانه شخصا غير مرغوب فيه والسعي إلى تسجيله في نظام معلومات شنغن.",
+        "url": "https://www.tweedekamer.nl/downloads/document?id=2025D34482"
+      },
+      {
+        "date": "2025-09-09",
+        "event_ar": "أعلن وزير الخارجية الإسباني منعه ومنع الوزير الآخر من دخول الأراضي الإسبانية، بحسب وكالة فرانس برس.",
+        "url": "https://www.thelocal.es/20250909/spain-bars-two-far-right-israeli-ministers"
+      },
+      {
+        "date": "2025-09-16",
+        "event_ar": "قالت لجنة التحقيق الدولية المستقلة في تحليلها القانوني بشأن الإبادة الجماعية إنها لم تقيم تصريحاته تقييما كاملا، وإنه ينبغي تقييمها لتحديد ما إذا كانت تشكل تحريضا على الإبادة.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf"
+      },
+      {
+        "date": "2026-05-08",
+        "event_ar": "ذكره تقرير لجنة التحقيق الدولية المستقلة بين الشخصيات الرئيسية المسؤولة عن تمويل البؤر الاستيطانية وحمايتها.",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Foreign ministers’ joint statement on measures targeting Itamar Ben-Gvir and Bezalel Smotrich",
+        "publisher": "UK Government (GOV.UK)",
+        "date": "2025-06-10",
+        "url": "https://www.gov.uk/government/news/foreign-ministers-joint-statement-on-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich",
+        "kind": "government"
+      },
+      {
+        "title": "UK and partners unite to sanction ministers inciting West Bank violence",
+        "publisher": "UK Foreign, Commonwealth & Development Office",
+        "date": "2025-06-10",
+        "url": "https://www.gov.uk/government/news/uk-and-partners-unite-to-sanction-ministers-inciting-west-bank-violence",
+        "kind": "government"
+      },
+      {
+        "title": "Canada imposes fourth round of sanctions on facilitators of extremist settler violence against civilians in West Bank",
+        "publisher": "Global Affairs Canada",
+        "date": "2025-06-10",
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/06/canada-imposes-fourth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "kind": "government"
+      },
+      {
+        "title": "Backgrounder - Canada imposes fourth round of sanctions on facilitators of extremist settler violence against civilians in the West Bank",
+        "publisher": "Global Affairs Canada",
+        "date": "2025-06-10",
+        "url": "https://www.canada.ca/en/global-affairs/news/2025/06/backgrounder---canada-imposes-fourth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-civilians-in-the-west-bank.html",
+        "kind": "government"
+      },
+      {
+        "title": "Joint statement by the Foreign Ministers of Australia, Canada, New Zealand, Norway and the United Kingdom on measures targeting Itamar Ben-Gvir and Bezalel Smotrich",
+        "publisher": "Australian Minister for Foreign Affairs",
+        "date": "2025-06-10",
+        "url": "https://www.foreignminister.gov.au/minister/penny-wong/media-release/joint-statement-foreign-ministers-australia-canada-new-zealand-norway-and-united-kingdom-measures-targeting-itamar-ben-gvir-and-bezalel-smotrich",
+        "kind": "government"
+      },
+      {
+        "title": "NZ places travel ban on extremist Israeli politicians",
+        "publisher": "New Zealand Government (Beehive)",
+        "date": "2025-06-11",
+        "url": "https://www.beehive.govt.nz/release/nz-places-travel-ban-extremist-israeli-politicians",
+        "kind": "government"
+      },
+      {
+        "title": "Norge innfører sanksjoner mot den israelske regjeringen",
+        "publisher": "Government of Norway (regjeringen.no)",
+        "date": "2025-06-10",
+        "url": "https://www.regjeringen.no/no/aktuelt/norge-innforer-sanksjoner-mot-den-israelske-regjeringen/id3108544/",
+        "kind": "government"
+      },
+      {
+        "title": "Norway and four others sanction right-wing Israeli ministers",
+        "publisher": "The Local Norway (AFP)",
+        "date": "2025-06-10",
+        "url": "https://www.thelocal.no/20250610/norway-and-four-others-sanction-right-wing-israeli-ministers",
+        "kind": "media"
+      },
+      {
+        "title": "162nd Regular Session of the Government of the Republic of Slovenia",
+        "publisher": "Government of the Republic of Slovenia",
+        "date": "2025-07-17",
+        "url": "https://www.gov.si/en/news/2025-07-17-162nd-regular-session-of-the-government-of-the-republic-of-slovenia/",
+        "kind": "government"
+      },
+      {
+        "title": "Kamerstuk 23 432, nr. 569 — Brief van de Minister van Buitenlandse Zaken (De situatie in het Midden-Oosten)",
+        "publisher": "Tweede Kamer der Staten-Generaal",
+        "date": "2025-07-28",
+        "url": "https://www.tweedekamer.nl/downloads/document?id=2025D34482",
+        "kind": "government"
+      },
+      {
+        "title": "Spain bars two far-right Israeli ministers",
+        "publisher": "The Local Spain (AFP)",
+        "date": "2025-09-09",
+        "url": "https://www.thelocal.es/20250909/spain-bars-two-far-right-israeli-ministers",
+        "kind": "media"
+      },
+      {
+        "title": "Report of the Independent International Commission of Inquiry on the OPT, including East Jerusalem, and Israel (A/HRC/62/22)",
+        "publisher": "UN Independent International Commission of Inquiry",
+        "date": "2026-05-08",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/coiopt/2606092E.pdf",
+        "kind": "un"
+      },
+      {
+        "title": "Legal analysis of the conduct of Israel in Gaza pursuant to the Convention on the Prevention and Punishment of the Crime of Genocide (A/HRC/60/CRP.3)",
+        "publisher": "UN Independent International Commission of Inquiry",
+        "date": "2025-09-16",
+        "url": "https://www.ohchr.org/sites/default/files/documents/hrbodies/hrcouncil/sessions-regular/session60/advance-version/a-hrc-60-crp-3.pdf",
+        "kind": "un"
+      }
+    ],
+    "limits_ar": "العقوبات وحظر الدخول وإعلان الشخص غير مرغوب فيه تدابير حكومية لا أحكام قضائية، ولم يوجه إليه في المصادر المذكورة هنا أي اتهام قضائي بجرائم دولية. وقالت لجنة التحقيق في سبتمبر 2025 إنها لم تقيم تصريحاته تقييما كاملا وإنه ينبغي تقييمها.",
+    "uncertain": false
+  },
+  {
+    "id": "P-0007",
+    "name_ar": "دانييلا فايس",
+    "name_en": "Daniella Weiss",
+    "role_ar": "مديرة حركة «نحالا» الاستيطانية",
+    "role_now_ar": "مديرة حركة «نحالا» الاستيطانية",
+    "status": "sanctioned",
+    "statuses": [
+      {
+        "type": "sanctioned",
+        "body_ar": "كندا — وزارة الشؤون العالمية",
+        "body_en": "Canada — Global Affairs Canada",
+        "date": "2024-06-26",
+        "doc_title_en": "Canada imposes second round of sanctions on perpetrators of extremist settler violence against civilians in West Bank",
+        "doc_title_ar": "كندا تفرض الجولة الثانية من العقوبات على مرتكبي عنف المستوطنين المتطرفين ضد المدنيين في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Special Economic Measures (Extremist Settler Violence) Regulations",
+        "url": "https://www.canada.ca/en/global-affairs/news/2024/06/canada-imposes-second-round-of-sanctions-on-perpetrators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "summary_ar": "أدرجتها كندا ضمن سبعة أفراد وخمسة كيانات في الجولة الثانية من العقوبات، بسبب ما وصفته بأفعال عنيفة ومزعزعة للاستقرار ضد مدنيين فلسطينيين وممتلكاتهم في الضفة الغربية، ما يحظر التعامل معها ويجعلها غير مقبولة الدخول إلى كندا. (عدلت اللوائح في 26 يونيو 2024 وأعلن القرار في 27 يونيو 2024.)"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "المملكة المتحدة — وزارة الخارجية والكومنولث والتنمية",
+        "body_en": "United Kingdom — Foreign, Commonwealth & Development Office",
+        "date": "2025-05-20",
+        "doc_title_en": "UK sanctions hit West Bank violence network",
+        "doc_title_ar": "عقوبات بريطانية تطال شبكة العنف في الضفة الغربية",
+        "doc_title_ar_official": false,
+        "doc_symbol": "Global Human Rights Sanctions Regulations 2020",
+        "url": "https://www.gov.uk/government/news/uk-sanctions-hit-west-bank-violence-network",
+        "summary_ar": "أدرجتها المملكة المتحدة لتورطها، بحسب الحكومة البريطانية، في التهديد بأعمال عدوان وعنف ضد أفراد فلسطينيين وارتكابها والترويج لها ودعمها، وأخضعتها لتجميد الأصول وحظر السفر وحظر تولي إدارة الشركات. وأدرجت حركة «نحالا» في القرار نفسه.",
+        "quote_en": "has been involved in threatening, perpetrating, promoting and supporting, acts of aggression and violence against Palestinian individuals"
+      },
+      {
+        "type": "sanctioned",
+        "body_ar": "الاتحاد الأوروبي — مجلس الاتحاد الأوروبي",
+        "body_en": "European Union — Council of the European Union",
+        "date": "2026-05-28",
+        "doc_title_en": "Council Implementing Regulation (EU) 2026/1177 of 28 May 2026 implementing Regulation (EU) 2020/1998 concerning restrictive measures against serious human rights violations and abuses",
+        "doc_title_ar": "اللائحة التنفيذية لمجلس الاتحاد الأوروبي رقم 2026/1177 بتاريخ 28 مايو 2026 بشأن التدابير التقييدية ضد الانتهاكات والتجاوزات الجسيمة لحقوق الإنسان",
+        "doc_title_ar_official": false,
+        "doc_symbol": "(EU) 2026/1177, Annex I, entry 136",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601177",
+        "summary_ar": "أدرجها المجلس في نظام العقوبات العالمي لحقوق الإنسان بصفتها مديرة حركة «نحالا»، وقال إنها تخطط لأنشطة الحركة وتوجهها وتدعمها علنا، وإن الحركة تؤدي دورا محوريا في تسهيل أفعال قسرية تؤدي إلى التهجير القسري للفلسطينيين وانتهاك حقوقهم في الملكية والحياة الخاصة والأسرية وتقرير المصير، وإن بؤرها كانت مصدرا متواصلا لعنف المستوطنين، وإنها في طليعة مساعي إعادة الاستيطان في قطاع غزة بعد 7 أكتوبر 2023.",
+        "quote_en": "plans, directs and publicly supports the acts of Nachala"
+      }
+    ],
+    "crimes_ar": [
+      "تسهيل وتشجيع انتهاكات لحقوق الفلسطينيين، منها التهجير القسري وانتهاك الحق في الملكية وتقرير المصير — أساس إدراجها في عقوبات الاتحاد الأوروبي (تدبير إداري لا حكم قضائي)",
+      "التهديد بأعمال عدوان وعنف ضد أفراد فلسطينيين والترويج لها ودعمها — أساس العقوبات البريطانية"
+    ],
+    "period": null,
+    "timeline": [
+      {
+        "date": "2024-06-26",
+        "event_ar": "أدرجتها كندا في الجولة الثانية من عقوبات عنف المستوطنين المتطرفين.",
+        "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/esv-vec.aspx?lang=eng"
+      },
+      {
+        "date": "2025-05-20",
+        "event_ar": "فرضت المملكة المتحدة عقوبات عليها وعلى حركة «نحالا».",
+        "url": "https://www.gov.uk/government/news/uk-sanctions-hit-west-bank-violence-network"
+      },
+      {
+        "date": "2026-05-28",
+        "event_ar": "أدرجها الاتحاد الأوروبي وأدرج حركة «نحالا» في نظام العقوبات العالمي لحقوق الإنسان.",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601177"
+      },
+      {
+        "date": "2026-06-09",
+        "event_ar": "أدرجت كندا حركة «نحالا» ضمن الجولة الخامسة من عقوبات عنف المستوطنين المتطرفين.",
+        "url": "https://www.canada.ca/en/global-affairs/news/2026/06/backgrounder-canada-imposes-fifth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-palestinian-civilians-in-west-bank.html"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Canada imposes second round of sanctions on perpetrators of extremist settler violence against civilians in West Bank (Backgrounder)",
+        "publisher": "Global Affairs Canada",
+        "date": "2024-06-27",
+        "url": "https://www.canada.ca/en/global-affairs/news/2024/06/canada-imposes-second-round-of-sanctions-on-perpetrators-of-extremist-settler-violence-against-civilians-in-west-bank.html",
+        "kind": "government"
+      },
+      {
+        "title": "Canadian Sanctions Related to Extremist Settler Violence in the West Bank, Gaza, and East Jerusalem",
+        "publisher": "Global Affairs Canada",
+        "date": "2026-06-04",
+        "url": "https://www.international.gc.ca/world-monde/international_relations-relations_internationales/sanctions/esv-vec.aspx?lang=eng",
+        "kind": "government"
+      },
+      {
+        "title": "Special Economic Measures (Extremist Settler Violence) Regulations, Schedule (consolidated, current to 2026-09-30)",
+        "publisher": "Justice Laws Website (Canada)",
+        "date": "2026-09-30",
+        "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2024-91/page-2.html",
+        "kind": "government"
+      },
+      {
+        "title": "UK sanctions hit West Bank violence network",
+        "publisher": "UK Foreign, Commonwealth & Development Office",
+        "date": "2025-05-20",
+        "url": "https://www.gov.uk/government/news/uk-sanctions-hit-west-bank-violence-network",
+        "kind": "government"
+      },
+      {
+        "title": "Council Implementing Regulation (EU) 2026/1177",
+        "publisher": "Council of the European Union (EUR-Lex)",
+        "date": "2026-05-28",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601177",
+        "kind": "government"
+      },
+      {
+        "title": "Backgrounder: Canada imposes fifth round of sanctions on facilitators of extremist settler violence against Palestinian civilians in West Bank",
+        "publisher": "Global Affairs Canada",
+        "date": "2026-06-09",
+        "url": "https://www.canada.ca/en/global-affairs/news/2026/06/backgrounder-canada-imposes-fifth-round-of-sanctions-on-facilitators-of-extremist-settler-violence-against-palestinian-civilians-in-west-bank.html",
+        "kind": "government"
+      }
+    ],
+    "limits_ar": "العقوبات تدابير إدارية تتخذها حكومات والاتحاد الأوروبي وفق معاييرها، وليست أحكاما قضائية، ولا تتضمن المصادر المذكورة هنا أي اتهام جنائي أو حكم قضائي بحقها.",
+    "uncertain": false
+  }
+]

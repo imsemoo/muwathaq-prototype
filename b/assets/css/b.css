@@ -431,6 +431,140 @@ button, input { font: inherit; color: inherit; }
   .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .leaves { grid-template-columns: minmax(0, 1fr); }
 }
+/* =====================================================================================================
+   The signature moments: the opening, the folio as a manuscript page, the collation, the isnad.
+   ===================================================================================================== */
+
+/* ---------- the opening: a ruled page, the word written, its luhaq drawn, signed صح ---------- */
+.opening { display: none; }
+.js-open .opening { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; background: var(--paper); }
+.js-open body { overflow: hidden; }
+.op-rules { position: absolute; inset: 0; display: grid; align-content: center; gap: 46px; padding-inline: clamp(24px, 9vw, 160px); pointer-events: none; }
+.op-rules i { display: block; height: 1px; background: var(--margin-2); transform-origin: 100% 50%; transform: scaleX(0); }
+.op-rules i:nth-child(5) { background: var(--line-2); }
+.op-in { position: relative; display: grid; justify-items: center; gap: 18px; }
+.op-mark { width: min(640px, 76vw); height: auto; overflow: visible; }
+.op-word, .op-sah { clip-path: inset(0 0 0 100%); }
+.op-hook path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.op-line { font-family: var(--naskh); font-weight: 700; font-size: clamp(1.375rem, 1.1rem + .9vw, 2rem); color: var(--ink); opacity: 0; margin-top: 6px; }
+.op-skip { position: absolute; inset-block-end: 28px; inset-inline-start: 50%; translate: 50% 0; min-height: 44px; padding: 0 18px; border-radius: 12px; border: 0; background: transparent; color: var(--mute); font: 600 var(--fs-sm)/1 var(--kufi); cursor: pointer; }
+.op-skip:hover { color: var(--ink); background: var(--margin); }
+/* the hero waits for the opening to leave before it sets its lines */
+.js-open .display .ln > span, .js-open .matn > *, .js-open .hashiya-in, .js-open .mast .rule { animation-play-state: paused !important; }
+
+/* ---------- the folio as a manuscript page ---------- */
+/* the frame (تجديل): a rule in ink, a gap of paper, a hair rule in lapis */
+.file { box-shadow: 0 0 0 1.5px var(--ink), 0 0 0 6px #fff, 0 0 0 7px var(--lapis), var(--shadow); overflow: visible; }
+.file-head { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+/* the ruling board (مسطرة): faint lines under every line of text */
+.file-text { --lh: 2.15em; background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--lh) - 1px), #EDF0F3 calc(var(--lh) - 1px) var(--lh)); background-position: 0 calc(18px + .2em); background-origin: content-box; }
+/* glosses lie at the copyist's slant until read */
+@media (min-width: 1025px) {
+  .folio.is-live .gloss { transform-origin: 100% 0; transition: transform .7s var(--ease), background-color .45s ease, box-shadow .45s ease; }
+  .folio.is-live .gloss:nth-child(1) { --tilt: -3.2deg; }
+  .folio.is-live .gloss:nth-child(2) { --tilt: -1.6deg; }
+  .folio.is-live .gloss:nth-child(3) { --tilt: -3.8deg; }
+  .folio.is-live .gloss:nth-child(4) { --tilt: -2.2deg; }
+  .folio.is-live .gloss:nth-child(5) { --tilt: -3deg; }
+  .folio.is-live .gloss:not(.is-on) { transform: rotate(var(--tilt)) translateX(-6px); }
+  .folio.is-live .gloss.is-on { transform: none; }
+}
+.hashiya-h { position: relative; padding-inline-start: 0; }
+
+/* ---------- the collation ---------- */
+.collate { position: relative; background: var(--paper); border-block: 1px solid var(--line); }
+.collate-pin { position: relative; min-height: 100vh; display: grid; align-items: center; padding-block: clamp(36px, 5vh, 64px); }
+.collate-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); gap: 0; align-items: stretch; position: relative; z-index: 1; }
+.col-matn { padding-inline-end: clamp(32px, 5vw, 80px); min-width: 0; display: grid; gap: 14px; align-content: start; }
+.col-lead { font-family: var(--naskh); font-size: 1.125rem; line-height: 1.9; color: var(--ink-2); }
+.col-folio { margin-top: 8px; padding: 22px clamp(22px, 3vw, 34px) 20px; border-radius: var(--r-lg); background: #fff; box-shadow: 0 0 0 1.5px var(--ink), 0 0 0 6px #fff, 0 0 0 7px var(--lapis), var(--shadow); }
+.col-head { font-size: var(--fs-xs); font-weight: 600; color: var(--mute); padding-bottom: 10px; border-bottom: 1px dashed var(--line-2); }
+.col-head .mono { color: var(--lapis); }
+.col-text { --lh: 2.3em; font-family: var(--naskh); font-size: clamp(1.1875rem, 1.05rem + .4vw, 1.375rem); line-height: 2.3; padding-top: 6px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--lh) - 1px), #EDF0F3 calc(var(--lh) - 1px) var(--lh)); background-position: 0 calc(6px + .3em); }
+.cl + .cl { margin-top: 4px; }
+.c-claim { background: linear-gradient(var(--lapis-wash), var(--lapis-wash)) no-repeat 100% 0 / 0 100%; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.c-strike { position: relative; display: inline; background: linear-gradient(var(--lapis), var(--lapis)) no-repeat 100% 58% / 0 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.c-sawab { position: absolute; inset-inline-start: 0; bottom: 92%; white-space: nowrap; font-size: .62em; line-height: 1.3; color: var(--lapis); opacity: 0; transform: translateY(6px); }
+.c-sawab b { font-weight: 700; }
+.col-rules { font-size: var(--fs-sm); line-height: 1.9; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-2); color: var(--ink-2); }
+.col-rules a { color: var(--lapis); font-weight: 600; }
+.col-rules span { display: block; color: var(--mute); font-size: var(--fs-xs); }
+.col-ethos { display: flex; gap: 8px; align-items: flex-start; font-size: var(--fs-sm); line-height: 1.8; color: var(--ink); font-weight: 600; }
+.col-ethos .icon { color: var(--lapis); margin-top: 4px; }
+.col-hashiya { position: relative; background: var(--margin); padding: 26px 24px 26px 0; min-width: 0; display: grid; gap: 14px; align-content: start; }
+.col-hashiya::after { content: ""; position: absolute; inset-block: calc(-1 * clamp(36px, 5vh, 64px)); inset-inline-end: -100vw; width: calc(100vw + 100%); background: var(--margin); z-index: -1; }
+.collate { overflow-x: clip; }
+.col-verdict { display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 18px; background: #fff; box-shadow: var(--shadow); }
+.cv-stack { display: grid; flex: none; }
+.cv { grid-area: 1 / 1; opacity: 0; transform: scale(.8) rotate(-10deg); transition: opacity .35s ease, transform .55s var(--ease); }
+.cv.is-on { opacity: 1; transform: none; }
+.cv .mark-xl { width: 72px; height: 72px; }
+.cv-label { font-family: var(--naskh); font-weight: 700; font-size: 1.25rem; line-height: 1.5; color: var(--lapis); }
+.cv-step { font-size: var(--fs-xs); color: var(--mute); }
+.cv-step b { font-family: var(--mono); font-weight: 400; color: var(--ink); }
+.col-glosses { display: grid; gap: 4px; }
+.cg { display: grid; grid-template-columns: 16px 30px minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 12px; border-radius: 14px; transition: background-color .3s ease, box-shadow .3s ease; }
+.cg.is-on { background: #fff; box-shadow: var(--shadow); }
+.cg-n { font: 700 var(--fs-xs)/2.3 var(--kufi); color: var(--lapis); text-align: center; }
+.cg-mark { display: grid; }
+.cg-mark .mark { grid-area: 1 / 1; width: 30px; height: 30px; transition: opacity .3s ease, transform .45s var(--ease); }
+.cg-mark .cg-alt { opacity: 0; transform: scale(.7) rotate(-12deg); }
+.cg.is-varied .cg-mark .mark:first-child { opacity: 0; transform: scale(.7); }
+.cg.is-varied .cg-mark .cg-alt { opacity: 1; transform: none; }
+.cg h3 { font-size: var(--fs-sm); font-weight: 700; line-height: 1.6; }
+.cg p { font-size: 12.5px; line-height: 1.7; color: var(--mute); }
+.cg .cg-sign { color: var(--lapis); font-weight: 600; }
+.col-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: visible; }
+.col-lines path { fill: none; stroke: var(--lapis); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* the scene starts empty only when it is going to be played; otherwise it reads as the finished record */
+.collate.is-scrub .collate-pin { padding-top: calc(var(--head-h) + 18px); padding-bottom: 20px; }
+.collate.is-scrub .col-matn { gap: 10px; }
+.collate.is-scrub .col-hashiya { padding-block: 20px; }
+.collate.is-scrub .cl, .collate.is-scrub .col-rules, .collate.is-scrub .col-ethos { opacity: 0; }
+.collate.is-scrub .cg { opacity: 0; transform: translateX(-10px); }
+.collate:not(.is-scrub) .c-claim { background-size: 100% 100%; }
+.collate:not(.is-scrub) .c-strike { background-size: 100% 2px; }
+.collate:not(.is-scrub) .c-sawab { opacity: 1; transform: none; }
+.collate:not(.is-scrub) .cg[data-cg="2"] .cg-mark .mark:first-child { opacity: 0; }
+.collate:not(.is-scrub) .cg[data-cg="2"] .cg-mark .cg-alt { opacity: 1; transform: none; }
+.collate:not(.is-scrub) .cv[data-cv="complete"] { opacity: 1; transform: none; }
+.collate:not(.is-scrub) .col-lines { display: none; }
+
+/* ---------- the isnad: a chain drawn as the reader goes down it ---------- */
+.isnad-grid { align-items: start; }
+.isnad-intro { position: sticky; top: calc(var(--head-h) + 32px); }
+.isnad-rec { margin-block: -4px 22px !important; padding: 12px 16px; border-radius: 14px; background: rgb(255 255 255 / .1); font-family: var(--kufi) !important; font-size: var(--fs-sm) !important; line-height: 1.7 !important; color: #fff !important; }
+.isnad-rec .mono { color: var(--lapis-hi); margin-inline-end: 6px; }
+.isnad[data-chain] { position: relative; grid-template-columns: minmax(0, 1fr); padding-inline-start: 34px; }
+.isnad[data-chain]::before, .isnad[data-chain]::after { content: ""; position: absolute; inset-inline-start: 9px; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; }
+.isnad[data-chain]::before { background: rgb(255 255 255 / .2); }
+.isnad[data-chain]::after { background: #fff; transform-origin: 50% 0; transform: scaleY(var(--fill, 1)); }
+.isnad[data-chain] li { border-top: 0; padding: 14px 0; grid-template-columns: 34px minmax(0, 1fr); }
+.isnad[data-chain] li::after { content: "عن"; inset-inline-start: -34px; bottom: -11px; width: 20px; text-align: center; padding: 0; }
+.isnad-node { position: absolute; inset-inline-start: -31px; top: 22px; width: 14px; height: 14px; border-radius: 50%; background: var(--lapis); box-shadow: inset 0 0 0 2px rgb(255 255 255 / .45); transition: background-color .3s ease, box-shadow .3s ease, transform .4s var(--ease); z-index: 1; }
+.isnad[data-chain] li.is-lit .isnad-node { background: #fff; box-shadow: 0 0 0 4px rgb(255 255 255 / .18); transform: scale(1.1); }
+.isnad[data-chain] li > div { transition: opacity .4s ease; }
+.isnad[data-chain].is-scrub li:not(.is-lit) > div { opacity: .5; }
+.isnad-an { margin-top: 6px; font-size: var(--fs-xs) !important; color: #fff !important; font-weight: 600; display: flex; gap: 8px; }
+.isnad-an::before { content: ""; flex: none; width: 14px; height: 10px; margin-top: 6px; border-inline-start: 1.5px solid var(--lapis-hi); border-bottom: 1.5px solid var(--lapis-hi); border-end-start-radius: 8px; }
+
+@media (max-width: 1024px) {
+  .collate-pin { min-height: 0; }
+  .collate-grid { grid-template-columns: minmax(0, 1fr); }
+  .col-matn { padding-inline-end: 0; }
+  .col-hashiya { margin-top: 26px; padding: 24px 0 8px; }
+  .col-hashiya::after { inset-block: 0; inset-inline: calc(-1 * var(--gut)); width: auto; }
+  .col-lines { display: none; }
+  .c-sawab { position: static; display: block; white-space: normal; font-size: .7em; margin-block: 2px 4px; }
+  .isnad-intro { position: static; }
+}
+@media (max-width: 720px) {
+  .col-text { font-size: 1.1875rem; }
+  .op-rules { gap: 34px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }

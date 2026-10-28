@@ -12,6 +12,7 @@
   /* smooth scroll, as in direction A */
   if (!reduce && window.Lenis) {
     const lenis = new window.Lenis({ duration: 1.05, smoothWheel: true });
+    window.__lenis = lenis;
     const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
   }
@@ -100,7 +101,140 @@
     /* the margin is sticky and the page scrolls smoothly: follow both every frame while the folio is in view */
     const follow = () => { if (seen && wide() && t >= 1) paint(); requestAnimationFrame(follow); };
     requestAnimationFrame(follow);
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(() => { set(1); run(); }, reduce ? 0 : 900));
+    const begin = () => setTimeout(() => { set(1); run(); }, reduce ? 0 : 700);
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+      if (document.documentElement.classList.contains('js-open')) addEventListener('mwb:opened', begin, { once: true }); else begin();
+    });
+  }
+
+  /* ---------- the opening: the copyist writes the word, draws its luhaq, signs it صح, and the page opens ---------- */
+  const html = document.documentElement;
+  const opening = $('[data-opening-box]');
+  if (opening) {
+    let ended = false;
+    const end = () => {
+      if (ended) return; ended = true;
+      html.classList.remove('js-open');
+      try { sessionStorage.setItem('mwb-in', '1'); } catch (e) {}
+      opening.remove();
+      dispatchEvent(new Event('mwb:opened'));
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+    };
+    if (!html.classList.contains('js-open') || !window.gsap) end();
+    else {
+      const g = window.gsap;
+      const hook = $('.op-hook path', opening), len = hook.getTotalLength();
+      hook.style.strokeDasharray = len; hook.style.strokeDashoffset = len;
+      const mk = $('.op-mark', opening);
+      let fly = { x: 0, y: 0, s: 1 };
+      const aim = () => {
+        const a = mk.getBoundingClientRect(), b = $('.brand img').getBoundingClientRect();
+        fly = { x: b.left + b.width / 2 - (a.left + a.width / 2), y: b.top + b.height / 2 - (a.top + a.height / 2), s: b.width / a.width };
+      };
+      const tl = g.timeline({ onComplete: end });
+      tl.to($$('.op-rules i', opening), { scaleX: 1, duration: 0.8, ease: 'power2.out', stagger: 0.045 }, 0)
+        .to($('.op-word', opening), { clipPath: 'inset(0 0 0 0%)', duration: 1.05, ease: 'power1.inOut' }, 0.35)
+        .to(hook, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut' }, 1.35)
+        .to($('.op-sah', opening), { clipPath: 'inset(0 0 0 0%)', duration: 0.5, ease: 'power1.out' }, 1.9)
+        .fromTo($('.op-line', opening), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 2.15)
+        .add(aim, 2.75)
+        .to([$('.op-rules', opening), $('.op-line', opening), $('.op-skip', opening)], { opacity: 0, duration: 0.35 }, 2.75)
+        .to(mk, { x: () => fly.x, y: () => fly.y, scale: () => fly.s, duration: 0.95, ease: 'power3.inOut' }, 2.8)
+        .to(opening, { backgroundColor: 'rgba(255,255,255,0)', duration: 0.7, ease: 'power1.in' }, 2.95)
+        .set(mk, { opacity: 0 }, 3.78);
+      const skip = () => { if (tl.progress() < 1) tl.progress(1); };
+      $('.op-skip', opening).addEventListener('click', skip);
+      ['keydown', 'wheel', 'touchstart', 'pointerdown'].forEach((ev) => addEventListener(ev, skip, { once: true, passive: true }));
+      setTimeout(end, 7000);   /* never trap the reader behind the opening */
+    }
+  }
+
+  /* ---------- the collation: INC-0012 collated sentence by sentence as the reader scrolls ---------- */
+  const col = $('[data-collate]');
+  if (col && window.gsap && window.ScrollTrigger && !reduce && wide()) {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    g.registerPlugin(ST);
+    if (window.__lenis) window.__lenis.on('scroll', ST.update);
+    col.classList.add('is-scrub');
+    const pin = $('.collate-pin', col);
+    const cl = (n) => $$(`[data-cl="${n}"]`, col), cg = (n) => $(`[data-cg="${n}"]`, col);
+    const paths = $$('[data-cline]', col);
+    const prog = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    const from = { 1: '[data-cref="1"]', 2: '[data-cref="2"]', 3: '[data-strike]', 4: '[data-cref="4"]', 5: '[data-cref="5"]' };
+    const lh = () => parseFloat(getComputedStyle($('.col-text', col)).lineHeight) || 50;
+    const paint = () => {
+      const box = pin.getBoundingClientRect(), edge = $('.col-hashiya', col).getBoundingClientRect().right - box.left;
+      paths.forEach((p) => {
+        const n = +p.dataset.cline, k = prog[n];
+        if (k <= 0) { p.setAttribute('d', ''); return; }
+        const a = $(from[n], col), rects = a.getClientRects(), r = rects[rects.length - 1] || a.getBoundingClientRect();
+        const m = $('.cg-mark', cg(n)).getBoundingClientRect();
+        /* the variant's line runs through the leading below its phrase, so it never crosses the correction written above */
+        const below = n === 3, sx = r.left - box.left - 3, sy = r.top - box.top + r.height / 2, up = below ? sy + lh() * 0.44 : sy - lh() * 0.42, rad = 8, vy = below ? up - rad : up + rad;
+        const gx = m.right - box.left + 6, gy = m.top - box.top + m.height / 2, ex = edge + 16 + (n - 1) * 3;
+        p.setAttribute('d', `M${sx.toFixed(1)} ${sy.toFixed(1)}V${vy.toFixed(1)}Q${sx.toFixed(1)} ${up.toFixed(1)} ${(sx - rad).toFixed(1)} ${up.toFixed(1)}H${ex.toFixed(1)}C${(ex - 30).toFixed(1)} ${up.toFixed(1)} ${(gx + 40).toFixed(1)} ${gy.toFixed(1)} ${gx.toFixed(1)} ${gy.toFixed(1)}`);
+        const len = p.getTotalLength();
+        p.style.strokeDasharray = `${(len * k).toFixed(1)} ${len.toFixed(1)}`;
+        p.style.opacity = n === 3 ? 0.75 : 1;
+      });
+    };
+    const verdicts = [['in_progress', 'بلغ · التحقق جار', 1], ['partial', 'كذا · نقلت كما وردت', 2], ['rereview', 'خ · رواية مغايرة', 3], ['specific', 'معا · مصدران مستقلان', 4], ['complete', 'صح · مكتمل وفق المنهجية', 5]];
+    const label = $('[data-cv-label]', col), stepN = $('[data-cv-n]', col);
+    let shown = -1;
+    const sync = (t) => {
+      const i = t < 2 ? 0 : t < 4 ? 1 : t < 7 ? 2 : t < 9 ? 3 : 4;
+      if (i !== shown) {
+        shown = i;
+        $$('[data-cv]', col).forEach((v) => v.classList.toggle('is-on', v.dataset.cv === verdicts[i][0]));
+        label.textContent = verdicts[i][1]; stepN.textContent = verdicts[i][2];
+      }
+      cg(2).classList.toggle('is-varied', t >= 5.9);
+      const on = t < 2 ? [1] : t < 4 ? [2] : t < 5.4 ? [3] : t < 7 ? [2] : [4, 5];
+      $$('.cg', col).forEach((x) => x.classList.toggle('is-on', on.includes(+x.dataset.cg)));
+    };
+    /* the scrubbed timeline lags the scroll a little, so the record follows the timeline's own time, not the scrollbar */
+    const tl = g.timeline({
+      defaults: { ease: 'none' },
+      onUpdate() { sync(this.time()); paint(); },
+      scrollTrigger: { trigger: col, start: 'top top', end: () => '+=' + Math.round(innerHeight * 4.2), pin: true, scrub: 0.6, anticipatePin: 1, onRefresh: paint },
+    });
+    const claim = (n) => $('.c-claim', cl(n)[0]);
+    tl.to(cl(1), { opacity: 1, duration: 0.4 }, 0)
+      .to(claim(1), { backgroundSize: '100% 100%', duration: 0.8 }, 0.2)
+      .to(cg(1), { opacity: 1, x: 0, duration: 0.5 }, 0.6)
+      .to(prog, { 1: 1, duration: 0.8 }, 0.8)
+      .to(cl(2), { opacity: 1, duration: 0.4 }, 2)
+      .to(claim(2), { backgroundSize: '100% 100%', duration: 0.8 }, 2.2)
+      .to(cg(2), { opacity: 1, x: 0, duration: 0.5 }, 2.6)
+      .to(prog, { 2: 1, duration: 0.8 }, 2.8)
+      .to(cg(3), { opacity: 1, x: 0, duration: 0.5 }, 4)
+      .to(prog, { 3: 1, duration: 0.8 }, 4.2)
+      .to($('[data-strike]', col), { backgroundSize: '100% 2px', duration: 0.8 }, 5.4)
+      .to($('[data-sawab]', col), { opacity: 1, y: 0, duration: 0.6 }, 6)
+      .to(cl(4), { opacity: 1, duration: 0.4 }, 7)
+      .to(claim(4), { backgroundSize: '100% 100%', duration: 0.8 }, 7.2)
+      .to([cg(4), cg(5)], { opacity: 1, x: 0, duration: 0.5, stagger: 0.2 }, 7.5)
+      .to(prog, { 4: 1, 5: 1, duration: 0.9 }, 7.8)
+      .to(cl(6), { opacity: 1, duration: 0.5, stagger: 0.25 }, 9)
+      .to({}, { duration: 1 }, 9.8);
+    sync(0);
+    addEventListener('resize', paint);
+  }
+
+  /* ---------- the isnad: the chain is drawn down to each link as the reader reaches it ---------- */
+  const chain = $('[data-chain]');
+  if (chain && window.gsap && window.ScrollTrigger && !reduce) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    const links = $$('[data-link]', chain);
+    chain.classList.add('is-scrub');
+    chain.style.setProperty('--fill', 0);
+    const lit = (p) => {
+      chain.style.setProperty('--fill', p.toFixed(3));
+      const h = chain.clientHeight - 44;
+      links.forEach((li) => li.classList.toggle('is-lit', li.offsetTop + 22 - 22 <= h * p + 2));
+    };
+    window.ScrollTrigger.create({ trigger: chain, start: 'top 72%', end: 'bottom 58%', scrub: 0.4, onUpdate: (st) => lit(st.progress) });
+    lit(0);
   }
 
   /* ---------- the copyists' signs ---------- */

@@ -30,7 +30,7 @@ try {
   await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', { width: +w, height: +h, deviceScaleFactor: 1, mobile: +w < 768 });
   await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: scheme }] });
-  await send('Page.addScriptToEvaluateOnNewDocument', { source: "try{sessionStorage.setItem('mw-in','1')}catch(e){}" });
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: "try{sessionStorage.setItem('mw-in','1');sessionStorage.setItem('mwb-in','1')}catch(e){}" });
   await send('Page.navigate', { url });
   await sleep(+wait);
   if (mode === 'now') {

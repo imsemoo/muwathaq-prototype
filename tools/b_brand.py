@@ -96,7 +96,9 @@ def wordmark(ink, lapis):
     pad = 0.12 * h
     vx0, vy0 = tip - 0.96 * h - pad, top - 0.34 * h - pad
     vx1, vy1 = x1 + pad, y1 + pad
-    return svg(f'{vx0:.0f} {vy0:.0f} {vx1 - vx0:.0f} {vy1 - vy0:.0f}', word + hook + sah, 'موثّق'), (vx1 - vx0) / (vy1 - vy0)
+    view = f'{vx0:.0f} {vy0:.0f} {vx1 - vx0:.0f} {vy1 - vy0:.0f}'
+    wordmark.parts = {'view': view, 'word': word, 'hook': hook, 'sah': sah}   # the opening animates the three apart
+    return svg(view, word + hook + sah, 'موثّق'), (vx1 - vx0) / (vy1 - vy0)
 
 
 def tile(fill, glyph, r=15):
@@ -132,6 +134,8 @@ def main():
     open(os.path.join(OUT, 'mark-ink.svg'), 'w', encoding='utf-8').write(svg('0 0 64 64', tile(INK, SHEET), 'موثّق'))
     open(os.path.join(ROOT, 'b', 'favicon.svg'), 'w', encoding='utf-8').write(svg('0 0 64 64', tile(LAPIS, SHEET, 16), 'موثّق'))
     json.dump(marks(), open(os.path.join(OUT, 'marks.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    wordmark(INK, LAPIS)
+    json.dump(wordmark.parts, open(os.path.join(OUT, 'wordmark.json'), 'w', encoding='utf-8'), ensure_ascii=False)
     print('wordmark ratio', round(ratio, 3))
 
 

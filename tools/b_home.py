@@ -19,7 +19,7 @@ from shell import esc, date_ar, STATUS, KNOTS, REGIONS  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'b')
-V = 1
+V = 5
 A = '../'   # direction A's pages and shared photographs
 
 MARK_SVG = json.load(open(os.path.join(OUT, 'assets', 'brand', 'marks.json'), encoding='utf-8'))
@@ -61,9 +61,9 @@ def scale(status, compact=False):
             f'<span class="sr">المرحلة في المسار القضائي: {esc(label)}، {level} من 5.</span></div>')
 
 
-def head(title, desc, path, extra=''):
+def head(title, desc, path, extra='', opening=False):
     return f'''<!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl"{' data-opening' if opening else ''}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,7 @@ def head(title, desc, path, extra=''):
 <link rel="preload" href="assets/fonts/naskh.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/kufi.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/b.css?v={V}">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(d){{d.classList.add('js');try{{var m=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!m&&d.dataset.opening!==undefined&&(!sessionStorage.getItem('mwb-in')||/[?&]loader/.test(location.search)))d.classList.add('js-open')}}catch(e){{}}}})(document.documentElement)</script>
 {extra}</head>'''
 
 
@@ -114,12 +114,29 @@ def footer():
 </footer>'''
 
 
-def page(path, title, desc, main, scripts='', extra_head=''):
-    html = (head(title, desc, path, extra_head) + f'\n<body>\n{sprite()}\n{masthead()}\n<main id="main">\n{main}\n</main>\n{footer()}\n'
+def page(path, title, desc, main, scripts='', extra_head='', before=''):
+    html = (head(title, desc, path, extra_head, opening=bool(before)) + f'\n<body>\n{sprite()}\n{before}{masthead()}\n<main id="main">\n{main}\n</main>\n{footer()}\n'
             f'<script src="{A}assets/js/vendor/lenis.min.js" defer></script>\n{scripts}<script src="assets/js/b.js?v={V}" defer></script>\n</body>\n</html>\n')
     html = S.plain(html)
     with open(os.path.join(OUT, path), 'w', encoding='utf-8') as f:
         f.write(html)
+
+
+WORD = json.load(open(os.path.join(OUT, 'assets', 'brand', 'wordmark.json'), encoding='utf-8'))
+
+
+def opening():
+    """A ruled page; the copyist writes the word, draws its luhaq into the margin, and signs it صح."""
+    rules = ''.join('<i></i>' for _ in range(9))
+    return f'''<div class="opening" data-opening-box aria-hidden="true">
+ <div class="op-rules">{rules}</div>
+ <div class="op-in">
+  <svg class="op-mark" viewBox="{WORD["view"]}"><g class="op-word">{WORD["word"]}</g><g class="op-hook">{WORD["hook"]}</g><g class="op-sah">{WORD["sah"]}</g></svg>
+  <p class="op-line">كل جملة ومعها سندها</p>
+ </div>
+ <button class="op-skip" type="button" tabindex="-1">تخط</button>
+</div>
+'''
 
 
 # ---------- the home page ----------
@@ -270,19 +287,75 @@ def incidents_section():
 </section>'''
 
 
+def collation_section():
+    """INC-0012 collated sentence by sentence: the account as first given, the variant that contradicts it,
+    the phrase struck through but left legible with its correction above, two independent sources together, then صح."""
+    inc = B.INC_BY_ID['INC-0012']
+    R = B.RULE_BY_ID
+    rules = [R[r] for r in ('RS-8-2-b-xxiv', 'RS-8-2-b-iii', 'GCIV-147') if r in R]
+
+    def ref(n):
+        return f'<span class="ref" data-cref="{n}">{n}</span>'
+    glosses = [
+        (1, 'in_progress', 'أخبار الأمم المتحدة · 1 أبريل 2025', 'قتل 15: ثمانية من الهلال الأحمر، وستة من الدفاع المدني، وموظف في الأونروا. ولم يسمح بالوصول إلا بعد خمسة أيام.', 'بلغ · التحقق جار'),
+        (2, 'partial', 'بيان الجيش الإسرائيلي · كما نقلته CNN وتايمز أوف إسرائيل', 'رواية الجهة المعنية كما وردت، بنصها.', 'كذا · نقلت كما وردت'),
+        (3, 'rereview', 'مقطع المسعف رفعت رضوان · نيويورك تايمز، 5 أبريل 2025', 'نحو ست دقائق من داخل القافلة: الأنوار والإشارات مضاءة لحظة إطلاق النار.', 'خ · رواية مغايرة'),
+        (4, 'specific', 'تحقيق الجيش · 20 أبريل 2025', 'الرواية الأولى غير دقيقة، و«إخفاقات مهنية» وخرق للأوامر.', 'معا · مصدر أول'),
+        (5, 'specific', 'Earshot و Forensic Architecture · 23 فبراير 2026', '910 طلقات على الأقل خلال أكثر من ساعتين، دون أي تبادل لإطلاق النار.', 'معا · مصدر مستقل ثان'),
+    ]
+    gl = ''.join(f'''<li class="cg" data-cg="{n}">
+       <span class="cg-n">{n}</span><span class="cg-mark">{mark(st, "mark")}{mark("rereview", "mark cg-alt") if n == 2 else ""}</span>
+       <div><h3>{esc(h)}</h3><p>{esc(body)}</p><p class="cg-sign">{esc(sign)}</p></div></li>''' for n, st, h, body, sign in glosses)
+    verdicts = ''.join(f'<span class="cv" data-cv="{k}">{mark(k, "mark mark-xl")}</span>' for k in ('in_progress', 'partial', 'rereview', 'specific', 'complete'))
+    rule_links = '، '.join(f'<a href="{A}law/{B.slug(r["id"])}.html">{esc(r.get("title_ar", ""))}</a>' for r in rules)
+    return f'''<section class="collate" data-collate aria-labelledby="col-h">
+ <div class="collate-pin">
+  <div class="wrap collate-grid">
+   <div class="col-matn">
+    <p class="eyebrow">المقابلة</p>
+    <h2 class="h2" id="col-h">رواية تقابل بدليلها، ولا تمحى</h2>
+    <p class="col-lead">سجل حقيقي من الأرشيف كما يقابل في موثّق، موضعا موضعا. مرر لتتابع المقابلة.</p>
+    <div class="col-folio">
+     <p class="col-head"><span class="mono">{inc["id"]}</span> · {esc(date_ar(inc["date"]))} · {esc(inc.get("place_ar", ""))}</p>
+     <div class="col-text">
+      <p class="cl" data-cl="1"><span class="c-claim">أطلقت النار فجرا على سيارة إسعاف للهلال الأحمر الفلسطيني، ثم على قافلة إنقاذ وصلت إليها، وقتل 15 من المسعفين وعناصر الدفاع المدني وموظف أممي</span> <span class="nw">{ref(1)}.</span></p>
+      <p class="cl" data-cl="2"><span class="c-claim">وقال الجيش الإسرائيلي إن المركبات تقدمت بشكل مريب <span class="c-strike" data-strike>دون أضواء أو إشارات طوارئ<span class="c-sawab" data-sawab><b>صوابه:</b> وأنوارها وإشاراتها مضاءة</span></span></span> <span class="nw">{ref(2)}{ref(3)}.</span></p>
+      <p class="cl" data-cl="4"><span class="c-claim">ثم أقر الجيش بأن روايته الأولى غير دقيقة، ووثق تحليل صوتي مستقل 910 طلقات على الأقل خلال أكثر من ساعتين</span> <span class="nw">{ref(4)}{ref(5)}.</span></p>
+     </div>
+     <p class="col-rules" data-cl="6"><b>القواعد التي قد تنطبق:</b> {rule_links}. <span>تحليل بحثي أولي، وليس حكما؛ يلزم إثبات العلم بالصفة المحمية وقصد الهجوم.</span></p>
+    </div>
+    <p class="col-ethos" data-cl="6">{icon("info")}<span>الرواية الأولى لا تمحى: تبقى مشطوبة في المتن مقروءة، وسبب شطبها في الحاشية.</span></p>
+    <a class="link-arrow" href="{A}incidents/{B.slug(inc["id"])}.html">افتح سجل الواقعة كاملا{icon("arrow")}</a>
+   </div>
+   <aside class="col-hashiya" aria-label="حاشية المقابلة">
+    <div class="col-verdict"><div class="cv-stack" aria-hidden="true">{verdicts}</div><div><p class="cv-label" data-cv-label aria-live="polite">صح · مكتمل وفق المنهجية</p><p class="cv-step">الموضع <b data-cv-n>5</b> من 5</p></div></div>
+    <ol class="col-glosses">{gl}</ol>
+   </aside>
+  </div>
+  <svg class="col-lines" aria-hidden="true">{"".join(f'<path data-cline="{n}"/>' for n in range(1, 6))}</svg>
+ </div>
+</section>'''
+
+
 def isnad_section():
     steps = [('جمع المادة', 'من مصدر يمكن تحديده، مع تسجيل كيفية الحصول عليها.'), ('تسجيل المصدر والعهدة', 'من حصل عليها، ومتى، وبصمتها الرقمية.'),
              ('الأصالة والسياق', 'هل هي ما تقول إنها هي، وأين نشرت أولا.'), ('المقارنة المستقلة', 'مقابلتها بمصدر آخر لا يعتمد عليها.'),
              ('الموقع والزمن', 'تحديد المكان والتاريخ بأدوات مفتوحة.'), ('توثيق القيود', 'ما لا تثبته المادة يكتب بجانبها.'),
              ('المراجعة القانونية', 'ربطها بقاعدة وما يلزم إثباته.'), ('حماية الأشخاص', 'لا ينشر ما يعرض شاهدا أو ضحية للخطر.'),
              ('قرار النشر', 'بتوقيع مراجعين، وبتاريخ.'), ('التصحيح المستمر', 'كل تصحيح يكتب في الحاشية ولا يمحى.')]
-    items = ''.join(f'<li><span class="isnad-n">{n}</span><div><b>{esc(t)}</b><p>{esc(d)}</p></div></li>' for n, (t, d) in enumerate(steps, 1))
+    # what the medics' record (INC-0012) was transmitted from, at the links where each source enters
+    an = {1: 'عن: أخبار الأمم المتحدة وأوتشا، 1 أبريل 2025', 2: 'عن: هاتف المسعف رفعت رضوان، كما نشرته نيويورك تايمز',
+          4: 'عن: تحليل Earshot و Forensic Architecture الصوتي، 23 فبراير 2026', 5: 'عن: نموذج ثلاثي الأبعاد للموقع وشهادتي الناجيين',
+          7: 'عن: نظام روما الأساسي، واتفاقية جنيف الرابعة', 10: 'عن: إعلان التحقيق الجنائي، 19 أغسطس 2026، أضيف بتاريخه'}
+    items = ''.join(f'<li data-link><span class="isnad-node" aria-hidden="true"></span><span class="isnad-n">{n}</span><div><b>{esc(t)}</b><p>{esc(d)}</p>'
+                    f'{f"<p class=isnad-an>{esc(an[n])}</p>" if n in an else ""}</div></li>' for n, (t, d) in enumerate(steps, 1))
     return f'''<section class="sec sec-lapis" aria-labelledby="isnad-h">
  <div class="wrap isnad-grid">
-  <div><p class="eyebrow">السند</p><h2 class="h2" id="isnad-h">لكل سجل سند من عشر حلقات</h2>
-   <p>كما يروى الخبر عن فلان عن فلان حتى مصدره، يروى كل سجل في موثّق عن حلقاته: لا تنشر مادة قبل أن يكتمل سندها، وكل حلقة مكتوبة في سجل العهدة بتاريخها.</p>
+  <div class="isnad-intro"><p class="eyebrow">السند</p><h2 class="h2" id="isnad-h">لكل سجل سند من عشر حلقات</h2>
+   <p>كما يروى الخبر عن فلان عن فلان حتى مصدره، يروى كل سجل في موثّق عن حلقاته. هذا سند سجل المسعفين في رفح كما هو: لا تنشر مادة قبل أن يكتمل سندها، وكل حلقة مكتوبة في سجل العهدة بتاريخها.</p>
+   <p class="isnad-rec"><span class="mono">INC-0012</span> مقتل 15 من المسعفين وعناصر الدفاع المدني وموظف أممي قرب تل السلطان</p>
    <a class="btn btn-light" href="{A}method.html">المنهجية كاملة{icon("arrow")}</a></div>
-  <ol class="isnad">{items}</ol>
+  <ol class="isnad" data-chain>{items}</ol>
  </div>
 </section>'''
 
@@ -318,9 +391,11 @@ def act_section():
 
 
 def home():
-    main = folio() + signs_section() + people_section() + incidents_section() + isnad_section() + library_section() + act_section()
+    main = folio() + signs_section() + collation_section() + people_section() + incidents_section() + isnad_section() + library_section() + act_section()
+    scripts = f'<script src="{A}assets/js/vendor/gsap.min.js" defer></script>\n<script src="{A}assets/js/vendor/ScrollTrigger.min.js" defer></script>\n'
     page('index.html', 'موثّق — كل جملة ومعها سندها (الاتجاه ب)',
-         'موثّق منصة مستقلة لتوثيق الوقائع والأدلة المتعلقة بجرائم الاحتلال الإسرائيلي: المتن في الصفحة، ومصدره في الحاشية.', main)
+         'موثّق منصة مستقلة لتوثيق الوقائع والأدلة المتعلقة بجرائم الاحتلال الإسرائيلي: المتن في الصفحة، ومصدره في الحاشية.', main,
+         scripts=scripts, before=opening())
 
 
 def identity():

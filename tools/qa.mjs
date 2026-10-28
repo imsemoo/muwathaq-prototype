@@ -23,7 +23,7 @@ try {
     if (m.method === 'Runtime.consoleAPICalled' && m.params.type === 'error') errs.push('console ' + m.params.args.map((a) => a.value).join(' '));
     if (m.method === 'Network.responseReceived' && m.params.response.status >= 400) errs.push(m.params.response.status + ' ' + m.params.response.url); });
   await send('Runtime.enable'); await send('Network.enable'); await send('Page.enable');
-  await send('Page.addScriptToEvaluateOnNewDocument', { source: "try{sessionStorage.setItem('mw-in','1')}catch(e){}" });
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: "try{sessionStorage.setItem('mw-in','1');sessionStorage.setItem('mwb-in','1')}catch(e){}" });
   for (const w of widths.split(',').map(Number)) {
     await send('Emulation.setDeviceMetricsOverride', { width: w, height: w < 768 ? 812 : 900, deviceScaleFactor: 1, mobile: w < 768 });
     for (const p of pages) {

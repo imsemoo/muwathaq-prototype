@@ -127,7 +127,8 @@ _NAMES = re.compile(r'(?<![A-Za-z])(?:' + '|'.join(re.escape(k) for k in sorted(
 
 def rec_id(s):
     """P-0001 -> ش-0001, kept apart from the surrounding text so it reads as one number."""
-    return _ID.sub(lambda m: f'{IDS[m.group(1)]}-{m.group(2)}', s)
+    # isolated right-to-left (RLI … PDI), so the letter reads first even inside a left-to-right data span
+    return _ID.sub(lambda m: f'⁧{IDS[m.group(1)]}-{m.group(2)}⁩', s)
 
 
 def words(s):

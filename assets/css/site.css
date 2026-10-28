@@ -1207,3 +1207,6 @@ main, .foot { position: relative; z-index: 1; }
 }
 
 .proto a { display: inline-block; padding-block: 6px; }
+
+/* a range of Arabic record numbers reads from its first, on the right */
+.stamp-top > .mono { direction: rtl; }

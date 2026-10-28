@@ -2,6 +2,7 @@
 
 Imported by build.py (run from the project root: python tools/build.py). Bump V on any CSS/JS change.
 """
+from arabize import arabize
 import html
 import json
 import os
@@ -9,7 +10,7 @@ import re
 
 import brand
 
-V = 16
+V = 19
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -242,10 +243,10 @@ def masthead(rel, active):
     nav = ''.join(f'<li><a href="{rel}{href}"{" aria-current=\"page\"" if key == active else ""}>{label}</a></li>'
                   for key, label, href in NAV)
     return f'''<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<div class="proto" id="proto" role="note"><div class="wrap">{icon('info')}<span><b>نموذج تصميم.</b> الوثائق والوقائع والحالات القانونية من مصادر علنية موثقة ومربوطة بأصولها؛ أما حالات التحقق وسجلات العهدة الخاصة بالمنصة فتوضيحية. <a href="{rel}method.html#illustrative">ماذا يعني ذلك؟</a></span><button type="button" data-dismiss="proto" aria-label="إخفاء التنبيه">{icon('close')}</button></div></div>
+<div class="proto" id="proto" role="note"><div class="wrap">{icon('info')}<span><b>نموذج تصميم.</b> الوثائق والوقائع حقيقية، وحالات التحقق والعهدة توضيحية. <a href="{rel}method.html#illustrative">التفاصيل</a></span><button type="button" data-dismiss="proto" aria-label="إخفاء التنبيه">{icon('close')}</button></div></div>
 <header class="mast" id="mast">
  <div class="wrap">
-  <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark.svg" alt="موثّق" width="55" height="36"><span class="lat">MUWATHAQ</span></a>
+  <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark.svg" alt="موثّق" width="55" height="36"></a>
   <nav aria-label="الأقسام"><ul class="nav" id="nav"><li class="mob-only">{find(rel, 'menu')}</li>{nav}<li class="mob-only"><a href="{rel}submit.html">أرسل مادة للمراجعة</a></li><li class="mob-only"><a href="{rel}donate.html">ادعم التوثيق</a></li><li class="mob-only"><a href="{rel}about.html">عن موثّق</a></li><li class="mob-only"><a href="{rel}standards.html">المعايير والسياسات</a></li></ul></nav>
   <div class="mast-end">
    {find(rel, 'mast')}
@@ -270,15 +271,15 @@ def footer(rel):
  <div class="wrap">
   <div class="foot-grid">
    <div>
-    <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark-reversed.svg" alt="موثّق" width="55" height="36"><span class="lat">MUWATHAQ</span></a>
-    <p style="margin-top:16px;max-width:42ch">منصة رقمية مستقلة لتوثيق الوقائع والأدلة المتعلقة بجرائم الاحتلال الإسرائيلي، والتحقق منها، وحفظها، وربطها بالقانون الدولي.</p>
+    <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark-reversed.svg" alt="موثّق" width="55" height="36"></a>
+    <p style="margin-top:16px;max-width:36ch">منصة مستقلة لتوثيق جرائم الاحتلال الإسرائيلي وربطها بالقانون الدولي.</p>
     <p class="foot-motto">التوثيق الدقيق أساس المساءلة.</p>
    </div>
    <div><h2>قاعدة البيانات</h2><ul><li><a href="{rel}people/index.html">ملفات الأشخاص</a></li><li><a href="{rel}incidents/index.html">أرشيف الوقائع</a></li><li><a href="{rel}evidence/index.html">سجل الأدلة</a></li><li><a href="{rel}reports/index.html">التقارير والوثائق</a></li><li><a href="{rel}law/index.html">مكتبة القواعد القانونية</a></li></ul></div>
    <div><h2>المنهجية والسياسات</h2><ul><li><a href="{rel}method.html">كيف نتحقق</a></li><li><a href="{rel}standards.html">المعايير القانونية والأخلاقية</a></li><li><a href="{rel}standards.html#correction">طلب تصحيح أو رد</a></li><li><a href="{rel}identity.html">الهوية البصرية</a></li><li><a href="{rel}sources.html">المصادر وحقوق الصور</a></li></ul></div>
    <div><h2>شارك وادعم</h2><ul><li><a href="{rel}submit.html">أرسل مادة للمراجعة</a></li><li><a href="{rel}donate.html">ادعم التوثيق المستقل</a></li><li><a href="{rel}about.html">عن موثّق</a></li><li><a href="{rel}search.html">البحث في المنصة</a></li></ul></div>
   </div>
-  <div class="foot-bottom"><span>© 2026 موثّق MUWATHAQ — نموذج تصميم لا يرسل بيانات إلى أي خادم.</span><span>منصة مستقلة لا تتبع أي محكمة أو منظمة دولية أو جهة حكومية.</span></div>
+  <div class="foot-bottom"><span>© 2026 موثّق — نموذج تصميم لا يرسل بيانات إلى أي خادم.</span><span>منصة مستقلة لا تتبع أي محكمة أو منظمة دولية أو جهة حكومية.</span></div>
  </div>
 </footer>
 <div class="toasts" id="toasts" aria-live="polite"></div>'''
@@ -291,7 +292,7 @@ KEEP = re.compile(r'(<blockquote class="official">.*?</blockquote>|موثّق)',
 def plain(html_):
     """No diacritics in headlines or copy (house rule); the brand name and quoted official texts keep theirs."""
     parts = KEEP.split(html_)
-    return ''.join(p if i % 2 else HARAKAT.sub('', p) for i, p in enumerate(parts))
+    return arabize(''.join(p if i % 2 else HARAKAT.sub('', p) for i, p in enumerate(parts)))
 
 
 def page(title, desc, rel, path, active, main, extra_head='', body_cls='', scripts=''):

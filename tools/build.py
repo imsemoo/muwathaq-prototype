@@ -13,7 +13,8 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import shell as S  # noqa: E402
+import shell as S
+import arabize as AR  # noqa: E402
 from shell import esc, icon, seal, seal_row, knots, ext, ltr, mono, date_ar, write, STATUS, VERIF, REGIONS  # noqa: E402
 
 ROOT = S.ROOT
@@ -259,11 +260,14 @@ def default_custody(kind):
 
 
 def sources_list(srcs, start=1):
+    """Each source by its publisher's Arabic name, its kind and date; a title is shown only when it is Arabic."""
     items = []
     for n, s in enumerate(srcs, start):
-        meta = ' · '.join(x for x in [s.get('publisher', ''), date_ar(s.get('date')) if s.get('date') else ''] if x)
-        title = esc(s.get('title') or s.get('publisher') or s.get('url'))
-        link = ext(s['url'], title) if s.get('url') else title
+        title = s.get('title') or ''
+        is_ar = bool(re.search('[\u0600-\u06FF]', title))
+        head = esc(title if is_ar else (s.get('publisher') or 'المصدر'))
+        meta = ' · '.join(x for x in [AR.KIND.get(s.get('kind'), ''), date_ar(s.get('date')) if s.get('date') else '', '' if is_ar else 'بلغته الأصلية'] if x)
+        link = ext(s['url'], head) if s.get('url') else head
         items.append(f'<li id="src-{n}"><span class="n">[{n}]</span><span>{link}<small>{esc(meta)}</small></span></li>')
     return f'<ol class="sources">{"".join(items)}</ol>'
 
@@ -271,7 +275,7 @@ def sources_list(srcs, start=1):
 def photo_fig(slug_, rel, cls='photo', sizes='(min-width: 1024px) 50vw, 100vw', eager=False):
     p = PHOTOS[slug_]
     sz = PHOTO_SIZE[slug_]
-    credit = f'{esc(p.get("author", ""))} · {esc(p.get("license", ""))}'
+    credit = f'{esc(AR.author(p.get("author", "")))} · {esc(AR.licence(p.get("license", "")))}'
     load_ = 'eager" fetchpriority="high' if eager else 'lazy'
     return (f'<figure class="{cls}"><img src="{rel}assets/img/photo/{slug_}.webp" '
             f'srcset="{rel}assets/img/photo/{slug_}-640.webp 640w, {rel}assets/img/photo/{slug_}.webp {sz["w"]}w" sizes="{sizes}" '
@@ -285,14 +289,14 @@ def face(slug_, rel, cls='tag-face', w=160):
     sz = PHOTO_SIZE[slug_]
     p = PHOTOS[slug_]
     return (f'<img class="{cls}" src="{rel}assets/img/photo/{slug_}-240.webp" alt="{esc(p.get("alt", ""))}" '
-            f'width="{w}" height="{round(w * sz["h"] / sz["w"])}" decoding="async" title="صورة: {esc(p.get("author", ""))} · {esc(p.get("license", ""))}">')
+            f'width="{w}" height="{round(w * sz["h"] / sz["w"])}" decoding="async" title="صورة: {esc(AR.author(p.get("author", "")))}">')
 
 
 def face_credit(slug_):
     if not slug_:
         return ''
     p = PHOTOS[slug_]
-    return f'<p class="xs mute face-credit">صورة الملف: {ext(p["page_url"], esc(p.get("author", "")) + " · " + esc(p.get("license", "")))}، {esc(date_ar(p.get("date")))}.</p>'
+    return f'<p class="xs mute face-credit">صورة الملف: {ext(p["page_url"], esc(AR.author(p.get("author", ""))) + " · " + esc(AR.licence(p.get("license", ""))))}، {esc(date_ar(p.get("date")))}.</p>'
 
 
 def thumb(slug_, rel):
@@ -307,7 +311,7 @@ def rule_label(rid):
     r = RULE_BY_ID.get(rid)
     if not r:
         return esc(rid)
-    return f'<span class="mono">{esc(r.get("article_en", ""))}</span> <b>{esc(r.get("title_ar", ""))}</b>'
+    return f'<span class="mono">{esc(rule_short(r))}</span> <b>{esc(r.get("title_ar", ""))}</b>'
 
 
 def vt(rec_id):
@@ -348,7 +352,7 @@ def person_tag(p, rel, lead=False, actions=True):
                (f'<a class="acts-more" href="{rel}people/{slug(p["id"])}.html#status">{more_t}</a>' if more > 0 else '')) if crimes_all else '—')
     per = p.get('period') or []
     period = (f'{date_ar(per[0])}' if per[0] == per[1] else f'من {date_ar(per[0])} إلى {date_ar(per[1])}') if len(per) == 2 and per[0] else ''
-    others = [s for s in p.get('statuses', []) if s is not main] if full else []   # on the table: the file holds the rest
+    others = []   # the other statuses are read in the file's timeline, right under the tag
     other = '؛ '.join(f'{s.get("body_ar", "")} ({date_ar(s.get("date"))})' for s in others)
     symbol = main.get('doc_symbol') or '—'
     acts = ''
@@ -424,7 +428,7 @@ def rule_row(r, rel):
             f'<a class="row row-rule" href="{rel}law/{slug(r["id"])}.html" data-cord-to="{r["id"]}">'
             f'<span class="row-thumb rule-face" aria-hidden="true"><span>{esc(rule_short(r))}</span></span>'
             f'<span class="row-body"><span class="tag-kind">{esc(r.get("instrument_ar", ""))}</span><h3>{esc(r.get("title_ar", ""))}</h3>'
-            f'<span class="row-meta"><span>{esc(r.get("article_ar", ""))}</span><span class="mono">{esc(r.get("article_en", ""))}</span></span></span>'
+            f'<span class="row-meta"><span>{esc(r.get("article_ar", ""))}</span></span></span>'
             f'<span class="row-end"><span class="small"><b>{n}</b> {"واقعة مرتبطة" if n == 1 else "وقائع مرتبطة"}</span></span></a></li>')
 
 
@@ -457,12 +461,16 @@ def write_json_index():
         idx.append({'type': 'report', 'id': d['id'], 'title': d.get('title_ar', ''), 'sub': d.get('publisher_ar', '') + ' · ' + date_ar(d.get('date')),
                     'url': f'reports/{slug(d["id"])}.html', 'k': ' '.join([d.get('title_en', ''), d.get('symbol', '') or '', d.get('nature_ar', '')]), 'seal': 'whole'})
     for r in RULES:
-        idx.append({'type': 'rule', 'id': r.get('article_en', r['id']), 'title': r.get('title_ar', ''), 'sub': r.get('instrument_ar', '') + ' · ' + r.get('article_ar', ''),
+        idx.append({'type': 'rule', 'id': rule_short(r), 'title': r.get('title_ar', ''), 'sub': r.get('instrument_ar', '') + ' · ' + r.get('article_ar', ''),
                     'url': f'law/{slug(r["id"])}.html', 'k': r.get('article_ar', '') + ' ' + r.get('paraphrase_ar', ''), 'seal': 'whole'})
     for t, u, k in [('كيف نتحقق', 'method.html', 'منهجية التحقق الأختام'), ('أرسل مادة للمراجعة', 'submit.html', 'ساهم أضف واقعة دليل'),
                     ('ادعم التوثيق المستقل', 'donate.html', 'تبرع'), ('عن موثّق', 'about.html', 'الرؤية الرسالة'),
                     ('المعايير القانونية والأخلاقية', 'standards.html', 'تصحيح رد خصوصية'), ('الهوية البصرية', 'identity.html', 'شعار ألوان خط')]:
         idx.append({'type': 'page', 'id': '', 'title': t, 'sub': '', 'url': u, 'k': k, 'seal': 'whole'})
+    for e in idx:
+        e['k'] = ' '.join(x for x in [e.get('k', ''), e.get('id', ''), e.get('sub', '')] if x)
+        for f in ('id', 'title', 'sub'):
+            e[f] = AR.words(e.get(f) or '')
     open(R('assets', 'js', 'index.js'), 'w', encoding='utf-8').write(S.json_js('MW_INDEX', idx))
     return len(idx)
 

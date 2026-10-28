@@ -158,6 +158,19 @@
   }
 
   /* ---------- list filters ---------- */
+  /* on phones and tablets the filters fold under the search; the fold shows how many are set */
+  const narrow = matchMedia('(max-width: 1024px)');
+  $$('[data-filt]').forEach((d) => {
+    const fit = () => { d.open = !narrow.matches; };
+    fit(); narrow.addEventListener('change', fit);
+    const form = d.closest('form'), n = $('[data-filt-n]', d);
+    const count = () => {
+      const k = $$('select', d).filter((s) => s.value).length + $$('fieldset input:checked', d).filter((i) => i.value).length;
+      n.textContent = k; n.hidden = !k;
+    };
+    form.addEventListener('change', count); form.addEventListener('reset', () => setTimeout(count));
+  });
+
   $$('[data-filter]').forEach((form) => {
     const list = document.getElementById(form.dataset.filter);
     const count = document.getElementById(form.dataset.count);

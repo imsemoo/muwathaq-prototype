@@ -1,5 +1,6 @@
 """Page templates for every route. Called by build.py; never hand-edit the built HTML."""
 import os
+import re
 
 import build as B
 import shell as S
@@ -58,7 +59,6 @@ def doc_tag(d, rel, actions=True):
   <p class="tag-status open-1">{esc(nature_short(d))}</p>
   <p class="tag-by open-1">{esc(d.get("publisher_ar", ""))} · {esc(date_ar(d.get("date")))}</p>
   <div class="tag-name open-2"><b>{esc(d.get("title_ar", ""))}</b></div>
-  <p class="tag-en open-2" lang="en" dir="ltr">{esc(d.get("title_en", ""))}</p>
   <dl class="fields open-3">
    <div><dt>رمز الوثيقة</dt><dd>{mono(d.get("symbol") or "—")}</dd></div>
    <div><dt>سلامة النسخة</dt><dd>{seal_row("complete")}</dd></div>
@@ -93,10 +93,11 @@ def person_row(p, rel):
             f'<span class="tag-kind">{esc(STATUS[p["status"]][0])}</span><h3>{esc(p["name_ar"])}</h3></span><span class="row-end"><span class="mono">{p["id"]}</span></span></a></li>')
 
 
-def side_list(title, items):
+def side_list(title, items, dup=False):
+    """dup: the body lists the same records, so on narrow screens, where the side falls below the body, it is left out."""
     if not items:
         return ''
-    return f'<section class="side-group"><h2 class="side-h">{title} <span class="mono">{len(items)}</span></h2><ul class="rows rows-tight">{"".join(items)}</ul></section>'
+    return f'<section class="side-group{" is-dup" if dup else ""}"><h2 class="side-h">{title} <span class="mono">{len(items)}</span></h2><ul class="rows rows-tight">{"".join(items)}</ul></section>'
 
 
 def toc_of(body):
@@ -180,7 +181,7 @@ def law_card(r, rel):
         text = text[:186].rsplit(' ', 1)[0] + '…'
     return f'''<article class="tag lawcard" aria-label="مادة قانونية">
   <span class="tag-hole" aria-hidden="true"></span>
-  <div class="tag-top"><span class="tag-no">{esc(r.get("article_en", ""))}</span><span class="tag-kind">{esc(B.BRANCH.get(r.get("branch"), ""))}</span></div>
+  <div class="tag-top"><span class="tag-no">{esc(B.rule_short(r))}</span><span class="tag-kind">{esc(B.BRANCH.get(r.get("branch"), ""))}</span></div>
   <div class="tag-seal" data-cord-from>{S.wax("complete")}</div>
   <p class="tag-by">{esc(r.get("instrument_ar", ""))}</p>
   <p class="tag-status">{esc(r.get("article_ar", ""))}</p>
@@ -200,27 +201,27 @@ def case_section(rel):
     rules = [r for r in (R('RS-8-2-b-xxiv'), R('RS-8-2-b-iii'), R('GCIV-147')) if r]
     steps = [
         ('in_progress', '23 مارس 2025، فجرا، قرب تل السلطان في رفح',
-         'أطلقت النار على سيارة إسعاف للهلال الأحمر الفلسطيني، ثم على قافلة إنقاذ وصلت إليها. قتل 15: ثمانية من الهلال الأحمر، وستة من الدفاع المدني، وموظف في الأونروا، بحسب الأمم المتحدة. ولم يسمح بالوصول إلى الموقع إلا بعد خمسة أيام.',
+         'أطلقت النار على سيارة إسعاف ثم على قافلة إنقاذ. قتل 15، بحسب الأمم المتحدة.',
          'أوتشا وأخبار الأمم المتحدة، 1 أبريل 2025'),
         ('in_progress', 'الرواية الأولى',
          'قال الجيش الإسرائيلي إن المركبات «تقدمت بشكل مريب» دون أضواء أو إشارات طوارئ.',
          'بيانات الجيش كما نقلتها CNN وتايمز أوف إسرائيل'),
         ('rereview', 'الدليل',
-         'في هاتف المسعف رفعت رضوان مقطع مدته نحو ست دقائق صوّره من داخل القافلة. نشر في 5 أبريل 2025، ويظهر المركبات تضيء أنوارها وإشاراتها لحظة إطلاق النار.',
+         'مقطع من هاتف المسعف رفعت رضوان: الأنوار والإشارات مضاءة لحظة إطلاق النار.',
          'نيويورك تايمز وCNN، 5 أبريل 2025'),
         ('specific', 'ما تغيّر بعد الدليل',
-         'أقر الجيش بأن روايته الأولى غير دقيقة، وخلص تحقيقه في 20 أبريل 2025 إلى «إخفاقات مهنية». وفي 23 فبراير 2026 وثّق تحليل صوتي أعدته Earshot وForensic Architecture 910 طلقات على الأقل خلال أكثر من ساعتين.',
+         'أقر الجيش بأن روايته غير دقيقة، ووثق تحليل صوتي مستقل 910 طلقات على الأقل.',
          'CNN وتايمز أوف إسرائيل؛ تقرير Earshot وForensic Architecture'),
         ('specific', 'القواعد التي قد تنطبق',
-         'الهجوم على مستعملي الشارات المميزة، والهجوم على موظفي المساعدة الإنسانية، والمخالفات الجسيمة لاتفاقية جنيف الرابعة. يلزم إثبات العلم بالصفة المحمية وقصد الهجوم قبل أي استنتاج.',
+         'الهجوم على الشارات المميزة وعلى موظفي الإغاثة، والمخالفات الجسيمة. يلزم إثبات العلم والقصد.',
          'تحليل بحثي أولي، ليس حكما'),
         ('specific', 'الحرز ما زال مفتوحا',
-         'في 19 أغسطس 2026 أعلن الجيش فتح تحقيق جنائي لدى الشرطة العسكرية. كل تحديث يضاف إلى سجل العهدة بتاريخه، ولا تمحى الرواية الأولى.',
+         'فتح تحقيق جنائي في 19 أغسطس 2026. كل تحديث يضاف بتاريخه، ولا تمحى الرواية الأولى.',
          'بحسب ما نقلته الصحافة الإسرائيلية والدولية'),
     ]
     lis = ''.join(f'<li class="case-step{" is-on" if n == 0 else ""}" data-step="{n}"><span class="cs-k" aria-hidden="true">{seal(st, label=False)}</span><div><h3>{esc(h)}</h3><p>{esc(t)}</p><p class="src">{esc(src)}</p></div></li>'
                   for n, (st, h, t, src) in enumerate(steps))
-    rule_cards = ''.join(f'<div class="cs-card cs-rule r{n}" data-in="4"><span class="tag-hole" aria-hidden="true"></span><p class="mono">{esc(r.get("article_en", ""))}</p><b>{esc(r.get("title_ar", ""))}</b><small>{esc(r.get("instrument_ar", "").split(" (")[0])}</small></div>'
+    rule_cards = ''.join(f'<div class="cs-card cs-rule r{n}" data-in="4"><span class="tag-hole" aria-hidden="true"></span><p class="mono">{esc(B.rule_short(r))}</p><b>{esc(r.get("title_ar", ""))}</b><small>{esc(r.get("instrument_ar", "").split(" (")[0])}</small></div>'
                          for n, r in enumerate(rules))
     views = ''.join(f'<div class="kd-view cs-view{" is-on" if k == "in_progress" else ""}" data-state-view="{k}">{S.wax(k, cls="wax")}</div>' for k in ('in_progress', 'rereview', 'specific'))
     return f'''<section class="case" data-case aria-labelledby="case-h">
@@ -228,7 +229,7 @@ def case_section(rel):
   <div class="wrap case-grid">
    <div class="case-text">
     <h2 class="h2" id="case-h">حرز واقعة: كيف تتغير الرواية أمام الدليل</h2>
-    <p class="case-lead">سجل حقيقي من الأرشيف، كما يُبنى في موثّق خطوة بخطوة. مرّر لتتابعه.</p>
+    <p class="case-lead">سجل حقيقي يبنى أمامك خطوة بخطوة.</p>
     <ol class="case-steps">{lis}</ol>
     <a class="link-arrow case-cta" href="{rel}incidents/{slug(inc["id"])}.html">افتح حرز الواقعة كاملا {icon("arrow")}</a>
    </div>
@@ -285,7 +286,7 @@ def home():
  <div class="wrap hero-grid">
   <div class="hero-side">
    <h1 class="hero-h" data-lines><span class="ln"><span>كل معلومة هنا حرز:</span></span> <span class="ln"><span>مختومة بمصدرها،</span></span> <span class="ln"><span>ومفتوحة للفحص.</span></span></h1>
-   <p class="lead">منصة مستقلة لتوثيق الوقائع والأدلة المتعلقة بجرائم الاحتلال الإسرائيلي، والتحقق من مصادرها، وربطها بالقانون الدولي.</p>
+   <p class="lead">منصة مستقلة لتوثيق جرائم الاحتلال الإسرائيلي وربطها بالقانون الدولي.</p>
    <form class="find find-hero" role="search" action="search.html" data-find="hero">
     <label class="sr" for="q-hero">ابحث في الملفات والوقائع والوثائق والقواعد</label>
     <input id="q-hero" name="q" type="search" placeholder="ابحث باسم، رقم ملف، أو مادة قانونية" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="ql-hero" aria-autocomplete="list">
@@ -293,7 +294,7 @@ def home():
     <div class="find-list" id="ql-hero" role="listbox" hidden></div>
    </form>
    <p class="hints">جرّب: {" · ".join(h for h in hints if h)}</p>
-   <p class="pick-hint">{icon("hand")}<span>على الطاولة {len(exhibits)} أحراز حقيقية مربوطة ببعضها. اضغط أيًا منها ليُفتح أمامك.</span></p>
+   <p class="pick-hint">{icon("hand")}<span>{len(exhibits)} أحراز حقيقية على الطاولة. اضغط أيا منها.</span></p>
   </div>
   <div class="hero-stage">
    <div class="seg pile-tabs" role="tablist" aria-label="الأحراز على الطاولة">{tabs}</div>
@@ -312,7 +313,7 @@ def home():
     read = f'''<section class="sec">
  <div class="wrap">
   <div class="sheet read-key">
-   <div class="read-key-head"><h2 class="h2">كيف تقرأ أي ملف هنا</h2><p class="lead">الختم يقول إلى أي حد تحققنا من المادة، والعُقد تقول أين يقف الشخص في المسار القضائي. المساران منفصلان دائمًا: اكتمال التحقق من مادة لا يعني ثبوت مسؤولية أحد.</p></div>
+   <div class="read-key-head"><h2 class="h2">كيف تقرأ أي ملف هنا</h2><p class="lead">الختم: إلى أي حد تحققنا من المادة. العقد: أين يقف الشخص قضائيا. والمساران منفصلان دائما.</p></div>
    <div class="read-key-grid">
     <div><h3 class="h3">أختام التحقق</h3><div class="key-wrap"><div class="key-demo" data-key-demo aria-hidden="true">{views}<p data-key-label>مكتمل وفق المنهجية</p></div><ul class="seal-key">{key}</ul></div></div>
     <div><h3 class="h3">عُقد المسار القضائي</h3><div class="knots-demo">{knots("warrant")}<p class="knots-note">مثال: مذكرة توقيف هي العقدة الرابعة من خمس؛ الحكم لم يصدر.</p></div><ol class="ladder">{steps5}</ol></div>
@@ -335,7 +336,7 @@ def home():
     rows = ''.join(B.inc_mini_row(i, rel) for i in incs if not lead_inc or i['id'] != lead_inc['id'])
     incidents = f'''<section class="sec">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">وقائع موثقة</h2><p>لكل واقعة سجل مستقل: الروايات، والأدلة وحالة كل منها، والقواعد التي قد تنطبق وما يلزم إثباته.</p></div><a class="link-arrow" href="incidents/index.html">أرشيف الوقائع ({len(B.INCIDENTS)}) {icon("arrow")}</a></div>
+  <div class="sec-head"><div><h2 class="h2">وقائع موثقة</h2><p>الروايات والأدلة والقواعد في سجل واحد لكل واقعة.</p></div><a class="link-arrow" href="incidents/index.html">أرشيف الوقائع ({len(B.INCIDENTS)}) {icon("arrow")}</a></div>
   <div class="inc-feature">{feature}<ul class="rows rows-5">{"".join(rows.split("</li>")[i] + "</li>" for i in range(min(4, rows.count("</li>"))))}</ul></div>
  </div>
 </section>'''
@@ -346,7 +347,7 @@ def home():
               f'<span class="link-arrow">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</span></a></li>')
     people = f'''<section class="sec">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">ملفات الأشخاص</h2><p>لا يُفتح ملف لشخص إلا بوضع قانوني رسمي قابل للاستشهاد. الحالة وجهتها وتاريخها قبل الاسم.</p></div><a class="link-arrow" href="people/index.html">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</a></div>
+  <div class="sec-head"><div><h2 class="h2">ملفات الأشخاص</h2><p>لا يفتح ملف إلا بوضع قانوني رسمي، والحالة قبل الاسم.</p></div><a class="link-arrow" href="people/index.html">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</a></div>
   <ul class="minis">{minis}</ul>
  </div>
 </section>'''
@@ -355,9 +356,9 @@ def home():
     top_rules = sorted(B.RULES, key=lambda r: len(r['inc_ids']), reverse=True)[:max(3, len(top_docs) + 1)]
     law = f'''<section class="sec">
  <div class="wrap two-lists">
-  <div><div class="sec-head"><div><h2 class="h2">القواعد الأكثر ارتباطًا بالوقائع</h2><p>نص رسمي، وصياغة موجزة، وما يلزم إثباته قبل أي استنتاج.</p></div><a class="link-arrow" href="law/index.html">مكتبة القواعد {icon("arrow")}</a></div>
+  <div><div class="sec-head"><div><h2 class="h2">القواعد الأكثر ارتباطًا بالوقائع</h2><p>النص الرسمي وما يلزم إثباته.</p></div><a class="link-arrow" href="law/index.html">مكتبة القواعد {icon("arrow")}</a></div>
    <ul class="rows">{"".join(B.rule_row(r, rel) for r in top_rules)}</ul></div>
-  <div><div class="sec-head"><div><h2 class="h2">أحدث الوثائق</h2><p>كل وثيقة بطبيعتها القانونية: أمر قضائي ليس حكمًا، وتقرير حقوقي ليس قرارًا.</p></div><a class="link-arrow" href="reports/index.html">مكتبة الوثائق {icon("arrow")}</a></div>
+  <div><div class="sec-head"><div><h2 class="h2">أحدث الوثائق</h2><p>كل وثيقة بطبيعتها القانونية.</p></div><a class="link-arrow" href="reports/index.html">مكتبة الوثائق {icon("arrow")}</a></div>
    <ul class="rows">{"".join(B.doc_row(d, rel) for d in top_docs)}</ul></div>
  </div>
 </section>'''
@@ -366,7 +367,7 @@ def home():
     strip = ''.join(f'<li><i></i><span>{s}</span></li>' for s in method_steps)
     method = f'''<section class="sec sec-ink method-strip">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">من المادة إلى الحرز: عشر خطوات</h2><p>لا تُختم مادة قبل أن تمر بكل عقدة على هذا الحبل، ولا تُنشر قبل حماية من قد يتعرضون للخطر بسببها.</p></div><a class="btn btn-light" href="method.html">المنهجية كاملة</a></div>
+  <div class="sec-head"><div><h2 class="h2">من المادة إلى الحرز: عشر خطوات</h2><p>لا تختم مادة قبل أن تمر بكل عقدة.</p></div><a class="btn btn-light" href="method.html">المنهجية كاملة</a></div>
   <ol class="cord-steps">{strip}</ol>
  </div>
 </section>'''
@@ -375,15 +376,15 @@ def home():
   <div class="sheet act">
    {seal("in_progress", label=False)}
    <h2 class="h2">أرسل مادة للمراجعة</h2>
-   <p>لا ننشر شيئًا تلقائيًا. تمر كل مساهمة بفحص أولي، وتحقق رقمي، ومراجعة قانونية، وإخفاء للبيانات الحساسة قبل أي قرار بالنشر.</p>
-   <p class="note is-quiet">{icon("shield")}<span>لا ترسل ما قد يعرّضك أو يعرّض الشهود أو الضحايا للخطر. في هذا النموذج لا تُرسل البيانات إلى أي خادم.</span></p>
+   <p>كل مساهمة تفحص وتراجع قانونيا قبل أي نشر.</p>
+   <p class="note is-quiet">{icon("shield")}<span>لا ترسل ما يعرضك أو يعرض غيرك للخطر.</span></p>
    <a class="btn btn-ink" href="submit.html">ابدأ الإرسال</a>
   </div>
   <div class="sheet act">
    {seal("complete", label=False)}
    <h2 class="h2">ادعم التوثيق المستقل</h2>
-   <p>تموّل المساهمات حفظ الأدلة، وأدوات التحقق الرقمي والجغرافي، والمراجعة القانونية، وحماية البيانات. تُنشر تقارير الشفافية المالية عند تفعيل التبرعات.</p>
-   <p class="note is-quiet">{icon("lock")}<span>بوابة الدفع غير مفعّلة في هذا النموذج، ولا نعرض أرقام تمويل غير حقيقية.</span></p>
+   <p>تمول المساهمات حفظ الأدلة والتحقق والمراجعة القانونية.</p>
+   <p class="note is-quiet">{icon("lock")}<span>الدفع غير مفعل في هذا النموذج.</span></p>
    <a class="btn btn-line" href="donate.html">طرق الدعم</a>
   </div>
  </div>
@@ -419,12 +420,14 @@ def id_range(ids):
 def list_page(rel, path, active, title, lead, filters, items_html, list_id, extra='', cls='rows', before='', fac='', card=''):
     """An archive: the records, and beside them a panel that stays in view: what the archive holds,
     the search and filters, and one facet whose counts follow the other filters."""
+    cut = filters.index('</div>') + len('</div>')   # the search field comes first; the rest fold on phones
+    q, rest = filters[:cut], filters[cut:]
     main = f'''<div class="wrap">{S.crumbs(rel, [(title, None)])}</div>
 <section class="list-head"><div class="wrap"><h1 class="h1">{esc(title)}</h1><p class="lead">{lead}</p>{before}</div></section>
 <section class="sec list-sec"><div class="wrap list-grid">
  <aside class="list-side" aria-label="تصفية {esc(title)}"><div class="side-sticky" data-lenis-prevent>
   <div class="panel">{card}
-   <form class="filters filters-side" data-filter="{list_id}" data-count="{list_id}-count" data-empty="{list_id}-empty" role="search" aria-label="تصفية {esc(title)}">{filters}{fac}<button class="btn btn-line btn-sm" type="reset">إعادة الضبط</button></form>
+   <form class="filters filters-side" data-filter="{list_id}" data-count="{list_id}-count" data-empty="{list_id}-empty" role="search" aria-label="تصفية {esc(title)}">{q}<details class="filt-more" data-filt open><summary>{icon("layers")}<span>التصفية</span><b class="filt-n" data-filt-n hidden></b></summary><div class="filt-in">{rest}{fac}<button class="btn btn-line btn-sm" type="reset">إعادة الضبط</button></div></details></form>
   </div>
  </div></aside>
  <div class="list-main">
@@ -451,12 +454,12 @@ def people_pages():
     items = ''.join(f'<li data-status="{p["status"]}" data-text="{esc(p["name_ar"] + " " + p.get("name_en", "") + " " + p.get("role_ar", ""))}">{B.person_mini(p, rel)}</li>' for p in B.PERSONS)
     statuses = [(k, STATUS[k][0]) for k in STATUS if any(p['status'] == k for p in B.PERSONS)]
     list_page(rel, 'people/index.html', 'people', 'ملفات الأشخاص',
-              'ملفات لأشخاص لهم وضع قانوني رسمي قابل للاستشهاد: مذكرة توقيف، أو ورود في تحقيق أممي، أو قرار عقوبات حكومي. الحالة وجهتها وتاريخها تُقرأ قبل الاسم.',
+              'أشخاص لهم وضع قانوني رسمي: أمر قبض، أو اتهام، أو تحقيق أممي، أو عقوبات.',
               q_field('اسم أو منصب'), items, 'people-list', cls='minis',
               fac=facet('status', 'الوضع القانوني', [(k, v, f'<span class="mono">{STATUS[k][1]}/5</span>', sum(p['status'] == k for p in B.PERSONS)) for k, v in statuses]),
               card=archive_card(len(B.PERSONS), 'ملف شخص', id_range([p['id'] for p in B.PERSONS]),
                                 (('وقائع مرتبطة', len({i for p in B.PERSONS for i in p['inc_ids']})), ('وثائق رسمية', len({d for p in B.PERSONS for d in p['doc_ids']})))),
-              extra=f'<p class="note" style="margin-top:28px">{icon("info")}<span>لا يُدرج موثّق شخصًا دون مصدر رسمي لوضعه القانوني، ولا يستخدم أوصافًا تجريمية عامة على البطاقات. لأي شخص معني حق طلب التصحيح أو الرد.</span></p>')
+              extra=f'<p class="note" style="margin-top:28px">{icon("info")}<span>لا يدرج شخص دون مصدر رسمي لوضعه القانوني، ولكل معني حق التصحيح أو الرد.</span></p>')
     for p in B.PERSONS:
         person_page(p)
 
@@ -466,7 +469,7 @@ def person_page(p):
     incs = [B.INC_BY_ID[i] for i in p['inc_ids']]
     docs = [B.DOC_BY_ID[d] for d in p['doc_ids']]
     rules = [B.RULE_BY_ID[r] for r in p['rule_ids'] if r in B.RULE_BY_ID]
-    side = (side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs]) + side_list('الوثائق', [B.doc_row(d, rel) for d in docs]) +
+    side = (side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs], dup=True) + side_list('الوثائق', [B.doc_row(d, rel) for d in docs]) +
             side_list('القواعد', [B.rule_row(r, rel) for r in rules])) or f'<p class="small mute">لا سجلات مرتبطة بعد.</p>'
     tag = B.person_tag(p, rel, actions=False).replace('<span class="tag-hole" aria-hidden="true"></span>', '<span class="tag-hole" aria-hidden="true"></span>', 1)
     tag = tag.replace('<p class="tag-status', '<h1 class="tag-status', 1).replace('</p>\n  <p class="tag-by', '</h1>\n  <p class="tag-by', 1)
@@ -482,7 +485,7 @@ def person_page(p):
  <h2 class="h2">ما تثبته هذه المصادر وما لا تثبته</h2>
  <div class="prose"><p>{esc(p.get("limits_ar", ""))}</p></div>
  <h2 class="h2" id="incidents">الوقائع المرتبطة</h2>
- {f'<ul class="rows">{"".join(B.inc_mini_row(i, rel) for i in incs)}</ul>' if incs else '<p class="note">' + icon("info") + '<span>لم يُربط هذا الملف بواقعة بعينها في النموذج. يُربط الشخص بواقعة فقط إذا ربطته بها وثيقة رسمية.</span></p>'}
+ {f'<ul class="rows">{"".join(B.inc_mini_row(i, rel) for i in incs)}</ul>' if incs else '<p class="note">' + icon("info") + '<span>لا واقعة مرتبطة بعد؛ يربط الشخص بواقعة فقط بوثيقة رسمية.</span></p>'}
  <h2 class="h2">المصادر</h2>
  {B.sources_list(p.get("sources", []))}
  {B.face_credit(B.photo_of(p["id"]))}
@@ -519,7 +522,7 @@ def incidents_pages():
             f'<div class="tr-body"><svg class="tr-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 Q500 40 1000 22"/></svg>'
             f'{knots_html}{year_marks}<p class="tr-tip" hidden></p></div></div>')
     list_page(rel, 'incidents/index.html', 'incidents', 'أرشيف الوقائع',
-              'لكل واقعة سجل مستقل يفصل بين ما حدث بحسب المصادر، والروايات المتعارضة، والأدلة وحالة كل منها، والتحليل القانوني. التحقق من الواقعة منفصل عن تحديد المسؤولية الفردية.',
+              'ما حدث بحسب المصادر، والروايات، والأدلة، والتحليل القانوني لكل واقعة.',
               q_field('عنوان أو مكان') + sel('fr', 'المنطقة', 'region', regions) + sel('fy', 'السنة', 'year', [(y, y) for y in years]),
               items, 'inc-list', before=rope,
               fac=facet('state', 'حالة التحقق', [(k, v, seal(k, label=False), sum(B.state_of(i['id']) == k for i in incs)) for k, v in states]),
@@ -536,7 +539,7 @@ def incident_page(inc):
     persons = [B.P_BY_ID[p] for p in inc['pids']]
     docs = [d for d in B.DOCS if inc['id'] in d['inc_ids']]
     side = (side_list('الأشخاص', [person_row(p, rel) for p in persons]) +
-            side_list('الأدلة', [B.ev_row(e, rel) for e in evs]) + side_list('القواعد', [B.rule_row(r, rel) for r in rules]) +
+            side_list('الأدلة', [B.ev_row(e, rel) for e in evs], dup=True) + side_list('القواعد', [B.rule_row(r, rel) for r in rules], dup=True) +
             side_list('الوثائق', [B.doc_row(d, rel) for d in docs]))
     ph = B.photo_of(inc['id'])
     accounts = ''
@@ -547,10 +550,10 @@ def incident_page(inc):
   <div class="seam" aria-hidden="true">{seal("rereview" if inc.get("conflict") else "partial", label=False)}</div>
   <div class="account"><h3 class="h3">ما وجدته التحقيقات المستقلة</h3><p>{esc(inc.get("findings_ar") or "—")}</p></div>
  </div>
- {'<p class="note">' + icon("alert") + '<span>نعرض الروايتين كما وردتا ومصدر كل منهما؛ ترجيح رواية على أخرى يُذكر سببه صراحة ولا يُفترض.</span></p>' if inc.get('conflict') else ''}'''
+ {'<p class="note">' + icon("alert") + '<span>الروايتان كما وردتا، وترجيح إحداهما يذكر سببه.</span></p>' if inc.get('conflict') else ''}'''
     # one block per act: the act, the rules it engages, then why and what must be proven side by side
     legal_rows = ''.join(f'''<li class="lg"><h3 class="lg-act">{esc(L.get("act_ar", ""))}</h3>
-      <div class="lg-rules">{"".join(f'<a class="rule" href="{rel}law/{slug(r)}.html"><span class="mono">{esc(B.RULE_BY_ID[r].get("article_en", ""))}</span><b>{esc(B.RULE_BY_ID[r].get("title_ar", ""))}</b></a>' for r in L.get("ids", []) if r in B.RULE_BY_ID) or esc("، ".join(L.get("rules", [])))}</div>
+      <div class="lg-rules">{"".join(f'<a class="rule" href="{rel}law/{slug(r)}.html"><span class="mono">{esc(B.rule_short(B.RULE_BY_ID[r]))}</span><b>{esc(B.RULE_BY_ID[r].get("title_ar", ""))}</b></a>' for r in L.get("ids", []) if r in B.RULE_BY_ID) or esc("، ".join(L.get("rules", [])))}</div>
       <div class="lg-cols"><div><p class="lg-h">لماذا قد تنطبق</p><p>{esc(L.get("why_ar", ""))}</p></div><div><p class="lg-h">ما يلزم إثباته</p><p>{esc(L.get("to_prove_ar", ""))}</p></div></div></li>''' for L in inc.get('legal', []))
     resp = (f'<p>ورد في هذا السجل {"، ".join(esc(p["name_ar"]) for p in persons)} لأن وثيقة رسمية ربطت وضعهم القانوني بالأفعال محل التحليل؛ لا يعني ذلك ثبوت مسؤوليتهم الفردية عن هذه الواقعة بعينها.</p>'
             if persons else '<p>لم يُربط هذا السجل بشخص بعينه. تحديد المسؤولية الفردية يتطلب أدلة على المساهمة الشخصية أو شروط المسؤولية القيادية، وهو خارج نطاق هذا السجل.</p>')
@@ -561,10 +564,10 @@ def incident_page(inc):
  {accounts}
  <h2 class="h2" id="evidence">الأدلة ({len(evs)})</h2>
  <ul class="rows">{"".join(B.ev_row(e, rel) for e in evs)}</ul>
- <p class="note">{icon("alert")}<span>التحقق من أصالة مادة وسياقها منفصل عن الاستنتاج القانوني؛ ارتباط صورة أو مقطع بمكان أو حادثة لا يثبت المسؤولية الفردية لأي شخص.</span></p>
+ <p class="note">{icon("alert")}<span>التحقق من مادة لا يثبت المسؤولية الفردية لأحد.</span></p>
  <h2 class="h2">التحليل القانوني الأولي</h2>
  <ol class="sheet legal-list">{legal_rows}</ol>
- <p class="note">{icon("scale")}<span>تحليل بحثي أولي يربط الوقائع بالقواعد، وليس حكمًا قضائيًا ولا تقريرًا نهائيًا للمسؤولية الجنائية.</span></p>
+ <p class="note">{icon("scale")}<span>تحليل بحثي أولي، وليس حكما قضائيا.</span></p>
  <h2 class="h2">المسؤولية الفردية</h2>
  <div class="prose">{resp}</div>
  <h2 class="h2">المصادر</h2>
@@ -583,7 +586,7 @@ def evidence_pages():
     types = [(k, v[0]) for k, v in B.EV_KIND.items() if any(e.get('type') == k for e in B.EVIDENCE)]
     states = [(k, VERIF[k][0]) for k in VERIF if any(B.ev_state(e) == k for e in B.EVIDENCE)]
     list_page(rel, 'evidence/index.html', 'evidence', 'سجل الأدلة',
-              'كل مادة مرتبطة بواقعة لها سجل: نوعها ومصدرها وسياقها وحدودها وحالة التحقق منها. للمواد المحفوظة على المنصة بصمة رقمية تستطيع مطابقتها بنفسك.',
+              'كل مادة بمصدرها وحدودها وحالة التحقق منها، وبصمة تطابقها بنفسك.',
               q_field('وصف أو واقعة') + sel('ft', 'نوع المادة', 'type', types), items, 'ev-list',
               fac=facet('state', 'حالة التحقق', [(k, v, seal(k, label=False), sum(B.ev_state(e) == k for e in B.EVIDENCE)) for k, v in states]),
               card=archive_card(len(B.EVIDENCE), 'مادة', id_range([e['id'] for e in B.EVIDENCE]),
@@ -608,7 +611,7 @@ def evidence_page(ev):
   <div class="verify-seal" data-verify-seal><svg class="seal is-wax" viewBox="0 0 40 40" aria-hidden="true"><use href="#s-whole"/></svg></div>
   <div class="verify-body">
    <p>حُفظت من هذه المادة نسخة مرجعية على المنصة، وسُجّلت بصمتها الرقمية. نزّل النسخة، ثم أفلتها هنا أو اخترها، وتُحسب بصمتها على جهازك دون رفعها إلى أي مكان.</p>
-   <dl class="fields"><div><dt>البصمة المسجّلة (SHA-256)</dt><dd><span class="mono hash">{h}</span></dd></div></dl>
+   <dl class="fields"><div><dt>البصمة الرقمية المسجلة</dt><dd><span class="mono hash">{h}</span></dd></div></dl>
    <div class="verify-actions"><a class="btn btn-line btn-sm" href="{rel}assets/img/photo/{ph}.webp" download>{icon("download")} نزّل النسخة المحفوظة</a>
    <button class="btn btn-line btn-sm" type="button" data-copy="{h}" data-done="نُسخت البصمة.">{icon("doc")} انسخ البصمة</button></div>
    <label class="drop">{icon("upload")}<span><b>أفلت الملف هنا</b> أو اضغط لاختياره</span><input type="file" class="sr"></label>
@@ -636,7 +639,7 @@ def reports_pages():
     cats = [(k, v) for k, v in B.DOC_CAT.items() if any(d.get('cat') == k for d in docs)]
     years = sorted({d.get('date', '')[:4] for d in docs}, reverse=True)
     list_page(rel, 'reports/index.html', 'reports', 'التقارير والوثائق',
-              'مكتبة للوثائق القضائية والأممية والحقوقية، كل منها موسوم بطبيعته القانونية: التقرير الحقوقي ليس مذكرة توقيف، ومذكرة التوقيف ليست حكمًا نهائيًا، والتدابير المؤقتة تخص مسؤولية الدولة لا الأفراد.',
+              'وثائق قضائية وأممية وحقوقية، كل منها بطبيعته القانونية.',
               q_field('عنوان أو جهة') + sel('fy', 'السنة', 'year', [(y, y) for y in years]),
               ''.join(B.doc_row(d, rel) for d in docs), 'doc-list',
               fac=facet('cat', 'نوع الجهة', [(k, v, '', sum(d.get('cat') == k for d in docs)) for k, v in cats]),
@@ -664,7 +667,7 @@ def report_page(d):
  <div class="prose"><p>{esc(d.get("summary_ar", ""))}</p>{f"<ul>{findings}</ul>" if findings else ""}</div>
  <div class="link-row">{links}</div>
  <h2 class="h2">كيف تُقرأ هذه الوثيقة</h2>
- <p class="note">{icon("scale")}<span>{esc(d.get("nature_ar", ""))}. لا ننقل محتوى الوثائق آليًا إلى قائمة حقائق؛ نميّز بين ما تثبته، وما ترجّحه، وما تنقله عن غيرها، ونوثّق حدود الاستدلال بها داخل كل ملف.</span></p>
+ <p class="note">{icon("scale")}<span>{esc(d.get("nature_ar", ""))}. نميز بين ما تثبته الوثيقة وما ترجحه وما تنقله.</span></p>
  <div class="sheet custody-sheet">{B.custody(d["id"], B.default_custody("doc"))}</div>
  {cite_block(rel, d["id"], f'{d.get("publisher_ar", "")}، «{d.get("title_ar", "")}»، {date_ar(d.get("date"))}{"، " + d["symbol"] if d.get("symbol") else ""}. محفوظة في موثّق برقم {d["id"]}.')}
 </div></section>'''
@@ -677,12 +680,15 @@ def law_pages():
     rel = '../'
     branches = [(k, v) for k, v in B.BRANCH.items() if any(r.get('branch') == k for r in B.RULES)]
     list_page(rel, 'law/index.html', 'law', 'مكتبة القواعد القانونية',
-              'النصوص الرسمية للمواد التي تُربط بها الوقائع، مع صياغة موجزة. الربط بمادة تحليل بحثي أولي يوضح وجه الصلة وما يلزم إثباته، ولا يفترض انطباقها لمجرد التشابه.',
+              'النص الرسمي لكل مادة، وصياغة موجزة، وما يلزم إثباته.',
               q_field('مادة أو موضوع'), ''.join(B.rule_row(r, rel) for r in B.RULES), 'rule-list',
               fac=facet('branch', 'فرع القانون', [(k, v, '', sum(r.get('branch') == k for r in B.RULES)) for k, v in branches]),
               card=archive_card(len(B.RULES), 'مادة وقاعدة', counts=(('صكوك', len({r.get('instrument_ar') for r in B.RULES})), ('مرتبطة بوقائع', sum(1 for r in B.RULES if r['inc_ids'])))))
     for r in B.RULES:
         rule_page(r)
+
+
+NO_AR = 'لا يوجد نص عربي رسمي لهذه المادة؛ النص ذو الحجية بلغة الاتفاقية الأصلية، والصياغة أعلاه للإيضاح.'
 
 
 def rule_page(r):
@@ -697,11 +703,11 @@ def rule_page(r):
                 prove.append((i, L['to_prove_ar']))
     # other articles of the same instrument, for moving along the text (not a link between records, so no cord)
     kin = [x for x in B.RULES if x.get('instrument_ar') == r.get('instrument_ar') and x['id'] != r['id']]
-    side = (side_list('الأشخاص', [person_row(p, rel) for p in persons]) + side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs]) +
+    side = (side_list('الأشخاص', [person_row(p, rel) for p in persons], dup=not incs) + side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs], dup=True) +
             side_list('الوثائق', [B.doc_row(d, rel) for d in docs]) + side_list('من الصك نفسه', [B.rule_row(x, rel).replace(f' data-cord-to="{x["id"]}"', '') for x in kin[:5]]))
     tag = f'''<article class="tag is-reversed"{B.vt(r["id"])} aria-label="قاعدة قانونية">
   <span class="tag-hole" aria-hidden="true"></span>
-  <div class="tag-top"><span class="tag-no">{esc(r.get("article_en", r["id"]))}</span><span class="tag-kind">{esc(B.BRANCH.get(r.get("branch"), ""))}</span></div>
+  <div class="tag-top"><span class="tag-no">{esc(B.rule_short(r))}</span><span class="tag-kind">{esc(B.BRANCH.get(r.get("branch"), ""))}</span></div>
   <div class="tag-seal" data-cord-from>{S.wax("complete")}</div>
   <p class="tag-by open-1">{esc(r.get("instrument_ar", ""))}</p>
   <h1 class="tag-status open-1">{esc(r.get("article_ar", ""))}</h1>
@@ -711,22 +717,22 @@ def rule_page(r):
     chapeau = f'<p class="chapeau">{esc(r["chapeau_ar"])}</p>' if r.get('chapeau_ar') else ''
     body = ''.join(f'<p>{esc(line)}</p>' for line in (r.get('text_ar') or '').splitlines() if line.strip())
     defin = (f'<p class="definition"><b>{esc(r.get("definition_ref_ar") or "تعريف مرتبط")}:</b> {esc(r["definition_ar"])}</p>' if r.get('definition_ar') else '')
-    text = (f'<blockquote class="official">{chapeau}{body}{defin}<footer>{esc(r.get("instrument_ar", ""))}، {esc(r.get("article_ar_official") or r.get("article_ar", ""))} — النص الرسمي. {esc(r.get("text_source", ""))}</footer></blockquote>'
-            if r.get('text_ar') else (f'<blockquote class="official" lang="en" dir="ltr"><p>{esc(r["text_en"])}</p><footer>{esc(r.get("instrument_en", ""))}, {esc(r.get("article_en", ""))} — official English text; no authentic Arabic version exists.</footer></blockquote>' if r.get('text_en') else '') + f'<p class="note">{icon("info")}<span>{esc(r.get("note") or "لم يُدرج النص الرسمي العربي في هذا النموذج؛ راجع الرابط الرسمي.")}</span></p>')
+    text = (f'<blockquote class="official">{chapeau}{body}{defin}<footer>{esc(r.get("instrument_ar", ""))}، {esc(r.get("article_ar_official") or r.get("article_ar", ""))} — النص الرسمي. {esc(re.sub(r"\s*\([^()]*[A-Za-z][^()]*\)", "", r.get("text_source", "")))}</footer></blockquote>'
+            if r.get('text_ar') else (f'<blockquote class="official"><p>{esc(r.get("paraphrase_ar", ""))}</p><footer>{esc(r.get("instrument_ar", ""))}، {esc(r.get("article_ar", ""))} — صياغة موجزة؛ لا يوجد نص عربي رسمي لهذه المادة، والنص الرسمي بلغتي الاتفاقية الأصليتين.</footer></blockquote>' if r.get('text_en') else '') + f'<p class="note">{icon("info")}<span>{esc(NO_AR if re.search("[a-z]_[a-z]", r.get("note") or "") else (r.get("note") or "لم يدرج النص الرسمي العربي في هذا النموذج؛ راجع الرابط الرسمي."))}</span></p>')
     prove_html = ''.join(f'<li><a href="{rel}incidents/{slug(i["id"])}.html">{esc(i["title_ar"])}</a><p class="small">{esc(t)}</p></li>' for i, t in prove)
     below = f'''<section class="sec record-body"><div class="wrap read">
  <h2 class="h2">النص</h2>
  {text}
- <div class="link-row">{ext(r["url"], "النص الرسمي", "btn btn-line btn-sm") if r.get("url") else ""} {ext(r["url_en"], "English", "btn btn-line btn-sm") if r.get("url_en") else ""}</div>
+ <div class="link-row">{ext(r["url"], "النص الرسمي", "btn btn-line btn-sm") if r.get("url") else ""} {ext(r["url_en"], "النص بلغته الأصلية", "btn btn-line btn-sm") if r.get("url_en") else ""}</div>
  <h2 class="h2">بصياغة موجزة</h2>
  <div class="prose"><p>{esc(r.get("paraphrase_ar", ""))}</p></div>
  {f'<h2 class="h2">ما يلزم إثباته في الوقائع المرتبطة</h2><ul class="prove">{prove_html}</ul>' if prove_html else ''}
  {f'<h2 class="h2">الوقائع المرتبطة ({len(incs)})</h2><ul class="rows">{"".join(B.inc_mini_row(i, rel) for i in incs)}</ul>' if incs else ''}
  {f'<h2 class="h2">الأشخاص المرتبطون ({len(persons)})</h2><p class="small mute">ربطت وثيقة رسمية وضعهم القانوني بهذه المادة؛ الربط لا يعني ثبوت المسؤولية.</p><ul class="rows">{"".join(person_row(p, rel).replace(f' data-cord-to="{p["id"]}"', '') for p in persons)}</ul>' if persons else ''}
  {'' if incs or persons else '<h2 class="h2">الوقائع المرتبطة</h2><p class="small mute">لا وقائع مرتبطة بهذه المادة في النموذج بعد.</p>'}
-{cite_block(rel, r["id"], f'{r.get("instrument_ar", "")}، {r.get("article_ar_official") or r.get("article_ar", "")}: «{r.get("title_ar", "")}». في مكتبة قواعد موثّق برقم {r["id"]}.')}
+{cite_block(rel, r["id"], f'{r.get("instrument_ar", "")}، {r.get("article_ar_official") or r.get("article_ar", "")}: «{r.get("title_ar", "")}». في مكتبة قواعد موثّق.')}
 </div></section>'''
-    card = stamp(r.get('article_en') or r['id'], None, (('الوقائع', len(incs)), ('الوثائق', len(docs)), ('الأشخاص', len(persons))), f'<p class="stamp-status">{esc(B.BRANCH.get(r.get("branch"), ""))}</p>')
+    card = stamp(B.rule_short(r), None, (('الوقائع', len(incs)), ('الوثائق', len(docs)), ('الأشخاص', len(persons))), f'<p class="stamp-status">{esc(B.BRANCH.get(r.get("branch"), ""))}</p>')
     main = f'<div class="wrap">{S.crumbs(rel, [("مكتبة القواعد", "law/index.html"), (r.get("article_ar", ""), None)])}</div>' + record(rel, tag, side, below, card)
     P(rel, f'law/{slug(r["id"])}.html', f'{r.get("article_ar", "")}: {r.get("title_ar", "")}', r.get('paraphrase_ar', ''), 'law', main)
 

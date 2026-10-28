@@ -1,6 +1,7 @@
 """The fixed pages: method, submit, donate, about, standards, search, identity, sources, 404."""
 import build as B
 import shell as S
+import arabize as AR
 from pages import P, archive_card
 from shell import esc, icon, seal, seal_row, knots, ext, mono, VERIF, STATUS, KNOTS
 
@@ -24,7 +25,7 @@ def method():
     key = ''.join(f'<li>{seal(k, label=False)}<span><b>{esc(v[0])}</b><small>{esc(v[2])}</small></span></li>' for k, v in VERIF.items())
     ladder = ''.join(f'<li><b>{esc(STATUS[s][0])}</b><span>{esc(STATUS[s][2])}</span></li>' for s in ['alleged', 'named', 'charged', 'warrant', 'convicted'])
     main = f'''<div class="wrap">{S.crumbs(rel, [("كيف نتحقق", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">كيف نتحقق</h1><p class="lead">التوثيق عملية متعددة المراحل. اكتمال الفحص الرقمي لمادة لا يعني ثبوت كل ادعاء مرتبط بها، ولا نستخدم كلمة «مؤكد» بمعنى ثبوت المسؤولية الجنائية لأي شخص.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">كيف نتحقق</h1><p class="lead">عشر مراحل قبل النشر، واكتمال فحص مادة لا يعني ثبوت مسؤولية أحد.</p></div></section>
 <section class="sec"><div class="wrap method-grid">
  <div class="method-main read"><h2 class="h2">عشر خطوات قبل الختم</h2><ol class="steps" data-tie>{steps}</ol>
  {B.photo_fig(B.PICKS['section']['method'], rel, sizes="(min-width: 1024px) 760px, 100vw") if B.PICKS.get('section', {}).get('method') in B.PHOTO_SIZE else ''}
@@ -71,7 +72,7 @@ def submit():
     pipe = ''.join(f'<li><i></i><span>{t}</span></li>' for t in PIPE)
     prog = ''.join(f'<li><i></i><span>{t}</span></li>' for t in ['الواقعة', 'المادة', 'السلامة', 'المراجعة'])
     main = f'''<div class="wrap">{S.crumbs(rel, [("أرسل مادة للمراجعة", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">أرسل مادة للمراجعة</h1><p class="lead">لا تنشر المنصة أي مادة تلقائيًا. تخضع كل مساهمة للمراجعة والتحقق قبل اتخاذ قرار بنشرها أو حفظها دون نشر.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">أرسل مادة للمراجعة</h1><p class="lead">لا ينشر شيء تلقائيا: كل مساهمة تراجع أولا.</p></div></section>
 <section class="sec"><div class="wrap submit-grid">
  <div class="submit-main">
   <p class="note warn">{icon("shield")}<span><b>قبل أن تبدأ:</b> لا ترسل معلومات قد تعرّضك أو تعرّض الشهود أو الضحايا للخطر، ولا تدرج عناوين دقيقة أو وجوهًا يمكن التعرف عليها دون موافقة. هذا النموذج يعمل داخل متصفحك فقط ولا يرسل أي بيانات.</span></p>
@@ -136,7 +137,7 @@ def donate():
             ('lock', 'حماية البيانات', 'تأمين الأدلة وحماية هويات المساهمين والشهود.')]
     uses_html = ''.join(f'<li>{icon(i)}<div><h3>{esc(t)}</h3><p>{esc(d)}</p></div></li>' for i, t, d in uses)
     main = f'''<div class="wrap">{S.crumbs(rel, [("ادعم التوثيق المستقل", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">ادعم التوثيق المستقل</h1><p class="lead">مساهمتك تحفظ الأدلة من الحذف والعبث، وتموّل التحقق الرقمي والمراجعة القانونية، وتبقي المعرفة الموثقة متاحة للباحثين والمؤسسات.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">ادعم التوثيق المستقل</h1><p class="lead">مساهمتك تحفظ الأدلة وتمول التحقق والمراجعة القانونية.</p></div></section>
 <section class="sec"><div class="wrap donate-grid">
  <div>
   <h2 class="h2">إلى أين تذهب المساهمات</h2>
@@ -164,7 +165,7 @@ def about():
     targets = [('واقعة موثقة', '500'), ('ملف تمت مراجعته', '300'), ('تقرير تحليلي على الأقل', '6'), ('مؤسسة مستفيدة على الأقل', '5'), ('من الملفات المنشورة بسجل تحقق مكتمل', '90%')]
     trows = ''.join(f'<tr><th scope="row" class="num">{v}</th><td>{esc(t)}</td><td>مستهدف</td></tr>' for t, v in targets)
     main = f'''<div class="wrap">{S.crumbs(rel, [("عن موثّق", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">عن موثّق</h1><p class="lead">بنية رقمية للتوثيق والتحليل القانوني، تحفظ الأدلة المتعلقة بجرائم الاحتلال الإسرائيلي، وتتحقق منها، وتربطها بالقانون الدولي، دعمًا للبحث الحقوقي والمساءلة وحقوق الضحايا.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">عن موثّق</h1><p class="lead">نحفظ الأدلة على جرائم الاحتلال الإسرائيلي، ونتحقق منها، ونربطها بالقانون الدولي.</p></div></section>
 <section class="sec"><div class="wrap doc-grid"><div class="read">
  <div class="prose">
   {B.photo_fig(B.PICKS['section']['about'], rel, sizes="(min-width: 1024px) 760px, 100vw") if B.PICKS.get('section', {}).get('about') in B.PHOTO_SIZE else ''}
@@ -199,7 +200,7 @@ def standards():
     rel = ''
     acc = ''.join(f'<details class="acc" id="{k}"{" open" if n == 0 else ""}><summary>{esc(t)}{icon("down")}</summary><div class="acc-body"><p>{esc(b)}</p></div></details>' for n, (k, t, b) in enumerate(POLICIES))
     main = f'''<div class="wrap">{S.crumbs(rel, [("المعايير القانونية والأخلاقية", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">المعايير القانونية والأخلاقية</h1><p class="lead">القواعد التي تحكم كل سجل في موثّق، وكيف تطلب تصحيحًا أو ردًا على معلومة منشورة.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">المعايير القانونية والأخلاقية</h1><p class="lead">القواعد التي تحكم كل سجل، وكيف تطلب تصحيحا.</p></div></section>
 <section class="sec"><div class="wrap standards-grid">
  <div>{acc}<p class="xs mute" style="margin-top:18px">آخر تحديث للسياسات: 28 أكتوبر 2026 — نسخة تحتاج مراجعة قانونية قبل الاعتماد.</p></div>
  <form class="sheet" id="correction" data-simple-form="corr-out" data-done="سُجّل طلب التصحيح في هذا المتصفح فقط." novalidate>
@@ -262,7 +263,7 @@ def identity():
           ('الرمادي الثانوي', '#5A626B', 'النص الثانوي بتباين لا يقل عن 4.5:1 على الورق والطاولة.')]
     swatches = ''.join(f'<li><span class="sw" style="background:{h}"></span><b>{esc(n)}</b><span class="mono">{h}</span><small>{esc(d)}</small></li>' for n, h, d in sw)
     main = f'''<div class="wrap">{S.crumbs(rel, [("الهوية البصرية", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">الهوية البصرية: الحِرْز</h1><p class="lead">في الإجراءات الجنائية العربية يُحرَّز الدليل: يُلف ويُربط بخيط ويُختم بالشمع، فلا يُفتح إلا أمام المحكمة. موثّق يعامل كل معلومة بهذه الطريقة: مربوطة بمصدرها، ومختومة ضد العبث، ومفتوحة أمام القارئ.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">الهوية البصرية: الحِرْز</h1><p class="lead">الدليل يحرز: يربط بخيط ويختم بالشمع، ولا يفتح إلا أمام القارئ.</p></div></section>
 <section class="sec"><div class="wrap id-grid">
  <div class="id-col">
  <div class="sheet id-logo"><h2 class="h2">الشعار</h2>
@@ -287,7 +288,7 @@ def identity():
   <p class="display">مطلوب بموجب مذكرة توقيف</p>
   <p class="h1">الوقائع المرتبطة والتحليل القانوني</p>
   <p class="prose">نص القراءة بخط فازيرمتن 18 بكسل وارتفاع سطر 2.0: أصدرت الدائرة التمهيدية الأولى مذكرة توقيف، والمذكرة ليست حكمًا بالإدانة.</p>
-  <p class="small mute">البيانات وحدها بخط ريد هات مونو: <span class="mono">P-0001 · ICC-01/18 · SHA-256 3f9a…</span></p>
+  <p class="small mute">البيانات وحدها بخط ريد هات مونو: <span class="mono">P-0001 · ICC-01/18 · 3f9a…</span></p>
   </div><table class="custody"><tbody><tr><th>عرض الحالة</th><td>60 بكسل · 900 · سطر 1.4</td></tr><tr><th>عنوان الصفحة</th><td>44 بكسل · 800 · سطر 1.45</td></tr><tr><th>عنوان القسم</th><td>32 بكسل · 800 · سطر 1.5</td></tr><tr><th>القراءة</th><td>18 بكسل · 400 · سطر 2.0 · 68 حرفًا</td></tr><tr><th>الواجهة</th><td>16 بكسل · 400–700 · سطر 1.75</td></tr></tbody></table>
  </div></div>
  <div class="sheet id-motion"><h2 class="h2">الحركة: لحظة واحدة متكررة</h2>
@@ -306,9 +307,9 @@ def identity():
 def sources():
     rel = ''
     used = sorted({s for s in list(B.PICKS.get('photo', {}).values()) + list(B.EV_PHOTO.values()) + list(B.PICKS.get('section', {}).values()) if s in B.PHOTO_SIZE})
-    rows = ''.join(f'<tr><th scope="row"><span class="mono">{esc(s)}</span></th><td>{esc(B.PHOTOS[s].get("caption_ar", ""))}</td><td>{ext(B.PHOTOS[s]["page_url"], esc(B.PHOTOS[s].get("author", "")))}</td><td>{esc(B.PHOTOS[s].get("license", ""))}</td></tr>' for s in used)
+    rows = ''.join(f'<tr><th scope="row"><span class="mono">{n}</span></th><td>{esc(B.PHOTOS[s].get("caption_ar", ""))}</td><td>{ext(B.PHOTOS[s]["page_url"], esc(AR.author(B.PHOTOS[s].get("author", ""))))}</td><td>{esc(AR.licence(B.PHOTOS[s].get("license", "")))}</td></tr>' for n, s in enumerate(used, 1))
     main = f'''<div class="wrap">{S.crumbs(rel, [("المصادر وحقوق الصور", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">المصادر وحقوق الصور</h1><p class="lead">كل وثيقة وواقعة في هذا النموذج مربوطة بمصدرها داخل سجلها. هنا حقوق الصور والخطوط، وما هو توضيحي.</p></div></section>
+<section class="list-head"><div class="wrap"><h1 class="h1">المصادر وحقوق الصور</h1><p class="lead">حقوق الصور والخطوط، وما هو توضيحي في النموذج.</p></div></section>
 <section class="sec"><div class="wrap doc-grid"><div class="read">
  <h2 class="h2">الصور ({len(used)})</h2>
  <p class="small mute">من ويكيميديا كومنز بتراخيصها المذكورة، بمكانها وتاريخها الحقيقيين. لا نعرض صورًا للجثث أو الدماء. الصور مصغّرة الحجم دون تعديل في محتواها.</p>
@@ -316,7 +317,7 @@ def sources():
  </div>
  <aside class="doc-side"><div class="side-sticky">
   <div class="sheet"><h2 class="h3">ما هو توضيحي</h2><p class="small">حالات التحقق الخاصة بالمنصة، وسجلات العهدة وتواريخها، والأرقام المرجعية، ونماذج الإرسال والتبرع. التفاصيل في <a href="method.html#illustrative">صفحة المنهجية</a>.</p></div>
-  <div class="sheet"><h2 class="h3">الخطوط</h2><p class="small">فازيرمتن (صابر راستي كردار) وريد هات مونو (ريد هات)، برخصة SIL Open Font License، ومستضافان من المنصة نفسها.</p></div>
+  <div class="sheet"><h2 class="h3">الخطوط</h2><p class="small">فازيرمتن (صابر راستي كردار) وريد هات مونو (ريد هات)، برخصة الخطوط المفتوحة، ومستضافان من المنصة نفسها.</p></div>
  </div></aside>
 </div></section>'''
     P(rel, 'sources.html', 'المصادر وحقوق الصور', 'مصادر موثّق وحقوق الصور والخطوط.', 'sources', main)
@@ -326,7 +327,7 @@ def not_found():
     base = '/muwathaq-prototype/'
     main = f'''<section class="sec lost" data-loose><div class="wrap lost-grid"><div class="lost-in">
  <h1 class="h1">لا يوجد حرز بهذا الرقم</h1>
- <p class="lead">ربما نُقل السجل أو كُتب الرابط بخطأ. ابحث برقم الملف أو الاسم، أو ابدأ من أحد الأقسام.</p>
+ <p class="lead">ابحث برقم الملف أو الاسم، أو ابدأ من أحد الأقسام.</p>
  {S.find(base, "lost")}
  <p class="link-row"><a class="btn btn-line btn-sm" href="{base}people/index.html">ملفات الأشخاص</a><a class="btn btn-line btn-sm" href="{base}incidents/index.html">أرشيف الوقائع</a><a class="btn btn-line btn-sm" href="{base}index.html">الرئيسية</a></p>
 </div><div class="lost-rope" aria-hidden="true"><canvas></canvas><div class="loose-seal">{seal("not_started", label=False)}</div></div></div></section>'''

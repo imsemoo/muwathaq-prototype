@@ -1173,3 +1173,37 @@ main, .foot { position: relative; z-index: 1; }
 .mini-note:hover { background: var(--sheet); }
 .acts-more { padding-block: 5px; }
 .tr-knot::after { content: ""; position: absolute; inset: -6px; }
+
+/* ---------- phones and tablets (client: «رتب الرسبونسف») ---------- */
+.filt-more > summary { display: none; }
+@media (max-width: 1024px) {
+  .record-side .is-dup { display: none; }
+  .filt-more { border-radius: 14px; box-shadow: inset 0 0 0 1.5px var(--line-2); }
+  .filt-more > summary { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px; font-weight: 700; cursor: pointer; list-style: none; }
+  .filt-more > summary::-webkit-details-marker { display: none; }
+  .filt-more > summary::after { content: ""; margin-inline-start: auto; width: 8px; height: 8px; border-inline-end: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform .25s ease; }
+  .filt-more[open] > summary::after { transform: rotate(-135deg); }
+  .filt-more .icon { width: 18px; height: 18px; }
+  .filt-n { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 8px; background: var(--ink); color: #fff; font: 600 12px/22px var(--mono); text-align: center; }
+  .filt-in { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 4px 16px 16px; }
+  .filt-in > .facet, .filt-in > .btn { grid-column: 1 / -1; }
+  .filters-side { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .list-side .panel .stamp { padding-bottom: 12px; margin-bottom: 4px; }
+}
+@media (max-width: 720px) {
+  .row { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; padding: 12px 14px; align-items: start; }
+  .row-thumb { width: 64px; }
+  .row-doc .row-thumb, .row-rule .row-thumb { height: 56px; }
+  .row-body h3 { font-size: 1.0625rem; line-height: 1.6; }
+  .row-meta { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .row-meta > span { display: inline; }
+  .row-meta > span + span::before { content: " · "; }
+  .row-meta .icon { display: none; }
+  .row-end { margin-top: 4px; gap: 10px; }
+  .row-end .seal-row { font-size: var(--fs-xs); }
+  .nature { max-width: none; -webkit-line-clamp: 2; }
+  .list-head .lead { font-size: 1rem; }
+  .filt-in { grid-template-columns: minmax(0, 1fr); }
+}
+
+.proto a { display: inline-block; padding-block: 6px; }

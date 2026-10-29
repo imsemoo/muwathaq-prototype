@@ -431,6 +431,7 @@ def list_page(rel, path, active, title, lead, filters, items_html, list_id, extr
   </div>
  </div></aside>
  <div class="list-main">
+  <h2 class="sr">السجلات</h2>
   <p class="count" id="{list_id}-count" aria-live="polite"></p>
   <ul class="{cls}" id="{list_id}">{items_html}</ul>
   <div class="empty" id="{list_id}-empty" hidden>{seal("not_started", label=False)}<p><b>لا توجد سجلات تطابق هذا البحث.</b> غيّر المرشحات أو امسحها.</p></div>

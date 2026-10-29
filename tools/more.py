@@ -82,8 +82,8 @@ def submit():
     {field("s-title", "عنوان الواقعة", '<input class="input" id="s-title" name="title" required maxlength="160" data-review="العنوان" aria-describedby="s-title-h s-title-e">', True, "عنوان مختصر ومحايد يصف ما حدث، دون أوصاف تجريمية.", "اكتب عنوانًا وصفيًا للواقعة.")}
     {field("s-desc", "وصف الواقعة ومصدر معرفتك بها", '<textarea class="input" id="s-desc" name="desc" required minlength="30" data-review="الوصف" aria-describedby="s-desc-h s-desc-e"></textarea>', True, "ماذا تعرف، وكيف عرفته، وما الذي لم تتمكن من التحقق منه.", "اكتب وصفًا لا يقل عن 30 حرفًا.")}
     <div class="grid-2">
-     {field("s-date", "تاريخ الواقعة أو بدايتها", '<input class="input" id="s-date" name="date" type="date" required data-review="التاريخ" aria-describedby="s-date-e">', True, "", "حدد التاريخ، ولو تقريبيًا.")}
-     {field("s-date2", "نهاية الفترة (اختياري)", '<input class="input" id="s-date2" name="date2" type="date">')}
+     {field("s-date", "تاريخ الواقعة أو بدايتها", '<input class="input" id="s-date" name="date" type="text" autocomplete="off" required placeholder="مثل 9 أكتوبر 2023، أو أوائل أكتوبر 2023" data-review="التاريخ" aria-describedby="s-date-e">', True, "", "حدد التاريخ، ولو تقريبيًا.")}
+     {field("s-date2", "نهاية الفترة (اختياري)", '<input class="input" id="s-date2" name="date2" type="text" autocomplete="off" placeholder="إن امتدت الواقعة على أيام">')}
      {field("s-region", "المنطقة", f'<select class="select" id="s-region" name="region" required data-review="المنطقة" aria-describedby="s-region-e"><option value="">اختر</option>{regions}</select>', True, "", "اختر المنطقة.")}
      {field("s-type", "نوع الواقعة", f'<select class="select" id="s-type" name="type" required data-review="نوع الواقعة" aria-describedby="s-type-e"><option value="">اختر</option>{types}</select>', True, "", "اختر نوع الواقعة.")}
     </div>
@@ -206,7 +206,7 @@ def standards():
  <form class="sheet" id="correction" data-simple-form="corr-out" data-done="سُجّل طلب التصحيح في هذا المتصفح فقط." novalidate>
   <h2 class="h3">طلب تصحيح أو رد</h2>
   <p class="small mute">للأشخاص أو الجهات المعنية بمعلومة منشورة.</p>
-  {field("c-ref", "رقم الملف أو الواقعة", '<input class="input ltr-input" id="c-ref" required placeholder="P-0001 أو INC-0001" aria-describedby="c-ref-e">', True, "", "اكتب رقمًا مرجعيًا.")}
+  {field("c-ref", "رقم الملف أو الواقعة", '<input class="input" id="c-ref" required placeholder="مثل ش-0001 أو و-0001" aria-describedby="c-ref-e">', True, "", "اكتب رقمًا مرجعيًا.")}
   {field("c-type", "نوع الطلب", '<select class="select" id="c-type" required aria-describedby="c-type-e"><option value="">اختر</option><option>تصحيح معلومة</option><option>حق الرد</option><option>إزالة لأسباب أمنية</option><option>تحديث حالة قانونية</option></select>', True, "", "اختر نوع الطلب.")}
   {field("c-who", "صفة مقدم الطلب", '<select class="select" id="c-who"><option>الشخص المعني</option><option>ممثل قانوني</option><option>جهة رسمية</option><option>أخرى</option></select>')}
   {field("c-body", "التفاصيل والمستندات المرجعية", '<textarea class="input" id="c-body" required minlength="20" aria-describedby="c-body-e"></textarea>', True, "", "اكتب تفاصيل الطلب.")}

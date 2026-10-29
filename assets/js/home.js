@@ -19,6 +19,8 @@
   function intro() {
     const tpl = $('#intro-tpl');
     const forced = /[?&]loader\b/.test(location.search);
+    /* arriving from another page under the closed parcel: no second intro; the lines rise as it opens */
+    if (!forced && document.documentElement.classList.contains('nav-in')) { ss.set('mw-in', '1'); document.addEventListener('mw:veil', reveal, { once: true }); return; }
     if (!tpl || !G || reduce || (!forced && ss.get('mw-in'))) { reveal(); return; }
     ss.set('mw-in', '1');
     const box = document.createElement('div');

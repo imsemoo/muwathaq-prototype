@@ -114,13 +114,18 @@ LICENCES = {
 NAMES.update(AUTHORS)
 NAMES.update(LICENCES)
 NAMES.update({'ملف PDF': 'الملف الأصلي', 'L&#x27;Orient Today': 'لوريان توداي', "L'Orient Today": 'لوريان توداي',
-              'extermination': 'الإبادة', ' (plausible)': '', '1 July – 30 September 2025': '1 يوليو – 30 سبتمبر 2025'})
+              'extermination': 'الإبادة', ' (plausible)': '', '1 July – 30 September 2025': '1 يوليو – 30 سبتمبر 2025',
+              # sanction instruments: the words become Arabic, the official numbers stay as filed
+              'E.O. 14148, sec. 2(hhh); 90 FR 8237': 'الأمر التنفيذي 14148، القسم 2(hhh)؛ السجل الاتحادي 90، ص 8237',
+              'E.O. 14115': 'الأمر التنفيذي 14115', 'Kamerstuk 23 432, nr. 569': 'وثائق مجلس النواب الهولندي 23 432، رقم 569',
+              ' (Sayfollah Musallet)': '', 'TNO': 'المنظمة الهولندية للبحث العلمي التطبيقي'})
 KIND = {'un': 'أممي', 'media': 'صحفي', 'forensic': 'تحقيق جنائي رقمي', 'ngo': 'حقوقي', 'official': 'رسمي', 'court': 'قضائي', 'gov': 'حكومي', 'academic': 'أكاديمي'}
 # the platform's own record numbers, with Arabic letters: شخص، واقعة، دليل، وثيقة
 IDS = {'INC': 'و', 'EV': 'د', 'R': 'ث', 'P': 'ش'}
 _ID = re.compile(r'\b(INC|EV|R|P)-(\d{4})\b')
 _VIA = re.compile(r'\s*(?<![A-Za-z])via(?![A-Za-z])\s*')
 _GBU = re.compile(r'\bGBU-(\d+)')
+_EU = re.compile(r'\(EU\) (\d{4}/\d+), Annex I, entry (\d+)')   # an EU sanctions listing: regulation, annex, entry
 _AND = re.compile(r'(?<=[؀-ۿ])\s+(?:&amp;|&)\s+(?=[؀-ۿ])')   # «إيرشوت & فورنزيك» -> «إيرشوت وفورنزيك»
 _NAMES = re.compile(r'(?<![A-Za-z])(?:' + '|'.join(re.escape(k) for k in sorted(NAMES, key=len, reverse=True)) + r')(?![A-Za-z])')
 
@@ -135,6 +140,7 @@ def words(s):
     s = _NAMES.sub(lambda m: NAMES[m.group(0)], s)
     s = _VIA.sub(' عبر ', s)
     s = _GBU.sub(lambda m: f'جي بي يو-{m.group(1)}', s)
+    s = _EU.sub(lambda m: f'اللائحة الأوروبية {m.group(1)}، الملحق الأول، البند {m.group(2)}', s)
     s = _AND.sub(' و', s)
     return rec_id(s)
 

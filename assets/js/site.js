@@ -27,6 +27,38 @@
   }
   window.mwToast = toast;
 
+  /* ---------- between pages: the parcel closes over the page being left and opens on the next one.
+     The head script marks an arrival before first paint (html.nav-in); here the cover opens. ---------- */
+  const html = document.documentElement;
+  const unveil = () => {
+    if (!html.classList.contains('nav-in') && !html.classList.contains('nav-out')) return;
+    html.classList.add('nav-open'); html.classList.remove('nav-in', 'nav-out');
+    document.dispatchEvent(new Event('mw:veil'));
+    setTimeout(() => html.classList.remove('nav-open'), 900);
+  };
+  if (html.classList.contains('nav-in')) {
+    const hold = Math.max(0, 260 - performance.now());
+    const fonts = document.fonts ? Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 700))]) : Promise.resolve();
+    fonts.then(() => setTimeout(() => requestAnimationFrame(unveil), hold));
+  }
+  /* back and forward from the page cache: the page comes back as it was left, closed */
+  addEventListener('pageshow', (e) => { if (e.persisted) unveil(); });
+  if (!reduce) {
+    addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest('a[href]');
+      if (!a || a.target || a.hasAttribute('download')) return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || !/(\/|\.html)$/.test(url.pathname)) return;
+      if (url.pathname === location.pathname && url.search === location.search) return;
+      e.preventDefault();
+      store.sset('mw-nav', '1');
+      html.classList.add('nav-out');
+      setTimeout(() => { location.href = url.href; }, 460);
+      setTimeout(() => { html.classList.remove('nav-out'); }, 6000);
+    });
+  }
+
   /* ---------- headline lines: home.js opens them after the intro; never leave them hidden ---------- */
   const lines = $('[data-lines]');
   if (lines) setTimeout(() => lines.classList.add('is-in'), 4200);

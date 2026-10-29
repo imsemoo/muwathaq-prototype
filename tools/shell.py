@@ -2,7 +2,7 @@
 
 Imported by build.py (run from the project root: python tools/build.py). Bump V on any CSS/JS change.
 """
-from arabize import arabize
+from arabize import arabize, words
 import html
 import json
 import os
@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 20
+V = 21
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -217,6 +217,9 @@ NAV = [('people', 'الأشخاص', 'people/index.html'), ('incidents', 'الو�
 
 
 def head(title, desc, rel, path, extra=''):
+    # link previews read these attributes; the text layer does not reach them. A description cut inside
+    # a parenthesis loses the cut fragment.
+    title, desc = words(title), re.sub(r'\s*\([^)]*$', '', words(desc))
     full = f'{title} | موثّق' if title != 'موثّق' else 'موثّق | منصة التوثيق الرقمي والتحليل القانوني'
     return f'''<!doctype html>
 <html lang="ar" dir="rtl">
@@ -235,7 +238,8 @@ def head(title, desc, rel, path, extra=''):
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{rel}assets/fonts/vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{rel}assets/css/site.css?v={V}">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(h){{h.classList.add('js');try{{if(sessionStorage.getItem('mw-nav')){{sessionStorage.removeItem('mw-nav');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){{h.classList.add('nav-in');setTimeout(function(){{h.classList.remove('nav-in')}},3000)}}}}}}catch(e){{}}}})(document.documentElement)</script>
+<script type="speculationrules">{{"prefetch":[{{"where":{{"href_matches":"*.html"}},"eagerness":"moderate"}}]}}</script>
 {extra}</head>'''
 
 
@@ -295,7 +299,15 @@ def plain(html_):
     return arabize(''.join(p if i % 2 else HARAKAT.sub('', p) for i, p in enumerate(parts)))
 
 
+def eager_top(main, n=3):
+    """The first images in the body are on or near the first screen; they are not left to lazy loading."""
+    for _ in range(n):
+        main = main.replace('loading="lazy"', 'loading="eager"', 1)
+    return main
+
+
 def page(title, desc, rel, path, active, main, extra_head='', body_cls='', scripts=''):
+    main = eager_top(main)
     return plain(head(title, desc, rel, path, extra_head) +
             f'\n<body class="{body_cls}">\n{seal_sprite()}\n{masthead(rel, active)}\n<main id="main">\n{main}\n</main>\n{footer(rel)}\n'
             f'<script src="{rel}assets/js/index.js?v={V}"></script>\n<script src="{rel}assets/js/vendor/lenis.min.js?v={V}" defer></script>\n{scripts}<script src="{rel}assets/js/site.js?v={V}" defer></script>\n<script src="{rel}assets/js/world.js?v={V}" defer></script>\n</body>\n</html>\n')

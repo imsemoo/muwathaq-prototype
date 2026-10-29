@@ -119,9 +119,9 @@ html { scrollbar-color: var(--cord) var(--table); scrollbar-width: thin; }
 .brand .mark { width: 40px; height: 40px; }
 .brand .word { height: 36px; width: auto; }
 .brand .mark { transition: transform 520ms var(--ease-press); }
-.brand:hover .mark { transform: rotate(-10deg) scale(.95); }
+@media (hover: hover) and (pointer: fine) { .brand:hover .mark { transform: rotate(-10deg) scale(.95); } }
 .tag-seal { transition: transform 520ms var(--ease-press); }
-.tag:hover .tag-seal { transform: rotate(-6deg); }
+@media (hover: hover) and (pointer: fine) { .tag:hover .tag-seal { transform: rotate(-6deg); } }
 .brand .lat { font: 700 10.5px/1 var(--font); letter-spacing: .22em; color: var(--mute); direction: ltr; margin-inline-start: 4px; align-self: center; }
 .nav { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav a { display: block; padding: 8px 12px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: var(--fs-ui); color: var(--ink-2); white-space: nowrap; transition: background var(--t-fast), color var(--t-fast); }
@@ -166,7 +166,7 @@ html { scrollbar-color: var(--cord) var(--table); scrollbar-width: thin; }
 .btn-sm { min-height: 40px; padding: 0 16px; font-size: var(--fs-sm); border-radius: 10px; }
 .link-arrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; }
 .link-arrow .icon { transition: translate var(--t) var(--ease); }
-.link-arrow:hover .icon { translate: -4px 0; }
+@media (hover: hover) and (pointer: fine) { .link-arrow:hover .icon { translate: -4px 0; } }
 
 /* ---------- type ---------- */
 .display { font-size: var(--fs-display); line-height: 1.4; font-weight: 900; }
@@ -265,7 +265,6 @@ sup.cite a:hover { background: var(--table); color: var(--ink); }
 
 /* small tag used in lists */
 .mini { display: grid; gap: 10px; text-decoration: none; position: relative; background: var(--sheet); border-radius: 18px; box-shadow: var(--shadow-tag); padding: 40px 22px 20px; min-width: 0; transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease); }
-.mini:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
 .mini .tag-hole { top: 16px; inset-inline-start: 18px; width: 13px; height: 13px; }
 .mini .tag-top { top: 11px; inset-inline: 42px 18px; justify-content: space-between; }
 .mini-status { font-size: clamp(1.25rem, 1.1rem + .5vw, 1.5rem); font-weight: 900; line-height: 1.45; }
@@ -851,13 +850,13 @@ textarea.input { min-height: 130px; resize: vertical; }
 .ex[data-slot="2"] { --x: -292px; --y: 34px; --s: .4; --r: 4deg; z-index: 3; }
 .ex[data-slot="3"] { --x: -236px; --y: 226px; --s: .4; --r: -3deg; z-index: 2; }
 .ex[data-slot="4"] { --x: 214px; --y: -292px; --s: .34; --r: 7deg; z-index: 1; }
-.ex-in { transform: translate3d(var(--px, 0px), var(--py, 0px), 0); transition: translate 420ms var(--ease-press); }
+.ex-in { container-type: inline-size; transform: translate3d(var(--px, 0px), var(--py, 0px), 0); transition: translate 420ms var(--ease-press); }
 .ex.is-lift .ex-in { translate: 0 -16px; }
 .ex .tag { transition: background-color 700ms var(--ease), color 700ms var(--ease), box-shadow 700ms var(--ease); }
 .ex .tag * { transition: color 700ms var(--ease), border-color 700ms var(--ease), background-color 700ms var(--ease); }
 .ex:not([data-slot="0"]) .tag { box-shadow: 0 1px 0 rgb(21 23 26 / .06), 0 26px 40px -24px rgb(21 23 26 / .5); }
-.ex:not([data-slot="0"]) .tag-hole { inset-inline-start: calc(50% - 8px); top: 14px; }
-.ex .tag-hole { transition: inset-inline-start 700ms var(--ease); }
+.ex:not([data-slot="0"]) .tag-hole { translate: calc(30px - 50cqi) -4px; }   /* from 22px off the start edge to the centre (RTL) */
+.ex .tag-hole { transition: translate 700ms var(--ease); }
 .ex:not([data-slot="0"]) .tag-top { inset-inline: 22px; justify-content: space-between; }
 .ex:not([data-slot="0"]) .tag-seal { opacity: 0; transform: scale(.55) rotate(-20deg); pointer-events: none; }
 .ex .tag-seal { transition: opacity 400ms var(--ease), transform 600ms var(--ease-press); }
@@ -993,7 +992,7 @@ main, .foot { position: relative; z-index: 1; }
 
 /* records laid on the table as they arrive */
 @media (prefers-reduced-motion: no-preference) {
-  .lay { opacity: 0; transform: translateY(26px) rotate(-.8deg); transition: opacity 760ms var(--ease) var(--d, 0ms), transform 900ms var(--ease) var(--d, 0ms); }
+  .lay { opacity: 0; transform: translateY(14px) rotate(-.5deg); transition: opacity 420ms var(--ease) var(--d, 0ms), transform 520ms var(--ease) var(--d, 0ms); }
   .lay.is-laid { opacity: 1; transform: none; }
 }
 
@@ -1011,7 +1010,8 @@ main, .foot { position: relative; z-index: 1; }
 .minis > li:nth-child(4n+3) .mini { --tilt: -.4deg; }
 .minis > li:nth-child(4n) .mini { --tilt: 1.3deg; }
 .mini { rotate: var(--tilt, 0deg); transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), rotate 520ms var(--ease-press); }
-.mini:hover, .mini:focus-visible { rotate: 0deg; transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.mini:focus-visible { rotate: 0deg; transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+@media (hover: hover) and (pointer: fine) { .mini:hover { rotate: 0deg; transform: translateY(-6px); box-shadow: var(--shadow-lift); } }
 .row.is-hot { background: #F1F3F5; box-shadow: inset -3px 0 0 var(--ink); }
 
 /* knots tied as you pass them */
@@ -1034,7 +1034,8 @@ main, .foot { position: relative; z-index: 1; }
 .tr-line { position: absolute; inset: 0 0 auto; width: 100%; height: 60px; overflow: visible; }
 .tr-line path { fill: none; stroke: var(--cord); stroke-width: 2.2; vector-effect: non-scaling-stroke; stroke-linecap: round; }
 .tr-knot { position: absolute; width: 16px; height: 16px; margin: -8px; margin-inline-start: -8px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px var(--table); transition: transform 360ms var(--ease-press), background 200ms; }
-.tr-knot:hover, .tr-knot:focus-visible { transform: scale(1.45); background: var(--wax); outline: none; }
+.tr-knot:focus-visible { transform: scale(1.45); background: var(--wax); outline: none; }
+@media (hover: hover) and (pointer: fine) { .tr-knot:hover { transform: scale(1.45); background: var(--wax); } }
 .tr-year { position: absolute; top: 60px; transform: translateX(50%); font-size: var(--fs-xs); font-weight: 700; color: var(--mute); font-variant-numeric: tabular-nums; }
 .tr-year::before { content: ""; position: absolute; top: -12px; inset-inline-start: 50%; width: 1px; height: 8px; background: var(--line-2); }
 .tr-tip { position: absolute; top: -40px; max-width: 360px; background: var(--ink); color: var(--on-ink); font-size: var(--fs-xs); line-height: 1.6; padding: 8px 12px; border-radius: 10px; pointer-events: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: var(--shadow-pop); z-index: 3; }

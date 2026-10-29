@@ -49,16 +49,16 @@
   window.MWRope = Rope;
 
   /* a canvas that runs only while visible */
-  function animator(canvas, frame, watch) {
+  function animator(canvas, frame, watch, gate = () => true) {
     const ctx = canvas.getContext('2d');
     let dpr = 1, W = 0, H = 0, run = false, seen = true;
     const size = () => { const r = canvas.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); };
     const tick = () => { if (!run) return; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H); frame(ctx, canvas.getBoundingClientRect()); requestAnimationFrame(tick); };
-    const start = () => { if (!run && seen) { run = true; size(); requestAnimationFrame(tick); } };
-    const stop = () => { run = false; };
+    const start = () => { if (!run && seen && gate()) { run = true; size(); requestAnimationFrame(tick); } };
+    const stop = () => { run = false; ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height); };
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; seen ? start() : stop(); }).observe(watch || canvas);
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
-    addEventListener('resize', () => { size(); });
+    addEventListener('resize', () => { size(); gate() ? start() : stop(); });
     if (reduce) { size(); setTimeout(() => { ctx.setTransform(dpr, 0, 0, dpr, 0, 0); frame(ctx, canvas.getBoundingClientRect()); }, 400); return { start() {}, stop() {}, size }; }
     start();
     return { start, stop, size };
@@ -90,7 +90,7 @@
         ropes[i].step(a, b, { slack: hot === i ? 1.004 : 1.1, wind, gravity: 0.38 });
         ropes[i].draw(ctx, hot === i);
       });
-    }, box);
+    }, box, wide);
   });
 
   /* ---------- records are laid on the table as they come into view ---------- */
@@ -100,7 +100,7 @@
     let i = 0;
     $$(sel).forEach((el) => {
       if (el.getBoundingClientRect().top < innerHeight * 0.92) return;
-      el.classList.add('lay'); el.style.setProperty('--d', ((i++ % 4) * 70) + 'ms'); io.observe(el);
+      el.classList.add('lay'); el.style.setProperty('--d', ((i++ % 4) * 50) + 'ms'); io.observe(el);
     });
   }
 

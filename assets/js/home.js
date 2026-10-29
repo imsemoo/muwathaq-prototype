@@ -97,7 +97,7 @@
       const f = front(); setTimeout(() => $('.ex-in a, .ex-in button', f)?.focus({ preventScroll: true }), 50);
     });
     exs.forEach((el) => {
-      el.addEventListener('pointerenter', () => { if (el.dataset.slot !== '0') { el.classList.add('is-lift'); cords && cords.hover(+el.dataset.i); } });
+      el.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && el.dataset.slot !== '0') { el.classList.add('is-lift'); cords && cords.hover(+el.dataset.i); } });
       el.addEventListener('pointerleave', () => { el.classList.remove('is-lift'); cords && cords.hover(-1); });
       $('[data-pick]', el)?.addEventListener('focus', () => { el.classList.add('is-lift'); cords && cords.hover(+el.dataset.i); });
       $('[data-pick]', el)?.addEventListener('blur', () => { el.classList.remove('is-lift'); cords && cords.hover(-1); });
@@ -296,7 +296,7 @@
     const seals = ['in_progress', 'in_progress', 'rereview', 'specific', 'specific', 'specific'];
     let cur = -1;
     ScrollTrigger.create({
-      trigger: kase, start: 'top top', end: '+=' + Math.round(innerHeight * 4.2), pin: $('.case-pin', kase), scrub: 0.6, animation: tl,
+      trigger: kase, start: 'top top', end: () => '+=' + Math.round(innerHeight * 4.2), invalidateOnRefresh: true, pin: $('.case-pin', kase), scrub: 0.6, animation: tl,
       onUpdate: (st) => {
         let n = 0; labels.forEach((p, i) => { if (st.progress >= p - 0.02) n = i; });
         if (n !== cur) { cur = n; stepsEl.forEach((s, i) => s.classList.toggle('is-on', i === n)); state(seals[n]); }

@@ -41,10 +41,21 @@
     const fonts = document.fonts ? Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 700))]) : Promise.resolve();
     fonts.then(() => setTimeout(() => requestAnimationFrame(unveil), hold));
   }
+  let leaving = false;
+  const go = (href) => {
+    if (reduce) { location.href = href; return; }
+    if (leaving) return;
+    leaving = true;
+    store.sset('mw-nav', '1');
+    html.classList.add('nav-out');
+    setTimeout(() => { location.href = href; }, 460);
+    setTimeout(() => { html.classList.remove('nav-out'); leaving = false; }, 6000);
+  };
   /* back and forward from the page cache: the page comes back as it was left, closed */
-  addEventListener('pageshow', (e) => { if (e.persisted) unveil(); });
+  addEventListener('pageshow', (e) => { if (e.persisted) { leaving = false; unveil(); } });
   if (!reduce) {
     addEventListener('click', (e) => {
+      if (leaving) { if (e.target.closest('a[href]')) e.preventDefault(); return; }
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = e.target.closest('a[href]');
       if (!a || a.target || a.hasAttribute('download')) return;
@@ -52,10 +63,7 @@
       if (url.origin !== location.origin || !/(\/|\.html)$/.test(url.pathname)) return;
       if (url.pathname === location.pathname && url.search === location.search) return;
       e.preventDefault();
-      store.sset('mw-nav', '1');
-      html.classList.add('nav-out');
-      setTimeout(() => { location.href = url.href; }, 460);
-      setTimeout(() => { html.classList.remove('nav-out'); }, 6000);
+      go(url.href);
     });
   }
 
@@ -119,7 +127,7 @@
       if (!q) { close(); return; }
       const res = search(q, 9);
       if (!res.length) {
-        list.innerHTML = `<div class="find-empty">لا توجد نتائج لـ«${esc(q)}». جرب اسما أو رقم ملف مثل <span class="mono">P-0001</span> أو مادة مثل «المادة 8».</div>`;
+        list.innerHTML = `<div class="find-empty">لا توجد نتائج لـ«${esc(q)}». جرب اسما أو رقم ملف مثل <span class="mono">ش-0001</span> أو مادة مثل «المادة 8».</div>`;
       } else {
         const groups = {};
         res.forEach((r) => (groups[r.type] = groups[r.type] || []).push(r));
@@ -144,10 +152,16 @@
     input.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) render(); move(1); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
-      else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); location.href = opts[active].href; }
+      else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); go(opts[active].href); }
       else if (e.key === 'Escape') { close(); }
     });
     document.addEventListener('click', (e) => { if (!form.contains(e.target)) close(); });
+    form.addEventListener('submit', (e) => {
+      if (e.defaultPrevented) return;
+      e.preventDefault();
+      const u = new URL(form.action, location.href); u.search = new URLSearchParams(new FormData(form)).toString();
+      go(u.href);
+    });
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {

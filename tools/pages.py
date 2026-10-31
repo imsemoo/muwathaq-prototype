@@ -265,7 +265,7 @@ def register():
              (len(B.DOCS), counted(len(B.DOCS), 'وثائق', 'وثيقة'), 'reports/index.html'),
              (len(B.RULES), counted(len(B.RULES), 'قواعد قانونية', 'قاعدة قانونية'), 'law/index.html')]
     return ('<nav class="register" aria-label="ما يحفظه الأرشيف">' +
-            ''.join(f'<a href="{href}"><b class="mono">{n}</b><span>{esc(label)}</span></a>' for n, label, href in cells) + '</nav>')
+            ''.join(f'<a href="{href}"><b class="mono">{n}</b> <span>{esc(label)}</span></a>' for n, label, href in cells) + '</nav>')
 
 
 def home():

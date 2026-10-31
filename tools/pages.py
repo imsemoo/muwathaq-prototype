@@ -19,6 +19,10 @@ def nature_short(d):
 
 
 # ---------- tags for incident and document ----------
+def title_cls(text, limit=80):
+    return 'tag-title is-long' if len(text) > limit else 'tag-title'
+
+
 def incident_tag(inc, rel, actions=True):
     st = B.state_of(inc['id'])
     region = REGIONS.get(inc.get('region'), '')
@@ -34,7 +38,7 @@ def incident_tag(inc, rel, actions=True):
   <span class="tag-hole" aria-hidden="true"></span>
   <div class="tag-top"><span class="tag-no">{esc(inc["id"])}</span><span class="tag-kind">واقعة · {esc(region)}</span></div>
   <div class="tag-seal" data-cord-from>{S.wax(st)}</div>
-  <h1 class="tag-title open-1">{esc(inc["title_ar"])}</h1>
+  <h1 class="{title_cls(inc["title_ar"])} open-1">{esc(inc["title_ar"])}</h1>
   <p class="tag-by open-1">{icon("cal")} {esc(date_ar(inc["date"]))}{(" — " + esc(date_ar(inc["date_to"]))) if inc.get("date_to") else ""} · {icon("pin")} {esc(inc.get("place_ar", ""))}</p>
   <dl class="fields open-2">
    <div><dt>حالة التحقق</dt><dd>{seal_row(st)}</dd></div>
@@ -77,7 +81,7 @@ def evidence_tag(ev, rel):
   <span class="tag-hole" aria-hidden="true"></span>
   <div class="tag-top"><span class="tag-no">{esc(ev["id"])}</span><span class="tag-kind">دليل · {esc(kind)}</span></div>
   <div class="tag-seal" data-cord-from>{S.wax(st)}</div>
-  <h1 class="tag-title open-1">{esc(ev.get("desc_ar", ""))}</h1>
+  <h1 class="{title_cls(ev.get("desc_ar", ""))} open-1">{esc(ev.get("desc_ar", ""))}</h1>
   <p class="tag-by open-1">{esc(ev.get("source", ""))} · {esc(date_ar(ev.get("date")))}</p>
   <dl class="fields open-2">
    <div><dt>حالة التحقق</dt><dd>{seal_row(st)}</dd></div>
@@ -453,6 +457,9 @@ def sel(fid, label, key, options):
 def people_pages():
     rel = '../'
     items = ''.join(f'<li data-status="{p["status"]}" data-text="{esc(p["name_ar"] + " " + p.get("name_en", "") + " " + p.get("role_ar", ""))}">{B.person_mini(p, rel)}</li>' for p in B.PERSONS)
+    items += (f'<li data-keep><a class="mini mini-note" href="{rel}standards.html#correction">{icon("info")}<span class="mini-meta">'
+              f'لا يدرج شخص دون مصدر رسمي لوضعه القانوني، ولكل معني حق التصحيح أو الرد.</span>'
+              f'<span class="link-arrow small">طلب تصحيح أو رد {icon("arrow")}</span></a></li>')
     statuses = [(k, STATUS[k][0]) for k in STATUS if any(p['status'] == k for p in B.PERSONS)]
     list_page(rel, 'people/index.html', 'people', 'ملفات الأشخاص',
               'أشخاص لهم وضع قانوني رسمي: أمر قبض، أو اتهام، أو تحقيق أممي، أو عقوبات.',
@@ -460,7 +467,7 @@ def people_pages():
               fac=facet('status', 'الوضع القانوني', [(k, v, f'<span class="mono">{STATUS[k][1]}/5</span>', sum(p['status'] == k for p in B.PERSONS)) for k, v in statuses]),
               card=archive_card(len(B.PERSONS), 'ملف شخص', id_range([p['id'] for p in B.PERSONS]),
                                 (('وقائع مرتبطة', len({i for p in B.PERSONS for i in p['inc_ids']})), ('وثائق رسمية', len({d for p in B.PERSONS for d in p['doc_ids']})))),
-              extra=f'<p class="note" style="margin-top:28px">{icon("info")}<span>لا يدرج شخص دون مصدر رسمي لوضعه القانوني، ولكل معني حق التصحيح أو الرد.</span></p>')
+              )
     for p in B.PERSONS:
         person_page(p)
 
@@ -596,6 +603,14 @@ def evidence_pages():
         evidence_page(e)
 
 
+def lead_of(text, limit=320):
+    """The opening of a summary, cut at the end of a sentence."""
+    if len(text) <= limit:
+        return text
+    cut = text.rfind('. ', 0, limit)
+    return text[:cut + 1] if cut > 80 else text[:limit].rsplit(' ', 1)[0] + '…'
+
+
 def evidence_page(ev):
     rel = '../'
     inc = B.INC_BY_ID[ev['incident']]
@@ -604,6 +619,8 @@ def evidence_page(ev):
     ph = ph if ph in B.PHOTO_SIZE else None
     h = B.sha(ph) if ph else None
     rules = [B.RULE_BY_ID[r] for r in inc['rule_ids'] if r in B.RULE_BY_ID]
+    siblings = [B.EV_BY_ID[e] for e in inc['ev_ids'] if e != ev['id']]
+    docs = [d for d in B.DOCS if inc['id'] in d['inc_ids']]
     side = side_list('الواقعة', [B.inc_mini_row(inc, rel)]) + side_list('القواعد ذات الصلة', [B.rule_row(r, rel) for r in rules[:4]])
     verify = ''
     if h:
@@ -622,10 +639,13 @@ def evidence_page(ev):
     below = f'''<section class="sec record-body"><div class="wrap read">
  {B.photo_fig(ph, rel, sizes="(min-width: 1024px) 760px, 100vw") if ph else ""}
  <h2 class="h2">السياق</h2>
- <div class="prose"><p>{esc(ev.get("desc_ar", ""))}. المصدر: {esc(ev.get("source", ""))}، {esc(date_ar(ev.get("date")))}. ترتبط المادة بسجل «{esc(inc["title_ar"])}».</p></div>
+ <div class="prose"><p>المادة من سجل <a href="{rel}incidents/{slug(inc["id"])}.html">«{esc(inc["title_ar"])}»</a>، {esc(inc.get("place_ar", ""))}، {esc(date_ar(inc["date"]))}.</p>
+ <p>{esc(lead_of(inc.get("summary_ar", "")))}</p></div>
  <h2 class="h2">القيود المعروفة</h2>
  <div class="prose"><p>{esc(B.EV_LIMIT.get(ev.get("type"), "تُذكر قيود المادة عند مراجعتها."))}</p></div>
  {verify}
+ {f'<h2 class="h2">أدلة أخرى في السجل نفسه ({len(siblings)})</h2><ul class="rows">{"".join(B.ev_row(e, rel) for e in siblings)}</ul>' if siblings else ""}
+ {f'<h2 class="h2">وثائق تتناول الواقعة ({len(docs)})</h2><ul class="rows">{"".join(B.doc_row(d, rel) for d in docs)}</ul>' if docs else ""}
  <div class="sheet custody-sheet">{B.custody(ev["id"], B.default_custody("evidence")).replace("سجل العهدة", "سلسلة الحيازة")}</div>
  {cite_block(rel, ev["id"], f'موثّق، «{ev.get("desc_ar", "")}»، دليل {ev["id"]} ضمن سجل {inc["id"]}. اطُّلع عليه في 28 أكتوبر 2026.')}
 </div></section>'''
@@ -713,7 +733,7 @@ def rule_page(r):
   <p class="tag-by open-1">{esc(r.get("instrument_ar", ""))}</p>
   <h1 class="tag-status open-1">{esc(r.get("article_ar", ""))}</h1>
   <div class="tag-name open-2"><b>{esc(r.get("title_ar", ""))}</b></div>
-  <p class="tag-not open-3">{S.icon("info")}<span>{esc(r.get("applies_note_ar") or "يُرجع دائمًا إلى النص الرسمي؛ الصياغة الموجزة هنا للإيضاح.")}</span></p>
+  <p class="tag-not open-3{" is-long" if len(r.get("applies_note_ar") or "") > 160 else ""}">{S.icon("info")}<span>{esc(r.get("applies_note_ar") or "يُرجع دائمًا إلى النص الرسمي؛ الصياغة الموجزة هنا للإيضاح.")}</span></p>
 </article>'''
     chapeau = f'<p class="chapeau">{esc(r["chapeau_ar"])}</p>' if r.get('chapeau_ar') else ''
     body = ''.join(f'<p>{esc(line)}</p>' for line in (r.get('text_ar') or '').splitlines() if line.strip())

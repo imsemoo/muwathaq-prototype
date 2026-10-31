@@ -220,7 +220,7 @@
   $$('[data-filter]').forEach((form) => {
     const list = document.getElementById(form.dataset.filter);
     const count = document.getElementById(form.dataset.count);
-    const items = $$(':scope > li', list);
+    const items = $$(':scope > li:not([data-keep])', list);   /* data-keep: a note in the grid, not a record */
     const empty = document.getElementById(form.dataset.empty);
     const has = (li, key, v) => !v || (li.dataset[key] || '').split(' ').includes(v);
     const picked = (f) => ($('input:checked', f) || {}).value || '';

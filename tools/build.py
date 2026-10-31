@@ -424,12 +424,15 @@ def rule_short(r):
 
 def rule_row(r, rel):
     n = len(r['inc_ids'])
+    # a rule not yet tied to an incident says so, instead of showing a zero
+    linked = (f'<span class="small"><b>{n}</b> {"واقعة مرتبطة" if n == 1 else "وقائع مرتبطة"}</span>' if n
+              else '<span class="small mute">لم تربط بواقعة بعد</span>')
     return (f'<li data-branch="{esc(r.get("branch", ""))}" data-text="{esc(r.get("title_ar", "") + " " + r.get("article_ar", "") + " " + r.get("article_en", ""))}">'
             f'<a class="row row-rule" href="{rel}law/{slug(r["id"])}.html" data-cord-to="{r["id"]}">'
             f'<span class="row-thumb rule-face" aria-hidden="true"><span>{esc(rule_short(r))}</span></span>'
             f'<span class="row-body"><span class="tag-kind">{esc(r.get("instrument_ar", ""))}</span><h3>{esc(r.get("title_ar", ""))}</h3>'
             f'<span class="row-meta"><span>{esc(r.get("article_ar", ""))}</span></span></span>'
-            f'<span class="row-end"><span class="small"><b>{n}</b> {"واقعة مرتبطة" if n == 1 else "وقائع مرتبطة"}</span></span></a></li>')
+            f'<span class="row-end">{linked}</span></a></li>')
 
 
 def ev_row(ev, rel):
@@ -440,7 +443,7 @@ def ev_row(ev, rel):
     ph = ph if ph in PHOTO_SIZE else None
     return (f'<li data-type="{esc(ev.get("type", ""))}" data-state="{st}" data-text="{esc(ev.get("desc_ar", "") + " " + inc["title_ar"])}">'
             f'<a class="row" href="{rel}evidence/{slug(ev["id"])}.html" data-cord-to="{ev["id"]}">'
-            f'{thumb(ph, rel) if ph else f"<span class=\"row-thumb is-blank\" aria-hidden=\"true\">{icon(ic)}</span>"}'
+            f'{thumb(ph, rel) if ph else f"<span class=\"row-thumb ev-plate\" aria-hidden=\"true\">{icon(ic)}<span>{esc(kind)}</span></span>"}'
             f'<span class="row-body"><span class="tag-kind">{esc(kind)} · {esc(ev.get("source", ""))}</span><h3>{esc(ev.get("desc_ar", ""))}</h3>'
             f'<span class="row-meta"><span>{esc(inc["title_ar"])}</span><span>{esc(date_ar(ev.get("date")))}</span></span></span>'
             f'<span class="row-end">{seal_row(st, illus=False)}<span class="mono">{esc(ev["id"])}</span></span></a></li>')

@@ -251,6 +251,7 @@ sup.cite a:hover { background: var(--table); color: var(--ink); }
 .tag-name span { font-size: var(--fs-sm); color: var(--mute); }
 .tag.is-reversed .tag-name span { color: var(--on-ink-2); }
 .tag-not { margin-top: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); line-height: 1.75; font-weight: 600; }
+.tag-not.is-long { font-weight: 400; line-height: 1.9; max-width: 72ch; }   /* a paragraph is read, not stamped */
 .tag-not .icon { margin-top: 4px; }
 .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin-top: 22px; }
 .fields > div { display: grid; gap: 2px; padding: 12px 0; border-top: 1px dashed var(--line-2); min-width: 0; }
@@ -267,7 +268,7 @@ sup.cite a:hover { background: var(--table); color: var(--ink); }
 .mini { display: grid; gap: 10px; text-decoration: none; position: relative; background: var(--sheet); border-radius: 18px; box-shadow: var(--shadow-tag); padding: 40px 22px 20px; min-width: 0; transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease); }
 .mini .tag-hole { top: 16px; inset-inline-start: 18px; width: 13px; height: 13px; }
 .mini .tag-top { top: 11px; inset-inline: 42px 18px; justify-content: space-between; }
-.mini-status { font-size: clamp(1.25rem, 1.1rem + .5vw, 1.5rem); font-weight: 900; line-height: 1.45; }
+.mini-status { font-size: clamp(1.25rem, 1.1rem + .5vw, 1.5rem); font-weight: 800; line-height: 1.45; }
 .mini-who { display: flex; align-items: center; gap: 12px; }
 .mini-face { width: 40px; height: 48px; object-fit: cover; object-position: 50% 18%; border-radius: 10px; flex: none; background: var(--table); }
 .mini-name { font-size: var(--fs-ui); font-weight: 700; line-height: 1.6; }
@@ -293,6 +294,11 @@ sup.cite a:hover { background: var(--table); color: var(--ink); }
 .row-thumb { width: 112px; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--table); }
 .row-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .row-thumb.is-blank { display: grid; place-items: center; color: var(--line-2); }
+/* evidence with no picture: a plate that names the kind of material */
+.ev-plate { display: grid; place-content: center; justify-items: center; gap: 6px; padding: 6px; background: var(--table); box-shadow: inset 0 0 0 1px var(--line); color: var(--ink-2); text-align: center; }
+.ev-plate .icon { width: 22px; height: 22px; }
+.ev-plate > span { font-size: 11.5px; font-weight: 600; line-height: 1.35; color: var(--mute); }
+.rows-tight .ev-plate > span { display: none; }
 .row-body { min-width: 0; }
 .row-body h3 { font-size: var(--fs-h3); line-height: 1.6; font-weight: 700; }
 .row-meta { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 4px; font-size: var(--fs-xs); color: var(--mute); line-height: 1.7; }
@@ -521,7 +527,14 @@ textarea.input { min-height: 130px; resize: vertical; }
 .ex-panel:focus-visible { outline-offset: 8px; border-radius: var(--r-tag); }
 .ex-panel .tag-status { font-size: clamp(2rem, 1.2rem + 2.4vw, 3.5rem); }
 .record-main .tag-status { font-size: clamp(2rem, 1.25rem + 2.1vw, 3.25rem); }
-.tag-title { font-size: clamp(1.625rem, 1.1rem + 1.6vw, 2.625rem); line-height: 1.45; font-weight: 900; text-wrap: balance; }
+/* on a record page the tag's top line (number and kind) stays in the flow: a long article number or publisher
+   wraps and pushes the title down instead of running into it */
+.record-main .tag { padding-top: 14px; }
+.record-main .tag-top { position: relative; top: auto; inset-inline: auto; flex-wrap: wrap; row-gap: 2px; min-height: 26px;
+  margin-inline: calc(50px - clamp(22px, 2.6vw, 34px)) calc(104px - clamp(22px, 2.6vw, 34px)); margin-bottom: clamp(16px, 1.8vw, 24px); }
+.record-main .tag-no { white-space: nowrap; }
+.tag-title { font-size: clamp(1.625rem, 1.1rem + 1.6vw, 2.625rem); line-height: 1.45; font-weight: 800; text-wrap: balance; }
+.tag-title.is-long { font-size: clamp(1.375rem, 1.05rem + 1.1vw, 2rem); line-height: 1.6; }   /* a whole sentence as a title */
 .tag-by .icon { width: 1em; height: 1em; vertical-align: -.12em; display: inline-block; }
 .tag-en { margin-top: 6px; font-size: var(--fs-sm); line-height: 1.6; color: var(--on-ink-2); text-align: start; }
 

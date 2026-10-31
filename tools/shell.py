@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 23
+V = 24
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -299,7 +299,7 @@ def plain(html_):
     return arabize(''.join(p if i % 2 else HARAKAT.sub('', p) for i, p in enumerate(parts)))
 
 
-def eager_top(main, n=3):
+def eager_top(main, n=4):
     """The first images in the body are on or near the first screen; they are not left to lazy loading."""
     for _ in range(n):
         main = main.replace('loading="lazy"', 'loading="eager"', 1)

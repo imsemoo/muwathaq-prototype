@@ -1244,7 +1244,7 @@ main, .foot { position: relative; z-index: 1; }
 html::before, html::after { content: ""; position: fixed; inset-inline: 0; z-index: 900; height: 50.5vh; background: var(--ink); pointer-events: none; visibility: hidden; }
 html::before { top: 0; transform: translateY(-101%); }
 html::after { bottom: 0; transform: translateY(101%); }
-body::before { content: ""; position: fixed; left: 50%; top: 50%; z-index: 902; width: 76px; height: 76px; margin: -38px 0 0 -38px; background: url("../brand/mark.svg") center / contain no-repeat; filter: drop-shadow(0 14px 18px rgb(0 0 0 / .5)); pointer-events: none; opacity: 0; transform: scale(1.4) rotate(-16deg); }
+body::before { content: ""; position: fixed; left: 50%; top: 50%; z-index: 902; width: 76px; height: 76px; margin: -38px 0 0 -38px; background: url("../brand/mark.svg?v=2") center / contain no-repeat; filter: drop-shadow(0 14px 18px rgb(0 0 0 / .5)); pointer-events: none; opacity: 0; transform: scale(1.4) rotate(-16deg); }
 body::after { content: ""; position: fixed; inset-inline: 0; top: 50%; z-index: 901; height: 2px; margin-top: -1px; background: #8C949C; pointer-events: none; transform: scaleX(0); transform-origin: right; }
 html.nav-out::before, html.nav-out::after, html.nav-in::before, html.nav-in::after { transform: none; visibility: visible; pointer-events: auto; }
 html.nav-out body::before, html.nav-in body::before { opacity: 1; transform: none; }

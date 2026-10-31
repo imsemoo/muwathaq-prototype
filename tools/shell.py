@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 28
+V = 29
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -217,7 +217,7 @@ def head(title, desc, rel, path, extra=''):
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_AR">
 <link rel="canonical" href="{BASE_URL}{path}">
-<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{rel}favicon.svg?v={V}" type="image/svg+xml">
 <link rel="preload" href="{rel}assets/fonts/vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{rel}assets/css/site.css?v={V}">
 <script>(function(h){{h.classList.add('js');try{{if(sessionStorage.getItem('mw-nav')){{sessionStorage.removeItem('mw-nav');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){{h.classList.add('nav-in');setTimeout(function(){{h.classList.remove('nav-in')}},3000)}}}}}}catch(e){{}}}})(document.documentElement)</script>
@@ -232,7 +232,7 @@ def masthead(rel, active):
 <div class="proto" id="proto" role="note"><div class="wrap">{icon('info')}<span><b>نموذج تصميم.</b> الوثائق والوقائع حقيقية، وحالات التحقق والعهدة توضيحية. <a href="{rel}method.html#illustrative">التفاصيل</a></span><button type="button" data-dismiss="proto" aria-label="إخفاء التنبيه">{icon('close')}</button></div></div>
 <header class="mast" id="mast">
  <div class="wrap">
-  <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark.svg" alt="موثّق" width="55" height="36"></a>
+  <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg?v={V}" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark.svg" alt="موثّق" width="55" height="36"></a>
   <nav aria-label="الأقسام"><ul class="nav" id="nav"><li class="mob-only">{find(rel, 'menu')}</li>{nav}<li class="mob-only"><a href="{rel}submit.html">أرسل مادة للمراجعة</a></li><li class="mob-only"><a href="{rel}donate.html">ادعم التوثيق</a></li><li class="mob-only"><a href="{rel}about.html">عن موثّق</a></li><li class="mob-only"><a href="{rel}standards.html">المعايير والسياسات</a></li></ul></nav>
   <div class="mast-end">
    {find(rel, 'mast')}
@@ -257,7 +257,7 @@ def footer(rel):
  <div class="wrap">
   <div class="foot-grid">
    <div>
-    <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark-reversed.svg" alt="موثّق" width="55" height="36"></a>
+    <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg?v={V}" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark-reversed.svg" alt="موثّق" width="55" height="36"></a>
     <p style="margin-top:16px;max-width:36ch">منصة مستقلة لتوثيق جرائم الاحتلال الإسرائيلي وربطها بالقانون الدولي.</p>
     <p class="foot-motto">التوثيق الدقيق أساس المساءلة.</p>
    </div>

@@ -267,8 +267,8 @@ def identity():
 <section class="sec"><div class="wrap id-grid">
  <div class="id-col">
  <div class="sheet id-logo"><h2 class="h2">الشعار</h2>
-  <div class="id-lock"><img class="m" src="assets/brand/mark.svg" alt="" width="96" height="96"><img class="w" src="assets/brand/wordmark.svg" alt="موثّق" height="84" width="129"></div>
-  <div class="id-lock is-ink"><img class="m" src="assets/brand/mark.svg" alt="" width="72" height="72"><img class="w" src="assets/brand/wordmark-reversed.svg" alt="موثّق" height="64" width="98"></div>
+  <div class="id-lock"><img class="m" src="assets/brand/mark.svg?v={S.V}" alt="" width="96" height="96"><img class="w" src="assets/brand/wordmark.svg" alt="موثّق" height="84" width="129"></div>
+  <div class="id-lock is-ink"><img class="m" src="assets/brand/mark.svg?v={S.V}" alt="" width="72" height="72"><img class="w" src="assets/brand/wordmark-reversed.svg" alt="موثّق" height="64" width="98"></div>
   <div class="prose"><p>على الختم نقاط الثاء الثلاث وحدها، والثاء أوسط حروف الجذر «و ث ق»: أن تربط الشيء فلا يفلت، ومنه الوثيقة والثقة والموثّق. النقاط مستديرة كقطرات الشمع، وتُقرأ أيضًا كالمصادر الثلاثة المستقلة التي تُطابق بها المعلومة، وتحيط بها حلقة الضغط.</p>
   <p>والكلمة مرسومة من خط فازيرمتن الأسود، بنقاط مستديرة وزوايا ملينة، وشدّتها وحدها بلون الشمع: الشدّة علامة التشديد، أي الربط المحكم.</p></div>
  </div>

@@ -4,8 +4,8 @@ python -I tools/brand.py   (from the project root; needs research/font-src/Vazir
 
 The wordmark is the word موثّق shaped by HarfBuzz in Vazirmatn Black and outlined, so the logo
 needs no font. Its shadda (the sign of doubling, شدّة: tightening) is drawn in sealing-wax red:
-the one mark that says the word has been made firm. The seal mark is that same shadda pressed
-into a wax disc: the knot of the cord that ties an exhibit, under its seal.
+the one mark that says the word has been made firm. The seal mark is the client's: a wax disc with a
+pressed ring and the three dots of ث, the root letter of وثق.
 """
 import io
 import math
@@ -160,16 +160,26 @@ def svg(view, body, title):
             f'<title>{title}</title>{body}</svg>\n')
 
 
-def tha_seal(edge_r=27.5):
-    """The seal: ث, the root letter of وثق (to bind fast, to trust), reversed out of wax.
-    Its three round dots read as the three independent sources a fact is checked against."""
-    paths, (x0, y0, x1, y1), upm = shape('ث')
-    w, h = x1 - x0, y1 - y0
-    s = 31 / max(w, h)
-    g = draw(paths, upm, SHEET, SHEET, dot_k=0.7)
-    return (f'<path d="{wax_edge(32, 32, edge_r)}" fill="{WAX}"/>'
-            f'<circle cx="32" cy="32" r="{edge_r - 5.2:.1f}" fill="none" stroke="{WAX_DEEP}" stroke-opacity=".45" stroke-width="1.2"/>'
-            f'<g transform="translate({32 - s * (x0 + w / 2):.2f} {33.6 - s * (y0 + h / 2):.2f}) scale({s:.5f})">{g}</g>')
+# The client's mark (2026-10-31): the three dots of ث, the root letter of وثق, alone in the wax: one above,
+# two below. Centres, dot radius and ring as fractions of the seal's mean radius, measured from the client's file.
+DOTS = ((0, -0.219), (-0.27, 0.184), (0.27, 0.184))
+DOT_R = 0.204
+RING, RING_W = 0.81, 0.039
+
+
+def dots(cx, cy, r, fill=None, style=None, dx=0, dy=0):
+    paint = f'style="{style}"' if style else f'fill="{fill}"'
+    return ''.join(f'<circle cx="{cx + dx + x * r:.2f}" cy="{cy + dy + y * r:.2f}" r="{DOT_R * r:.2f}" {paint}/>' for x, y in DOTS)
+
+
+def dots_seal(edge_r=27.5, lobes=True):
+    """The seal: three round dots reversed out of wax; they read as the three independent sources a fact is
+    checked against, and they are the dots of ث (to bind fast, to trust)."""
+    edge = (wax_edge(32, 32, edge_r, lobes=12, amp=0.04) if lobes
+            else f'M32 {32 - edge_r}a{edge_r} {edge_r} 0 1 1 0 {2 * edge_r}a{edge_r} {edge_r} 0 1 1 0 -{2 * edge_r}Z')
+    return (f'<path d="{edge}" fill="{WAX}"/>'
+            f'<circle cx="32" cy="32" r="{RING * edge_r:.2f}" fill="none" stroke="{WAX_DEEP}" stroke-opacity=".55" stroke-width="{RING_W * edge_r:.2f}"/>'
+            f'{dots(32, 32, edge_r, SHEET)}')
 
 
 def main():
@@ -181,11 +191,11 @@ def main():
         svg(f'0 0 {w:.0f} {h:.0f}', f'<g transform="{t}">{draw(paths, upm, INK, WAX)}</g>', 'موثّق'))
     open(os.path.join(OUT, 'wordmark-reversed.svg'), 'w', encoding='utf-8').write(
         svg(f'0 0 {w:.0f} {h:.0f}', f'<g transform="{t}">{draw(paths, upm, SHEET, WAX_HI)}</g>', 'موثّق'))
-    seal = tha_seal()
+    seal = dots_seal()
     open(os.path.join(OUT, 'mark.svg'), 'w', encoding='utf-8').write(svg('0 0 64 64', seal, 'موثّق'))
     open(os.path.join(OUT, 'mark-ink.svg'), 'w', encoding='utf-8').write(
         svg('0 0 64 64', seal.replace(WAX, INK).replace(WAX_DEEP, '#000'), 'موثّق'))
-    fav = tha_seal(29.5).replace(wax_edge(32, 32, 29.5), 'M32 2.5a29.5 29.5 0 1 1 0 59a29.5 29.5 0 1 1 0-59Z')
+    fav = dots_seal(29.5, lobes=False)
     open(os.path.join(ROOT, 'favicon.svg'), 'w', encoding='utf-8').write(svg('0 0 64 64', fav, 'موثّق'))
     print('wordmark', round(w), 'x', round(h), 'upm', upm, 'kinds', [k for _, k, _ in paths])
 

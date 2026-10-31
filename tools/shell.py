@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 27
+V = 28
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -92,15 +92,9 @@ def icon(name, cls='icon'):
 
 # ---------- seals: the sprite ----------
 def seal_sprite():
-    edge = brand.wax_edge(20, 20, 16.5, lobes=9, amp=0.05, steps=120)
-    paths, (x0, y0, x1, y1), upm = brand.shape('ث')
-    w, h = x1 - x0, y1 - y0
-    s = 15.5 / max(w, h)
-    tha = brand.draw(paths, upm, 'var(--seal-on,#fff)', 'var(--seal-on,#fff)', dot_k=0.7)
-    tha = tha.replace('fill="var(--seal-on,#fff)"', 'style="fill:var(--seal-on,#fff);stroke:var(--seal-on,#fff)"').replace(
-        'stroke="var(--seal-on,#fff)"', '')
-    tha_g = f'<g transform="translate({20 - s * (x0 + w / 2):.2f} {20.8 - s * (y0 + h / 2):.2f}) scale({s:.5f})">{tha}</g>'
-    rim = '<circle cx="20" cy="20" r="12.6" fill="none" style="stroke:var(--seal-on,#fff)" stroke-opacity=".38" stroke-width=".9"/>'
+    edge = brand.wax_edge(20, 20, 16.5, lobes=12, amp=0.045, steps=120)
+    mark_dots = brand.dots(20, 20, 16.5, style='fill:var(--seal-on,#fff)')
+    rim = f'<circle cx="20" cy="20" r="{brand.RING * 16.5:.2f}" fill="none" style="stroke:var(--seal-on,#fff)" stroke-opacity=".38" stroke-width=".9"/>'
     syms = {
         'none': '<circle cx="20" cy="20" r="15.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3.1 3.3" stroke-linecap="round"/>',
         'tied': (f'<path d="{edge}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-opacity=".55"/>'
@@ -110,8 +104,8 @@ def seal_sprite():
                  f'<path d="{edge}" fill="none" stroke="currentColor" stroke-width="1.5"/>'
                  f'<path d="{edge}" fill="currentColor" clip-path="url(#sc-half)"/>'),
         'notch': (f'<path d="{edge}" fill="none" stroke="currentColor" stroke-width="1.5"/>'
-                  '<circle cx="15.6" cy="23.2" r="2.7" fill="currentColor"/><circle cx="24.4" cy="23.2" r="2.7" fill="currentColor"/><circle cx="20" cy="15.4" r="2.7" fill="currentColor"/>'),
-        'whole': f'<path d="{edge}" fill="currentColor"/>{rim}{tha_g}',
+                  f'{brand.dots(20, 20, 14.5, "currentColor")}'),   # the mark's dots on an open seal: some elements, not the whole
+        'whole': f'<path d="{edge}" fill="currentColor"/>{rim}{mark_dots}',
         'crack': (f'<clipPath id="sc-a"><path d="M0 0H21L17.5 12L23 19.5L16.5 27L20.5 40H0Z"/></clipPath>'
                   f'<clipPath id="sc-b"><path d="M21 0H40V40H20.5L16.5 27L23 19.5L17.5 12Z"/></clipPath>'
                   f'<g clip-path="url(#sc-a)"><path d="{edge}" fill="currentColor" transform="translate(-1.4 .6) rotate(-4 20 20)"/></g>'
@@ -123,20 +117,11 @@ def seal_sprite():
     return f'<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>{out}</defs></svg>'
 
 
-_THA = None
 _WAX_N = [0]
 
 
-def _tha_paths():
-    global _THA
-    if _THA is None:
-        paths, (x0, y0, x1, y1), upm = brand.shape('ث')
-        _THA = (paths, (x0, y0, x1, y1), upm)
-    return _THA
-
-
 def wax(state='complete', cls='wax', label=''):
-    """The lead seal as material: a domed wax disc lit from the top start corner, the ث pressed into it
+    """The lead seal as material: a domed wax disc lit from the top start corner, the mark's three dots pressed into it
     (shadow on the lit edge, highlight on the far edge), a pressed rim. Half, cracked and whole states
     keep the seal grammar; the other states fall back to the drawn symbol."""
     shape = VERIF[state][1]
@@ -144,16 +129,13 @@ def wax(state='complete', cls='wax', label=''):
         return seal(state, wax=True, cls='seal ' + cls)
     _WAX_N[0] += 1
     n = _WAX_N[0]
-    edge = brand.wax_edge(60, 60, 54, lobes=11, amp=0.035, seed=1.3, steps=160)
-    paths, (x0, y0, x1, y1), upm = _tha_paths()
-    w, h = x1 - x0, y1 - y0
-    sc = 46 / max(w, h)
-    def tha(fill, dx=0, dy=0, op=1):
-        g = brand.draw(paths, upm, fill, fill, dot_k=0.7)
-        return (f'<g opacity="{op}" transform="translate({60 + dx - sc * (x0 + w / 2):.2f} {62 + dy - sc * (y0 + h / 2):.2f}) scale({sc:.5f})">{g}</g>')
-    relief = tha('#5E0F0B', -1.1, -1.1, .7) + tha('#E7705F', 1.0, 1.0, .55) + tha('#9C1F18')
-    rim = ('<circle cx="60" cy="60" r="39" fill="none" stroke="#6A110D" stroke-opacity=".55" stroke-width="2.2"/>'
-           '<circle cx="60.8" cy="60.8" r="39" fill="none" stroke="#E7705F" stroke-opacity=".35" stroke-width="1.2"/>')
+    edge = brand.wax_edge(60, 60, 54, lobes=12, amp=0.035, seed=1.3, steps=160)
+    def pressed(fill, dx=0, dy=0, op=1):
+        return f'<g opacity="{op}">{brand.dots(60, 60, 52, fill, dx=dx, dy=dy)}</g>'
+    relief = pressed('#5E0F0B', -1.1, -1.1, .7) + pressed('#E7705F', 1.0, 1.0, .55) + pressed('#9C1F18')
+    ring = brand.RING * 52
+    rim = (f'<circle cx="60" cy="60" r="{ring:.1f}" fill="none" stroke="#6A110D" stroke-opacity=".55" stroke-width="2.2"/>'
+           f'<circle cx="60.8" cy="60.8" r="{ring:.1f}" fill="none" stroke="#E7705F" stroke-opacity=".35" stroke-width="1.2"/>')
     body = (f'<path d="{edge}" fill="url(#wx-d{n})"/>'
             f'<path d="{edge}" fill="none" stroke="#5E0F0B" stroke-opacity=".35" stroke-width="1.4"/>'
             f'{rim}{relief}'

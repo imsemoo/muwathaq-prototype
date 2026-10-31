@@ -253,6 +253,21 @@ def case_section(rel):
 </section>'''
 
 
+def counted(n, few, many):
+    """Arabic counted noun: 3 to 10 take the plural, 11 and up the singular."""
+    return few if 3 <= n % 100 <= 10 else many
+
+
+def register():
+    cells = [(len(B.PERSONS), counted(len(B.PERSONS), 'ملفات أشخاص', 'ملف شخص'), 'people/index.html'),
+             (len(B.INCIDENTS), counted(len(B.INCIDENTS), 'وقائع', 'واقعة'), 'incidents/index.html'),
+             (len(B.EVIDENCE), counted(len(B.EVIDENCE), 'أدلة', 'دليلا'), 'evidence/index.html'),
+             (len(B.DOCS), counted(len(B.DOCS), 'وثائق', 'وثيقة'), 'reports/index.html'),
+             (len(B.RULES), counted(len(B.RULES), 'قواعد قانونية', 'قاعدة قانونية'), 'law/index.html')]
+    return ('<nav class="register" aria-label="ما يحفظه الأرشيف">' +
+            ''.join(f'<a href="{href}"><b class="mono">{n}</b><span>{esc(label)}</span></a>' for n, label, href in cells) + '</nav>')
+
+
 def home():
     rel = ''
     feat = B.PICKS.get('home', {})
@@ -308,6 +323,7 @@ def home():
    </div>
   </div>
  </div>
+ <div class="wrap">{register()}</div>
 </section>'''
     key = ''.join(f'<li data-state="{k}" tabindex="0"{" class=\"is-on\"" if k == "complete" else ""}>{seal(k, label=False)}<span><b>{esc(v[0])}</b><small>{esc(v[2])}</small></span></li>' for k, v in VERIF.items())
     views = ''.join(f'<div class="kd-view{" is-on" if k == "complete" else ""}" data-state-view="{k}">{S.wax(k, cls="wax kd-wax")}</div>' for k in VERIF)

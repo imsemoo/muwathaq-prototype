@@ -171,7 +171,7 @@ html { scrollbar-color: var(--cord) var(--table); scrollbar-width: thin; }
 /* ---------- type ---------- */
 .display { font-size: var(--fs-display); line-height: 1.4; font-weight: 900; }
 .h1 { font-size: var(--fs-h1); line-height: 1.45; font-weight: 800; }
-.h2 { font-size: var(--fs-h2); line-height: 1.5; font-weight: 800; }
+.h2 { font-size: var(--fs-h2); line-height: 1.5; font-weight: 700; }
 .h3 { font-size: var(--fs-h3); line-height: 1.6; font-weight: 700; }
 .lead { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.95; color: var(--ink-2); max-width: 60ch; }
 .prose { font-size: var(--fs-body); line-height: 2; max-width: var(--measure); }
@@ -194,7 +194,9 @@ sup.cite a:hover { background: var(--table); color: var(--ink); }
 .sec + .sec-ink { margin-top: clamp(16px, 2vw, 24px); }
 .sec-sheet { background: var(--sheet); }
 .sec-ink { background: var(--ink); color: var(--on-ink); }
-.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: clamp(24px, 3vw, 40px); flex-wrap: wrap; }
+.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: clamp(24px, 3vw, 40px); flex-wrap: wrap;
+  border-top: 1px solid var(--line-2); padding-top: clamp(18px, 2vw, 26px); }
+.sec-ink .sec-head { border-top-color: var(--on-ink-line); }
 .sec-head p { color: var(--mute); max-width: 62ch; margin-top: 8px; font-size: var(--fs-ui); line-height: 1.85; }
 .sec-ink .sec-head p { color: var(--on-ink-2); }
 
@@ -290,6 +292,9 @@ sup.cite a:hover { background: var(--table); color: var(--ink); }
 .row { display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 16px 22px; text-decoration: none; border-top: 1px solid var(--line); transition: background var(--t-fast); }
 .rows > li:first-child .row { border-top: 0; }
 .row:hover { background: #F6F7F8; }
+@media (hover: hover) and (pointer: fine) {
+  .row:hover h3 { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .3em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+}
 .rows .row:focus-visible { outline: 2px solid var(--ink); outline-offset: -5px; border-radius: 16px; }
 .row-thumb { width: 112px; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--table); }
 .row-thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -423,6 +428,8 @@ textarea.input { min-height: 130px; resize: vertical; }
 
 /* ---------- motion ---------- */
 @keyframes tag-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+/* the seal's shadow: wide and soft while it is held above the paper, tight once it is pressed */
+@keyframes seal-lift { 0% { filter: drop-shadow(0 26px 22px rgb(21 23 26 / .2)); } 60% { filter: drop-shadow(0 5px 6px rgb(21 23 26 / .34)); } 100% { filter: drop-shadow(0 8px 10px rgb(21 23 26 / .28)); } }
 @keyframes seal-press { 0% { opacity: 0; transform: scale(1.22) rotate(-9deg); } 62% { opacity: 1; transform: scale(.96) rotate(1deg); } 100% { opacity: 1; transform: none; } }
 @keyframes seal-crack-a { to { transform: translate(-3px, 2px) rotate(-6deg); } }
 @keyframes seal-crack-b { to { transform: translate(3px, -1px) rotate(5deg); } }
@@ -608,6 +615,12 @@ textarea.input { min-height: 130px; resize: vertical; }
 .record-side { display: grid; gap: 22px; padding-top: 30px; min-width: 0; }
 .side-group { display: grid; gap: 10px; }
 .side-h { font-size: var(--fs-sm); font-weight: 700; display: flex; align-items: center; justify-content: space-between; color: var(--ink-2); }
+/* beside a record the linked records are an index on the table, not a second stack of cards: the record's
+   own label below them stays the one card in the column */
+.record-side .side-group .rows { background: none; box-shadow: none; border-radius: 0; overflow: visible; border-block: 1px solid var(--line-2); }
+.record-side .side-group .rows .row { padding-inline: 4px; border-top-color: var(--line-2); }
+.record-side .side-group .rows .row:hover { background: color-mix(in srgb, var(--sheet) 60%, transparent); }
+.record-side .side-group .row-thumb { box-shadow: 0 0 0 1px var(--line); }
 .side-h .mono { font-size: 12px; color: var(--mute); }
 .rows-tight .row { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; padding: 12px 14px; }
 .rows-tight .row-thumb { width: 64px; height: 48px; aspect-ratio: auto; }
@@ -623,7 +636,8 @@ textarea.input { min-height: 130px; resize: vertical; }
 .read { max-width: 860px; }
 .wrap.read { width: min(100% - 2 * var(--gutter), 860px); margin-inline: max(var(--gutter), calc((100% - var(--wrap)) / 2)) auto; }
 .list-head + .sec { padding-top: clamp(8px, 2vw, 24px); }
-.read > .h2 { margin-top: clamp(40px, 5vw, 64px); margin-bottom: 18px; }
+.read > .h2 { margin-top: clamp(44px, 5vw, 68px); margin-bottom: 20px; padding-top: 16px; border-top: 1px solid var(--line-2);
+  font-size: clamp(1.375rem, 1.15rem + .7vw, 1.75rem); line-height: 1.55; }
 .read > .h2:first-child { margin-top: 0; }
 .read > .photo { margin-bottom: 8px; }
 .read > .note, .read > .sheet { margin-top: 18px; }
@@ -650,7 +664,7 @@ textarea.input { min-height: 130px; resize: vertical; }
 .official footer { margin-top: 14px; font-size: var(--fs-xs); color: var(--mute); font-weight: 600; line-height: 1.7; }
 .cite-box { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
 .cite-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-.read > .custody-sheet { margin-top: 28px; }
+.read > .custody-sheet { margin-top: clamp(44px, 5vw, 68px); background: none; box-shadow: none; border-radius: 0; padding: 16px 0 0; border-top: 1px solid var(--ink); }
 
 /* integrity check */
 .verify { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 26px; background: var(--sheet); border-radius: var(--r-lg); box-shadow: var(--shadow-tag); padding: clamp(20px, 3vw, 32px); }
@@ -1014,7 +1028,7 @@ main, .foot { position: relative; z-index: 1; }
 .record-main .tag { transform: rotate(-.6deg); transform-origin: 70% 20%; }
 @media (prefers-reduced-motion: no-preference) {
   .js .is-opening .tag { animation: tag-land 900ms var(--ease) both; }
-  .js .is-opening .tag-seal { animation: seal-press 720ms var(--ease-press) 420ms backwards; }
+  .js .is-opening .tag-seal { animation: seal-press 720ms var(--ease-press) 420ms backwards, seal-lift 720ms var(--ease) 420ms backwards; }
 }
 
 /* lists: tags laid at small angles, straightened when picked up */
@@ -1250,3 +1264,22 @@ html.nav-open body::after { opacity: 0; transform: scaleX(1); transition: opacit
   .minis > li:nth-child(n+5):not(:last-child) { display: none; }
   .two-lists .rows > li:nth-child(n+5) { display: none; }
 }
+
+/* ---------- the archive register under the hero: what the table holds, counted from the records ---------- */
+.register { margin-top: clamp(28px, 4vw, 52px); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-block: 1px solid var(--line-2); }
+.register a { display: grid; gap: 4px; align-content: start; padding: 18px clamp(14px, 1.8vw, 24px); color: var(--ink); text-decoration: none; border-inline-start: 1px solid var(--line); transition: background-color var(--t-fast); }
+.register a:first-child { border-inline-start: 0; padding-inline-start: 0; }
+.register b { font: 500 clamp(1.625rem, 1.15rem + 1.3vw, 2.375rem)/1.1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.register span { font-size: var(--fs-sm); line-height: 1.6; color: var(--mute); transition: color var(--t-fast); }
+@media (hover: hover) and (pointer: fine) {
+  .register a:hover { background: color-mix(in srgb, var(--sheet) 55%, transparent); }
+  .register a:hover span { color: var(--ink); }
+}
+@media (max-width: 720px) {
+  .register { grid-template-columns: minmax(0, 1fr); border-bottom: 0; }
+  .register a { grid-template-columns: 3.2ch minmax(0, 1fr); column-gap: 14px; align-items: baseline; padding: 11px 0; border-inline-start: 0; border-bottom: 1px solid var(--line); }
+  .register b { font-size: 1.375rem; text-align: end; }   /* number first, so «58 دليلا» reads as one phrase */
+}
+
+/* the official-document link under each timeline entry: a full tap height on phones */
+.timeline .tl-body a.ext { display: inline-block; padding-block: 4px; }

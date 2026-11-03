@@ -57,6 +57,7 @@ for _n, _a in enumerate(load('national.json'), len(DOCS) + 1):
         'persons': [pid for name, pid in NAMED.items() if name in _who], 'topics_ar': [_a['action_ar']],
         'rules_hint': [], 'rule_ids': ['RS-6', 'GEN-II'] if any('إبادة' in c for c in _a.get('crimes_ar', [])) else [],
         'sources_extra': _a.get('sources', []), 'uncertain': bool(_a.get('uncertain')),
+        'country_ar': _a['country_ar'], 'action': _a['action'], 'action_ar': _a['action_ar'], 'persons_count': _a.get('persons_count'),
     })
 PICKS = json.load(open(R('tools', 'picks.json'), encoding='utf-8')) if os.path.exists(R('tools', 'picks.json')) else {}
 PHOTOS = json.load(open(R('tools', 'photos.json'), encoding='utf-8')) if os.path.exists(R('tools', 'photos.json')) else {}

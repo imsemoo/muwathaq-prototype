@@ -40,7 +40,8 @@
   "incident": "INC-0012",
   "doc": "R-0007",
   "feature_incident": "INC-0006",
-  "hint_rule": "RS-8-2-b-xxv"
+  "hint_rule": "RS-8-2-b-xxv",
+  "lead_report": "R-0008"
  },
  "person_rules": {
   "P-0001": [

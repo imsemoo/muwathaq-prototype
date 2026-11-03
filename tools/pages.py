@@ -311,6 +311,62 @@ def bar_li(r, rel, total):
             f'<b class="mono">{n}</b></a></li>')
 
 
+COVER_KIND = {'icj': 'أمر أو فتوى قضائية', 'icc': 'قرار قضائي', 'un_coi': 'تقرير لجنة تحقيق', 'un_sr': 'تقرير مقرر خاص',
+              'un_agency': 'تقرير أممي', 'ngo': 'تقرير حقوقي', 'journalism': 'تحقيق صحفي', 'forensic': 'تحقيق جنائي رقمي',
+              'ipc': 'تحليل للأمن الغذائي'}
+
+
+def doc_cover(d, rel):
+    """A document as its cover: who issued it, what kind of text it is, its symbol, under the platform's seal."""
+    sym = B.doc_face(d)
+    return (f'<span class="dcover" aria-hidden="true"><span class="dcover-seal">{S.wax("complete")}</span>'
+            f'<span class="dcover-by">{esc(d.get("publisher_ar", ""))}</span>'
+            f'<span class="dcover-kind">{esc(d.get("action_ar") or COVER_KIND.get(d.get("cat"), nature_short(d)))}</span>'
+            f'<span class="dcover-sym mono">{esc(sym)}</span></span>')
+
+
+def reports_home(rel, docs):
+    intl = [d for d in docs if d.get('cat') != 'national']
+    national = [d for d in docs if d.get('cat') == 'national']
+    lead = B.DOC_BY_ID.get(B.PICKS.get('home', {}).get('lead_report', '')) or intl[0]
+    named = [B.P_BY_ID[i] for i in lead.get('persons', []) if i in B.P_BY_ID]
+    names = ''.join(f'<a href="{rel}people/{slug(p["id"])}.html">{esc(p["name_ar"])}</a>' for p in named)
+    latest = ''.join(f'<li><a href="{rel}reports/{slug(d["id"])}.html"><span class="rep-d num">{esc(date_ar(d["date"]))}</span>'
+                     f'<b>{esc(d.get("title_ar", ""))}</b><small>{esc(d.get("publisher_ar", ""))}</small></a></li>'
+                     for d in [x for x in intl if x is not lead][:4])
+    by_country = {}
+    for d in national:   # newest first, so the first record per country is its latest step
+        by_country.setdefault(d['country_ar'], []).append(d)
+    cells = ''
+    for country, recs in by_country.items():
+        last = recs[0]
+        who = f' · {last["persons_count"]} مشتبها بهم' if (last.get('persons_count') or 0) > 2 else ''
+        cells += (f'<li><a class="nat" href="{rel}reports/{slug(last["id"])}.html"><b class="nat-c">{esc(country)}</b>'
+                  f'<span class="nat-a">{esc(last["action_ar"])}{esc(who)}</span><span class="nat-d num">{esc(date_ar(last["date"]))}</span>'
+                  f'<span class="nat-n">{count_ar(len(recs), "سجل واحد", "سجلان", "سجلات", "سجلا")} {icon("arrow")}</span></a></li>')
+    links = (f'<a class="btn btn-ink" href="{rel}reports/{slug(lead["id"])}.html">اقرأ الوثيقة</a>' +
+             (ext(lead["url"], "النص الرسمي", "btn btn-line") if lead.get("url") else ''))
+    return f"""<section class="sec band-paper" aria-labelledby="reports-h">
+ <div class="wrap">
+  <div class="sec-head"><div><h2 class="h2" id="reports-h">التقارير الدولية</h2><p>وثائق قضائية وأممية وحقوقية، وإجراءات قضاء وطني في عدة دول، كل منها بطبيعته القانونية.</p></div><a class="link-arrow" href="{rel}reports/index.html">كل التقارير ({len(docs)}) {icon("arrow")}</a></div>
+  <div class="rep-grid">
+   <article class="rep-lead">
+    {doc_cover(lead, rel)}
+    <div class="rep-body">
+     <p class="rep-cat">{esc(B.DOC_CAT.get(lead.get("cat"), ""))} · {esc(date_ar(lead["date"]))}</p>
+     <h3 class="rep-t"><a href="{rel}reports/{slug(lead["id"])}.html">{esc(lead.get("title_ar", ""))}</a></h3>
+     <p class="rep-x">{esc(lead.get("summary_ar", ""))}</p>
+     {f'<p class="rep-named"><span>الأشخاص الوارد ذكرهم</span>{names}</p>' if names else ''}
+     <div class="rep-links">{links}</div>
+    </div>
+   </article>
+   <div class="rep-latest"><h3 class="side-h">الأحدث</h3><ol>{latest}</ol></div>
+  </div>
+  {f'<div class="nat-head"><h3 class="h3">إجراءات قضائية وطنية</h3><p>دول اتخذ قضاؤها خطوة رسمية: أمر قبض، أو تحقيق، أو استجواب. الإجراء ليس حكما بالإدانة.</p></div><ul class="nats">{cells}</ul>' if cells else ''}
+ </div>
+</section>"""
+
+
 def home():
     rel = ''
     people = all_people()
@@ -325,19 +381,7 @@ def home():
  </div>
 </section>"""
     docs = sorted(B.DOCS, key=lambda d: d.get('date', ''), reverse=True)
-    national = [d for d in docs if d.get('cat') == 'national']
-    intl = [d for d in docs if d.get('cat') != 'national']
-    if national:
-        lists = (f'<div class="two-lists"><div><h3 class="h3 col-h">قرارات وتقارير دولية</h3><ul class="rows">{"".join(B.doc_row(d, rel) for d in intl[:5])}</ul></div>'
-                 f'<div><h3 class="h3 col-h">إجراءات قضائية وطنية</h3><ul class="rows">{"".join(B.doc_row(d, rel) for d in national[:5])}</ul></div></div>')
-    else:
-        lists = f'<ul class="rows">{"".join(B.doc_row(d, rel) for d in intl[:6])}</ul>'
-    reports = f"""<section class="sec band-paper" aria-labelledby="reports-h">
- <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2" id="reports-h">التقارير الدولية</h2><p>وثائق قضائية وأممية وحقوقية، وإجراءات قضاء وطني في عدة دول، كل منها بطبيعته القانونية.</p></div><a class="link-arrow" href="reports/index.html">كل التقارير ({len(docs)}) {icon("arrow")}</a></div>
-  {lists}
- </div>
-</section>"""
+    reports = reports_home(rel, docs)
     articles = f"""<section class="sec" aria-labelledby="articles-h">
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2" id="articles-h">المقالات</h2><p>مقالات في القانون الدولي وجرائم الحرب يكتبها باحثون وكتاب، وتنشر بعد التحكيم والتدقيق.</p></div><a class="btn btn-ink" href="articles/write.html">اكتب مقالا</a></div>

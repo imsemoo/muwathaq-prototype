@@ -36,18 +36,23 @@ def incident_tag(inc, rel, actions=True):
                 f'<a class="btn btn-ghost" href="{rel}incidents/{slug(inc["id"])}.html#evidence">الأدلة ({len(inc["ev_ids"])})</a></div>')
     conflict = (f'<div><dt>الروايات</dt><dd>{seal_row("rereview", illus=False).replace("يحتاج إلى إعادة مراجعة", "رواية رسمية تعارضها أدلة")}</dd></div>'
                 if inc.get('conflict') else '')
+    ph = B.photo_of(inc['id'])
+    # the photo opens the record, with its caption and credit; the body no longer repeats it
+    pic = B.photo_fig(ph, rel, cls='photo tag-pic', sizes='(min-width: 1024px) 760px, 100vw', eager=True) if ph and ph in B.PHOTO_SIZE else ''
+    when = esc(date_ar(inc["date"])) + ((" — " + esc(date_ar(inc["date_to"]))) if inc.get("date_to") else "")
     return f'''<article class="tag is-reversed"{B.vt(inc["id"])} aria-label="سجل واقعة">
-  <span class="tag-hole" aria-hidden="true"></span>
   <div class="tag-top"><span class="tag-no">{esc(inc["id"])}</span><span class="tag-kind">واقعة · {esc(region)}</span></div>
   <div class="tag-seal" data-cord-from>{S.wax(st)}</div>
+  {pic}
   <h1 class="{title_cls(inc["title_ar"])} open-1">{esc(inc["title_ar"])}</h1>
-  <p class="tag-by open-1">{icon("cal")} {esc(date_ar(inc["date"]))}{(" — " + esc(date_ar(inc["date_to"]))) if inc.get("date_to") else ""} · {icon("pin")} {esc(inc.get("place_ar", ""))}</p>
-  <dl class="fields open-2">
-   <div><dt>حالة التحقق</dt><dd>{seal_row(st)}</dd></div>
-   <div><dt>دقة الموقع</dt><dd>{precise}{(" — " + esc(inc["loc_note_ar"])) if inc.get("loc_note_ar") else ""}</dd></div>
-   <div><dt>نوع الواقعة</dt><dd>{esc("، ".join(inc.get("type_ar", [])) or "—")}</dd></div>
-   <div class="wide"><dt>الحصيلة كما وردت</dt><dd class="dd-more">{esc(toll)}</dd></div>
-   {conflict}
+  <dl class="fields tag-facts open-2">
+   <div><dt>{icon("cal")}التاريخ</dt><dd>{when}</dd></div>
+   <div><dt>{icon("pin")}المكان</dt><dd>{esc(inc.get("place_ar", ""))}</dd></div>
+   <div><dt>{icon("check")}حالة التحقق</dt><dd>{seal_row(st)}</dd></div>
+   <div><dt>{icon("search")}دقة الموقع</dt><dd>{precise}</dd></div>
+   <div class="wide"><dt>{icon("layers")}نوع الواقعة</dt><dd>{esc("، ".join(inc.get("type_ar", [])) or "—")}</dd></div>
+   <div class="wide is-key"><dt>{icon("alert")}الحصيلة كما وردت</dt><dd class="dd-more">{esc(toll)}</dd></div>
+   {conflict.replace("<dt>الروايات</dt>", f"<dt>{icon('quote')}الروايات</dt>")}
   </dl>
   {acts}
 </article>'''
@@ -822,7 +827,6 @@ def incident_page(inc):
     resp = (f'<p>ورد في هذا السجل {"، ".join(esc(p["name_ar"]) for p in persons)} لأن وثيقة رسمية ربطت وضعهم القانوني بالأفعال محل التحليل؛ لا يعني ذلك ثبوت مسؤوليتهم الفردية عن هذه الواقعة بعينها.</p>'
             if persons else '<p>لم يُربط هذا السجل بشخص بعينه. تحديد المسؤولية الفردية يتطلب أدلة على المساهمة الشخصية أو شروط المسؤولية القيادية، وهو خارج نطاق هذا السجل.</p>')
     below = f'''<section class="sec record-body"><div class="wrap read">
- {B.photo_fig(ph, rel, sizes="(min-width: 1024px) 760px, 100vw") if ph else ""}
  <h2 class="h2">ماذا حدث بحسب المصادر</h2>
  <div class="prose"><p>{esc(inc.get("summary_ar", ""))}</p></div>
  {accounts}

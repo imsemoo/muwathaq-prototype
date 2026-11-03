@@ -1896,3 +1896,39 @@ main, .foot { position: relative; z-index: 1; }
 .record-body .read > .h2 { display: flex; align-items: center; gap: .45em; }
 .record-body .read > .h2::before { content: ""; flex: none; width: .62em; height: .62em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-.5 -.5 1 1'%3E%3Cg fill='%23B0241C'%3E%3Ccircle cy='-.219' r='.2'/%3E%3Ccircle cx='-.27' cy='.184' r='.2'/%3E%3Ccircle cx='.27' cy='.184' r='.2'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat; }
 .rows-tight .row-x .row-thumb { display: grid; }
+
+/* ---------- record headers, second pass: one grammar on ink, no tag hole, the seal in line with the number ---------- */
+.tag { padding: clamp(22px, 2.6vw, 34px); }
+.tag-hole { display: none; }
+.tag-top { position: static; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-inline-end: 64px; margin-bottom: 18px; }
+.tag-top .tag-kind::before { content: none; }
+.tag-no { padding: 4px 10px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line-2); font-size: 13px; }
+.tag.is-reversed .tag-no { box-shadow: inset 0 0 0 1px var(--on-ink-line); color: var(--on-ink); }
+.tag-seal { top: clamp(16px, 2vw, 24px); inset-inline-end: clamp(16px, 2vw, 24px); width: 52px; height: 52px; filter: none; }
+.tag-pic { margin: 0 0 20px; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 7; background: var(--ink-2); }
+.tag-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* facts as cells with icons */
+.tag .fields { gap: 10px; margin-top: 22px; }
+.tag .fields > div { gap: 6px; padding: 12px 14px; border: 0; border-radius: 12px; background: rgb(255 255 255 / .045); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .06); }
+.tag:not(.is-reversed) .fields > div { background: var(--table); box-shadow: none; }
+.tag .fields dt { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; }
+.tag .fields dt .icon { width: 15px; height: 15px; flex: none; }
+.tag.is-reversed .fields dt .icon { color: var(--on-ink); }
+.tag .fields dd { font-size: var(--fs-sm); font-weight: 700; line-height: 1.7; }
+.tag .fields > .is-key { box-shadow: inset 3px 0 0 var(--wax-hi), inset 0 0 0 1px rgb(255 255 255 / .06); }
+.tag .fields > .is-key { box-shadow: none; border-inline-start: 3px solid var(--wax-hi); border-radius: 4px 12px 12px 4px; }
+.tag-actions { margin-top: 20px; }
+@media (max-width: 720px) {
+  .tag .fields { grid-template-columns: minmax(0, 1fr); }
+  .tag-pic { aspect-ratio: 4 / 3; }
+  .tag-seal { width: 44px; height: 44px; }
+}
+
+.record-main .tag { transform: none; animation: none; }
+.tag-top { min-height: 52px; }
+.tag-pic { aspect-ratio: auto; background: none; border-radius: 0; overflow: visible; }
+.tag-pic img { aspect-ratio: 16 / 7; height: auto; border-radius: 16px; object-fit: cover; }
+.tag.is-reversed .tag-pic figcaption { margin-top: 10px; color: var(--on-ink-2); }
+.tag.is-reversed .tag-pic figcaption b { color: var(--on-ink); }
+.tag.is-reversed .tag-pic figcaption a { color: var(--on-ink-2); }
+@media (max-width: 720px) { .tag-pic img { aspect-ratio: 4 / 3; } }

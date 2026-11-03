@@ -345,7 +345,7 @@ def articles():
     main = f'''<div class="wrap">{S.crumbs(rel, [("المقالات", None)])}</div>
 <section class="list-head"><div class="wrap"><h1 class="h1">المقالات</h1><p class="lead">مقالات في القانون الدولي وجرائم الحرب وانتهاك حقوق الإنسان، يكتبها باحثون وكتاب وتنشر بعد التحكيم والتدقيق.</p></div></section>
 <section class="sec"><div class="wrap">
- <div class="sec-head"><div><h2 class="h2">منشورة بعد التحكيم</h2><p>المقالات أدناه نماذج كتبتها هيئة التحرير لعرض التصميم.</p></div><a class="btn btn-ink" href="write.html">اكتب مقالا</a></div>
+ <div class="sec-head"><div><h2 class="h2">منشورة بعد التحكيم</h2><p>المقالات أدناه نماذج كتبتها هيئة التحرير لعرض التصميم.</p></div><a class="btn btn-wax" href="write.html">{icon("pen")} اكتب مقالا</a></div>
  <ul class="acards">{cards}</ul>
  <h2 class="h2 col-h" style="margin-top:56px">كيف ينشر مقال</h2>
  {review_path()}

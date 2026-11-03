@@ -286,22 +286,64 @@ def wanted(rel):
 </section>"""
 
 
-REVIEW = [('الاستلام', 'يسجل المقال ويصل إشعار للكاتب.'), ('المراجعة التحريرية', 'الوضوح والبنية واللغة.'),
-          ('تدقيق الوقائع', 'كل واقعة بمصدرها.'), ('التحكيم القانوني', 'مختص في القانون الدولي.'),
-          ('النشر أو الرد', 'ينشر بتاريخه أو يعاد بملاحظات.')]
+REVIEW = [('inbox', 'الاستلام', 'يسجل المقال ويصل إشعار للكاتب.'), ('pen', 'المراجعة التحريرية', 'الوضوح والبنية واللغة.'),
+          ('search', 'تدقيق الوقائع', 'كل واقعة بمصدرها.'), ('scale', 'التحكيم القانوني', 'مختص في القانون الدولي.'),
+          ('check', 'النشر أو الرد', 'ينشر بتاريخه أو يعاد بملاحظات.')]
 
 
 def review_path():
+    """The five stages as nodes on one line; the last one, publication, is Muwathaq's seal and carries the wax."""
     return ('<ol class="review-path" aria-label="مراحل نشر المقال">' +
-            ''.join(f'<li><b>{esc(x)}</b><span>{esc(y)}</span></li>' for x, y in REVIEW) + '</ol>')
+            ''.join(f'<li><span class="rp-node">{icon(g)}</span><b>{esc(x)}</b><span>{esc(y)}</span></li>' for g, x, y in REVIEW) + '</ol>')
 
 
-def article_card(x, rel):
-    badge = '<span class="fcard-demo">تجريبي</span>' if x.get('demo') else ''
-    return (f'<a class="acard" href="{rel}articles/{x["slug"]}.html"><span class="acard-meta"><span>{esc(x["topic_ar"])}</span>'
-            f'<span>{esc(date_ar(x["date"]))}</span>{badge}</span>'
-            f'<b class="acard-t">{esc(x["title_ar"])}</b><span class="acard-x">{esc(x["dek_ar"])}</span>'
-            f'<span class="acard-by">{esc(x["author_ar"])}</span></a>')
+TOPIC_ICON = {'القانون الجنائي الدولي': 'scale', 'القانون الدولي الإنساني': 'shield', 'منهجية التوثيق': 'search'}
+
+
+def read_min(x):
+    """Reading time from the article's own text, at about 180 Arabic words a minute."""
+    return max(1, round(sum(len(p.split()) for p in x.get('body_ar', [])) / 180))
+
+
+def article_card(x, rel, size='card'):
+    """An article: its subject, title, dek, then date, reading time and the legal articles it engages; who wrote it.
+    size 'lead' is the large one on the home, 'row' the compact one beside it (no dek)."""
+    demo = '<span class="acard-demo">تجريبي</span>' if x.get('demo') else ''
+    n = len(x.get('rule_ids', []))
+    meta = (f'<span>{icon("cal")}{esc(date_ar(x["date"]))}</span>'
+            f'<span>{icon("clock")}قراءة {count_ar(read_min(x), "دقيقة واحدة", "دقيقتين", "دقائق", "دقيقة")}</span>'
+            + (f'<span>{icon("scale")}{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>' if n and size != 'row' else ''))
+    by = x.get('author_ar', '')
+    face = (f'<img src="{rel}assets/brand/mark.svg?v={S.V}" alt="" width="28" height="28">' if 'موثّق' in by
+            else f'<span class="acard-face">{icon("user")}</span>')
+    dek = f'<span class="acard-x">{esc(x["dek_ar"])}</span>' if size != 'row' else ''
+    if size == 'lead':   # the files the article speaks of, by their faces: the site documents people, not only acts
+        people = [B.P_BY_ID[i] for i in x.get('person_ids', []) if i in B.P_BY_ID]
+        faces = ''.join(f'<span class="acard-file">' + (f'<img src="{rel}assets/img/photo/{B.photo_of(p["id"])}-240.webp" alt="" width="40" height="40" loading="lazy" decoding="async">'
+                        if B.photo_of(p['id']) else f'<span class="acard-face">{icon("user")}</span>') + f'{esc(p["name_ar"])}</span>' for p in people)
+        dek += f'<span class="acard-files">{"<span class=acard-files-h>الملفات المرتبطة</span>" + faces if faces else ""}</span>'
+    return (f'<a class="acard is-{size}" href="{rel}articles/{x["slug"]}.html">'
+            f'<span class="acard-top"><span class="acard-kick">{icon(TOPIC_ICON.get(x["topic_ar"], "doc"))}{esc(x["topic_ar"])}</span>{demo}</span>'
+            f'<b class="acard-t">{esc(x["title_ar"])}</b>{dek}<span class="acard-meta">{meta}</span>'
+            f'<span class="acard-foot"><span class="acard-by">{face}{esc(by)}</span><span class="acard-go">اقرأ {icon("arrow")}</span></span></a>')
+
+
+def articles_home(rel):
+    lead, *rest = B.ARTICLES[:3]
+    side = ''.join(f'<li>{article_card(x, rel, "row")}</li>' for x in rest)
+    return f"""<section class="sec" aria-labelledby="articles-h">
+ <div class="wrap">
+  <div class="sec-head"><div><h2 class="h2" id="articles-h">المقالات</h2><p>يكتبها باحثون وكتاب، وتنشر بعد التحكيم والتدقيق.</p></div><a class="link-arrow" href="{rel}articles/index.html">كل المقالات ({len(B.ARTICLES)}) {icon("arrow")}</a></div>
+  <div class="art-grid">
+   {article_card(lead, rel, "lead")}
+   <ul class="art-side">{side}</ul>
+  </div>
+  <div class="art-path">
+   <div class="art-path-h"><h3 class="h3">كيف ينشر مقال</h3><p>خمس مراحل قبل النشر.</p><a class="btn btn-wax" href="{rel}articles/write.html">{icon("pen")} اكتب مقالا</a></div>
+   {review_path()}
+  </div>
+ </div>
+</section>"""
 
 
 def bar_li(r, rel, total):
@@ -375,14 +417,7 @@ def home():
 </section>"""
     docs = sorted(B.DOCS, key=lambda d: d.get('date', ''), reverse=True)
     reports = reports_home(rel, docs)
-    articles = f"""<section class="sec" aria-labelledby="articles-h">
- <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2" id="articles-h">المقالات</h2><p>مقالات في القانون الدولي وجرائم الحرب يكتبها باحثون وكتاب، وتنشر بعد التحكيم والتدقيق.</p></div><a class="btn btn-ink" href="articles/write.html">اكتب مقالا</a></div>
-  <ul class="acards">{"".join(f"<li>{article_card(x, rel)}</li>" for x in B.ARTICLES[:3])}</ul>
-  <h3 class="h3 path-h">كيف ينشر مقال</h3>
-  {review_path()}
- </div>
-</section>"""
+    articles = articles_home(rel)
     tops = sorted([r for r in B.RULES if r['p_ids']], key=lambda r: (-len(r['p_ids']), r['id']))[:6]
     database = f"""<section class="sec band-paper" aria-labelledby="db-h">
  <div class="wrap">
@@ -408,7 +443,7 @@ def home():
    <h2 class="h2">أرسل مادة للمراجعة</h2>
    <p>كل مساهمة تفحص وتراجع قانونيا قبل أي نشر.</p>
    <p class="note is-quiet">{icon("shield")}<span>لا ترسل ما يعرضك أو يعرض غيرك للخطر.</span></p>
-   <a class="btn btn-ink" href="submit.html">ابدأ الإرسال</a>
+   <a class="btn btn-wax" href="submit.html">ابدأ الإرسال</a>
   </div>
   <div class="sheet act">
    {seal("complete", label=False)}

@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 45
+V = 47
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -82,6 +82,8 @@ ICONS = {
     'layers': '<path d="M12 4l8.5 4.5L12 13 3.5 8.5z"/><path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5"/>',
     'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
     'shield': '<path d="M12 3.5l7 2.6v5.6c0 4.4-3 7.7-7 8.8-4-1.1-7-4.4-7-8.8V6.1z"/>',
+    'pen': '<path d="M4.5 19.5l1.1-4.3L15.9 4.9a2.1 2.1 0 0 1 3 3L8.6 18.2z"/><path d="M13.9 6.9l3 3M12 19.5h7.5"/>',
+    'inbox': '<path d="M4 13.5l2.1-6.6A2.2 2.2 0 0 1 8.2 5.4h7.6a2.2 2.2 0 0 1 2.1 1.5l2.1 6.6V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 13.5h4.6l1.3 2.4h4.2l1.3-2.4H20"/>',
     'hand': '<path d="M8 12.5V6.8a1.5 1.5 0 0 1 3 0V11M11 10V5.5a1.5 1.5 0 0 1 3 0V10M14 10V6.5a1.5 1.5 0 0 1 3 0v6.8c0 4-2.6 6.7-6.2 6.7-2.2 0-3.6-.9-4.9-2.7L3.8 13a1.5 1.5 0 0 1 2.4-1.8L8 13.5"/>',
 }
 
@@ -237,7 +239,7 @@ def masthead(rel, active):
   <nav aria-label="الأقسام"><ul class="nav" id="nav"><li class="mob-only">{find(rel, 'menu')}</li>{nav}<li class="mob-only"><a href="{rel}submit.html">أرسل مادة للمراجعة</a></li><li class="mob-only"><a href="{rel}donate.html">ادعم التوثيق</a></li><li class="mob-only"><a href="{rel}about.html">عن موثّق</a></li><li class="mob-only"><a href="{rel}standards.html">المعايير والسياسات</a></li></ul></nav>
   <div class="mast-end">
    {find(rel, 'mast')}
-   <a class="btn btn-line btn-sm desk-only" href="{rel}submit.html">أرسل مادة</a>
+   <a class="btn btn-wax btn-sm desk-only" href="{rel}submit.html">أرسل مادة</a>
    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="القائمة">{icon('menu')}</button>
   </div>
  </div>

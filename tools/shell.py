@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 55
+V = 57
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -259,17 +259,23 @@ def find(rel, where):
 def footer(rel):
     return f'''<footer class="foot">
  <div class="wrap">
-  <div class="foot-grid">
-   <div>
-    <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg?v={V}" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark-reversed.svg" alt="موثّق" width="55" height="36"></a>
-    <p style="margin-top:16px;max-width:36ch">منصة مستقلة لتوثيق جرائم الاحتلال الإسرائيلي وربطها بالقانون الدولي.</p>
-    <p class="foot-motto">التوثيق الدقيق أساس المساءلة.</p>
-   </div>
-   <div><h2>قاعدة البيانات</h2><ul><li><a href="{rel}people/index.html">ملفات الأشخاص</a></li><li><a href="{rel}incidents/index.html">أرشيف الوقائع</a></li><li><a href="{rel}evidence/index.html">سجل الأدلة</a></li><li><a href="{rel}reports/index.html">التقارير والوثائق</a></li><li><a href="{rel}law/index.html">مكتبة القواعد القانونية</a></li></ul></div>
-   <div><h2>المنهجية والسياسات</h2><ul><li><a href="{rel}method.html">كيف نتحقق</a></li><li><a href="{rel}standards.html">المعايير القانونية والأخلاقية</a></li><li><a href="{rel}standards.html#correction">طلب تصحيح أو رد</a></li><li><a href="{rel}identity.html">الهوية البصرية</a></li><li><a href="{rel}sources.html">المصادر وحقوق الصور</a></li></ul></div>
-   <div><h2>شارك وادعم</h2><ul><li><a href="{rel}submit.html">أرسل مادة للمراجعة</a></li><li><a href="{rel}donate.html">ادعم التوثيق المستقل</a></li><li><a href="{rel}about.html">عن موثّق</a></li><li><a href="{rel}search.html">البحث في المنصة</a></li></ul></div>
+  <div class="foot-seal">
+   <img class="foot-wax" src="{rel}assets/brand/mark.svg?v={V}" alt="" width="72" height="72">
+   <div class="foot-say"><p class="foot-motto">التوثيق الدقيق أساس المساءلة.</p><p>لا ينشر ملف قبل أن يمر بعشر خطوات تحقق. <a href="{rel}method.html">كيف نتحقق</a></p></div>
+   <div class="foot-cta"><a class="btn btn-wax" href="{rel}submit.html">{icon("upload")} أرسل مادة</a><a class="btn btn-ghost" href="{rel}donate.html">ادعم التوثيق</a></div>
   </div>
-  <div class="foot-bottom"><span>© 2026 موثّق — نموذج تصميم لا يرسل بيانات إلى أي خادم.</span><span>منصة مستقلة لا تتبع أي محكمة أو منظمة دولية أو جهة حكومية.</span></div>
+  <div class="foot-grid">
+   <div class="foot-brand">
+    <a class="brand" href="{rel}index.html" aria-label="موثّق — الرئيسية"><img class="mark" src="{rel}assets/brand/mark.svg?v={V}" alt="" width="40" height="40"><img class="word" src="{rel}assets/brand/wordmark-reversed.svg" alt="موثّق" width="55" height="36"></a>
+    <p>منصة مستقلة لتوثيق جرائم الاحتلال الإسرائيلي وربطها بالقانون الدولي.</p>
+    <p class="foot-ind">{icon("shield")}<span>لا تتبع أي محكمة أو منظمة دولية أو جهة حكومية.</span></p>
+   </div>
+   <div><h2>{icon("layers")}قاعدة البيانات</h2><ul><li><a href="{rel}people/index.html">ملفات الأشخاص</a></li><li><a href="{rel}incidents/index.html">أرشيف الوقائع</a></li><li><a href="{rel}evidence/index.html">سجل الأدلة</a></li><li><a href="{rel}reports/index.html">التقارير والوثائق</a></li><li><a href="{rel}law/index.html">مكتبة القواعد القانونية</a></li></ul></div>
+   <div><h2>{icon("scale")}المنهجية والسياسات</h2><ul><li><a href="{rel}method.html">كيف نتحقق</a></li><li><a href="{rel}standards.html">المعايير القانونية والأخلاقية</a></li><li><a href="{rel}standards.html#correction">طلب تصحيح أو رد</a></li><li><a href="{rel}identity.html">الهوية البصرية</a></li><li><a href="{rel}sources.html">المصادر وحقوق الصور</a></li></ul></div>
+   <div><h2>{icon("hand")}شارك وادعم</h2><ul><li><a href="{rel}submit.html">أرسل مادة للمراجعة</a></li><li><a href="{rel}donate.html">ادعم التوثيق المستقل</a></li><li><a href="{rel}articles/write.html">اكتب مقالا</a></li><li><a href="{rel}about.html">عن موثّق</a></li><li><a href="{rel}search.html">البحث في المنصة</a></li></ul></div>
+  </div>
+  <div class="foot-cord" aria-hidden="true"><i></i><img src="{rel}assets/brand/mark.svg?v={V}" alt="" width="26" height="26"><i></i></div>
+  <div class="foot-bottom"><span>© 2026 موثّق — نموذج تصميم لا يرسل بيانات إلى أي خادم.</span><a class="foot-top" href="#main">العودة إلى الأعلى <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-down"/></svg></a></div>
  </div>
 </footer>
 <div class="toasts" id="toasts" aria-live="polite"></div>'''

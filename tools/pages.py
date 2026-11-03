@@ -284,8 +284,8 @@ def wanted(rel):
         ph = B.photo_of(p['id'])
         sz = B.PHOTO_SIZE[ph]
         return (f'<a class="wanted-face {cls}" href="{rel}people/{slug(p["id"])}.html">'
-                f'<img src="{rel}assets/img/photo/{ph}-640.webp" alt="{esc(p["name_ar"])}" width="640" '
-                f'height="{round(640 * sz["h"] / sz["w"])}" fetchpriority="high">{fstamp(p)}'
+                f'<span class="wanted-ph"><img src="{rel}assets/img/photo/{ph}-640.webp" alt="{esc(p["name_ar"])}" width="640" '
+                f'height="{round(640 * sz["h"] / sz["w"])}" fetchpriority="high">{fstamp(p)}</span>'
                 f'<span class="wanted-cap"><b>{esc(p["name_ar"])}</b><span>{esc(roles[p["id"]])}</span>'
                 f'<span class="wanted-go">عرض الملف {icon("arrow")}</span></span></a>')
     st = next(s for s in pa['statuses'] if s.get('type') == 'warrant')

@@ -95,8 +95,12 @@ def evidence_tag(ev, rel):
 
 
 def person_row(p, rel):
-    return (f'<li><a class="row row-person" href="{rel}people/{slug(p["id"])}.html" data-cord-to="{p["id"]}"><span class="row-body">'
-            f'<span class="tag-kind">{esc(STATUS[p["status"]][0])}</span><h3>{esc(p["name_ar"])}</h3></span><span class="row-end"><span class="mono">{p["id"]}</span></span></a></li>')
+    ph = B.photo_of(p['id'])
+    face = (f'<span class="row-thumb row-face"><img src="{rel}assets/img/photo/{ph}-240.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></span>' if ph
+            else f'<span class="row-thumb row-face is-none" aria-hidden="true">{icon("user")}</span>')
+    return (f'<li><a class="row row-person" href="{rel}people/{slug(p["id"])}.html" data-cord-to="{p["id"]}">{face}<span class="row-body">'
+            f'<span class="tag-kind"><i class="sg {stamp_form(p["status"])}"></i>{esc(STATUS[p["status"]][0])}</span><h3>{esc(p["name_ar"])}</h3></span>'
+            f'<span class="row-end"><span class="re-id">{icon("arrow")}</span></span></a></li>')
 
 
 def side_list(title, items, dup=False):

@@ -427,10 +427,10 @@ def inc_mini_row(inc, rel):
     st = state_of(inc['id'])
     region = REGIONS.get(inc.get('region'), '')
     return (f'<li data-region="{esc(inc.get("region", ""))}" data-state="{st}" data-year="{inc["date"][:4]}" data-text="{esc(inc["title_ar"] + " " + inc.get("place_ar", ""))}">'
-            f'<a class="row" href="{rel}incidents/{slug(inc["id"])}.html" data-cord-to="{inc["id"]}">{thumb(ph, rel) if ph else date_face(inc)}'
-            f'<span class="row-body"><h3>{esc(inc["title_ar"])}</h3><span class="row-meta"><span>{icon("cal")} {esc(date_ar(inc["date"]))}</span>'
-            f'<span>{icon("pin")} {esc(inc.get("place_ar", ""))}</span></span></span>'
-            f'<span class="row-end">{seal_row(st, illus=False)}<span class="mono">{esc(inc["id"])}</span></span></a></li>')
+            f'<a class="row row-x" href="{rel}incidents/{slug(inc["id"])}.html" data-cord-to="{inc["id"]}">{thumb(ph, rel) if ph else date_face(inc)}'
+            f'<span class="row-body"><span class="tag-kind">{esc(region)}</span><h3>{esc(inc["title_ar"])}</h3><span class="row-meta"><span>{icon("cal")}<span>{esc(date_ar(inc["date"]))}</span></span>'
+            f'<span class="rm-by">{icon("pin")}<span>{esc(inc.get("place_ar", ""))}</span></span></span></span>'
+            f'<span class="row-end">{seal_row(st, illus=False)}<span class="re-id"><span class="mono">{esc(inc["id"])}</span>{icon("arrow")}</span></span></a></li>')
 
 
 def doc_face(d):
@@ -475,11 +475,11 @@ def rule_row(r, rel):
     linked = (f'<span class="small"><b>{n}</b> {"واقعة مرتبطة" if n == 1 else "وقائع مرتبطة"}</span>' if n
               else '<span class="small mute">لم تربط بواقعة بعد</span>')
     return (f'<li data-branch="{esc(r.get("branch", ""))}" data-text="{esc(r.get("title_ar", "") + " " + r.get("article_ar", "") + " " + r.get("article_en", ""))}">'
-            f'<a class="row row-rule" href="{rel}law/{slug(r["id"])}.html" data-cord-to="{r["id"]}">'
-            f'<span class="row-thumb rule-face" aria-hidden="true"><span>{esc(rule_short(r))}</span></span>'
+            f'<a class="row row-rule row-x" href="{rel}law/{slug(r["id"])}.html" data-cord-to="{r["id"]}">'
+            f'<span class="row-thumb rule-face" aria-hidden="true">{icon("scale")}<span class="num">{esc(rule_short(r))}</span></span>'
             f'<span class="row-body"><span class="tag-kind">{esc(r.get("instrument_ar", ""))}</span><h3>{esc(r.get("title_ar", ""))}</h3>'
-            f'<span class="row-meta"><span>{esc(r.get("article_ar", ""))}</span></span></span>'
-            f'<span class="row-end">{linked}</span></a></li>')
+            f'<span class="row-meta"><span>{icon("doc")}<span>{esc(r.get("article_ar", ""))}</span></span></span></span>'
+            f'<span class="row-end">{linked}<span class="re-id">{icon("arrow")}</span></span></a></li>')
 
 
 def ev_row(ev, rel):
@@ -489,11 +489,11 @@ def ev_row(ev, rel):
     ph = EV_PHOTO.get(ev['id'])
     ph = ph if ph in PHOTO_SIZE else None
     return (f'<li data-type="{esc(ev.get("type", ""))}" data-state="{st}" data-text="{esc(ev.get("desc_ar", "") + " " + inc["title_ar"])}">'
-            f'<a class="row" href="{rel}evidence/{slug(ev["id"])}.html" data-cord-to="{ev["id"]}">'
+            f'<a class="row row-x" href="{rel}evidence/{slug(ev["id"])}.html" data-cord-to="{ev["id"]}">'
             f'{thumb(ph, rel) if ph else f"<span class=\"row-thumb ev-plate\" aria-hidden=\"true\">{icon(ic)}<span>{esc(kind)}</span></span>"}'
             f'<span class="row-body"><span class="tag-kind">{esc(kind)} · {esc(ev.get("source", ""))}</span><h3>{esc(ev.get("desc_ar", ""))}</h3>'
-            f'<span class="row-meta"><span>{esc(inc["title_ar"])}</span><span>{esc(date_ar(ev.get("date")))}</span></span></span>'
-            f'<span class="row-end">{seal_row(st, illus=False)}<span class="mono">{esc(ev["id"])}</span></span></a></li>')
+            f'<span class="row-meta"><span>{icon("cal")}<span>{esc(date_ar(ev.get("date")))}</span></span><span class="rm-by">{icon("pin")}<span>{esc(inc["title_ar"])}</span></span></span></span>'
+            f'<span class="row-end">{seal_row(st, illus=False)}<span class="re-id"><span class="mono">{esc(ev["id"])}</span>{icon("arrow")}</span></span></a></li>')
 
 
 def write_json_index():

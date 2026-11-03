@@ -2004,3 +2004,5 @@ main, .foot { position: relative; z-index: 1; }
   .row-doc .row-body > .tag-kind, .row-x.row-rule .row-body > .tag-kind { min-height: 32px; display: flex; align-items: center; padding-inline-start: 42px; }
   .row-doc .row-end, .row-x.row-rule .row-end { grid-column: 1; }
 }
+/* the shortcut key's own direction decided which side "end" was: keep it in the page's direction */
+.find kbd { direction: rtl; }

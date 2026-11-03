@@ -442,13 +442,23 @@ def doc_face(d):
     return s or (pub if 0 < len(pub) <= 24 else d['id'])
 
 
+# a document in a list: the issuing body as an emblem, the kind of text in a few words
+DOC_GLYPH = {'icj': 'scale', 'icc': 'scale', 'un_coi': 'search', 'un_sr': 'user', 'un_agency': 'official',
+             'ngo': 'shield', 'journalism': 'doc', 'forensic': 'sat', 'ipc': 'layers', 'national': 'official'}
+DOC_KIND = {'icj': 'أمر أو فتوى قضائية', 'icc': 'قرار قضائي', 'un_coi': 'تقرير لجنة تحقيق', 'un_sr': 'تقرير مقرر خاص',
+            'un_agency': 'تقرير أممي', 'ngo': 'تقرير حقوقي', 'journalism': 'تحقيق صحفي', 'forensic': 'تحقيق جنائي رقمي',
+            'ipc': 'تحليل للأمن الغذائي'}
+
+
 def doc_row(d, rel):
+    kind = d.get('action_ar') if d.get('cat') == 'national' and d.get('action_ar') else DOC_KIND.get(d.get('cat'), '')
     return (f'<li data-cat="{esc(d.get("cat", ""))}" data-year="{d.get("date", "")[:4]}" data-text="{esc(d.get("title_ar", "") + " " + d.get("title_en", "") + " " + d.get("publisher_ar", ""))}">'
             f'<a class="row row-doc" href="{rel}reports/{slug(d["id"])}.html" data-cord-to="{d["id"]}">'
-            f'<span class="row-thumb is-blank doc-face" aria-hidden="true"><span class="mono">{esc(doc_face(d))}</span></span>'
+            f'<span class="row-thumb doc-face" aria-hidden="true">{icon(DOC_GLYPH.get(d.get("cat"), "doc"))}</span>'
             f'<span class="row-body"><span class="tag-kind">{esc(DOC_CAT.get(d.get("cat"), ""))}</span><h3>{esc(d.get("title_ar", ""))}</h3>'
-            f'<span class="row-meta"><span>{esc(d.get("publisher_ar", ""))}</span><span>{esc(date_ar(d.get("date")))}</span></span></span>'
-            f'<span class="row-end"><span class="nature">{esc(d.get("nature_ar", ""))}</span><span class="mono">{esc(d["id"])}</span></span></a></li>')
+            f'<span class="row-meta"><span class="rm-by">{icon("official")}<span>{esc(d.get("publisher_ar", ""))}</span></span>'
+            f'<span>{icon("cal")}<span>{esc(date_ar(d.get("date")))}</span></span></span></span>'
+            f'<span class="row-end"><span class="nature">{esc(kind)}</span><span class="re-id"><span class="mono">{esc(d["id"])}</span>{icon("arrow")}</span></span></a></li>')
 
 
 def rule_short(r):

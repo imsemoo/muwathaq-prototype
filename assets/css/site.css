@@ -1697,3 +1697,41 @@ main, .foot { position: relative; z-index: 1; }
   .chips-filter .facet { flex-wrap: wrap; overflow: visible; }
   .chips-filter .facet-opt, .chips-filter .facet-opt:hover { min-height: 44px; padding: 8px 10px 10px; }
 }
+
+/* ---------- documents in a list: an ink tile with the issuing body's emblem, a two-line title, meta with icons,
+   and at the end the kind of text and its number ---------- */
+.row-doc { grid-template-columns: 64px minmax(0, 1fr) 170px; gap: 20px; padding: 18px 24px; }
+.row-doc .row-thumb.doc-face { width: 64px; height: 64px; aspect-ratio: 1; padding: 0; display: grid; place-items: center; border-radius: 14px; background: var(--ink); color: var(--on-ink); }
+.row-doc .doc-face .icon { width: 44px; height: 44px; padding: 11px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--on-ink-line); stroke-width: 1.5; }
+.row-doc .row-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.row-doc .row-body h3 { font-size: 1.125rem; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.row-doc .row-meta { gap: 4px 18px; margin-top: 2px; }
+.row-doc .row-meta > span { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.row-doc .row-meta .icon { width: 15px; height: 15px; flex: none; color: var(--ink-2); }
+.row-doc .rm-by { max-width: 100%; }
+.row-doc .rm-by > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-doc .row-end { justify-items: start; text-align: start; align-self: stretch; align-content: center; gap: 8px; padding-inline-start: 20px; border-inline-start: 1px solid var(--line); }
+.row-doc .nature { max-width: none; font-size: var(--fs-sm); font-weight: 700; color: var(--ink); line-height: 1.55; }
+.re-id { display: inline-flex; align-items: center; gap: 8px; }
+.re-id .icon { width: 16px; height: 16px; color: var(--wax); transition: transform var(--t-fast) var(--ease); }
+@media (hover: hover) and (pointer: fine) { .row-doc:hover .re-id .icon { transform: translateX(-3px); } .row-doc:hover h3 { text-decoration: underline; text-underline-offset: .3em; } }
+@media (max-width: 720px) {
+  .row-doc { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; padding: 16px; }
+  .row-doc .row-thumb.doc-face { width: 48px; height: 48px; border-radius: 12px; }
+  .row-doc .doc-face .icon { width: 34px; height: 34px; padding: 8px; }
+  .row-doc .row-end { grid-column: 2; grid-auto-flow: column; justify-content: space-between; align-items: center; padding: 10px 0 0; border-inline-start: 0; border-top: 1px solid var(--line); }
+  .row-doc .row-body h3 { font-size: 1rem; }
+}
+.rows-tight .row-doc { grid-template-columns: 48px minmax(0, 1fr); padding: 12px 14px; gap: 12px; }
+.rows-tight .row-doc .row-thumb.doc-face { width: 48px; height: 48px; }
+.rows-tight .row-doc .doc-face .icon { width: 34px; height: 34px; padding: 8px; }
+.rows-tight .row-doc .row-end { display: none; }
+.rows-tight .row-doc .row-body h3 { font-size: var(--fs-sm); }
+@media (max-width: 720px) {
+  /* phones: the date first on its own, the issuer under it on one line */
+  .row-doc .row-meta { display: grid; gap: 2px; white-space: normal; }
+  .row-doc .row-meta > span { display: flex; }
+  .row-doc .row-meta > span + span::before { content: none; }
+  .row-doc .row-meta > span:last-child { order: -1; }
+  .row-doc .row-meta .icon { display: block; }
+}

@@ -1984,3 +1984,7 @@ main, .foot { position: relative; z-index: 1; }
 .article-by .acard-by img { width: 32px; height: 32px; }
 .article-by .acard-by { font-size: var(--fs-sm); }
 .row-person { grid-template-columns: 48px minmax(0, 1fr) auto; }
+
+.id-stamps { list-style: none; display: grid; gap: 8px; margin-top: 14px; }
+.id-stamps li { display: grid; grid-template-columns: 26px auto minmax(0, 1fr); align-items: center; gap: 10px; }
+.id-stamps .sg { width: 24px; height: 17px; }

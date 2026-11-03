@@ -270,8 +270,8 @@ def identity():
     sw = [('الحبر', '#15171A', 'النص وكل ما يُرسم؛ والبطاقة الرئيسية في كل صفحة تُطبع به مقلوبة.'),
           ('الطاولة', '#EEF0F2', 'أرضية الصفحات: طاولة الأحراز الباردة.'),
           ('الورق', '#FFFFFF', 'البطاقات والأوراق وعمود القراءة.'),
-          ('الشمع', '#B0241C', 'الختم وحده: ختم أحمر واحد في كل شاشة، ولا يُستعمل للزينة.'),
-          ('الخيط', '#6B737C', 'الخيوط بين السجلات المرتبطة فعلًا، والعناصر غير النصية.'),
+          ('الشمع', '#B0241C', 'علامة موثّق وحدها: الشعار، ونقاط الثاء قبل عنوان القسم، والإجراء الرئيسي، والمرحلة الحالية، وختم المطلوب والمدان. لا خلفيات حمراء.'),
+          ('الخيط', '#6B737C', 'الإطار المتقطع لما هو قيد التحقق أو مستمر، والعناصر غير النصية.'),
           ('الرمادي الثانوي', '#5A626B', 'النص الثانوي بتباين لا يقل عن 4.5:1 على الورق والطاولة.')]
     swatches = ''.join(f'<li><span class="sw" style="background:{h}"></span><b>{esc(n)}</b><span class="mono">{h}</span><small>{esc(d)}</small></li>' for n, h, d in sw)
     main = f'''<div class="wrap">{S.crumbs(rel, [("الهوية البصرية", None)])}</div>
@@ -293,7 +293,7 @@ def identity():
   <ul class="ticks small"><li>نسند ولا نجزم: «خلصت اللجنة إلى…»، «وجدت الدائرة أسبابًا معقولة للاعتقاد…».</li><li>الحالة القانونية وجهتها وتاريخها قبل الاسم، دائمًا.</li><li>لا أوصاف تجريمية عامة على البطاقات، ولا كلمة «مؤكد» بمعنى ثبوت المسؤولية.</li><li>كل رقم بمصدره كما ورد، وكل رواية منسوبة إلى صاحبها.</li><li>لا تشكيل في العناوين والواجهة، إلا في اسم موثّق والنصوص الرسمية المقتبسة.</li></ul>
  </div>
  <div class="sheet"><h2 class="h2">ما لا نفعله</h2>
-  <ul class="ticks small"><li>ختم أحمر ثانٍ في الشاشة نفسها.</li><li>بادجات ملونة للحالات: الحالة علامة مرسومة.</li><li>خيط بين سجلين غير مرتبطين فعلًا.</li><li>صور جثث أو دماء أو وجوه ضحايا دون موافقة.</li><li>أرضيات بيج أو ورق دافئ، أو توهج وزجاج للزينة.</li></ul>
+  <ul class="ticks small"><li>مساحات أو خلفيات حمراء: الأحمر علامة صغيرة لها وظيفة.</li><li>بادجات ملونة للحالات: الحالة علامة مرسومة.</li><li>فلاتر أو تعتيم فوق الصور خارج صدارة الصفحة الرئيسية.</li><li>مؤثرات قوية: لا مقدمة متحركة ولا ظهور عند التمرير.</li><li>صور جثث أو دماء أو وجوه ضحايا دون موافقة.</li><li>أرضيات بيج أو ورق دافئ، أو توهج وزجاج للزينة.</li></ul>
  </div>
  </div>
  <div class="sheet id-type id-wide"><h2 class="h2">الخط</h2><div class="id-type-in"><div class="id-type-spec">
@@ -303,15 +303,13 @@ def identity():
   <p class="small mute">البيانات وحدها بخط ريد هات مونو: <span class="mono">P-0001 · ICC-01/18 · 3f9a…</span></p>
   </div><table class="custody"><tbody><tr><th>عرض الحالة</th><td>60 بكسل · 900 · سطر 1.4</td></tr><tr><th>عنوان الصفحة</th><td>44 بكسل · 800 · سطر 1.45</td></tr><tr><th>عنوان القسم</th><td>32 بكسل · 800 · سطر 1.5</td></tr><tr><th>القراءة</th><td>18 بكسل · 400 · سطر 2.0 · 68 حرفًا</td></tr><tr><th>الواجهة</th><td>16 بكسل · 400–700 · سطر 1.75</td></tr></tbody></table>
  </div></div>
- <div class="sheet id-motion"><h2 class="h2">الحركة: لحظة واحدة متكررة</h2>
-  <p class="small">للهوية حركة واحدة أصيلة: الختم يُضغط والخيط يُشد. لا مؤثرات متفرقة، ولا حركة تخفي المحتوى، وكلها تتوقف عند تفضيل تقليل الحركة.</p>
-  <ul class="motion-list">
-   <li><div class="demo" data-demo="press"><svg class="seal is-wax" viewBox="0 0 40 40" aria-hidden="true"><use href="#s-whole"/></svg></div><div><h3>ضغطة الختم</h3><p class="small mute">640 مللي ثانية، منحنى ارتداد خفيف؛ عند فتح سجل أو اكتمال فحص.</p><button class="btn btn-line btn-sm" type="button" data-replay="press">أعد الحركة</button></div></li>
-   <li><div class="demo demo-cord" data-demo="cord"><svg viewBox="0 0 160 60" aria-hidden="true"><path d="M8 14 Q80 70 152 14"/></svg></div><div><h3>شدّ الخيط</h3><p class="small mute">240 مللي ثانية؛ خيط واحد يشتد حين تقف على السجل المرتبط.</p><button class="btn btn-line btn-sm" type="button" data-replay="cord">شدّ الخيط</button></div></li>
-   <li><div class="demo" data-demo="open"><span class="demo-tag"><span class="tag-hole" aria-hidden="true"></span><b>P-0001</b></span></div><div><h3>فتح الحرز</h3><p class="small mute">البطاقة ترتفع 14 بكسل وتظهر، ثم الختم، ثم السطور بتتابع 80 مللي ثانية.</p><button class="btn btn-line btn-sm" type="button" data-replay="open">افتح الحرز</button></div></li>
-  </ul>
+ <div class="sheet"><h2 class="h2">الحركة: هادئة</h2>
+  <ul class="ticks small"><li>لا مقدمة ولا ستار ولا ظهور عند التمرير: المحتوى حاضر من أول لحظة.</li><li>الحركة رد على فعل القارئ فقط: سهم يتقدم 3 بكسل، ولون يتبدل في 160 مللي ثانية.</li><li>كل حركة تتوقف عند تفضيل تقليل الحركة.</li></ul>
  </div>
- <div class="sheet"><h2 class="h2">البطاقة والخيط</h2><div class="id-tag">{B.person_mini(B.PERSONS[0], rel, vtn=False) if B.PERSONS else ""}</div><p class="small" style="margin-top:14px">كل سجل بطاقة حرز بثقب يمر منه الخيط. الخيط يُرسم فقط بين سجلات مرتبطة فعلًا، ويشتد خيط واحد في كل مرة حين تقف على السجل المرتبط.</p></div>
+ <div class="sheet"><h2 class="h2">الختم على الصورة</h2><p class="small">الوضع القانوني يُقرأ من شكل إطار الختم، والختم يُطبع على الصدر لا على الوجه.</p>
+  <ul class="id-stamps">{''.join(f'<li><i class="sg {stamp_form(k)}"></i><b>{esc(STAMP[k][0])}</b><span class="small mute">{esc(STAMP[k][1])}</span></li>' for k in STAMP)}</ul></div>
+ <div class="sheet id-wide"><h2 class="h2">صف السجل</h2><p class="small">كل سجل في الأرشيف صف واحد بقواعد واحدة: صورة أو بلاطة حبر بشعار الجهة، عنوان في سطرين، تاريخ ومكان بأيقونات، وفي آخره حالة التحقق والرقم وسهم الشمع.</p>
+  <ul class="rows" style="margin-top:14px">{B.inc_mini_row(B.INCIDENTS[0], rel) if B.INCIDENTS else ""}</ul></div>
 </div></section>'''
     P(rel, 'identity.html', 'الهوية البصرية', 'هوية موثّق البصرية: الحرز، الختم، الخيط، والأحبار الثلاثة.', 'identity', main)
 

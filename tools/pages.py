@@ -191,15 +191,17 @@ def person_href(p, rel):
     return f'{rel}people/{p["slug"] if p.get("demo") else slug(p["id"])}.html'
 
 
-def level(status):
-    """The five knots of the judicial path as a small gauge: how far the person's standing has gone."""
-    lv = STATUS[status][1]
-    dots = ''.join('<i class="on"></i>' if i <= lv else '<i></i>' for i in range(1, 6))
-    return f'<span class="lvl" aria-hidden="true">{dots}</span><span class="sr">المرحلة {lv} من 5 في المسار القضائي.</span>'
+def charge_of(p):
+    """The type of charge in a few words: the client's list for real files, the first act for illustrative ones."""
+    if p.get('demo'):
+        return p['acts'][0]['act_ar'] if p['acts'] else ''
+    return B.PICKS.get('charge_ar', {}).get(p['id'], '')
 
 
 def fcard(p, rel):
-    """A file in the persons database: photo, name, role, legal standing, and how many articles its acts engage."""
+    """A file in the persons database: photo, then legal standing, name, role and the charge; one quiet line
+    for the articles the acts engage. The standing label weighs what it means: a warrant or a conviction is
+    solid ink, a charge, a naming or a sanction is outlined, an allegation under review is dashed."""
     demo = p.get('demo')
     ph = None if demo else B.photo_of(p['id'])
     if ph:
@@ -208,14 +210,17 @@ def fcard(p, rel):
                f'loading="lazy" decoding="async">')
     else:
         pic = f'{SILHOUETTE}<small>{"ملف تجريبي — لا صورة" if demo else "لا صورة منشورة في الملف"}</small>'
+    lv = STATUS[p['status']][1]
+    weight = 'is-firm' if lv >= 4 else ('is-open' if lv >= 2 else 'is-loose')
     n = len(p['rule_ids'])
     badge = '<span class="fcard-demo">تجريبي</span>' if demo else ''
+    charge = charge_of(p)
     return (f'<a class="fcard{" is-demo" if demo else ""}" href="{person_href(p, rel)}">'
             f'<span class="fcard-ph{"" if ph else " is-empty"}">{pic}{badge}</span>'
-            f'<span class="fcard-body"><span class="fcard-status">{level(p["status"])}<span>{esc(STATUS[p["status"]][0])}</span></span>'
-            f'<b class="fcard-name">{esc(p["name_ar"])}</b><span class="fcard-role">{esc(p.get("role_ar", ""))}</span></span>'
-            f'<span class="fcard-foot"><span><span class="mono">{esc(p["id"])}</span> · '
-            f'{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>'
+            f'<span class="fcard-body"><span class="fcard-status {weight}">{esc(STATUS[p["status"]][0])}</span>'
+            f'<b class="fcard-name">{esc(p["name_ar"])}</b><span class="fcard-role">{esc(p.get("role_ar", ""))}</span>'
+            f'{f"<span class=fcard-charge>{esc(charge)}</span>" if charge else ""}</span>'
+            f'<span class="fcard-foot"><span>{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>'
             f'<span class="fcard-open">عرض الملف {icon("arrow")}</span></span></a>')
 
 

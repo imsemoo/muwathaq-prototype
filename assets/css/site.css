@@ -1666,3 +1666,7 @@ main, .foot { position: relative; z-index: 1; }
   .foot-grid > div:first-child p:first-of-type { margin-top: 0 !important; }
   .foot .foot-bottom { flex-direction: row; justify-content: space-between; }
 }
+
+/* the hero portraits in black and white (user, 3 Nov 2026); other photos stay as they are */
+.wanted-ph img { filter: grayscale(1) contrast(1.05); }
+.foot-top { min-height: 44px; padding-inline: 4px; }

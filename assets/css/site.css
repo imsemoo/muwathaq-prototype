@@ -1111,9 +1111,9 @@ main, .foot { position: relative; z-index: 1; }
 .wanted-mid { align-self: center; display: grid; justify-items: center; text-align: center; gap: 14px; padding-block: clamp(36px, 5vw, 64px); min-width: 0; }
 .wanted-by { font-size: var(--fs-xs); font-weight: 600; color: var(--on-ink-2); line-height: 1.8; }
 .wanted-h { font-size: var(--fs-display); line-height: 1.35; font-weight: 900; text-wrap: balance; }
-.wanted-lead { max-width: 46ch; color: var(--on-ink-2); font-size: var(--fs-ui); line-height: 1.9; }
+.wanted-lead { max-width: 46ch; color: #D3D8DD; font-size: var(--fs-ui); line-height: 1.9; }
 .wanted-acts { list-style: none; display: grid; gap: 6px; max-width: 52ch; }
-.wanted-acts li { font-size: var(--fs-sm); line-height: 1.75; font-weight: 600; padding: 6px 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--on-ink-line); }
+.wanted-acts li { font-size: var(--fs-sm); line-height: 1.75; font-weight: 600; color: var(--on-ink); padding: 8px 14px; border-radius: 10px; background: rgb(255 255 255 / .07); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .14); }
 .wanted-knots { width: min(440px, 100%); margin-top: 6px; }
 .wanted-not { display: flex; gap: 8px; align-items: flex-start; justify-content: center; font-size: var(--fs-xs); line-height: 1.8; color: var(--on-ink-2); max-width: 50ch; }
 .wanted-not .icon { width: 16px; height: 16px; margin-top: 3px; flex: none; }
@@ -1143,22 +1143,24 @@ main, .foot { position: relative; z-index: 1; }
 @media (hover: hover) and (pointer: fine) { .fcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
 .fcard-ph { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; background: var(--table-2); overflow: hidden; }
 .fcard-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; filter: grayscale(1); }
-.fcard-ph .sil { width: 42%; fill: var(--line-2); margin-top: auto; }
+.fcard-ph .sil { width: 40%; fill: var(--line-2); margin-top: auto; }
 .fcard-ph small { position: absolute; bottom: 10px; inset-inline: 0; text-align: center; font-size: var(--fs-xs); color: var(--mute); }
+.fcard-ph.is-empty { background: var(--ink); }
+.fcard-ph.is-empty .sil { fill: #2B3036; }
+.fcard-ph.is-empty small { color: var(--on-ink-2); }
 .fcard-demo { position: absolute; top: 10px; inset-inline-start: 10px; padding: 2px 9px; border-radius: 8px; background: var(--sheet); box-shadow: inset 0 0 0 1px var(--line-2); font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); line-height: 1.7; }
 .acard-meta .fcard-demo { position: static; }
-.fcard-body { display: grid; align-content: start; gap: 4px; padding: 14px 16px 12px; min-width: 0; }
-.fcard-no { font-size: var(--fs-xs); color: var(--mute); }
-.fcard-name { font-size: 1.0625rem; font-weight: 700; line-height: 1.6; }
+.fcard-body { display: grid; align-content: start; gap: 2px; padding: 14px 16px 14px; min-width: 0; }
+.fcard-name { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); font-weight: 800; line-height: 1.55; margin-top: 6px; }
 .fcard-role { font-size: var(--fs-sm); color: var(--mute); line-height: 1.7; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.fcard-status { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: var(--fs-xs); font-weight: 700; line-height: 1.6; }
+.fcard-status { display: flex; align-items: center; gap: 8px; font-size: var(--fs-sm); font-weight: 700; line-height: 1.6; color: var(--ink); }
 .lvl { display: inline-flex; gap: 3px; flex: none; direction: ltr; }
 .lvl i { width: 7px; height: 7px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--ink); }
 .lvl i.on { background: var(--ink); }
 .fcard-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; border-top: 1px solid var(--line); font-size: var(--fs-xs); color: var(--mute); }
 .fcard-open { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--ink); white-space: nowrap; }
 .fcard-open .icon { width: 16px; height: 16px; }
-.fcard.is-demo .fcard-ph { background: repeating-linear-gradient(135deg, var(--table-2) 0 10px, var(--table) 10px 20px); }
+.fcard-foot .mono { color: var(--ink-2); }
 .list-main .fcards { grid-template-columns: repeat(3, minmax(0, 1fr)); }   /* beside the filter panel */
 
 /* ---------- reports: two lists side by side when national proceedings exist ---------- */
@@ -1255,8 +1257,21 @@ main, .foot { position: relative; z-index: 1; }
   .fcards, .list-main .fcards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .fcard-body { padding: 12px 12px 10px; }
   .fcard-name { font-size: 1rem; }
+  .fcard-status { font-size: var(--fs-xs); }
   .fcard-foot { padding: 9px 12px; flex-wrap: wrap; }
   .fcard-foot > span:first-child { display: none; }
   .bars a { grid-template-columns: minmax(0, 1fr) 2.5ch; }
   .bars .bar { grid-column: 1 / -1; grid-row: 2; }
 }
+
+/* ---------- home rhythm: white bands between the grey table, lists drawn with lines on them ---------- */
+.band-paper { background: var(--sheet); }
+.sec + .sec.band-paper, .sec.band-paper + .sec { padding-top: clamp(56px, 7vw, 104px); }
+.band-paper .sec-head { border-top-color: var(--ink); }
+.band-paper .rows { background: none; box-shadow: none; border-radius: 0; overflow: visible; border-block: 1px solid var(--line-2); }
+.band-paper .row:hover { background: var(--table); }
+.band-paper .register a:hover { background: var(--table); }
+.band-paper .col-h { padding-bottom: 10px; }
+.path-h { margin-top: 44px; }
+.path-h + .review-path { margin-top: 14px; }
+.fcard-demo { background: var(--on-ink); }

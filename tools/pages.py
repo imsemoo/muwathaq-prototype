@@ -207,15 +207,15 @@ def fcard(p, rel):
         pic = (f'<img src="{rel}assets/img/photo/{ph}-640.webp" alt="" width="640" height="{round(640 * sz["h"] / sz["w"])}" '
                f'loading="lazy" decoding="async">')
     else:
-        pic = f'{SILHOUETTE}<small>{"لا صورة — ملف تجريبي" if demo else "لا صورة في الملف"}</small>'
+        pic = f'{SILHOUETTE}<small>{"ملف تجريبي — لا صورة" if demo else "لا صورة منشورة في الملف"}</small>'
     n = len(p['rule_ids'])
     badge = '<span class="fcard-demo">تجريبي</span>' if demo else ''
     return (f'<a class="fcard{" is-demo" if demo else ""}" href="{person_href(p, rel)}">'
-            f'<span class="fcard-ph">{pic}{badge}</span>'
-            f'<span class="fcard-body"><span class="fcard-no mono">{esc(p["id"])}</span>'
-            f'<b class="fcard-name">{esc(p["name_ar"])}</b><span class="fcard-role">{esc(p.get("role_ar", ""))}</span>'
-            f'<span class="fcard-status">{level(p["status"])}<span>{esc(STATUS[p["status"]][0])}</span></span></span>'
-            f'<span class="fcard-foot"><span>{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>'
+            f'<span class="fcard-ph{"" if ph else " is-empty"}">{pic}{badge}</span>'
+            f'<span class="fcard-body"><span class="fcard-status">{level(p["status"])}<span>{esc(STATUS[p["status"]][0])}</span></span>'
+            f'<b class="fcard-name">{esc(p["name_ar"])}</b><span class="fcard-role">{esc(p.get("role_ar", ""))}</span></span>'
+            f'<span class="fcard-foot"><span><span class="mono">{esc(p["id"])}</span> · '
+            f'{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>'
             f'<span class="fcard-open">عرض الملف {icon("arrow")}</span></span></a>')
 
 
@@ -312,7 +312,7 @@ def home():
                  f'<div><h3 class="h3 col-h">إجراءات قضائية وطنية</h3><ul class="rows">{"".join(B.doc_row(d, rel) for d in national[:5])}</ul></div></div>')
     else:
         lists = f'<ul class="rows">{"".join(B.doc_row(d, rel) for d in intl[:6])}</ul>'
-    reports = f"""<section class="sec" aria-labelledby="reports-h">
+    reports = f"""<section class="sec band-paper" aria-labelledby="reports-h">
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2" id="reports-h">التقارير الدولية</h2><p>وثائق قضائية وأممية وحقوقية، وإجراءات قضاء وطني في عدة دول، كل منها بطبيعته القانونية.</p></div><a class="link-arrow" href="reports/index.html">كل التقارير ({len(docs)}) {icon("arrow")}</a></div>
   {lists}
@@ -322,11 +322,12 @@ def home():
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2" id="articles-h">المقالات</h2><p>مقالات في القانون الدولي وجرائم الحرب يكتبها باحثون وكتاب، وتنشر بعد التحكيم والتدقيق.</p></div><a class="btn btn-ink" href="articles/write.html">اكتب مقالا</a></div>
   <ul class="acards">{"".join(f"<li>{article_card(x, rel)}</li>" for x in B.ARTICLES[:3])}</ul>
+  <h3 class="h3 path-h">كيف ينشر مقال</h3>
   {review_path()}
  </div>
 </section>"""
     tops = sorted([r for r in B.RULES if r['p_ids']], key=lambda r: (-len(r['p_ids']), r['id']))[:6]
-    database = f"""<section class="sec" aria-labelledby="db-h">
+    database = f"""<section class="sec band-paper" aria-labelledby="db-h">
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2" id="db-h">قاعدة البيانات التفاعلية</h2><p>عدد الأشخاص الموثقة ملفاتهم، وكيف ترتبط الأفعال المنسوبة إليهم بمواد القانون الدولي الإنساني وغيره.</p></div><a class="link-arrow" href="database.html">افتح قاعدة البيانات {icon("arrow")}</a></div>
   {register()}

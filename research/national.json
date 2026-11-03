@@ -1,0 +1,369 @@
+[
+ {
+  "country_ar": "بلجيكا",
+  "country_en": "Belgium",
+  "body_ar": "النيابة العامة الفيدرالية البلجيكية",
+  "body_en": "Belgian Federal Prosecutor's Office",
+  "date": "2024-10-16",
+  "action": "investigation",
+  "action_ar": "فتح ملف تحقيق",
+  "complainant_ar": null,
+  "persons_ar": "جندي بلجيكي-إسرائيلي واحد في العشرينات من عمره",
+  "persons_count": 1,
+  "title_ar": "النيابة الفيدرالية البلجيكية تفتح ملفا بشأن جرائم حرب محتملة لجندي بلجيكي-إسرائيلي خدم في غزة",
+  "summary_ar": "أعلنت النيابة الفيدرالية البلجيكية في 18 أكتوبر 2024 أنها فتحت يوم 16 أكتوبر ملفا بشأن «جرائم حرب محتملة» يتعلق بمواطن بلجيكي يحمل الجنسية الإسرائيلية ويخدم في وحدة نخبة بالجيش الإسرائيلي، بعد منشورات لصحفي فلسطيني اتهمت وحدة قناصة إسرائيلية بإعدام مدنيين عزل في غزة. وقال وزير العدل البلجيكي إن الهدف هو التحقق من المعلومات التي نشرتها الصحافة، والقانون البلجيكي يتيح ملاحقة مواطنيه على جرائم حرب ارتكبت في الخارج. فتح الملف لا يعني توجيه اتهام، ولم تعلن النيابة أي تهمة محددة.",
+  "crimes_ar": [
+   "جرائم حرب محتملة"
+  ],
+  "url": "https://www.justiceinfo.net/en/137242-belgium-opens-war-crimes-probe-into-soldier-fighting-for-israel-in-gaza.html",
+  "sources": [
+   {
+    "url": "https://www.justiceinfo.net/en/137242-belgium-opens-war-crimes-probe-into-soldier-fighting-for-israel-in-gaza.html",
+    "publisher": "Justice Info (AFP)",
+    "date": "2024-10-18"
+   },
+   {
+    "url": "https://www.arabnews.com/node/2575788/world",
+    "publisher": "Arab News (AFP)",
+    "date": "2024-10-18"
+   },
+   {
+    "url": "https://www.vrt.be/vrtnws/en/2025/09/10/belgian-prosecutors-investigate-dual-nationals-role-in-alleged-w/",
+    "publisher": "VRT NWS",
+    "date": "2025-09-10"
+   }
+  ],
+  "status_now_ar": "أكدت النيابة الفيدرالية في سبتمبر 2025 أن الملف ما زال قيد التحقيق دون أن تكشف تفاصيل، بحسب VRT، والمحققون يدرسون ما إذا كان دوره في الوحدة يرقى إلى جرائم حرب.",
+  "uncertain": false
+ },
+ {
+  "country_ar": "البرازيل",
+  "country_en": "Brazil",
+  "body_ar": "القضاء الفيدرالي البرازيلي، قاضية فيدرالية مناوبة في المقاطعة الفيدرالية (برازيليا)",
+  "body_en": "Federal Justice of Brazil, on-call federal judge, Federal District (Brasília)",
+  "date": "2024-12-30",
+  "action": "investigation",
+  "action_ar": "أمر قضائي بالتحقيق",
+  "complainant_ar": "مؤسسة هند رجب، عبر محاميين برازيليين",
+  "persons_ar": "جندي احتياط إسرائيلي واحد كان يقضي عطلة في ولاية باهيا",
+  "persons_count": 1,
+  "title_ar": "قاضية فيدرالية برازيلية تأمر بالتحقيق مع جندي إسرائيلي في عطلة بشبهة جرائم حرب في غزة",
+  "summary_ar": "أمرت قاضية فيدرالية في برازيليا في 30 ديسمبر 2024 بفتح تحقيق مع جندي احتياط إسرائيلي كان يقضي عطلة في البرازيل، وأحيلت المواد إلى الشرطة الفيدرالية في 3 يناير 2025، بعد بلاغ من مؤسسة هند رجب يتهمه بالمشاركة في هدم منازل مدنيين في غزة استنادا إلى مقاطع مصورة وبيانات تحديد مواقع وصور. واحتج مقدمو البلاغ بأن البرازيل طرف في اتفاقيات جنيف ونظام روما ومن ثم ملزمة بقمع هذه الجرائم حتى لو ارتكبت في الخارج. الأمر بالتحقيق لا يعني توجيه اتهام ولا صدور مذكرة توقيف.",
+  "crimes_ar": [
+   "جرائم حرب مزعومة في قطاع غزة",
+   "المشاركة في هدم منازل مدنيين (بحسب البلاغ)"
+  ],
+  "url": "https://www.cnnbrasil.com.br/politica/soldado-deixou-territorio-brasileiro-de-forma-rapida-e-segura-diz-governo-de-israel/",
+  "sources": [
+   {
+    "url": "https://www.cnnbrasil.com.br/politica/soldado-deixou-territorio-brasileiro-de-forma-rapida-e-segura-diz-governo-de-israel/",
+    "publisher": "CNN Brasil",
+    "date": "2025-01-05"
+   },
+   {
+    "url": "https://www.voanews.com/a/israel-helps-ex-soldier-leave-brazil-over-probe-of-alleged-war-crimes-in-gaza/7925201.html",
+    "publisher": "VOA (AP)",
+    "date": "2025-01-05"
+   },
+   {
+    "url": "https://www.itatiaia.com.br/politica/soldado-israelense-deixa-o-brasil-apos-justica-pedir-investigacao-da-pf/",
+    "publisher": "Rádio Itatiaia",
+    "date": "2025-01-05"
+   },
+   {
+    "url": "https://www.yahoo.com/news/israeli-soldiers-traveling-abroad-targeted-051604884.html",
+    "publisher": "Associated Press",
+    "date": "2025-02-11"
+   },
+   {
+    "url": "https://www.justiceinfo.net/fr/151717-justice-pour-gaza-qui-fait-quoi.html",
+    "publisher": "Justice Info",
+    "date": "2025-11-04"
+   }
+  ],
+  "status_now_ar": "غادر الجندي البرازيل في 4 أو 5 يناير 2025 (تختلف المصادر) على متن رحلة تجارية من سلفادور إلى بوينس آيرس، وقالت الخارجية الإسرائيلية إنها ساعدته على المغادرة. وأكدت الشرطة الفيدرالية تسلم الأمر وقالت إنها تدرس الإجراءات المناسبة.",
+  "uncertain": false
+ },
+ {
+  "country_ar": "بلجيكا",
+  "country_en": "Belgium",
+  "body_ar": "النيابة العامة الفيدرالية البلجيكية (عبر الشرطة الفيدرالية)",
+  "body_en": "Belgian Federal Prosecutor's Office (via federal police)",
+  "date": "2025-07-20",
+  "action": "questioning",
+  "action_ar": "استجواب ثم إطلاق سراح",
+  "complainant_ar": "مؤسسة هند رجب وشبكة العمل القانوني العالمي (GLAN)",
+  "persons_ar": "شخصان إسرائيليان وصفتهما النيابة بأنهما من أفراد الجيش، فيما وصفت الخارجية الإسرائيلية أحدهما بأنه مدني",
+  "persons_count": 2,
+  "title_ar": "الشرطة البلجيكية تستجوب إسرائيليين اثنين في مهرجان تومورولاند بشبهة انتهاكات جسيمة في غزة",
+  "summary_ar": "بعد شكويين تلقتهما النيابة الفيدرالية يومي 18 و19 يوليو 2025، وجهت الشرطة إلى تحديد مكان إسرائيليين اثنين كانا يحضران مهرجان تومورولاند واستجوابهما، ثم أطلق سراحهما. وقالت النيابة إن الاختصاص قد يكون قائما استنادا إلى حكم في قانون الإجراءات الجنائية البلجيكي يتعلق بالأفعال المرتكبة في الخارج والمشمولة باتفاقيات جنيف لعام 1949 واتفاقية مناهضة التعذيب لعام 1984. الاستجواب لا يعني توقيفا ولا اتهاما، ولم تفتح بحقهما ملاحقة جنائية في بلجيكا.",
+  "crimes_ar": [
+   "انتهاكات جسيمة للقانون الدولي الإنساني في قطاع غزة"
+  ],
+  "url": "https://www.pbs.org/newshour/world/belgium-questions-2-israelis-at-music-festival-over-gaza-crime-allegations",
+  "sources": [
+   {
+    "url": "https://www.pbs.org/newshour/world/belgium-questions-2-israelis-at-music-festival-over-gaza-crime-allegations",
+    "publisher": "PBS NewsHour (AP)",
+    "date": "2025-07-21"
+   },
+   {
+    "url": "https://www.ynetnews.com/article/rygfiedpex",
+    "publisher": "Ynet News",
+    "date": "2025-07"
+   },
+   {
+    "url": "https://www.dhnet.be/actu/belgique/2026/07/23/le-parquet-federal-ecarte-une-plainte-visant-un-israelien-a-tomorrowland-V6WFWRWL3NEJDPZBMBB67UIPBE/",
+    "publisher": "La DH",
+    "date": "2026-07-23"
+   },
+   {
+    "url": "https://www.justiceinfo.net/fr/151717-justice-pour-gaza-qui-fait-quoi.html",
+    "publisher": "Justice Info",
+    "date": "2025-11-04"
+   }
+  ],
+  "status_now_ar": "أطلق سراح الاثنين، ثم أحالت النيابة الفيدرالية الملف إلى المحكمة الجنائية الدولية، وهو قرار لا يقبل الطعن بموجب القانون البلجيكي بحسب Ynet. وفي يوليو 2026 حفظت النيابة شكوى جديدة ضد إسرائيلي آخر في المهرجان نفسه لعدم كفاية العناصر.",
+  "uncertain": false
+ },
+ {
+  "country_ar": "فرنسا",
+  "country_en": "France",
+  "body_ar": "النيابة الوطنية لمكافحة الإرهاب (PNAT)",
+  "body_en": "French National Anti-Terrorism Prosecutor's Office (PNAT)",
+  "date": "2025-07",
+  "action": "investigation",
+  "action_ar": "تحقيقات أولية",
+  "complainant_ar": "فتحت بمبادرة من النيابة؛ وقدمت الفيدرالية الدولية لحقوق الإنسان ومنظمات فلسطينية شكوى في الوقائع نفسها في 1 يوليو 2025",
+  "persons_ar": "جنديان فرنسيان-إسرائيليان في وحدة قناصة إسرائيلية (بحسب الشكوى)",
+  "persons_count": 2,
+  "title_ar": "النيابة الفرنسية لمكافحة الإرهاب تؤكد تحقيقات أولية في جرائم حرب تشمل جنودا فرنسيين-إسرائيليين",
+  "summary_ar": "عندما قدمت الفيدرالية الدولية لحقوق الإنسان في يوليو 2025 شكوى ضد جنديين فرنسيين-إسرائيليين في وحدة قناصة إسرائيلية تتهمهما بقتل مدنيين في غزة بين نوفمبر 2023 ومارس 2024، تبين أن النيابة الوطنية لمكافحة الإرهاب كانت قد فتحت دون إعلان تحقيقا أوليا في الوقائع نفسها، بحسب لوموند. وأكدت النيابة للصحيفة أن «عدة تحقيقات أولية» جارية بتهم جرائم حرب أو التواطؤ فيها أو الاتفاق على ارتكابها، استنادا إلى الجنسية الفرنسية للمشتبه به أو للضحايا، ورفضت الإفصاح عن تفاصيل. التحقيق الأولي مرحلة تسبق أي اتهام، ولم يعلن توجيه اتهام لأي جندي، أما تهم الجرائم ضد الإنسانية والإبادة الجماعية فوردت في الشكوى لا في موقف النيابة.",
+  "crimes_ar": [
+   "جرائم حرب",
+   "التواطؤ في جرائم حرب",
+   "الاتفاق بقصد الإعداد لارتكاب جرائم حرب"
+  ],
+  "url": "https://universitepopulairetoulouse.fr/IMG/pdf/le_monde_comment_les_militants_propalestiniens_et_des_ong_ont_investi_le_terrain_judiciaire_contre_israel.pdf",
+  "sources": [
+   {
+    "url": "https://universitepopulairetoulouse.fr/IMG/pdf/le_monde_comment_les_militants_propalestiniens_et_des_ong_ont_investi_le_terrain_judiciaire_contre_israel.pdf",
+    "publisher": "Le Monde (نسخة PDF من مقال كريستوف عياد)",
+    "date": "2026-01-09"
+   },
+   {
+    "url": "https://www.thenationalnews.com/news/europe/2026/02/03/france-issues-warrants-against-two-french-israeli-women-for-complicity-in-genocide",
+    "publisher": "The National",
+    "date": "2026-02-03"
+   },
+   {
+    "url": "https://www.politis.fr/articles/2025/07/snipers-franco-israeliens-ce-qui-est-effarant-cest-quils-revendiquent-leurs-crimes-de-guerre-a-gaza/",
+    "publisher": "Politis",
+    "date": "2025-07-01"
+   }
+  ],
+  "status_now_ar": "التحقيق الأولي مستمر بحسب تقارير فبراير 2026. تاريخ فتحه غير معلن، والمعروف أنه كان قائما عند تقديم الشكوى في يوليو 2025.",
+  "uncertain": true
+ },
+ {
+  "country_ar": "فرنسا",
+  "country_en": "France",
+  "body_ar": "النيابة الوطنية لمكافحة الإرهاب (PNAT)",
+  "body_en": "French National Anti-Terrorism Prosecutor's Office (PNAT)",
+  "date": "2025-09-05",
+  "action": "investigation",
+  "action_ar": "طلب فتح تحقيق قضائي",
+  "complainant_ar": "الفيدرالية الدولية لحقوق الإنسان ومؤسسة الحق ومركز الميزان والمركز الفلسطيني لحقوق الإنسان",
+  "persons_ar": "جندي فرنسي-إسرائيلي واحد",
+  "persons_count": 1,
+  "title_ar": "النيابة الفرنسية تطلب تحقيقا قضائيا في جريمة حرب ضد جندي فرنسي-إسرائيلي بسبب معاملة معتقلين فلسطينيين",
+  "summary_ar": "طلبت النيابة الوطنية لمكافحة الإرهاب في 5 سبتمبر 2025 فتح تحقيق قضائي يتولاه قاضي تحقيق بتهمة «جريمة حرب بالمعاملة المهينة والحاطة بالكرامة» ضد جندي فرنسي-إسرائيلي، استنادا إلى مقطع مصور يظهر معتقلين فلسطينيين بدت عليهم آثار تعذيب محتمل بينما يعلق هو عليهم بسخرية. وكانت شكوى أولى في الوقائع نفسها قد حفظت لأن الجريمة «غير موصوفة بما يكفي»، ثم قدمت المنظمات شكوى جديدة مع الادعاء بالحق المدني. ولم تأخذ النيابة بتهمتي الجرائم ضد الإنسانية والإبادة الجماعية الواردتين في الشكوى. طلب فتح التحقيق ليس اتهاما ولا إدانة.",
+  "crimes_ar": [
+   "جريمة حرب بالمعاملة المهينة والحاطة بالكرامة لشخص من الطرف الخصم بما يمس بشكل خطير سلامته الجسدية أو النفسية"
+  ],
+  "url": "https://universitepopulairetoulouse.fr/IMG/pdf/le_monde_comment_les_militants_propalestiniens_et_des_ong_ont_investi_le_terrain_judiciaire_contre_israel.pdf",
+  "sources": [
+   {
+    "url": "https://universitepopulairetoulouse.fr/IMG/pdf/le_monde_comment_les_militants_propalestiniens_et_des_ong_ont_investi_le_terrain_judiciaire_contre_israel.pdf",
+    "publisher": "Le Monde (نسخة PDF من مقال كريستوف عياد)",
+    "date": "2026-01-09"
+   },
+   {
+    "url": "https://www.thenationalnews.com/news/europe/2026/02/03/france-issues-warrants-against-two-french-israeli-women-for-complicity-in-genocide",
+    "publisher": "The National",
+    "date": "2026-02-03"
+   },
+   {
+    "url": "https://www.lecourrierdelatlas.com/un-soldat-franco-israelien-poursuivi-pour-torture-envers-des-palestiniens/",
+    "publisher": "Le Courrier de l'Atlas",
+    "date": "2024-12-17"
+   }
+  ],
+  "status_now_ar": "ذكرت The National في فبراير 2026 أن النيابة فتحت تحقيقا في جرائم حرب ضد الجندي؛ ولم نعثر على قرار لاحق لقاضي التحقيق.",
+  "uncertain": true
+ },
+ {
+  "country_ar": "إسبانيا",
+  "country_en": "Spain",
+  "body_ar": "النيابة العامة للدولة في إسبانيا (مكتب المدعي العام للدولة)",
+  "body_en": "Spanish Attorney General's Office (Fiscalía General del Estado)",
+  "date": "2025-09-17",
+  "action": "investigation",
+  "action_ar": "تشكيل فريق تحقيق",
+  "complainant_ar": null,
+  "persons_ar": "لا يحدد القرار أشخاصا؛ يتناول أفعال الجيش الإسرائيلي ضد المدنيين في غزة",
+  "persons_count": null,
+  "title_ar": "النيابة العامة الإسبانية تشكل فريقا للتحقيق في انتهاكات القانون الدولي في غزة",
+  "summary_ar": "وقع المدعي العام للدولة ألفارو غارسيا أورتيث في 17 سبتمبر 2025، وأعلن في اليوم التالي، مرسوما بتشكيل فريق من ثلاثة مدعين كبار للتحقيق في «انتهاكات جسيمة للقانون الدولي لحقوق الإنسان» في غزة قد تشكل جرائم منصوصا عليها في المادة 607 وما يليها من قانون العقوبات الإسباني، بناء على اقتراح من نيابة حقوق الإنسان بعد تقرير للشرطة الوطنية عن عمليات الجيش الإسرائيلي ضد المدنيين. ويهدف الفريق إلى جمع الأدلة الموجودة في إسبانيا وحفظها وإتاحتها للجهات المختصة، ويرسل المرسوم إلى محكمة العدل الدولية ومكتب المدعي العام للمحكمة الجنائية الدولية. المرسوم لا يسمي مشتبها بهم ولا يوجه اتهامات، وبحسب El Español لا يرد فيه لفظ «الإبادة الجماعية» صراحة.",
+  "crimes_ar": [
+   "انتهاكات جسيمة للقانون الدولي لحقوق الإنسان",
+   "جرائم منصوص عليها في المادة 607 وما يليها من قانون العقوبات الإسباني"
+  ],
+  "url": "https://www.elespanol.com/espana/tribunales/20250918/fiscalia-investigara-crimenes-articulo-codigo-penal-castiga-genocidio-ataques-gaza/1003743930083_0.amp.html",
+  "sources": [
+   {
+    "url": "https://www.elespanol.com/espana/tribunales/20250918/fiscalia-investigara-crimenes-articulo-codigo-penal-castiga-genocidio-ataques-gaza/1003743930083_0.amp.html",
+    "publisher": "El Español",
+    "date": "2025-09-18"
+   },
+   {
+    "url": "https://www.justiceinfo.net/en?p=149939",
+    "publisher": "Justice Info (AFP)",
+    "date": "2025-09-18"
+   }
+  ],
+  "status_now_ar": "لم نعثر على نتائج معلنة لعمل الفريق.",
+  "uncertain": false
+ },
+ {
+  "country_ar": "فرنسا",
+  "country_en": "France",
+  "body_ar": "النيابة الوطنية لمكافحة الإرهاب (PNAT)",
+  "body_en": "French National Anti-Terrorism Prosecutor's Office (PNAT)",
+  "date": "2025-09-30",
+  "action": "investigation",
+  "action_ar": "طلب فتح تحقيق قضائي ضد مجهول",
+  "complainant_ar": "جدة الطفلين الفرنسية، بدعم من رابطة حقوق الإنسان الفرنسية (LDH)",
+  "persons_ar": "ضد مجهول؛ لم تحدد هوية أي عنصر من الجيش الإسرائيلي",
+  "persons_count": null,
+  "title_ar": "النيابة الفرنسية تطلب تحقيقا قضائيا في جرائم حرب بشأن مقتل طفلين فرنسيين في غارة على شمال غزة",
+  "summary_ar": "قتل طفلان فرنسيان شقيقان يبلغان 6 و9 أعوام في 24 أكتوبر 2023 حين أصابت مقذوفات منزلا كانا يحتميان فيه شمال غزة، بحسب الشكوى التي قدمتها جدتهما في يونيو 2025. وفي 30 سبتمبر 2025 طلبت النيابة الوطنية لمكافحة الإرهاب من قاضي تحقيق فتح تحقيق قضائي ضد مجهول بتهمة جرائم حرب، استنادا إلى الجنسية الفرنسية للضحيتين، واستبعدت في هذه المرحلة تهمتي الجرائم ضد الإنسانية والإبادة الجماعية. لا يسمي الطلب أي مشتبه به، ولا يعني إسناد المسؤولية إلى شخص بعينه.",
+  "crimes_ar": [
+   "جريمة حرب: تعمد مهاجمة مدنيين",
+   "جريمة حرب: تدمير ممتلكات مدنية لا طابع عسكريا لها"
+  ],
+  "url": "https://universitepopulairetoulouse.fr/IMG/pdf/le_monde_comment_les_militants_propalestiniens_et_des_ong_ont_investi_le_terrain_judiciaire_contre_israel.pdf",
+  "sources": [
+   {
+    "url": "https://universitepopulairetoulouse.fr/IMG/pdf/le_monde_comment_les_militants_propalestiniens_et_des_ong_ont_investi_le_terrain_judiciaire_contre_israel.pdf",
+    "publisher": "Le Monde (نسخة PDF من مقال كريستوف عياد)",
+    "date": "2026-01-09"
+   },
+   {
+    "url": "https://viralmag.fr/?p=147801",
+    "publisher": "Viral Mag",
+    "date": "2025-11-28"
+   },
+   {
+    "url": "https://www.thenationalnews.com/news/europe/2026/02/03/france-issues-warrants-against-two-french-israeli-women-for-complicity-in-genocide",
+    "publisher": "The National",
+    "date": "2026-02-03"
+   }
+  ],
+  "status_now_ar": "أشارت The National في فبراير 2026 إلى أن التحقيق في مقتل أطفال يحملون الجنسية الفرنسية في غارات على غزة مستمر؛ ولم نعثر على إعلان رسمي بقرار قاضي التحقيق.",
+  "uncertain": true
+ },
+ {
+  "country_ar": "تركيا",
+  "country_en": "Turkey",
+  "body_ar": "النيابة العامة الجمهورية في إسطنبول، ومحكمة الصلح الجزائية المناوبة في إسطنبول",
+  "body_en": "Istanbul Chief Public Prosecutor's Office; Istanbul Criminal Judgeship of Peace (on duty)",
+  "date": "2025-11-07",
+  "action": "arrest_warrant",
+  "action_ar": "مذكرات توقيف",
+  "complainant_ar": "تحقيق فتحته النيابة من تلقاء نفسها، مع إخطار جنائي من نقابة المحامين الثانية في إسطنبول وعرائض من محامي ناشطي أسطول الصمود العالمي",
+  "persons_ar": [
+   "بنيامين نتنياهو، رئيس الوزراء الإسرائيلي",
+   "يسرائيل كاتس، وزير الدفاع",
+   "إيتمار بن غفير، وزير الأمن القومي",
+   "إيال زامير، رئيس أركان الجيش الإسرائيلي",
+   "ديفيد ساعر سلامة، قائد سلاح البحرية الإسرائيلي",
+   "32 شخصا آخرين لم تنشر النيابة أسماءهم كاملة"
+  ],
+  "persons_count": 37,
+  "title_ar": "القضاء التركي يصدر مذكرات توقيف بحق نتنياهو و36 مسؤولا إسرائيليا بتهمتي الإبادة الجماعية والجرائم ضد الإنسانية",
+  "summary_ar": "بناء على طلب النيابة العامة في إسطنبول، أصدرت محكمة الصلح الجزائية المناوبة في 7 نوفمبر 2025 مذكرات توقيف بحق 37 مشتبها بهم بموجب المادتين 76 و77 من قانون العقوبات التركي، لأنهم غير موجودين في تركيا. واستند بيان النيابة إلى وقائع منها الهجوم على المستشفى الأهلي المعمداني في 17 أكتوبر 2023، ومقتل الطفلة هند رجب في 29 يناير 2024، وقصف مستشفى الصداقة التركي الفلسطيني في 21 مارس 2025، وحصار غزة ومنع المساعدات، واعتراض البحرية الإسرائيلية أسطول الصمود العالمي في المياه الدولية. مذكرة التوقيف إجراء احترازي لا يعني ثبوت التهم، ولم تنشر النيابة قائمة كاملة بالأسماء.",
+  "crimes_ar": [
+   "الإبادة الجماعية (المادة 76 من قانون العقوبات التركي)",
+   "الجرائم ضد الإنسانية (المادة 77 من قانون العقوبات التركي)"
+  ],
+  "url": "https://www.aljazeera.com/news/2025/11/7/turkiye-issues-arrest-warrant-for-israels-netanyahu-over-gaza-genocide",
+  "sources": [
+   {
+    "url": "https://www.aljazeera.com/news/2025/11/7/turkiye-issues-arrest-warrant-for-israels-netanyahu-over-gaza-genocide",
+    "publisher": "Al Jazeera",
+    "date": "2025-11-07"
+   },
+   {
+    "url": "https://www.cumhuriyet.com.tr/turkiye/son-dakika-turkiye-den-netanyahu-dahil-37-israilli-yetkili-hakkinda-yakalama-karari-2450771",
+    "publisher": "Cumhuriyet (نص بيان النيابة)",
+    "date": "2025-11-07"
+   },
+   {
+    "url": "https://abc17news.com/news/national-world/cnn-world/2025/11/07/turkey-issues-genocide-arrest-warrants-against-netanyahu-and-other-israeli-officials/",
+    "publisher": "CNN (عبر ABC17 News)",
+    "date": "2025-11-07"
+   },
+   {
+    "url": "https://www.newarab.com/news/turkey-issues-genocide-arrest-warrant-against-netanyahu",
+    "publisher": "The New Arab",
+    "date": "2025-11-07"
+   }
+  ],
+  "status_now_ar": "المشتبه بهم خارج تركيا ولم تنفذ المذكرات. ورفضت إسرائيل الخطوة، ووصفها وزير خارجيتها جدعون ساعر بأنها «حيلة دعائية».",
+  "uncertain": false
+ },
+ {
+  "country_ar": "فرنسا",
+  "country_en": "France",
+  "body_ar": "النيابة الوطنية لمكافحة الإرهاب (PNAT)",
+  "body_en": "French National Anti-Terrorism Prosecutor's Office (PNAT)",
+  "date": "2026-06-05",
+  "action": "investigation",
+  "action_ar": "تحقيق أولي",
+  "complainant_ar": "إحالة من وزارة الخارجية الفرنسية",
+  "persons_ar": "لم يحدد مشتبه بهم؛ يتعلق التحقيق بمعاملة السلطات الإسرائيلية لنحو ثلاثين ناشطا فرنسيا",
+  "persons_count": null,
+  "title_ar": "النيابة الفرنسية تفتح تحقيقا أوليا في التعذيب وجرائم الحرب بشأن معاملة ناشطين فرنسيين من أسطول متجه إلى غزة",
+  "summary_ar": "فتحت النيابة الوطنية لمكافحة الإرهاب في 5 يونيو 2026 تحقيقا أوليا بتهمتي التعذيب بمفهوم اتفاقية نيويورك لعام 1984 وجرائم الحرب، بعد إحالة من وزارة الخارجية الفرنسية، بشأن معاملة نحو ثلاثين فرنسيا كانوا بين قرابة 430 ناشطا احتجزتهم إسرائيل بعد اعتراض أسطول الصمود العالمي المتجه إلى غزة في مايو 2026. وكلف المكتب المركزي لمكافحة الجرائم ضد الإنسانية بالتحقيقات. لا يسمي التحقيق أي مشتبه به، ولا يعني ثبوت الوقائع التي رواها الناشطون، وقد نفتها مصلحة السجون الإسرائيلية.",
+  "crimes_ar": [
+   "التعذيب بمفهوم اتفاقية الأمم المتحدة لمناهضة التعذيب لعام 1984",
+   "جرائم حرب"
+  ],
+  "url": "https://www.dhnet.be/dernieres-depeches/2026/06/05/flottille-pour-gaza-la-justice-francaise-enquete-pour-tortures-sur-les-militants-EWEA2DQTCRFYZGI3MZFMMETSZ4/",
+  "sources": [
+   {
+    "url": "https://www.dhnet.be/dernieres-depeches/2026/06/05/flottille-pour-gaza-la-justice-francaise-enquete-pour-tortures-sur-les-militants-EWEA2DQTCRFYZGI3MZFMMETSZ4/",
+    "publisher": "La DH (AFP)",
+    "date": "2026-06-05"
+   },
+   {
+    "url": "https://www.arabnews.com/node/2646141/amp",
+    "publisher": "Arab News (AFP)",
+    "date": "2026-06-05"
+   },
+   {
+    "url": "https://ujim.trialinternational.org/?p=32533",
+    "publisher": "TRIAL International (قاعدة بيانات الولاية القضائية العالمية)",
+    "date": "2026-07-29"
+   },
+   {
+    "url": "https://ujim.trialinternational.org/?p=32569",
+    "publisher": "TRIAL International (قاعدة بيانات الولاية القضائية العالمية)",
+    "date": "2026-07-29"
+   }
+  ],
+  "status_now_ar": "قيد التحقيق بحسب قاعدة بيانات TRIAL International (تحديث 29 يوليو 2026). وتسجل القاعدة نفسها تحقيقا فرنسيا آخر فتح في 1 يوليو 2026 في التعذيب المرتبط باعتراض أسطول أكتوبر 2025.",
+  "uncertain": false
+ }
+]

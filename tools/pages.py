@@ -163,96 +163,6 @@ def cite_block(rel, rec_id, text):
 
 
 # ---------- home ----------
-def print_card(ev, rel):
-    ph = B.EV_PHOTO.get(ev['id'])
-    sz = B.PHOTO_SIZE[ph]
-    p = B.PHOTOS[ph]
-    inc = B.INC_BY_ID[ev['incident']]
-    return f'''<article class="tag print" aria-label="دليل مصوّر">
-  <span class="tag-hole" aria-hidden="true"></span>
-  <div class="tag-top"><span class="tag-no">{esc(ev["id"])}</span><span class="tag-kind">دليل مصوّر</span></div>
-  <div class="tag-seal" data-cord-from>{S.wax(B.ev_state(ev))}</div>
-  <img class="print-img" src="{rel}assets/img/photo/{ph}-640.webp" alt="{esc(p.get("alt", ""))}" width="640" height="{round(640 * sz["h"] / sz["w"])}" loading="lazy" decoding="async">
-  <p class="print-cap">{esc(p.get("caption_ar", ""))}</p>
-  <p class="tag-by">{esc(p.get("author", ""))} · {esc(p.get("license", ""))} · ضمن سجل {esc(inc["id"])}</p>
-  <div class="tag-actions"><a class="btn btn-light" href="{rel}evidence/{slug(ev["id"])}.html">افتح الحرز {icon("arrow")}</a><a class="btn btn-ghost" href="{rel}evidence/{slug(ev["id"])}.html#verify">افحص الختم</a></div>
-</article>'''
-
-
-def law_card(r, rel):
-    text = (r.get('paraphrase_ar') or r.get('text_ar') or '').splitlines()[0]
-    if len(text) > 190:
-        text = text[:186].rsplit(' ', 1)[0] + '…'
-    return f'''<article class="tag lawcard" aria-label="مادة قانونية">
-  <span class="tag-hole" aria-hidden="true"></span>
-  <div class="tag-top"><span class="tag-no">{esc(B.rule_short(r))}</span><span class="tag-kind">{esc(B.BRANCH.get(r.get("branch"), ""))}</span></div>
-  <div class="tag-seal" data-cord-from>{S.wax("complete")}</div>
-  <p class="tag-by">{esc(r.get("instrument_ar", ""))}</p>
-  <p class="tag-status">{esc(r.get("article_ar", ""))}</p>
-  <div class="tag-name"><b>{esc(r.get("title_ar", ""))}</b></div>
-  <blockquote class="law-quote">{esc(text)}</blockquote>
-  <div class="tag-actions"><a class="btn btn-light" href="{rel}law/{slug(r["id"])}.html">افتح المادة {icon("arrow")}</a></div>
-</article>'''
-
-
-def case_section(rel):
-    """A real record reconstructed as the reader scrolls: the first account, the evidence that contradicted it,
-    what changed after, the rules engaged. Every line comes from INC-0012 and its sources."""
-    inc = B.INC_BY_ID.get(B.PICKS.get('home', {}).get('case', 'INC-0012'))
-    if not inc:
-        return ''
-    R = lambda rid: B.RULE_BY_ID.get(rid)
-    rules = [r for r in (R('RS-8-2-b-xxiv'), R('RS-8-2-b-iii'), R('GCIV-147')) if r]
-    steps = [
-        ('in_progress', '23 مارس 2025، فجرا، قرب تل السلطان في رفح',
-         'أطلقت النار على سيارة إسعاف ثم على قافلة إنقاذ. قتل 15، بحسب الأمم المتحدة.',
-         'أوتشا وأخبار الأمم المتحدة، 1 أبريل 2025'),
-        ('in_progress', 'الرواية الأولى',
-         'قال الجيش الإسرائيلي إن المركبات «تقدمت بشكل مريب» دون أضواء أو إشارات طوارئ.',
-         'بيانات الجيش كما نقلتها CNN وتايمز أوف إسرائيل'),
-        ('rereview', 'الدليل',
-         'مقطع من هاتف المسعف رفعت رضوان: الأنوار والإشارات مضاءة لحظة إطلاق النار.',
-         'نيويورك تايمز وCNN، 5 أبريل 2025'),
-        ('specific', 'ما تغيّر بعد الدليل',
-         'أقر الجيش بأن روايته غير دقيقة، ووثق تحليل صوتي مستقل 910 طلقات على الأقل.',
-         'CNN وتايمز أوف إسرائيل؛ تقرير Earshot وForensic Architecture'),
-        ('specific', 'القواعد التي قد تنطبق',
-         'الهجوم على الشارات المميزة وعلى موظفي الإغاثة، والمخالفات الجسيمة. يلزم إثبات العلم والقصد.',
-         'تحليل بحثي أولي، ليس حكما'),
-        ('specific', 'الحرز ما زال مفتوحا',
-         'فتح تحقيق جنائي في 19 أغسطس 2026. كل تحديث يضاف بتاريخه، ولا تمحى الرواية الأولى.',
-         'بحسب ما نقلته الصحافة الإسرائيلية والدولية'),
-    ]
-    lis = ''.join(f'<li class="case-step{" is-on" if n == 0 else ""}" data-step="{n}"><span class="cs-k" aria-hidden="true">{seal(st, label=False)}</span><div><h3>{esc(h)}</h3><p>{esc(t)}</p><p class="src">{esc(src)}</p></div></li>'
-                  for n, (st, h, t, src) in enumerate(steps))
-    rule_cards = ''.join(f'<div class="cs-card cs-rule r{n}" data-in="4"><span class="tag-hole" aria-hidden="true"></span><p class="mono">{esc(B.rule_short(r))}</p><b>{esc(r.get("title_ar", ""))}</b><small>{esc(r.get("instrument_ar", "").split(" (")[0])}</small></div>'
-                         for n, r in enumerate(rules))
-    views = ''.join(f'<div class="kd-view cs-view{" is-on" if k == "in_progress" else ""}" data-state-view="{k}">{S.wax(k, cls="wax")}</div>' for k in ('in_progress', 'rereview', 'specific'))
-    return f'''<section class="case" data-case aria-labelledby="case-h">
- <div class="case-pin">
-  <div class="wrap case-grid">
-   <div class="case-text">
-    <h2 class="h2" id="case-h">حرز واقعة: كيف تتغير الرواية أمام الدليل</h2>
-    <p class="case-lead">سجل حقيقي يبنى أمامك خطوة بخطوة.</p>
-    <ol class="case-steps">{lis}</ol>
-    <a class="link-arrow case-cta" href="{rel}incidents/{slug(inc["id"])}.html">افتح حرز الواقعة كاملا {icon("arrow")}</a>
-   </div>
-   <div class="case-stage" aria-hidden="true">
-    <svg class="cs-cords" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="c0" d="M50 30 Q38 70 26 86"/><path class="c1" d="M50 30 Q52 74 54 90"/><path class="c2" d="M50 30 Q66 70 80 86"/></svg>
-    <div class="cs-card cs-inc" data-in="0"><span class="tag-hole" aria-hidden="true"></span><p class="mono">{esc(inc["id"])}</p><b>{esc(inc["title_ar"])}</b><small>{esc(date_ar(inc["date"]))} · {esc(inc.get("place_ar", ""))}</small></div>
-    <div class="cs-seal">{views}</div>
-    <div class="cs-card cs-off" data-in="1"><p class="cs-lab">{icon("official")} بيان رسمي · الرواية الأولى</p><q>تقدمت المركبات بشكل مريب دون أضواء أو إشارات طوارئ</q></div>
-    <div class="cs-seam" data-in="2"></div>
-    <div class="cs-card cs-vid" data-in="2"><p class="cs-lab">{icon("video")} مقطع فيديو · 5 أبريل 2025</p><p class="cs-num"><b>6</b> دقائق صوّرت من داخل القافلة</p><q>الأنوار والإشارات مضاءة لحظة إطلاق النار</q></div>
-    <div class="cs-card cs-idf" data-in="3"><p class="cs-lab">{icon("doc")} تحقيق الجيش · 20 أبريل 2025</p><q>إخفاقات مهنية</q></div>
-    <div class="cs-card cs-fa" data-in="3"><p class="cs-lab">{icon("sat")} تحليل صوتي · 23 فبراير 2026</p><p class="cs-num"><b>910</b> طلقات على الأقل</p><small>Earshot و Forensic Architecture</small></div>
-    {rule_cards}
-   </div>
-  </div>
- </div>
-</section>'''
-
-
 def counted(n, few, many):
     """Arabic counted noun: 3 to 10 take the plural, 11 and up the singular."""
     return few if 3 <= n % 100 <= 10 else many
@@ -268,130 +178,172 @@ def register():
             ''.join(f'<a href="{href}"><b class="mono">{n}</b> <span>{esc(label)}</span></a>' for n, label, href in cells) + '</nav>')
 
 
+SILHOUETTE = ('<svg class="sil" viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="54" r="27"/>'
+              '<path d="M12 150c0-36 21-60 48-60s48 24 48 60z"/></svg>')
+
+
+def count_ar(n, one, two, few, many):
+    """Arabic counted noun: 1 and 2 have their own forms, 3 to 10 the plural, 11 and up the singular."""
+    return {1: one, 2: two}.get(n) or f'{n} {few if 3 <= n % 100 <= 10 else many}'
+
+
+def person_href(p, rel):
+    return f'{rel}people/{p["slug"] if p.get("demo") else slug(p["id"])}.html'
+
+
+def level(status):
+    """The five knots of the judicial path as a small gauge: how far the person's standing has gone."""
+    lv = STATUS[status][1]
+    dots = ''.join('<i class="on"></i>' if i <= lv else '<i></i>' for i in range(1, 6))
+    return f'<span class="lvl" aria-hidden="true">{dots}</span><span class="sr">المرحلة {lv} من 5 في المسار القضائي.</span>'
+
+
+def fcard(p, rel):
+    """A file in the persons database: photo, name, role, legal standing, and how many articles its acts engage."""
+    demo = p.get('demo')
+    ph = None if demo else B.photo_of(p['id'])
+    if ph:
+        sz = B.PHOTO_SIZE[ph]
+        pic = (f'<img src="{rel}assets/img/photo/{ph}-640.webp" alt="" width="640" height="{round(640 * sz["h"] / sz["w"])}" '
+               f'loading="lazy" decoding="async">')
+    else:
+        pic = f'{SILHOUETTE}<small>{"لا صورة — ملف تجريبي" if demo else "لا صورة في الملف"}</small>'
+    n = len(p['rule_ids'])
+    badge = '<span class="fcard-demo">تجريبي</span>' if demo else ''
+    return (f'<a class="fcard{" is-demo" if demo else ""}" href="{person_href(p, rel)}">'
+            f'<span class="fcard-ph">{pic}{badge}</span>'
+            f'<span class="fcard-body"><span class="fcard-no mono">{esc(p["id"])}</span>'
+            f'<b class="fcard-name">{esc(p["name_ar"])}</b><span class="fcard-role">{esc(p.get("role_ar", ""))}</span>'
+            f'<span class="fcard-status">{level(p["status"])}<span>{esc(STATUS[p["status"]][0])}</span></span></span>'
+            f'<span class="fcard-foot"><span>{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>'
+            f'<span class="fcard-open">عرض الملف {icon("arrow")}</span></span></a>')
+
+
+def fcard_li(p, rel):
+    text = ' '.join([p['name_ar'], p.get('name_en', ''), p.get('role_ar', '')] + [x['act_ar'] for x in p['acts']])
+    return f'<li data-status="{p["status"]}" data-kind="{"demo" if p.get("demo") else "file"}" data-text="{esc(text)}">{fcard(p, rel)}</li>'
+
+
+def all_people():
+    return B.PERSONS + B.DEMO
+
+
+def people_filter(persons, legend='الوضع القانوني'):
+    opts = [(k, STATUS[k][0], f'<span class="mono">{STATUS[k][1]}/5</span>', sum(p['status'] == k for p in persons))
+            for k in STATUS if any(p['status'] == k for p in persons)]
+    return facet('status', legend, opts)
+
+
+def wanted(rel):
+    """The banner: the two people the International Criminal Court has issued arrest warrants for."""
+    pa, pb = B.P_BY_ID['P-0001'], B.P_BY_ID['P-0002']
+    # Gallant had left the ministry two weeks before the warrants were issued
+    roles = {'P-0001': pa.get('role_ar', ''), 'P-0002': 'وزير الدفاع الإسرائيلي السابق'}
+
+    def side(p, cls):
+        ph = B.photo_of(p['id'])
+        sz = B.PHOTO_SIZE[ph]
+        return (f'<a class="wanted-face {cls}" href="{rel}people/{slug(p["id"])}.html">'
+                f'<img src="{rel}assets/img/photo/{ph}-640.webp" alt="{esc(p["name_ar"])}" width="640" '
+                f'height="{round(640 * sz["h"] / sz["w"])}" fetchpriority="high">'
+                f'<span class="wanted-cap"><b>{esc(p["name_ar"])}</b><span>{esc(roles[p["id"]])}</span></span></a>')
+    st = next(s for s in pa['statuses'] if s.get('type') == 'warrant')
+    acts = ''.join(f'<li>{esc(x["act_ar"])}</li>' for x in pa['acts'][:3])
+    return f"""<section class="wanted is-reversed" aria-labelledby="wanted-h">
+ <div class="wrap wanted-grid">
+  {side(pa, 'is-start')}
+  <div class="wanted-mid">
+   <p class="wanted-by">المحكمة الجنائية الدولية · الدائرة التمهيدية الأولى · <span class="mono">{esc(st.get("doc_symbol", ""))}</span></p>
+   <h1 class="wanted-h" id="wanted-h">مطلوبان للعدالة الدولية</h1>
+   <p class="wanted-lead">أمران بالقبض صدرا في {esc(date_ar(st["date"]))}، بعد أن وجدت الدائرة أسبابا معقولة للاعتقاد بمسؤوليتهما الجنائية عن:</p>
+   <ul class="wanted-acts">{acts}</ul>
+   <div class="wanted-knots">{knots("warrant")}</div>
+   <p class="wanted-not">{icon("info")}<span>أمر القبض ليس حكما بالإدانة، ويفترض براءة الشخص حتى تثبت إدانته.</span></p>
+   <div class="wanted-actions"><a class="btn btn-light" href="{rel}people/{slug(pa["id"])}.html">ملف نتنياهو</a><a class="btn btn-ghost" href="{rel}people/{slug(pb["id"])}.html">ملف غالانت</a>{ext(st["url"], "بيان المحكمة", "btn btn-ghost")}</div>
+  </div>
+  {side(pb, 'is-end')}
+ </div>
+</section>"""
+
+
+REVIEW = [('الاستلام', 'يسجل المقال ويصل إشعار للكاتب.'), ('المراجعة التحريرية', 'الوضوح والبنية واللغة.'),
+          ('تدقيق الوقائع', 'كل واقعة بمصدرها.'), ('التحكيم القانوني', 'مختص في القانون الدولي.'),
+          ('النشر أو الرد', 'ينشر بتاريخه أو يعاد بملاحظات.')]
+
+
+def review_path():
+    return ('<ol class="review-path" aria-label="مراحل نشر المقال">' +
+            ''.join(f'<li><b>{esc(x)}</b><span>{esc(y)}</span></li>' for x, y in REVIEW) + '</ol>')
+
+
+def article_card(x, rel):
+    badge = '<span class="fcard-demo">تجريبي</span>' if x.get('demo') else ''
+    return (f'<a class="acard" href="{rel}articles/{x["slug"]}.html"><span class="acard-meta"><span>{esc(x["topic_ar"])}</span>'
+            f'<span>{esc(date_ar(x["date"]))}</span>{badge}</span>'
+            f'<b class="acard-t">{esc(x["title_ar"])}</b><span class="acard-x">{esc(x["dek_ar"])}</span>'
+            f'<span class="acard-by">{esc(x["author_ar"])}</span></a>')
+
+
+def bar_li(r, rel, total):
+    n = len(r['p_ids'])
+    return (f'<li><a href="{rel}law/{slug(r["id"])}.html"><span class="bar-t"><span class="mono">{esc(B.rule_short(r))}</span> '
+            f'{esc(r.get("title_ar", ""))}</span><span class="bar" style="--w:{n / max(1, total):.3f}"><i></i></span>'
+            f'<b class="mono">{n}</b></a></li>')
+
+
 def home():
     rel = ''
-    feat = B.PICKS.get('home', {})
-    p0 = B.P_BY_ID.get(feat.get('person', 'P-0001')) or (B.PERSONS[0] if B.PERSONS else None)
-    i0 = B.INC_BY_ID.get(feat.get('incident')) or (B.INCIDENTS[0] if B.INCIDENTS else None)
-    d0 = B.DOC_BY_ID.get(feat.get('doc')) or (B.DOCS[0] if B.DOCS else None)
-    hint_rule = B.PICKS.get('home', {}).get('hint_rule', 'RS-8-2-b-xxv')
-    hr = B.RULE_BY_ID.get(hint_rule)
-    # the exhibits laid on the table: each a real record, each tied to the lead seal by a cord
-    ev_print = next((e for e in B.EVIDENCE if B.EV_PHOTO.get(e['id']) in B.PHOTO_SIZE), None)
-    exhibits = []
-    if p0:
-        exhibits.append(('person', 'ملف شخص', p0['name_ar'], f'people/{slug(p0["id"])}.html', B.person_tag(p0, rel)))
-    if i0:
-        exhibits.append(('incident', 'واقعة', i0['title_ar'], f'incidents/{slug(i0["id"])}.html',
-                         incident_tag(i0, rel).replace('<h1 class="tag-title', '<h2 class="tag-title').replace('</h1>', '</h2>')))
-    if d0:
-        exhibits.append(('doc', 'وثيقة', d0.get('title_ar', ''), f'reports/{slug(d0["id"])}.html', doc_tag(d0, rel)))
-    if ev_print:
-        exhibits.append(('print', 'دليل مصوّر', ev_print.get('desc_ar', ''), f'evidence/{slug(ev_print["id"])}.html', print_card(ev_print, rel)))
-    if hr:
-        exhibits.append(('law', 'مادة قانونية', hr.get('title_ar', ''), f'law/{slug(hr["id"])}.html', law_card(hr, rel)))
-    pile = ''
-    for n, (k, kind, label, href, body) in enumerate(exhibits):
-        if n:
-            body = body.replace('class="tag is-reversed"', 'class="tag"', 1)
-        pick = '' if n == 0 else f'<a class="ex-pick" href="{href}" data-pick><span class="sr">اعرض على الطاولة: {esc(kind)} — {esc(label)}</span></a>'
-        pile += f'<div class="ex" data-slot="{n}" data-kind="{k}" id="ex-{k}"><div class="ex-in">{body}</div>{pick}</div>'
-    tabs = ''.join(f'<button type="button" role="tab" aria-selected="{"true" if n == 0 else "false"}" tabindex="{0 if n == 0 else -1}" data-tab="{n}">{kind}</button>'
-                   for n, (k, kind, *_r) in enumerate(exhibits))
-    hints = [f'<a href="people/{slug(p0["id"])}.html"><span class="mono">{p0["id"]}</span></a>' if p0 else '',
-             f'<a href="law/{slug(hr["id"])}.html">{esc(hr["article_ar"])}</a>' if hr else '',
-             '<a href="search.html?q=%D8%B1%D9%81%D8%AD">رفح</a>', '<a href="reports/index.html">محكمة العدل الدولية</a>']
-    hero = f'''<section class="hero table" data-table>
- <div class="wrap hero-grid">
-  <div class="hero-side">
-   <h1 class="hero-h" data-lines><span class="ln"><span>كل معلومة هنا حرز:</span></span> <span class="ln"><span>مختومة بمصدرها،</span></span> <span class="ln"><span>ومفتوحة للفحص.</span></span></h1>
-   <p class="lead">منصة مستقلة لتوثيق جرائم الاحتلال الإسرائيلي وربطها بالقانون الدولي.</p>
-   <form class="find find-hero" role="search" action="search.html" data-find="hero">
-    <label class="sr" for="q-hero">ابحث في الملفات والوقائع والوثائق والقواعد</label>
-    <input id="q-hero" name="q" type="search" placeholder="ابحث باسم، رقم ملف، أو مادة قانونية" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="ql-hero" aria-autocomplete="list">
-    {icon("search")}<button class="btn btn-ink" type="submit">بحث</button>
-    <div class="find-list" id="ql-hero" role="listbox" hidden></div>
-   </form>
-   <p class="hints">جرّب: {" · ".join(h for h in hints if h)}</p>
-   <p class="pick-hint">{icon("hand")}<span>{len(exhibits)} أحراز حقيقية على الطاولة. اضغط أيا منها.</span></p>
-  </div>
-  <div class="hero-stage">
-   <div class="seg pile-tabs" role="tablist" aria-label="الأحراز على الطاولة">{tabs}</div>
-   <div class="pile" data-pile>
-    <canvas class="pile-cords" aria-hidden="true"></canvas>
-    {pile}
-   </div>
-  </div>
- </div>
- <div class="wrap">{register()}</div>
-</section>'''
-    key = ''.join(f'<li data-state="{k}" tabindex="0"{" class=\"is-on\"" if k == "complete" else ""}>{seal(k, label=False)}<span><b>{esc(v[0])}</b><small>{esc(v[2])}</small></span></li>' for k, v in VERIF.items())
-    views = ''.join(f'<div class="kd-view{" is-on" if k == "complete" else ""}" data-state-view="{k}">{S.wax(k, cls="wax kd-wax")}</div>' for k in VERIF)
-    steps5 = ''.join(f'<li><b>{esc(lab)}</b><span>{esc(d)}</span></li>' for lab, d in [
-        ('ادعاءات', 'روايات لم تُستكمل مراجعتها.'), ('تقرير أو إجراء', 'ورود في تحقيق أممي أو تقرير موثق أو قرار عقوبات حكومي.'),
-        ('اتهام رسمي', 'لائحة اتهام من جهة ادعاء مختصة.'), ('مذكرة توقيف', 'قرار قضائي بالتوقيف، وليس حكمًا.'), ('حكم إدانة', 'حكم نهائي من محكمة مختصة.')])
-    read = f'''<section class="sec">
+    people = all_people()
+    pdb = f"""<section class="sec" id="accused" aria-labelledby="accused-h">
  <div class="wrap">
-  <div class="sheet read-key">
-   <div class="read-key-head"><h2 class="h2">كيف تقرأ أي ملف هنا</h2><p class="lead">الختم: إلى أي حد تحققنا من المادة. العقد: أين يقف الشخص قضائيا. والمساران منفصلان دائما.</p></div>
-   <div class="read-key-grid">
-    <div><h3 class="h3">أختام التحقق</h3><div class="key-wrap"><div class="key-demo" data-key-demo aria-hidden="true">{views}<p data-key-label>مكتمل وفق المنهجية</p></div><ul class="seal-key">{key}</ul></div></div>
-    <div><h3 class="h3">عُقد المسار القضائي</h3><div class="knots-demo">{knots("warrant")}<p class="knots-note">مثال: مذكرة توقيف هي العقدة الرابعة من خمس؛ الحكم لم يصدر.</p></div><ol class="ladder">{steps5}</ol></div>
-   </div>
-  </div>
+  <div class="sec-head"><div><h2 class="h2" id="accused-h">الأشخاص المتهمون</h2><p>قاعدة بيانات الأشخاص والملفات القانونية: كل ملف يربط الشخص بالأفعال المنسوبة إليه وبالمواد القانونية التي قد تنطبق عليها، مع حالته القانونية ومصدرها.</p></div><a class="link-arrow" href="people/index.html">كل الملفات {icon("arrow")}</a></div>
+  <form class="chips-filter" data-filter="home-people" data-count="home-people-count" data-empty="home-people-empty" aria-label="تصفية الأشخاص حسب الوضع القانوني">{people_filter(people)}</form>
+  <p class="count" id="home-people-count" aria-live="polite"></p>
+  <ul class="fcards" id="home-people">{"".join(fcard_li(p, rel) for p in people)}</ul>
+  <div class="empty" id="home-people-empty" hidden>{seal("not_started", label=False)}<p><b>لا ملفات بهذا الوضع القانوني بعد.</b></p></div>
+  <p class="note is-quiet">{icon("info")}<span>الملفات الموسومة «تجريبي» نماذج لا تخص أشخاصا حقيقيين: تعرض كيف يبنى ملف لشخص ظهر في مواد مصورة منشورة ولم تصنفه أي جهة بعد. لا ينشر ملف كهذا إلا بعد التحقق والمراجعة القانونية.</span></p>
  </div>
-</section>'''
-    incs = sorted(B.INCIDENTS, key=lambda i: i['date'], reverse=True)
-    lead_inc = B.INC_BY_ID.get(feat.get('feature_incident')) or next((i for i in incs if B.photo_of(i['id'])), incs[0] if incs else None)
-    feature = ''
-    if lead_inc:
-        ph = B.photo_of(lead_inc['id'])
-        feature = f'''<article class="feature">
-      {B.photo_fig(ph, rel, sizes="(min-width: 1024px) 46vw, 100vw") if ph else ""}
-      <div class="feature-body"><p class="tag-kind"><span class="mono">{lead_inc["id"]}</span> · {esc(REGIONS.get(lead_inc.get("region"), ""))}</p>
-      <h3 class="h3"><a href="incidents/{slug(lead_inc["id"])}.html">{esc(lead_inc["title_ar"])}</a></h3>
-      <p class="small mute">{esc(date_ar(lead_inc["date"]))} · {esc(lead_inc.get("place_ar", ""))}</p>
-      <p class="small">{esc(lead_inc.get("summary_ar", ""))}</p>
-      <p>{seal_row(B.state_of(lead_inc["id"]))}</p></div></article>'''
-    rows = ''.join(B.inc_mini_row(i, rel) for i in incs if not lead_inc or i['id'] != lead_inc['id'])
-    incidents = f'''<section class="sec">
+</section>"""
+    docs = sorted(B.DOCS, key=lambda d: d.get('date', ''), reverse=True)
+    national = [d for d in docs if d.get('cat') == 'national']
+    intl = [d for d in docs if d.get('cat') != 'national']
+    if national:
+        lists = (f'<div class="two-lists"><div><h3 class="h3 col-h">قرارات وتقارير دولية</h3><ul class="rows">{"".join(B.doc_row(d, rel) for d in intl[:5])}</ul></div>'
+                 f'<div><h3 class="h3 col-h">إجراءات قضائية وطنية</h3><ul class="rows">{"".join(B.doc_row(d, rel) for d in national[:5])}</ul></div></div>')
+    else:
+        lists = f'<ul class="rows">{"".join(B.doc_row(d, rel) for d in intl[:6])}</ul>'
+    reports = f"""<section class="sec" aria-labelledby="reports-h">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">وقائع موثقة</h2><p>الروايات والأدلة والقواعد في سجل واحد لكل واقعة.</p></div><a class="link-arrow" href="incidents/index.html">أرشيف الوقائع ({len(B.INCIDENTS)}) {icon("arrow")}</a></div>
-  <div class="inc-feature">{feature}<ul class="rows rows-5">{"".join(rows.split("</li>")[i] + "</li>" for i in range(min(4, rows.count("</li>"))))}</ul></div>
+  <div class="sec-head"><div><h2 class="h2" id="reports-h">التقارير الدولية</h2><p>وثائق قضائية وأممية وحقوقية، وإجراءات قضاء وطني في عدة دول، كل منها بطبيعته القانونية.</p></div><a class="link-arrow" href="reports/index.html">كل التقارير ({len(docs)}) {icon("arrow")}</a></div>
+  {lists}
  </div>
-</section>'''
-    minis = ''.join(f'<li>{B.person_mini(p, rel, vtn=p is not p0)}</li>' for p in B.PERSONS)
-    # the row closes on how a file is opened, so an odd count never leaves a hole in the grid
-    minis += (f'<li><a class="mini mini-note" href="people/index.html"><span class="mini-status">كيف يُفتح ملف</span>'
-              f'<span class="mini-meta">بوضع قانوني رسمي قابل للاستشهاد فقط: مذكرة توقيف، أو اتهام، أو ورود في تحقيق أممي، أو قرار عقوبات.</span>'
-              f'<span class="link-arrow">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</span></a></li>')
-    people = f'''<section class="sec">
+</section>"""
+    articles = f"""<section class="sec" aria-labelledby="articles-h">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">ملفات الأشخاص</h2><p>لا يفتح ملف إلا بوضع قانوني رسمي، والحالة قبل الاسم.</p></div><a class="link-arrow" href="people/index.html">كل الملفات ({len(B.PERSONS)}) {icon("arrow")}</a></div>
-  <ul class="minis">{minis}</ul>
+  <div class="sec-head"><div><h2 class="h2" id="articles-h">المقالات</h2><p>مقالات في القانون الدولي وجرائم الحرب يكتبها باحثون وكتاب، وتنشر بعد التحكيم والتدقيق.</p></div><a class="btn btn-ink" href="articles/write.html">اكتب مقالا</a></div>
+  <ul class="acards">{"".join(f"<li>{article_card(x, rel)}</li>" for x in B.ARTICLES[:3])}</ul>
+  {review_path()}
  </div>
-</section>'''
-    top_docs = sorted(B.DOCS, key=lambda d: d.get('date', ''), reverse=True)[:6]
-    # the two lists stand side by side and end together: a document row runs a little taller than a rule row
-    top_rules = sorted(B.RULES, key=lambda r: len(r['inc_ids']), reverse=True)[:max(3, len(top_docs) + 1)]
-    law = f'''<section class="sec">
- <div class="wrap two-lists">
-  <div><div class="sec-head"><div><h2 class="h2">القواعد الأكثر ارتباطًا بالوقائع</h2><p>النص الرسمي وما يلزم إثباته.</p></div><a class="link-arrow" href="law/index.html">مكتبة القواعد {icon("arrow")}</a></div>
-   <ul class="rows">{"".join(B.rule_row(r, rel) for r in top_rules)}</ul></div>
-  <div><div class="sec-head"><div><h2 class="h2">أحدث الوثائق</h2><p>كل وثيقة بطبيعتها القانونية.</p></div><a class="link-arrow" href="reports/index.html">مكتبة الوثائق {icon("arrow")}</a></div>
-   <ul class="rows">{"".join(B.doc_row(d, rel) for d in top_docs)}</ul></div>
+</section>"""
+    tops = sorted([r for r in B.RULES if r['p_ids']], key=lambda r: (-len(r['p_ids']), r['id']))[:6]
+    database = f"""<section class="sec" aria-labelledby="db-h">
+ <div class="wrap">
+  <div class="sec-head"><div><h2 class="h2" id="db-h">قاعدة البيانات التفاعلية</h2><p>عدد الأشخاص الموثقة ملفاتهم، وكيف ترتبط الأفعال المنسوبة إليهم بمواد القانون الدولي الإنساني وغيره.</p></div><a class="link-arrow" href="database.html">افتح قاعدة البيانات {icon("arrow")}</a></div>
+  {register()}
+  <h3 class="h3 col-h">المواد الأكثر ارتباطا بالملفات</h3>
+  <ul class="bars">{"".join(bar_li(r, rel, len(B.PERSONS)) for r in tops)}</ul>
  </div>
-</section>'''
+</section>"""
     method_steps = ['جمع المادة', 'تسجيل المصدر والعهدة', 'الأصالة والسياق', 'المقارنة المستقلة', 'الموقع والزمن', 'توثيق القيود',
                     'المراجعة القانونية', 'حماية الأشخاص', 'قرار النشر', 'التصحيح المستمر']
-    strip = ''.join(f'<li><i></i><span>{s}</span></li>' for s in method_steps)
-    method = f'''<section class="sec sec-ink method-strip">
+    strip = ''.join(f'<li class="is-tied"><i></i><span>{s}</span></li>' for s in method_steps)
+    method = f"""<section class="sec sec-ink method-strip">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">من المادة إلى الحرز: عشر خطوات</h2><p>لا تختم مادة قبل أن تمر بكل عقدة.</p></div><a class="btn btn-light" href="method.html">المنهجية كاملة</a></div>
+  <div class="sec-head"><div><h2 class="h2">منهجية التحقق: عشر خطوات</h2><p>لا ينشر ملف قبل أن يمر بكل خطوة.</p></div><a class="btn btn-light" href="method.html">المنهجية كاملة</a></div>
   <ol class="cord-steps">{strip}</ol>
  </div>
-</section>'''
-    act = f'''<section class="sec">
+</section>"""
+    act = f"""<section class="sec">
  <div class="wrap act-grid">
   <div class="sheet act">
    {seal("in_progress", label=False)}
@@ -408,11 +360,10 @@ def home():
    <a class="btn btn-line" href="donate.html">طرق الدعم</a>
   </div>
  </div>
-</section>'''
-    tpl = f'<template id="intro-tpl">{S.wax("complete", label="موثّق")}<img class="intro-word" src="assets/brand/wordmark-reversed.svg" alt="" width="170" height="111"></template>'
-    main = hero + case_section(rel) + read + incidents + people + law + method + act + tpl
-    js = ''.join(f'<script src="assets/js/vendor/{f}?v={S.V}" defer></script>' for f in ('gsap.min.js', 'ScrollTrigger.min.js')) + f'<script src="assets/js/home.js?v={S.V}" defer></script>'
-    P(rel, 'index.html', 'موثّق', 'منصة مستقلة لتوثيق الوقائع والأدلة المتعلقة بجرائم الاحتلال الإسرائيلي والتحقق منها وربطها بالقانون الدولي.', 'home', main, body_cls='page-home', scripts=js)
+</section>"""
+    main = wanted(rel) + pdb + reports + articles + database + method + act
+    P(rel, 'index.html', 'موثّق', 'منصة مستقلة لتوثيق الأشخاص المتهمين بجرائم الاحتلال الإسرائيلي، وربط الأفعال المنسوبة إليهم بمواد القانون الدولي.',
+      'home', main, body_cls='home')
 
 
 # ---------- lists ----------
@@ -472,20 +423,96 @@ def sel(fid, label, key, options):
 
 def people_pages():
     rel = '../'
-    items = ''.join(f'<li data-status="{p["status"]}" data-text="{esc(p["name_ar"] + " " + p.get("name_en", "") + " " + p.get("role_ar", ""))}">{B.person_mini(p, rel)}</li>' for p in B.PERSONS)
-    items += (f'<li data-keep><a class="mini mini-note" href="{rel}standards.html#correction">{icon("info")}<span class="mini-meta">'
-              f'لا يدرج شخص دون مصدر رسمي لوضعه القانوني، ولكل معني حق التصحيح أو الرد.</span>'
-              f'<span class="link-arrow small">طلب تصحيح أو رد {icon("arrow")}</span></a></li>')
-    statuses = [(k, STATUS[k][0]) for k in STATUS if any(p['status'] == k for p in B.PERSONS)]
-    list_page(rel, 'people/index.html', 'people', 'ملفات الأشخاص',
-              'أشخاص لهم وضع قانوني رسمي: أمر قبض، أو اتهام، أو تحقيق أممي، أو عقوبات.',
-              q_field('اسم أو منصب'), items, 'people-list', cls='minis',
-              fac=facet('status', 'الوضع القانوني', [(k, v, f'<span class="mono">{STATUS[k][1]}/5</span>', sum(p['status'] == k for p in B.PERSONS)) for k, v in statuses]),
+    people = all_people()
+    items = ''.join(fcard_li(p, rel) for p in people)
+    note = (f'<p class="note" style="margin-top:28px">{icon("info")}<span>لا يدرج شخص حقيقي دون مصدر رسمي لوضعه القانوني، ولكل معني حق التصحيح أو الرد. '
+            f'الملفات الموسومة «تجريبي» نماذج لا تخص أشخاصا حقيقيين.</span></p>')
+    list_page(rel, 'people/index.html', 'people', 'الأشخاص المتهمون',
+              'كل ملف يربط الشخص بالأفعال المنسوبة إليه وبالمواد القانونية التي قد تنطبق عليها، مع حالته القانونية ومصدرها.',
+              q_field('اسم أو منصب أو فعل'), items, 'people-list', cls='fcards',
+              fac=people_filter(people),
               card=archive_card(len(B.PERSONS), 'ملف شخص', id_range([p['id'] for p in B.PERSONS]),
-                                (('وقائع مرتبطة', len({i for p in B.PERSONS for i in p['inc_ids']})), ('وثائق رسمية', len({d for p in B.PERSONS for d in p['doc_ids']})))),
-              )
+                                (('مواد قانونية', len({r for p in B.PERSONS for r in p['rule_ids']})), ('ملفات تجريبية', len(B.DEMO)))),
+              extra=note)
     for p in B.PERSONS:
         person_page(p)
+    for p in B.DEMO:
+        demo_page(p)
+
+
+def acts_block(p, rel):
+    """Each act in the file, then the articles that may apply to it, each one a link into the law library."""
+    items = ''
+    for x in p['acts']:
+        rules = [B.RULE_BY_ID[r] for r in x['rule_ids'] if r in B.RULE_BY_ID]
+        chips = ''.join(f'<a class="rule" href="{rel}law/{slug(r["id"])}.html"><span class="mono">{esc(B.rule_short(r))}</span>'
+                        f'<b>{esc(r.get("title_ar", ""))}</b><small>{esc(r.get("instrument_ar", ""))}</small></a>' for r in rules)
+        basis = f'<p class="lg-basis">{esc(x["basis_ar"])}</p>' if x.get('basis_ar') else ''
+        items += (f'<li class="lg"><h3 class="lg-act">{esc(x["act_ar"])}</h3>{basis}'
+                  f'<div class="lg-rules">{chips or "<span class=small>لم تربط بمادة بعد.</span>"}</div></li>')
+    return (f'<h2 class="h2" id="acts">الأفعال المنسوبة والمواد القانونية</h2><ol class="sheet legal-list">{items}</ol>'
+            f'<p class="note">{icon("scale")}<span>الربط تحليل أولي يبين المواد التي قد تنطبق على كل فعل؛ لا يعني ثبوت الفعل ولا المسؤولية الجنائية.</span></p>')
+
+
+def media_block(p, rel):
+    """Pictures from the incidents a person's file is tied to: places and aftermath, each with its source."""
+    figs = []
+    for i in p['inc_ids']:
+        ph = B.photo_of(i)
+        if ph and len(figs) < 4:
+            inc = B.INC_BY_ID[i]
+            sz = B.PHOTO_SIZE[ph]
+            figs.append(f'<li><a href="{rel}incidents/{slug(i)}.html"><img src="{rel}assets/img/photo/{ph}-640.webp" alt="{esc(B.PHOTOS[ph].get("alt", ""))}" '
+                        f'width="640" height="{round(640 * sz["h"] / sz["w"])}" loading="lazy" decoding="async"><span>{esc(inc["title_ar"])}</span></a></li>')
+    if not figs:
+        return ''
+    return (f'<h2 class="h2">صور من الوقائع المرتبطة</h2><ul class="media-grid">{"".join(figs)}</ul>'
+            f'<p class="note is-quiet">{icon("shield")}<span>صور أماكن وآثار فقط، ولكل صورة مصدرها وترخيصها في سجل الواقعة.</span></p>')
+
+
+def demo_tag(p, rel):
+    acts = ''.join(f'<li><b>{esc(x["act_ar"])}</b></li>' for x in p['acts'])
+    return f"""<article class="tag is-reversed is-demo" aria-label="ملف تجريبي">
+  <span class="tag-hole" aria-hidden="true"></span>
+  <div class="tag-top"><span class="tag-no">{esc(p["id"])}</span><span class="tag-kind">ملف تجريبي</span></div>
+  <div class="tag-seal">{S.wax("in_progress")}</div>
+  <h1 class="tag-status">{esc(STATUS[p["status"]][0])}</h1>
+  <p class="tag-by">رصد أولي من مواد مصورة منشورة — مثال توضيحي</p>
+  <div class="tag-who"><span class="tag-face sil-face">{SILHOUETTE}</span><div class="tag-name"><b>{esc(p["name_ar"])}</b><span>{esc(p["role_ar"])}</span></div></div>
+  <div style="margin-top:18px">{knots(p["status"])}</div>
+  <p class="tag-not">{icon("info")}<span>ملف تجريبي لا يخص شخصا حقيقيا. الادعاء ليس اتهاما ولا إدانة، ويفترض براءة الشخص حتى تثبت إدانته.</span></p>
+  <dl class="fields">
+   <div><dt>حالة التحقق من الملف</dt><dd>{seal_row("in_progress")}</dd></div>
+   <div><dt>مصدر المادة</dt><dd>مقطع منشور على حساب عام (مثال)</dd></div>
+   <div class="wide"><dt>الأفعال المنسوبة</dt><dd><ul class="acts">{acts}</ul></dd></div>
+  </dl>
+</article>"""
+
+
+DEMO_STEPS = [('التعرف على الشخص', 'بمصادر مستقلة متطابقة، لا بالتشابه.'), ('التحقق من المادة', 'الأصالة والمكان والزمان وأول ظهور.'),
+              ('التكييف القانوني', 'المواد التي قد تنطبق وما يلزم إثباته.'), ('المراجعة القانونية', 'مختص يراجع الملف قبل أي قرار.'),
+              ('قرار النشر', 'وحق الرد والتصحيح بعده.')]
+
+
+def demo_page(p):
+    rel = '../'
+    rules = [B.RULE_BY_ID[r] for r in p['rule_ids'] if r in B.RULE_BY_ID]
+    side = side_list('المواد القانونية', [B.rule_row(r, rel) for r in rules])
+    steps = ''.join(f'<li><b>{esc(x)}</b><span>{esc(y)}</span></li>' for x, y in DEMO_STEPS)
+    below = f"""<section class="sec record-body"><div class="wrap read">
+ {acts_block(p, rel)}
+ <h2 class="h2">المادة المصورة</h2>
+ <div class="media-empty">{icon("video")}<p><b>تعرض هنا المادة بعد التحقق منها</b><span>مع مصدرها وتاريخ أول نشر، وتحذير قبل أي مشهد مؤلم.</span></p></div>
+ <h2 class="h2">كيف يكتمل هذا الملف</h2>
+ <ol class="review-path">{steps}</ol>
+ <h2 class="h2">ما لا ينشر</h2>
+ <div class="prose"><p>لا تنشر عناوين السكن أو أرقام الهواتف أو بيانات العائلات، ولا أي معلومة تزيد على ما يلزم لتحديد الشخص في الفعل الموثق. وينشر مصدر المادة بوصفه دليلا.</p></div>
+</div></section>"""
+    card = stamp(p['id'], 'in_progress', (('الأفعال', len(p['acts'])), ('المواد', len(rules))),
+                 f'<p class="stamp-status">{esc(STATUS[p["status"]][0])} <span class="mono">{STATUS[p["status"]][1]}/5</span></p>')
+    main = (f'<div class="wrap">{S.crumbs(rel, [("الأشخاص المتهمون", "people/index.html"), (p["name_ar"], None)])}</div>' +
+            record(rel, demo_tag(p, rel), side, below, card))
+    P(rel, f'people/{p["slug"]}.html', p['name_ar'], 'ملف تجريبي: كيف يبنى ملف لشخص ظهر في مواد مصورة منشورة.', 'people', main)
 
 
 def person_page(p):
@@ -503,6 +530,7 @@ def person_page(p):
     events = ''.join(f'<li><span class="tl-date num">{esc(date_ar(t.get("date")))}</span><div class="tl-body"><p class="small">{esc(t.get("event_ar", ""))}</p>{ext(t["url"], "المصدر", "xs") if t.get("url") else ""}</div></li>'
                      for t in sorted(p.get('timeline', []), key=lambda t: t.get('date', '')))
     below = f'''<section class="sec record-body"><div class="wrap read">
+ {acts_block(p, rel)}
  <h2 class="h2" id="status">الوضع القانوني بالتفصيل</h2>
  <ol class="timeline" data-tie>{timeline}</ol>
  {f'<h2 class="h2">التسلسل الإجرائي</h2><ol class="timeline timeline-quiet">{events}</ol>' if events else ''}
@@ -510,6 +538,7 @@ def person_page(p):
  <div class="prose"><p>{esc(p.get("limits_ar", ""))}</p></div>
  <h2 class="h2" id="incidents">الوقائع المرتبطة</h2>
  {f'<ul class="rows">{"".join(B.inc_mini_row(i, rel) for i in incs)}</ul>' if incs else '<p class="note">' + icon("info") + '<span>لا واقعة مرتبطة بعد؛ يربط الشخص بواقعة فقط بوثيقة رسمية.</span></p>'}
+ {media_block(p, rel)}
  <h2 class="h2">المصادر</h2>
  {B.sources_list(p.get("sources", []))}
  {B.face_credit(B.photo_of(p["id"]))}
@@ -518,7 +547,7 @@ def person_page(p):
 </div></section>'''
     card = stamp(p['id'], counts=(('الوقائع', len(incs)), ('الوثائق', len(docs)), ('القواعد', len(rules)), ('المصادر', len(p.get('sources', [])))),
                  extra=f'<p class="stamp-status">{esc(STATUS[p["status"]][0])} <span class="mono">{STATUS[p["status"]][1]}/5</span></p>')
-    main = f'<div class="wrap">{S.crumbs(rel, [("ملفات الأشخاص", "people/index.html"), (p["name_ar"], None)])}</div>' + record(rel, tag, side, below, card)
+    main = f'<div class="wrap">{S.crumbs(rel, [("الأشخاص المتهمون", "people/index.html"), (p["name_ar"], None)])}</div>' + record(rel, tag, side, below, card)
     P(rel, f'people/{slug(p["id"])}.html', p['name_ar'], f'{STATUS[p["status"]][0]} — {p.get("role_ar", "")}', 'people', main)
 
 
@@ -703,6 +732,9 @@ def report_page(d):
  <h2 class="h2">ماذا تقول الوثيقة</h2>
  <div class="prose"><p>{esc(d.get("summary_ar", ""))}</p>{f"<ul>{findings}</ul>" if findings else ""}</div>
  <div class="link-row">{links}</div>
+ {('<p class="note">' + icon("alert") + '<span>بعض عناصر هذا السجل، كالتاريخ، تقوم على مصدر واحد غير رسمي؛ يراجع قبل الاعتماد عليه.</span></p>') if d.get('uncertain') else ''}
+ {'' if d.get('url_ar') else '<p class="note is-quiet">' + icon("doc") + '<span>النص الكامل بالعربية يضاف بعد اعتماد ترجمة مراجعة؛ حتى ذلك الحين يرجع إلى النص الرسمي.</span></p>'}
+ {('<h2 class="h2">المصادر</h2><ol class="sources">' + ''.join(f'<li><span class="n">[{n}]</span><span>{ext(s["url"], esc(s.get("publisher", "")))}<small>{esc(date_ar(s.get("date")))}</small></span></li>' for n, s in enumerate(d['sources_extra'], 1)) + '</ol>') if d.get('sources_extra') else ''}
  <h2 class="h2">كيف تُقرأ هذه الوثيقة</h2>
  <p class="note">{icon("scale")}<span>{esc(d.get("nature_ar", ""))}. نميز بين ما تثبته الوثيقة وما ترجحه وما تنقله.</span></p>
  <div class="sheet custody-sheet">{B.custody(d["id"], B.default_custody("doc"))}</div>

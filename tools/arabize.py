@@ -119,6 +119,15 @@ NAMES.update({'ملف PDF': 'الملف الأصلي', 'L&#x27;Orient Today': '�
               'E.O. 14148, sec. 2(hhh); 90 FR 8237': 'الأمر التنفيذي 14148، القسم 2(hhh)؛ السجل الاتحادي 90، ص 8237',
               'E.O. 14115': 'الأمر التنفيذي 14115', 'Kamerstuk 23 432, nr. 569': 'وثائق مجلس النواب الهولندي 23 432، رقم 569',
               ' (Sayfollah Musallet)': '', 'TNO': 'المنظمة الهولندية للبحث العلمي التطبيقي'})
+# sources of the national proceedings (research/national.json)
+NAMES.update({'Arab News': 'عرب نيوز', 'Associated Press': 'أسوشيتد برس', 'ABC17 News': 'إيه بي سي 17 نيوز',
+              'CNN Brasil': 'سي إن إن البرازيل', 'Cumhuriyet': 'جمهوريت', 'El Español': 'إل إسبانيول', 'Justice Info': 'جستس إنفو',
+              'La DH': 'لا ديرنيير أور', "Le Courrier de l'Atlas": 'لو كورييه دو لاتلاس', 'Le Courrier de l&#x27;Atlas': 'لو كورييه دو لاتلاس', 'Le Monde': 'لوموند',
+              'نسخة PDF': 'نسخة محفوظة', 'PBS NewsHour': 'بي بي إس نيوز آور', 'Politis': 'بوليتيس', 'Rádio Itatiaia': 'راديو إيتاتيايا',
+              'TRIAL International': 'تريال إنترناشونال', 'The National': 'ذا ناشونال', 'The New Arab': 'العربي الجديد',
+              'VOA': 'صوت أمريكا', 'VRT NWS': 'في آر تي نيوز', 'VRT': 'في آر تي', 'Viral Mag': 'فايرال ماغ', 'Ynet News': 'واي نت',
+              'Ynet': 'واي نت', 'GLAN': 'شبكة العمل القانوني العالمية', 'LDH': 'رابطة حقوق الإنسان الفرنسية',
+              ' (PNAT)': '', 'PNAT': 'النيابة الوطنية لمكافحة الإرهاب'})
 KIND = {'un': 'أممي', 'media': 'صحفي', 'forensic': 'تحقيق جنائي رقمي', 'ngo': 'حقوقي', 'official': 'رسمي', 'court': 'قضائي', 'gov': 'حكومي', 'academic': 'أكاديمي'}
 # the platform's own record numbers, with Arabic letters: شخص، واقعة، دليل، وثيقة
 IDS = {'INC': 'و', 'EV': 'د', 'R': 'ث', 'P': 'ش'}

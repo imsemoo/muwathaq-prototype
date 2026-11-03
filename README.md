@@ -45,3 +45,19 @@ python tools/b_fonts.py      # Noto Naskh Arabic, Noto Kufi Arabic, Fragment Mon
 python tools/b_home.py       # b/index.html, b/identity.html
 python tools/directions.py   # directions.html
 ```
+
+## Client round, 3 November 2026: a plain site about the accused
+
+The client asked for a simple design without strong effects, centred on people rather than incidents. The
+intro, the page veil, the exhibit table and its cords, smooth scrolling and scroll reveals are gone.
+
+- `tools/picks.json` → `crime_rules`: for each real person, the articles that may apply to each act, in the
+  order of `crimes_ar`. The person file opens on «الأفعال المنسوبة والمواد القانونية».
+- `tools/demo_persons.json`: five illustrative files (ت-أ … ت-هـ) for the platform's own subject, people seen
+  in published footage whom no body has named. No real person, photo or incident stands behind them; their
+  acts are marked «(مثال)» and linked to real articles. They are counted apart from the real files.
+- `research/national.json`: national prosecutors and courts that acted (Turkey, Spain, France, Belgium,
+  Brazil), loaded as documents of category `national`, each with the sources that were opened.
+- `tools/articles.json`: articles (three editorial samples, marked تجريبي); `articles/write.html` shows the
+  review path and sends nothing.
+- `database.html`: an explorer, people on one side and legal articles on the other.

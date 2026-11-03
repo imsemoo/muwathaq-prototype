@@ -1,6 +1,5 @@
-/* موثّق — the world's shared motion: cords that hang and tighten between records that really link,
-   records laid on the table as they come into view, knots tied as the reader passes them, and the loose
-   cord of the 404. Loaded on every page after site.js; every effect sits on top of working HTML. */
+/* موثّق — what is left of the shared motion once the client asked for a plain site: the archive's time rope
+   tooltip, tied knots, and the 404's cord drawn once. Loaded on every page after site.js. */
 (() => {
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
@@ -49,7 +48,7 @@
   window.MWRope = Rope;
 
   /* a canvas that runs only while visible */
-  function animator(canvas, frame, watch, gate = () => true) {
+  function animator(canvas, frame, watch, gate = () => true, still = false) {
     const ctx = canvas.getContext('2d');
     let dpr = 1, W = 0, H = 0, run = false, seen = true;
     const size = () => { const r = canvas.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); };
@@ -59,58 +58,14 @@
     new IntersectionObserver(([e]) => { seen = e.isIntersecting; seen ? start() : stop(); }).observe(watch || canvas);
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
     addEventListener('resize', () => { size(); gate() ? start() : stop(); });
-    if (reduce) { size(); setTimeout(() => { ctx.setTransform(dpr, 0, 0, dpr, 0, 0); frame(ctx, canvas.getBoundingClientRect()); }, 400); return { start() {}, stop() {}, size }; }
+    if (reduce || still) { size(); setTimeout(() => { ctx.setTransform(dpr, 0, 0, dpr, 0, 0); frame(ctx, canvas.getBoundingClientRect()); }, 400); return { start() {}, stop() {}, size }; }
     start();
     return { start, stop, size };
   }
 
-  /* ---------- record pages: cords from the seal to every linked record ---------- */
-  $$('[data-cords]').forEach((box) => {
-    const from = $('[data-cord-from]', box), targets = $$('[data-cord-to]', box);
-    const old = $('svg.cords', box); if (old) old.remove();
-    if (!from || !targets.length) return;
-    const cv = document.createElement('canvas');   /* viewport-sized: records can be thousands of pixels tall */
-    cv.className = 'rope-canvas'; cv.setAttribute('aria-hidden', 'true');
-    document.body.prepend(cv);
-    const ropes = targets.map(() => new Rope(18));
-    let hot = -1, t0 = performance.now();
-    targets.forEach((t, i) => {
-      ['mouseenter', 'focusin'].forEach((ev) => t.addEventListener(ev, () => { hot = i; }));
-      ['mouseleave', 'focusout'].forEach((ev) => t.addEventListener(ev, () => { if (hot === i) hot = -1; }));
-    });
-    const c = (el) => el.getBoundingClientRect();
-    animator(cv, (ctx, r) => {
-      if (!wide()) return;
-      const s = c(from); if (s.bottom < -40) return;
-      const a = [s.left + s.width / 2 - r.left, s.top + s.height / 2 - r.top];
-      const wind = reduce ? 0 : Math.sin((performance.now() - t0) / 1600) * 0.06;
-      targets.forEach((t, i) => {
-        const q = c(t); if (!q.width || q.top > innerHeight + 30 || q.bottom < 0) return;
-        const b = [q.right - r.left + 1, q.top - r.top + Math.min(30, q.height / 2)];
-        ropes[i].step(a, b, { slack: hot === i ? 1.004 : 1.1, wind, gravity: 0.38 });
-        ropes[i].draw(ctx, hot === i);
-      });
-    }, box, wide);
-  });
-
-  /* ---------- records are laid on the table as they come into view ---------- */
-  if (!reduce && 'IntersectionObserver' in window) {
-    const sel = '.read > .photo, .read > .sheet, .read > .rows, .read > .accounts, .read > .official, .read > .verify, .read > blockquote.official, .read .timeline > li, .triad, .uses, .minis > li, .two-col-note, .method-side .sheet, .id-grid .sheet, .submit-side .sheet, .act-grid .act';
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-laid'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
-    let i = 0;
-    $$(sel).forEach((el) => {
-      if (el.getBoundingClientRect().top < innerHeight * 0.92) return;
-      el.classList.add('lay'); el.style.setProperty('--d', ((i++ % 4) * 50) + 'ms'); io.observe(el);
-    });
-  }
-
-  /* ---------- knots are tied as the reader passes them ---------- */
+  /* ---------- knots: shown tied ---------- */
   $$('[data-tie]').forEach((list) => {
-    const knots = $$(':scope > li', list);
-    if (reduce) { knots.forEach((k) => k.classList.add('is-tied')); return; }
-    list.classList.add('is-tying');
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-tied'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -38% 0px' });
-    knots.forEach((k) => io.observe(k));
+    $$(':scope > li', list).forEach((k) => k.classList.add('is-tied'));
   });
 
   /* ---------- the archive's time rope: one knot per incident ---------- */
@@ -143,6 +98,6 @@
       if (mx !== null) { const dx = mx - end[0], dy = my - end[1], d = Math.hypot(dx, dy); if (d < 160) { end[0] += dx * 0.06; end[1] += dy * 0.06; } }
       rope.draw(ctx, false);
       sealEl.style.transform = `translate(${(end[0] - r.width / 2).toFixed(1)}px, ${end[1].toFixed(1)}px) rotate(${((end[0] - P[P.length - 3][0]) * 2).toFixed(1)}deg)`;
-    });
+    }, null, undefined, true);
   }
 })();

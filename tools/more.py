@@ -1,8 +1,8 @@
-"""The fixed pages: method, submit, donate, about, standards, search, identity, sources, 404."""
+"""The fixed pages: method, submit, donate, about, standards, search, identity, sources, 404, articles, database."""
 import build as B
 import shell as S
 import arabize as AR
-from pages import P, archive_card
+from pages import P, archive_card, article_card, review_path, fcard, all_people, people_filter, register, count_ar, person_href
 from shell import esc, icon, seal, seal_row, knots, ext, mono, VERIF, STATUS, KNOTS
 
 STEPS = [
@@ -334,7 +334,139 @@ def not_found():
     P(base, '404.html', 'غير موجود', 'الصفحة غير موجودة.', '', main)
 
 
+def prose(paras):
+    """Article paragraphs; a paragraph that starts with ## is a section heading."""
+    return ''.join(f'<h2>{esc(x[3:])}</h2>' if x.startswith('## ') else f'<p>{esc(x)}</p>' for x in paras)
+
+
+def articles():
+    rel = '../'
+    cards = ''.join(f'<li>{article_card(x, rel)}</li>' for x in B.ARTICLES)
+    main = f'''<div class="wrap">{S.crumbs(rel, [("المقالات", None)])}</div>
+<section class="list-head"><div class="wrap"><h1 class="h1">المقالات</h1><p class="lead">مقالات في القانون الدولي وجرائم الحرب وانتهاك حقوق الإنسان، يكتبها باحثون وكتاب وتنشر بعد التحكيم والتدقيق.</p></div></section>
+<section class="sec"><div class="wrap">
+ <div class="sec-head"><div><h2 class="h2">منشورة بعد التحكيم</h2><p>المقالات أدناه نماذج كتبتها هيئة التحرير لعرض التصميم.</p></div><a class="btn btn-ink" href="write.html">اكتب مقالا</a></div>
+ <ul class="acards">{cards}</ul>
+ <h2 class="h2 col-h" style="margin-top:56px">كيف ينشر مقال</h2>
+ {review_path()}
+</div></section>'''
+    P(rel, 'articles/index.html', 'المقالات', 'مقالات في القانون الدولي وجرائم الحرب، تنشر بعد التحكيم والتدقيق.', 'articles', main)
+    for x in B.ARTICLES:
+        article(x)
+    write_article()
+
+
+def article(x):
+    rel = '../'
+    rules = [B.RULE_BY_ID[r] for r in x.get('rule_ids', []) if r in B.RULE_BY_ID]
+    persons = [B.P_BY_ID[i] for i in x.get('person_ids', []) if i in B.P_BY_ID]
+    srcs = ''.join(f'<li><span class="n">[{n}]</span><span>{ext(s["url"], esc(s["title_ar"]))}</span></li>' for n, s in enumerate(x.get('sources', []), 1))
+    side = ''
+    if rules:
+        side += f'<section class="side-group"><h2 class="side-h">المواد التي يتناولها <span class="mono">{len(rules)}</span></h2><ul class="rows rows-tight">{"".join(B.rule_row(r, rel) for r in rules)}</ul></section>'
+    if persons:
+        side += (f'<section class="side-group"><h2 class="side-h">ملفات مرتبطة <span class="mono">{len(persons)}</span></h2><ul class="rows rows-tight">'
+                 + ''.join(f'<li><a class="row row-person" href="{person_href(q, rel)}"><span class="row-body"><span class="tag-kind">{esc(STATUS[q["status"]][0])}</span><h3>{esc(q["name_ar"])}</h3></span><span class="row-end"><span class="mono">{esc(q["id"])}</span></span></a></li>' for q in persons)
+                 + '</ul></section>')
+    demo = (f'<p class="note">{icon("info")}<span>مقال تجريبي كتبته هيئة التحرير لعرض التصميم؛ الوقائع والمواد فيه حقيقية ومربوطة بمصادرها.</span></p>'
+            if x.get('demo') else '')
+    main = f'''<div class="wrap">{S.crumbs(rel, [("المقالات", "articles/index.html"), (x["title_ar"], None)])}</div>
+<article class="sec article"><div class="wrap article-grid">
+ <div class="article-main">
+  <p class="acard-meta"><span>{esc(x["topic_ar"])}</span><span>{esc(S.date_ar(x["date"]))}</span></p>
+  <h1 class="h1 article-h">{esc(x["title_ar"])}</h1>
+  <p class="lead">{esc(x["dek_ar"])}</p>
+  <p class="article-by">{esc(x["author_ar"])}</p>
+  {demo}
+  <div class="prose">{prose(x["body_ar"])}</div>
+  <h2 class="h2">المصادر</h2>
+  <ol class="sources">{srcs}</ol>
+ </div>
+ <aside class="article-side">{side}<div class="sheet act-mini"><h2 class="h3">اكتب مقالا</h2><p class="small">في القانون الدولي وجرائم الحرب. يمر بالتحكيم والتدقيق قبل النشر.</p><a class="btn btn-ink btn-sm" href="write.html">ابدأ الكتابة</a></div></aside>
+</div></article>'''
+    P(rel, f'articles/{x["slug"]}.html', x['title_ar'], x['dek_ar'], 'articles', main)
+
+
+def write_article():
+    rel = '../'
+    topics = ''.join(f'<option>{esc(k)}</option>' for k in ('القانون الدولي الإنساني', 'القانون الجنائي الدولي', 'القانون الدولي لحقوق الإنسان', 'منهجية التوثيق والتحقق'))
+    main = f'''<div class="wrap">{S.crumbs(rel, [("المقالات", "articles/index.html"), ("اكتب مقالا", None)])}</div>
+<section class="list-head"><div class="wrap"><h1 class="h1">اكتب مقالا</h1><p class="lead">يقبل موثّق مقالات في القانون الدولي وجرائم الحرب وانتهاك حقوق الإنسان، ولا ينشر مقال قبل التحكيم والتدقيق.</p></div></section>
+<section class="sec"><div class="wrap standards-grid">
+ <form class="sheet" id="article-form" data-simple-form="art-out" data-done="سجل المقال في هذا المتصفح فقط." novalidate>
+  <h2 class="h3">بيانات الكاتب</h2>
+  {field("a-name", "الاسم أو الاسم المستعار", '<input class="input" id="a-name" required aria-describedby="a-name-e" autocomplete="name">', True, "", "اكتب اسما يظهر مع المقال.")}
+  {field("a-role", "الصفة أو التخصص", '<input class="input" id="a-role" placeholder="مثل باحث في القانون الدولي">')}
+  {field("a-mail", "وسيلة تواصل", '<input class="input" id="a-mail" type="email" required aria-describedby="a-mail-e" autocomplete="email" placeholder="بريد إلكتروني">', True, "لا تنشر، وتستخدم لملاحظات التحكيم.", "اكتب بريدا صحيحا.")}
+  <h2 class="h3" style="margin-top:28px">المقال</h2>
+  {field("a-title", "العنوان", '<input class="input" id="a-title" required aria-describedby="a-title-e">', True, "", "اكتب عنوان المقال.")}
+  {field("a-topic", "المحور", f'<select class="select" id="a-topic" required aria-describedby="a-topic-e"><option value="">اختر</option>{topics}</select>', True, "", "اختر محورا.")}
+  {field("a-dek", "ملخص في سطرين", '<textarea class="input" id="a-dek" required maxlength="320" aria-describedby="a-dek-e" rows="3"></textarea>', True, "", "اكتب ملخصا قصيرا.")}
+  {field("a-body", "نص المقال", '<textarea class="input" id="a-body" required minlength="400" aria-describedby="a-body-e" rows="12"></textarea>', True, "كل واقعة بمصدرها، وكل مادة قانونية برقمها.", "النص أقصر من الحد الأدنى (400 حرف).")}
+  {field("a-src", "المصادر والروابط", '<textarea class="input" id="a-src" required aria-describedby="a-src-e" rows="4" placeholder="رابط في كل سطر"></textarea>', True, "", "أضف مصدرا واحدا على الأقل.")}
+  <label class="check"><input type="checkbox" required id="a-own"><span>المقال من تأليفي ولم ينشر في مكان آخر، وأوافق على التحكيم والتعديل التحريري.</span></label>
+  <button class="btn btn-ink btn-block" type="submit" style="margin-top:18px">أرسل للتحكيم (تجريبي)</button>
+  <div class="note" id="art-out" hidden tabindex="-1">{seal("in_progress", label=False)}<span><b>استلمنا المقال برقم <span class="mono" data-ref></span>.</b> لم يرسل إلى أي جهة؛ في المنصة الفعلية يبدأ من مرحلة الاستلام.</span></div>
+ </form>
+ <div><h2 class="h3">مراحل النشر</h2>{review_path()}
+  <p class="note is-quiet" style="margin-top:22px">{icon("shield")}<span>لا ينشر مقال يكشف بيانات شخصية لأحد، أو ينسب فعلا لشخص دون مصدر موثوق.</span></p></div>
+</div></section>'''
+    P(rel, 'articles/write.html', 'اكتب مقالا', 'أرسل مقالا في القانون الدولي وجرائم الحرب للتحكيم قبل النشر.', 'articles', main)
+
+
+def database():
+    rel = ''
+    people = all_people()
+    linked = [r for r in B.RULES if any(r['id'] in p['rule_ids'] for p in people)]
+    by_branch = {}
+    for r in linked:
+        by_branch.setdefault(r.get('branch', ''), []).append(r)
+    p_items = ''.join(
+        f'<li data-status="{p["status"]}" data-kind="{"demo" if p.get("demo") else "file"}" data-text="{esc(p["name_ar"])}">'
+        f'<button class="node" type="button" data-node="{esc(p["id"])}" data-links="{esc(" ".join(p["rule_ids"]))}" aria-pressed="false">'
+        f'<span class="node-t"><b>{esc(p["name_ar"])}</b><small>{esc(STATUS[p["status"]][0])}{" · تجريبي" if p.get("demo") else ""}</small></span>'
+        f'<span class="node-n mono">{len(p["rule_ids"])}</span></button></li>' for p in people)
+    groups = ''
+    for br, rules in sorted(by_branch.items(), key=lambda kv: -len(kv[1])):
+        rows = ''.join(
+            f'<li><button class="node" type="button" data-node="{esc(r["id"])}" data-links="{esc(" ".join(p["id"] for p in people if r["id"] in p["rule_ids"]))}" aria-pressed="false">'
+            f'<span class="node-t"><span class="mono">{esc(B.rule_short(r))}</span><b>{esc(r.get("title_ar", ""))}</b></span>'
+            f'<span class="node-n mono">{sum(r["id"] in p["rule_ids"] for p in people)}</span></button></li>'
+            for r in sorted(rules, key=lambda r: -sum(r["id"] in p["rule_ids"] for p in people)))
+        groups += f'<li class="node-group"><h3 class="side-h">{esc(B.BRANCH.get(br, br) or "أخرى")} <span class="mono">{len(rules)}</span></h3><ul>{rows}</ul></li>'
+    real_links = sum(len(p['rule_ids']) for p in B.PERSONS)
+    main = f'''<div class="wrap">{S.crumbs(rel, [("قاعدة البيانات", None)])}</div>
+<section class="list-head"><div class="wrap"><h1 class="h1">قاعدة البيانات التفاعلية</h1><p class="lead">الأشخاص الموثقة ملفاتهم والمواد القانونية التي قد تنطبق على الأفعال المنسوبة إليهم. اختر شخصا لترى مواده، أو مادة لترى من ترتبط بهم.</p></div></section>
+<section class="sec"><div class="wrap">
+ <dl class="db-stats">
+  <div><dt>ملفات أشخاص موثقة</dt><dd class="mono">{len(B.PERSONS)}</dd></div>
+  <div><dt>أفعال منسوبة في الملفات</dt><dd class="mono">{sum(len(p["acts"]) for p in B.PERSONS)}</dd></div>
+  <div><dt>مواد قانونية مرتبطة</dt><dd class="mono">{len({r for p in B.PERSONS for r in p["rule_ids"]})}</dd></div>
+  <div><dt>روابط بين شخص ومادة</dt><dd class="mono">{real_links}</dd></div>
+ </dl>
+ <p class="xs mute" style="margin-top:10px">الأرقام من الملفات الموثقة وحدها؛ الملفات التجريبية ({len(B.DEMO)}) تظهر في المستكشف ولا تدخل في العد.</p>
+ <div class="explorer" data-explorer>
+  <div class="ex-col">
+   <div class="ex-head"><h2 class="h3">الأشخاص <span class="mono">{len(people)}</span></h2>
+    <form class="chips-filter" data-filter="db-people" data-count="db-people-count" data-empty="db-people-empty" aria-label="تصفية الأشخاص">{people_filter(people)}</form>
+    <p class="count" id="db-people-count" aria-live="polite"></p></div>
+   <ul class="nodes" id="db-people">{p_items}</ul>
+   <div class="empty" id="db-people-empty" hidden><p><b>لا ملفات بهذا الوضع.</b></p></div>
+  </div>
+  <div class="ex-col">
+   <div class="ex-head"><h2 class="h3">المواد القانونية <span class="mono">{len(linked)}</span></h2><p class="small mute" data-ex-say aria-live="polite">اختر شخصا أو مادة.</p>
+    <button class="btn btn-line btn-sm" type="button" data-ex-clear hidden>إلغاء الاختيار</button></div>
+   <ul class="nodes node-groups">{groups}</ul>
+  </div>
+ </div>
+ <p class="note">{icon("scale")}<span>الربط بين فعل ومادة تحليل أولي يبين ما قد ينطبق؛ لا يعني ثبوت الفعل ولا المسؤولية الجنائية.</span></p>
+</div></section>'''
+    P(rel, 'database.html', 'قاعدة البيانات التفاعلية', 'عدد الأشخاص الموثقة ملفاتهم وارتباط الأفعال المنسوبة إليهم بمواد القانون الدولي.', 'database', main)
+
+
 def build():
+    articles()
+    database()
     method()
     submit()
     donate()

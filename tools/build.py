@@ -38,6 +38,26 @@ PERSONS = load('persons.json')
 INCIDENTS = load('incidents.json')
 DOCS = load('documents.json')
 RULES = load('rules.json')
+
+# national prosecutors and courts that acted against Israeli soldiers or officials (research/national.json):
+# each action is filed as a document of its own legal nature, beside the international ones
+NAMED = {'نتنياهو': 'P-0001', 'غالانت': 'P-0002', 'بن غفير': 'P-0004', 'هرتسوغ': 'P-0005', 'سموتريتش': 'P-0006'}
+for _n, _a in enumerate(load('national.json'), len(DOCS) + 1):
+    _who = ' '.join(_a.get('persons_ar') or []) if isinstance(_a.get('persons_ar'), list) else (_a.get('persons_ar') or '')
+    DOCS.append({
+        'id': f'R-{_n:04d}', 'cat': 'national', 'face_ar': _a['country_ar'],
+        'nature_ar': f'{_a["action_ar"]} — {_a["body_ar"]}. إجراء قضائي وطني، ليس حكما بالإدانة.',
+        'title_ar': _a['title_ar'], 'title_ar_official': False, 'title_en': '',
+        'publisher_ar': f'{_a["body_ar"]} ({_a["country_ar"]})', 'publisher_en': _a.get('body_en', ''),
+        'date': _a['date'] if len(_a['date']) == 10 else _a['date'] + '-01', 'symbol': '', 'url': _a['url'], 'url_ar': None,
+        'period_ar': '', 'region': 'gaza', 'summary_ar': _a['summary_ar'],
+        'findings_ar': ([f'الجرائم المنسوبة كما وردت في المصدر: {"، ".join(_a["crimes_ar"])}.'] if _a.get('crimes_ar') else []) +
+                       ([f'المآل المعروف: {_a["status_now_ar"]}'] if _a.get('status_now_ar') else []) +
+                       ([f'الجهة الشاكية: {_a["complainant_ar"]}.'] if _a.get('complainant_ar') else []),
+        'persons': [pid for name, pid in NAMED.items() if name in _who], 'topics_ar': [_a['action_ar']],
+        'rules_hint': [], 'rule_ids': ['RS-6', 'GEN-II'] if any('إبادة' in c for c in _a.get('crimes_ar', [])) else [],
+        'sources_extra': _a.get('sources', []), 'uncertain': bool(_a.get('uncertain')),
+    })
 PICKS = json.load(open(R('tools', 'picks.json'), encoding='utf-8')) if os.path.exists(R('tools', 'picks.json')) else {}
 PHOTOS = json.load(open(R('tools', 'photos.json'), encoding='utf-8')) if os.path.exists(R('tools', 'photos.json')) else {}
 PHOTO_SIZE = json.load(open(R('tools', 'out', 'photos.json'), encoding='utf-8')) if os.path.exists(R('tools', 'out', 'photos.json')) else {}
@@ -178,7 +198,20 @@ for inc in INCIDENTS:
 for p in PERSONS:
     p['inc_ids'] = [i['id'] for i in INCIDENTS if p['id'] in i['pids']]
     p['doc_ids'] = [d['id'] for d in DOCS if p['id'] in d.get('persons', [])]
-    p['rule_ids'] = list(dict.fromkeys(PICKS.get('person_rules', {}).get(p['id'], [])))
+    # each act in the file with the articles that may apply to it (picks: crime_rules, in the order of crimes_ar)
+    p['acts'] = [{'act_ar': c.partition(' — ')[0], 'basis_ar': c.partition(' — ')[2], 'rule_ids': ids}
+                 for c, ids in zip(p.get('crimes_ar', []), PICKS.get('crime_rules', {}).get(p['id'], []) + [[]] * 9)]
+    p['rule_ids'] = list(dict.fromkeys(PICKS.get('person_rules', {}).get(p['id'], []) + [r for a in p['acts'] for r in a['rule_ids']]))
+
+# illustrative files for the platform's own subject: people seen in published footage whom no body has yet named.
+# No real person, photo or incident stands behind them; they show how such a file is laid out.
+DEMO = json.load(open(os.path.join(os.path.dirname(__file__), 'demo_persons.json'), encoding='utf-8'))
+for n, p in enumerate(DEMO):
+    # shown as ت-أ, ت-ب …: ت for تجريبي, so an illustrative file never looks like a numbered record
+    p.update(demo=True, slug='demo-' + 'abcdefghij'[n], id='ت-' + p['letter'], inc_ids=[], doc_ids=[], sources=[], statuses=[],
+             rule_ids=list(dict.fromkeys(r for a in p['acts'] for r in a['rule_ids'])))
+ARTICLES = sorted(json.load(open(os.path.join(os.path.dirname(__file__), 'articles.json'), encoding='utf-8')),
+                  key=lambda a: a['date'], reverse=True)
 for d in DOCS:
     d['rule_ids'] = list(dict.fromkeys(x for x in (resolve(t) for t in d.get('rules_hint', [])) if x))
     d['inc_ids'] = PICKS.get('doc_incidents', {}).get(d['id'], [])
@@ -230,7 +263,8 @@ EV_LIMIT = {
 }
 DOC_CAT = {'icj': 'محكمة العدل الدولية', 'icc': 'المحكمة الجنائية الدولية', 'un_coi': 'لجنة التحقيق الدولية',
            'un_sr': 'المقررون الخاصون', 'un_agency': 'وكالات الأمم المتحدة', 'ngo': 'منظمات حقوقية',
-           'journalism': 'تحقيقات صحفية', 'forensic': 'تحقيقات جنائية رقمية', 'ipc': 'الأمن الغذائي (IPC)'}
+           'journalism': 'تحقيقات صحفية', 'forensic': 'تحقيقات جنائية رقمية', 'ipc': 'الأمن الغذائي (IPC)',
+           'national': 'قضاء وطني'}
 BRANCH = {'ICL': 'القانون الجنائي الدولي', 'IHL': 'القانون الدولي الإنساني', 'IHRL': 'القانون الدولي لحقوق الإنسان',
           'GENOCIDE': 'اتفاقية منع الإبادة الجماعية', 'RESP': 'قواعد المسؤولية الجنائية', 'CUSTOM': 'القانون الدولي الإنساني العرفي'}
 
@@ -400,6 +434,8 @@ def inc_mini_row(inc, rel):
 
 def doc_face(d):
     """The few characters printed on a document's dark face: its docket or symbol, else who published it."""
+    if d.get('face_ar'):
+        return d['face_ar']
     s = (d.get('symbol') or '').split(';')[0].split(',')[0].replace('General List No.', 'ICJ No.').replace(' analysis', '').strip()
     pub = (d.get('publisher_en') or '').split(' (')[0].strip()
     return s or (pub if 0 < len(pub) <= 24 else d['id'])

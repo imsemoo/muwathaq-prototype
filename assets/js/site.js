@@ -27,59 +27,37 @@
   }
   window.mwToast = toast;
 
-  /* ---------- between pages: the parcel closes over the page being left and opens on the next one.
-     The head script marks an arrival before first paint (html.nav-in); here the cover opens. ---------- */
-  const html = document.documentElement;
-  const unveil = () => {
-    if (!html.classList.contains('nav-in') && !html.classList.contains('nav-out')) return;
-    html.classList.add('nav-open'); html.classList.remove('nav-in', 'nav-out');
-    document.dispatchEvent(new Event('mw:veil'));
-    setTimeout(() => html.classList.remove('nav-open'), 900);
-  };
-  if (html.classList.contains('nav-in')) {
-    const hold = Math.max(0, 260 - performance.now());
-    const fonts = document.fonts ? Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 700))]) : Promise.resolve();
-    fonts.then(() => setTimeout(() => requestAnimationFrame(unveil), hold));
-  }
-  let leaving = false;
-  const go = (href) => {
-    if (reduce) { location.href = href; return; }
-    if (leaving) return;
-    leaving = true;
-    store.sset('mw-nav', '1');
-    html.classList.add('nav-out');
-    setTimeout(() => { location.href = href; }, 460);
-    setTimeout(() => { html.classList.remove('nav-out'); leaving = false; }, 6000);
-  };
-  /* back and forward from the page cache: the page comes back as it was left, closed */
-  addEventListener('pageshow', (e) => { if (e.persisted) { leaving = false; unveil(); } });
-  if (!reduce) {
-    addEventListener('click', (e) => {
-      if (leaving) { if (e.target.closest('a[href]')) e.preventDefault(); return; }
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      const a = e.target.closest('a[href]');
-      if (!a || a.target || a.hasAttribute('download')) return;
-      const url = new URL(a.href, location.href);
-      if (url.origin !== location.origin || !/(\/|\.html)$/.test(url.pathname)) return;
-      if (url.pathname === location.pathname && url.search === location.search) return;
-      e.preventDefault();
-      go(url.href);
-    });
-  }
+  const go = (href) => { location.href = href; };
 
   /* ---------- headline lines: home.js opens them after the intro; never leave them hidden ---------- */
   const lines = $('[data-lines]');
   if (lines) setTimeout(() => lines.classList.add('is-in'), 4200);
   if (lines && !document.querySelector('script[src*="home.js"]')) lines.classList.add('is-in');
 
-  /* ---------- smooth scrolling on fine pointers ---------- */
-  if (window.Lenis && !reduce && matchMedia('(pointer: fine)').matches) {
-    const lenis = new Lenis({ duration: 1.05, easing: (t) => 1 - Math.pow(1 - t, 3.2), anchors: { offset: -88 } });
-    window.mwLenis = lenis;
-    const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
-    requestAnimationFrame(raf);
-    if (window.ScrollTrigger) lenis.on('scroll', () => ScrollTrigger.update());
-  }
+  /* ---------- the database: a person lights up its articles, an article the people tied to it ---------- */
+  const counted = (n, one, two, few, many) => (n === 1 ? one : n === 2 ? two : `${n} ${n % 100 >= 3 && n % 100 <= 10 ? few : many}`);
+  $$('[data-explorer]').forEach((box) => {
+    const nodes = $$('[data-node]', box), say = $('[data-ex-say]', box), clear = $('[data-ex-clear]', box);
+    const idle = say.textContent;
+    const reset = () => {
+      box.classList.remove('is-picking');
+      nodes.forEach((n) => { n.classList.remove('is-hit', 'is-on'); n.setAttribute('aria-pressed', 'false'); });
+      say.textContent = idle; clear.hidden = true;
+    };
+    nodes.forEach((n) => n.addEventListener('click', () => {
+      const was = n.classList.contains('is-on');
+      reset();
+      if (was) return;
+      const links = new Set(n.dataset.links.split(' ').filter(Boolean));
+      box.classList.add('is-picking');
+      n.classList.add('is-on'); n.setAttribute('aria-pressed', 'true');
+      nodes.forEach((m) => { if (links.has(m.dataset.node)) m.classList.add('is-hit'); });
+      const isPerson = !!n.closest('#db-people');
+      say.textContent = `${$('b', n).textContent}: ${isPerson ? counted(links.size, 'مادة واحدة', 'مادتان', 'مواد', 'مادة') : counted(links.size, 'شخص واحد', 'شخصان', 'أشخاص', 'شخصا')}`;
+      clear.hidden = false;
+    }));
+    clear.addEventListener('click', reset);
+  });
 
   /* ---------- prototype note ---------- */
   const proto = $('#proto');
@@ -156,12 +134,6 @@
       else if (e.key === 'Escape') { close(); }
     });
     document.addEventListener('click', (e) => { if (!form.contains(e.target)) close(); });
-    form.addEventListener('submit', (e) => {
-      if (e.defaultPrevented) return;
-      e.preventDefault();
-      const u = new URL(form.action, location.href); u.search = new URLSearchParams(new FormData(form)).toString();
-      go(u.href);
-    });
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) {

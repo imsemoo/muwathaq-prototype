@@ -210,8 +210,9 @@ def fstamp(p):
     form = 'is-firm' if lv >= 4 else ('is-charged' if lv == 3 else ('is-open' if lv == 2 else 'is-loose'))
     _, _, main = B.person_status_line(p) if not p.get('demo') else (None, None, {})
     year = (main.get('date') or '')[:4]
-    return (f'<span class="fstamp {form}" aria-hidden="true"><b>{esc(word)}</b><small>{esc(basis)}</small>'
-            f'{f"<i class=mono>{year}</i>" if year else ""}</span><span class="sr">{esc(STATUS[p["status"]][0])}.</span>')
+    return (f'<span class="fstamp {form}" aria-hidden="true"><b>{esc(word)}</b>'
+            f'<small><span class="fstamp-basis">{esc(basis)}</span>{f" <span class=mono>{year}</span>" if year else ""}</small></span>'
+            f'<span class="sr">{esc(STATUS[p["status"]][0])}.</span>')
 
 
 def fcard(p, rel):

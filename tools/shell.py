@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 39
+V = 40
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

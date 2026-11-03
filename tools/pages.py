@@ -2,6 +2,8 @@
 import os
 import re
 
+from datetime import date
+
 import build as B
 import shell as S
 from shell import esc, icon, seal, seal_row, knots, ext, mono, date_ar, write, STATUS, VERIF, REGIONS
@@ -254,6 +256,24 @@ def people_filter(persons, legend='الوضع القانوني'):
     return facet('status', legend, opts)
 
 
+CHARGE_TYPE = (('جريمة الحرب المتمثلة في ', 'جريمة حرب'), ('الجرائم ضد الإنسانية المتمثلة في ', 'جرائم ضد الإنسانية'))
+
+
+def charge_row(act, rel):
+    """One charge of the warrant: its kind, its short name, and the Rome Statute articles it rests on."""
+    name, kind = act['act_ar'], ''
+    for pre, k in CHARGE_TYPE:
+        if name.startswith(pre):
+            name, kind = name[len(pre):], k
+    arts = [B.RULE_BY_ID[r] for r in act['rule_ids'] if r.startswith('RS-') and r in B.RULE_BY_ID and not r.startswith(('RS-25', 'RS-28'))]
+    refs = [B.rule_short(r) for r in arts]
+    if len(refs) > 1:   # م 7(1)(أ)، (ح)، (ك): the shared article said once
+        head = refs[0][:refs[0].rindex('(')]
+        refs = [refs[0]] + [x[len(head):] if x.startswith(head) else x for x in refs[1:]]
+    return (f'<li><a href="{rel}law/{slug(arts[0]["id"])}.html"><span class="wc-kind">{esc(kind)}</span>'
+            f'<b class="wc-name">{esc(name)}</b><span class="wc-ref"><span class="num">{esc("، ".join(refs))}</span>{icon("arrow")}</span></a></li>')
+
+
 def wanted(rel):
     """The banner: the two people the International Criminal Court has issued arrest warrants for."""
     pa, pb = B.P_BY_ID['P-0001'], B.P_BY_ID['P-0002']
@@ -265,21 +285,26 @@ def wanted(rel):
         sz = B.PHOTO_SIZE[ph]
         return (f'<a class="wanted-face {cls}" href="{rel}people/{slug(p["id"])}.html">'
                 f'<img src="{rel}assets/img/photo/{ph}-640.webp" alt="{esc(p["name_ar"])}" width="640" '
-                f'height="{round(640 * sz["h"] / sz["w"])}" fetchpriority="high">'
-                f'<span class="wanted-cap"><b>{esc(p["name_ar"])}</b><span>{esc(roles[p["id"]])}</span></span></a>')
+                f'height="{round(640 * sz["h"] / sz["w"])}" fetchpriority="high">{fstamp(p)}'
+                f'<span class="wanted-cap"><b>{esc(p["name_ar"])}</b><span>{esc(roles[p["id"]])}</span>'
+                f'<span class="wanted-go">عرض الملف {icon("arrow")}</span></span></a>')
     st = next(s for s in pa['statuses'] if s.get('type') == 'warrant')
-    acts = ''.join(f'<li>{esc(x["act_ar"])}</li>' for x in pa['acts'][:3])
+    charges = [x for x in pa['acts'] if 'أمر قبض' in x.get('basis_ar', '')][:3]
+    rome = sorted({r for x in charges for r in x['rule_ids'] if r.startswith('RS-')})
+    days = (date.today() - date.fromisoformat(st['date'])).days
+    facts = (f'<div><dt>{icon("cal")}صدور أمري القبض</dt><dd class="num">{esc(date_ar(st["date"]))}</dd></div>'
+             f'<div><dt>{icon("clock")}يوما منذ صدورهما</dt><dd class="num" data-since="{st["date"]}">{days}</dd></div>'
+             f'<div><dt>{icon("scale")}مواد من نظام روما</dt><dd class="num">{len(rome)}</dd></div>')
     return f"""<section class="wanted is-reversed" aria-labelledby="wanted-h">
  <div class="wrap wanted-grid">
   {side(pa, 'is-start')}
   <div class="wanted-mid">
-   <p class="wanted-by">المحكمة الجنائية الدولية · الدائرة التمهيدية الأولى · <span class="mono">{esc(st.get("doc_symbol", ""))}</span></p>
+   <p class="wanted-by">{icon("official")}<span>المحكمة الجنائية الدولية · الدائرة التمهيدية الأولى</span><span class="mono">{esc(st.get("doc_symbol", ""))}</span></p>
    <h1 class="wanted-h" id="wanted-h">مطلوبان للعدالة الدولية</h1>
-   <p class="wanted-lead">أمران بالقبض صدرا في {esc(date_ar(st["date"]))}، بعد أن وجدت الدائرة أسبابا معقولة للاعتقاد بمسؤوليتهما الجنائية عن:</p>
-   <ul class="wanted-acts">{acts}</ul>
+   <dl class="wanted-facts">{facts}</dl>
+   <div class="wanted-charges"><h2 class="wc-h">التهم في أمري القبض</h2><ol>{"".join(charge_row(x, rel) for x in charges)}</ol></div>
    <div class="wanted-knots">{knots("warrant")}</div>
-   <p class="wanted-not">{icon("info")}<span>أمر القبض ليس حكما بالإدانة، ويفترض براءة الشخص حتى تثبت إدانته.</span></p>
-   <div class="wanted-actions"><a class="btn btn-light" href="{rel}people/{slug(pa["id"])}.html">ملف نتنياهو</a><a class="btn btn-ghost" href="{rel}people/{slug(pb["id"])}.html">ملف غالانت</a>{ext(st["url"], "بيان المحكمة", "btn btn-ghost")}</div>
+   <p class="wanted-not">{icon("info")}<span>أمر القبض ليس حكما بالإدانة، ويفترض براءة الشخص حتى تثبت إدانته. {ext(st["url"], "بيان المحكمة", "wanted-src")}</span></p>
   </div>
   {side(pb, 'is-end')}
  </div>

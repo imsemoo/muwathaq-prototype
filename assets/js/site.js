@@ -59,6 +59,12 @@
     clear.addEventListener('click', reset);
   });
 
+  /* ---------- days since a date, counted on the reader's day rather than the build's ---------- */
+  $$('[data-since]').forEach((el) => {
+    const d = Math.floor((Date.now() - Date.parse(el.dataset.since)) / 864e5);
+    if (d > 0) el.textContent = d;
+  });
+
   /* ---------- the home link map: a person lights its lines to the branches of law, a branch the people tied to it ---------- */
   $$('[data-linkmap]').forEach((map) => {
     const flows = $$('[data-flow]', map), ps = $$('[data-lp]', map), bs = $$('[data-lb]', map), all = [...ps, ...bs];

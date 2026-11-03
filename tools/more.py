@@ -21,7 +21,7 @@ STEPS = [
 
 def method():
     rel = ''
-    steps = ''.join(f'<li><span class="k">{n:02d}</span><div><h3>{esc(t)}</h3><p>{esc(d)}</p></div></li>' for n, (t, d) in enumerate(STEPS, 1))
+    steps = ''.join(f'<li id="step-{n:02d}"><span class="k">{n:02d}</span><div><h3>{esc(t)}</h3><p>{esc(d)}</p></div></li>' for n, (t, d) in enumerate(STEPS, 1))
     key = ''.join(f'<li>{seal(k, label=False)}<span><b>{esc(v[0])}</b><small>{esc(v[2])}</small></span></li>' for k, v in VERIF.items())
     ladder = ''.join(f'<li><b>{esc(STATUS[s][0])}</b><span>{esc(STATUS[s][2])}</span></li>' for s in ['alleged', 'named', 'charged', 'warrant', 'convicted'])
     main = f'''<div class="wrap">{S.crumbs(rel, [("كيف نتحقق", None)])}</div>

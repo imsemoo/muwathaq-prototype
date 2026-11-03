@@ -402,6 +402,104 @@ def reports_home(rel, docs):
 </section>"""
 
 
+BRANCH_ORDER = ('IHL', 'ICL', 'RESP', 'CUSTOM', 'IHRL', 'GENOCIDE')
+
+
+def link_map(rel):
+    """The database in one picture: each person on file, each branch of law, and a line wherever a person's acts
+    engage that branch, as thick as the number of articles. The first person is lit when the page opens."""
+    people = sorted(B.PERSONS, key=lambda p: (-len(p['rule_ids']), p['id']))
+    weight = {}
+    for p in people:
+        for rid in p['rule_ids']:
+            k = (p['id'], B.RULE_BY_ID[rid]['branch'])
+            weight[k] = weight.get(k, 0) + 1
+    branches = [x for x in BRANCH_ORDER if any(k[1] == x for k in weight)]
+    branches += sorted({k[1] for k in weight} - set(branches))
+    on = people[0]['id']
+    lit = {k[1] for k in weight if k[0] == on}
+    np_, nb = len(people), len(branches)
+    flows = ''
+    for (pid, br), w in sorted(weight.items(), key=lambda kv: (kv[0][0] == on, kv[1])):   # lit lines drawn last, on top
+        y1 = (people.index(next(p for p in people if p['id'] == pid)) + .5) / np_ * 100
+        y2 = (branches.index(br) + .5) / nb * 100
+        flows += (f'<path data-flow data-p="{pid}" data-b="{br}"{" class=is-on" if pid == on else ""} style="--w:{w}" '
+                  f'd="M100 {y1:.2f}C52 {y1:.2f} 48 {y2:.2f} 0 {y2:.2f}" vector-effect="non-scaling-stroke"/>')
+    rows = ''
+    for p in people:
+        n = len(p['rule_ids'])
+        nbr = len({k[1] for k in weight if k[0] == p['id']})
+        ph = B.photo_of(p['id'])
+        face = (f'<img src="{rel}assets/img/photo/{ph}-240.webp" alt="" width="44" height="44" loading="lazy" decoding="async">' if ph
+                else f'<span class="lm-face">{icon("user")}</span>')
+        arts = count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")
+        say = f'{p["name_ar"]}: {arts} في {count_ar(nbr, "فرع واحد", "فرعين", "فروع", "فرعا")} من القانون الدولي'
+        rows += (f'<li><button type="button" class="lm-p{" is-on" if p["id"] == on else ""}" data-lp="{p["id"]}" aria-pressed="{"true" if p["id"] == on else "false"}" '
+                 f'data-say="{esc(say)}" data-href="{person_href(p, rel)}" data-go="عرض الملف">'
+                 f'{face}<span class="lm-t"><b>{esc(p["name_ar"])}</b><small>{esc(arts)}</small></span><i class="lm-dot"></i></button></li>')
+    cols = ''
+    for br in branches:
+        arts = len([r for r in B.RULES if r['p_ids'] and r['branch'] == br])
+        who = len({k[0] for k in weight if k[1] == br})
+        a_ = count_ar(arts, "مادة واحدة", "مادتان", "مواد", "مادة")
+        w_ = count_ar(who, "شخص واحد", "شخصان", "أشخاص", "شخصا")
+        say = f'{B.BRANCH[br]}: {a_} مرتبطة بملفات {w_}'
+        cols += (f'<li><button type="button" class="lm-b{" is-on" if br in lit else ""}" data-lb="{br}" aria-pressed="false" '
+                 f'data-say="{esc(say)}" data-href="{rel}database.html" data-go="افتح قاعدة البيانات">'
+                 f'<i class="lm-dot"></i><span class="lm-t"><b>{esc(B.BRANCH[br])}</b><small>{esc(a_)} · {esc(w_)}</small></span></button></li>')
+    first = people[0]
+    first_n = len(first['rule_ids'])
+    first_say = (f'{first["name_ar"]}: {count_ar(first_n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")} '
+                 f'في {count_ar(len(lit), "فرع واحد", "فرعين", "فروع", "فرعا")} من القانون الدولي')
+    stats = [('user', len(B.PERSONS), counted(len(B.PERSONS), 'ملفات أشخاص', 'ملف شخص'), 'people/index.html'),
+             ('pin', len(B.INCIDENTS), counted(len(B.INCIDENTS), 'وقائع', 'واقعة'), 'incidents/index.html'),
+             ('image', len(B.EVIDENCE), counted(len(B.EVIDENCE), 'أدلة', 'دليلا'), 'evidence/index.html'),
+             ('doc', len(B.DOCS), counted(len(B.DOCS), 'وثائق', 'وثيقة'), 'reports/index.html'),
+             ('scale', len(B.RULES), counted(len(B.RULES), 'قواعد قانونية', 'قاعدة قانونية'), 'law/index.html')]
+    stat = ''.join(f'<a href="{rel}{h}">{icon(g)}<b class="num">{n}</b><span>{esc(t)}</span></a>' for g, n, t, h in stats)
+    return f"""<section class="sec band-paper" aria-labelledby="db-h">
+ <div class="wrap">
+  <div class="sec-head"><div><h2 class="h2" id="db-h">قاعدة البيانات التفاعلية</h2><p>كل شخص في الأرشيف، والفروع القانونية التي تقع فيها الأفعال المنسوبة إليه.</p></div><a class="link-arrow" href="{rel}database.html">افتح قاعدة البيانات {icon("arrow")}</a></div>
+  <div class="lmap" data-linkmap>
+   <nav class="lm-stats" aria-label="ما يحفظه الأرشيف">{stat}</nav>
+   <div class="lm-cols" aria-hidden="true"><span>الأشخاص</span><span>فروع القانون</span></div>
+   <div class="lm-grid">
+    <ul class="lm-people" style="--n:{np_}" aria-label="الأشخاص">{rows}</ul>
+    <div class="lm-mid"><svg class="lm-flows" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">{flows}</svg></div>
+    <ul class="lm-branches" style="--n:{nb}" aria-label="فروع القانون">{cols}</ul>
+   </div>
+   <div class="lm-foot"><p class="lm-say" aria-live="polite" data-lm-say>{esc(first_say)}</p><a class="link-arrow" data-lm-go href="{person_href(first, rel)}"><span data-lm-go-t>عرض الملف</span> {icon("arrow")}</a></div>
+  </div>
+ </div>
+</section>"""
+
+
+# the ten steps of the method page, in three phases; each with its icon
+METHOD_PHASES = [('فحص المادة', [('جمع المادة', 'inbox'), ('تسجيل المصدر والعهدة', 'link'), ('الأصالة والسياق', 'search')]),
+                 ('تثبيت الواقعة', [('المقارنة المستقلة', 'layers'), ('الموقع والزمن', 'pin'), ('توثيق القيود', 'info')]),
+                 ('قرار موثّق', [('المراجعة القانونية', 'scale'), ('حماية الأشخاص', 'shield'), ('قرار النشر', 'check'), ('التصحيح المستمر', 'refresh')])]
+
+
+def method_strip(rel):
+    n, phases = 0, ''
+    for name, steps in METHOD_PHASES:
+        lis = ''
+        first = n + 1
+        for label, g in steps:
+            n += 1
+            cls = ' class="is-seal"' if g == 'check' else (' class="is-ongoing"' if g == 'refresh' else '')
+            lis += (f'<li{cls}><a href="{rel}method.html#step-{n:02d}"><span class="ms-node">{icon(g)}</span>'
+                    f'<span class="ms-n mono">{n:02d}</span><b>{esc(label)}</b></a></li>')
+        phases += (f'<li class="mph"><h3 class="mph-h"><span class="mono">{first:02d}–{n:02d}</span>{esc(name)}</h3>'
+                   f'<ol class="mph-steps" style="--n:{len(steps)}">{lis}</ol></li>')
+    return f"""<section class="sec sec-ink method-strip">
+ <div class="wrap">
+  <div class="sec-head"><div><h2 class="h2">منهجية التحقق: عشر خطوات</h2><p>لا ينشر ملف قبل أن يمر بكل خطوة.</p></div><a class="btn btn-light" href="{rel}method.html">المنهجية كاملة</a></div>
+  <ol class="mstrip" aria-label="خطوات التحقق">{phases}</ol>
+ </div>
+</section>"""
+
+
 def home():
     rel = ''
     people = all_people()
@@ -418,24 +516,8 @@ def home():
     docs = sorted(B.DOCS, key=lambda d: d.get('date', ''), reverse=True)
     reports = reports_home(rel, docs)
     articles = articles_home(rel)
-    tops = sorted([r for r in B.RULES if r['p_ids']], key=lambda r: (-len(r['p_ids']), r['id']))[:6]
-    database = f"""<section class="sec band-paper" aria-labelledby="db-h">
- <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2" id="db-h">قاعدة البيانات التفاعلية</h2><p>عدد الأشخاص الموثقة ملفاتهم، وكيف ترتبط الأفعال المنسوبة إليهم بمواد القانون الدولي الإنساني وغيره.</p></div><a class="link-arrow" href="database.html">افتح قاعدة البيانات {icon("arrow")}</a></div>
-  {register()}
-  <h3 class="h3 col-h">المواد الأكثر ارتباطا بالملفات</h3>
-  <ul class="bars">{"".join(bar_li(r, rel, len(B.PERSONS)) for r in tops)}</ul>
- </div>
-</section>"""
-    method_steps = ['جمع المادة', 'تسجيل المصدر والعهدة', 'الأصالة والسياق', 'المقارنة المستقلة', 'الموقع والزمن', 'توثيق القيود',
-                    'المراجعة القانونية', 'حماية الأشخاص', 'قرار النشر', 'التصحيح المستمر']
-    strip = ''.join(f'<li class="is-tied"><i></i><span>{s}</span></li>' for s in method_steps)
-    method = f"""<section class="sec sec-ink method-strip">
- <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2">منهجية التحقق: عشر خطوات</h2><p>لا ينشر ملف قبل أن يمر بكل خطوة.</p></div><a class="btn btn-light" href="method.html">المنهجية كاملة</a></div>
-  <ol class="cord-steps">{strip}</ol>
- </div>
-</section>"""
+    database = link_map(rel)
+    method = method_strip(rel)
     act = f"""<section class="sec">
  <div class="wrap act-grid">
   <div class="sheet act">

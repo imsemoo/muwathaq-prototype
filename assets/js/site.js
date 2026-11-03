@@ -59,6 +59,29 @@
     clear.addEventListener('click', reset);
   });
 
+  /* ---------- the home link map: a person lights its lines to the branches of law, a branch the people tied to it ---------- */
+  $$('[data-linkmap]').forEach((map) => {
+    const flows = $$('[data-flow]', map), ps = $$('[data-lp]', map), bs = $$('[data-lb]', map), all = [...ps, ...bs];
+    const say = $('[data-lm-say]', map), go = $('[data-lm-go]', map), goT = $('[data-lm-go-t]', map);
+    let sel = ps.find((b) => b.getAttribute('aria-pressed') === 'true') || ps[0];
+    const show = (btn) => {
+      const isP = btn.hasAttribute('data-lp'), id = btn.getAttribute(isP ? 'data-lp' : 'data-lb');
+      const on = flows.filter((f) => f.getAttribute(isP ? 'data-p' : 'data-b') === id);
+      const hit = new Set(on.map((f) => f.getAttribute(isP ? 'data-b' : 'data-p')));
+      flows.forEach((f) => f.classList.toggle('is-on', on.includes(f)));
+      on.forEach((f) => f.parentNode.appendChild(f));   // lit lines on top
+      ps.forEach((b) => b.classList.toggle('is-on', isP ? b === btn : hit.has(b.dataset.lp)));
+      bs.forEach((b) => b.classList.toggle('is-on', isP ? hit.has(b.dataset.lb) : b === btn));
+      say.textContent = btn.dataset.say; go.href = btn.dataset.href; goT.textContent = btn.dataset.go;
+    };
+    const pick = (btn) => { sel = btn; all.forEach((b) => b.setAttribute('aria-pressed', String(b === btn))); show(btn); };
+    all.forEach((b) => {
+      b.addEventListener('click', () => pick(b));
+      b.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') show(b); });
+      b.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') show(sel); });
+    });
+  });
+
   /* ---------- prototype note ---------- */
   const proto = $('#proto');
   if (proto && store.get('mw-proto') === 'hidden') proto.hidden = true;

@@ -10,7 +10,7 @@ import re
 
 import brand
 
-V = 47
+V = 50
 BASE_URL = 'https://taktek-dev.github.io/muwathaq-prototype/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,6 +84,7 @@ ICONS = {
     'shield': '<path d="M12 3.5l7 2.6v5.6c0 4.4-3 7.7-7 8.8-4-1.1-7-4.4-7-8.8V6.1z"/>',
     'pen': '<path d="M4.5 19.5l1.1-4.3L15.9 4.9a2.1 2.1 0 0 1 3 3L8.6 18.2z"/><path d="M13.9 6.9l3 3M12 19.5h7.5"/>',
     'inbox': '<path d="M4 13.5l2.1-6.6A2.2 2.2 0 0 1 8.2 5.4h7.6a2.2 2.2 0 0 1 2.1 1.5l2.1 6.6V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 13.5h4.6l1.3 2.4h4.2l1.3-2.4H20"/>',
+    'refresh': '<path d="M19.5 12a7.5 7.5 0 1 1-2.4-5.5"/><path d="M19.5 4.5v4.2h-4.2"/>',
     'hand': '<path d="M8 12.5V6.8a1.5 1.5 0 0 1 3 0V11M11 10V5.5a1.5 1.5 0 0 1 3 0V10M14 10V6.5a1.5 1.5 0 0 1 3 0v6.8c0 4-2.6 6.7-6.2 6.7-2.2 0-3.6-.9-4.9-2.7L3.8 13a1.5 1.5 0 0 1 2.4-1.8L8 13.5"/>',
 }
 

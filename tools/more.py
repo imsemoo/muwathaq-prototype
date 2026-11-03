@@ -2,7 +2,7 @@
 import build as B
 import shell as S
 import arabize as AR
-from pages import P, archive_card, article_card, review_path, fcard, all_people, people_filter, register, count_ar, person_href, stamp_form, STAMP
+from pages import person_row, read_min, TOPIC_ICON, P, archive_card, article_card, review_path, fcard, all_people, people_filter, register, count_ar, person_href, stamp_form, STAMP, METHOD_PHASES
 from shell import esc, icon, seal, seal_row, knots, ext, mono, VERIF, STATUS, KNOTS
 
 STEPS = [
@@ -21,7 +21,19 @@ STEPS = [
 
 def method():
     rel = ''
-    steps = ''.join(f'<li id="step-{n:02d}"><span class="k">{n:02d}</span><div><h3>{esc(t)}</h3><p>{esc(d)}</p></div></li>' for n, (t, d) in enumerate(STEPS, 1))
+    glyphs = [g for _, ss in METHOD_PHASES for _, g in ss]
+    starts = {}
+    n0 = 1
+    for name, ss in METHOD_PHASES:
+        starts[n0] = (name, n0, n0 + len(ss) - 1)
+        n0 += len(ss)
+    def step(n, t, d):
+        ph = starts.get(n)
+        head = f'<p class="steps-ph"><span class="mono">{ph[1]:02d}–{ph[2]:02d}</span>{esc(ph[0])}</p>' if ph else ''
+        cls = ' class="is-seal"' if glyphs[n - 1] == 'check' else (' class="is-ongoing"' if glyphs[n - 1] == 'refresh' else '')
+        return (f'<li id="step-{n:02d}"{cls}><span class="k">{icon(glyphs[n - 1])}</span><div>{head}<h3><span class="mono">{n:02d}</span>{esc(t)}</h3>'
+                f'<p>{esc(d)}</p></div></li>')
+    steps = ''.join(step(n, t, d) for n, (t, d) in enumerate(STEPS, 1))
     key = ''.join(f'<li>{seal(k, label=False)}<span><b>{esc(v[0])}</b><small>{esc(v[2])}</small></span></li>' for k, v in VERIF.items())
     ladder = ''.join(f'<li><b>{esc(STATUS[s][0])}</b><span>{esc(STATUS[s][2])}</span></li>' for s in ['alleged', 'named', 'charged', 'warrant', 'convicted'])
     main = f'''<div class="wrap">{S.crumbs(rel, [("كيف نتحقق", None)])}</div>
@@ -31,9 +43,9 @@ def method():
  {B.photo_fig(B.PICKS['section']['method'], rel, sizes="(min-width: 1024px) 760px, 100vw") if B.PICKS.get('section', {}).get('method') in B.PHOTO_SIZE else ''}
  <h2 class="h2">ثلاثة فصول لا نخلطها</h2>
  <div class="triad">
-  <div><h3 class="h3">الدليل</h3><p>مادة يمكن فحص أصالتها وسياقها: صورة، مقطع، وثيقة، صورة أقمار صناعية.</p></div>
-  <div><h3 class="h3">الادعاء</h3><p>رواية لم تثبت بعد، تُنسب إلى قائلها وتُعرض كما وردت.</p></div>
-  <div><h3 class="h3">الاستنتاج</h3><p>تحليل نستخلصه من الأدلة، ونذكر حدوده وما يلزم لإثباته.</p></div>
+  <div>{icon("image")}<h3 class="h3">الدليل</h3><p>مادة يمكن فحص أصالتها وسياقها: صورة، مقطع، وثيقة، صورة أقمار صناعية.</p></div>
+  <div>{icon("quote")}<h3 class="h3">الادعاء</h3><p>رواية لم تثبت بعد، تُنسب إلى قائلها وتُعرض كما وردت.</p></div>
+  <div>{icon("search")}<h3 class="h3">الاستنتاج</h3><p>تحليل نستخلصه من الأدلة، ونذكر حدوده وما يلزم لإثباته.</p></div>
  </div>
  <h2 class="h2">كيف نستخدم التقارير</h2>
  <ol class="prose numbered"><li>نحدد طبيعة الوثيقة: قضائية، أممية، لجنة تحقيق، حقوقية، صحفية، أو رأي بحثي.</li><li>نفحص مصادرها ومنهجيتها ونطاقها الزمني والجغرافي.</li><li>نميّز بين ما تثبته وما ترجّحه وما تنقله عن غيرها.</li><li>نقارن استنتاجاتها بمصادر مستقلة وروايات مغايرة عند وجودها.</li><li>نوثّق حدود الاستدلال بكل وثيقة داخل ملف الواقعة أو الشخص.</li></ol>
@@ -366,17 +378,18 @@ def article(x):
         side += f'<section class="side-group"><h2 class="side-h">المواد التي يتناولها <span class="mono">{len(rules)}</span></h2><ul class="rows rows-tight">{"".join(B.rule_row(r, rel) for r in rules)}</ul></section>'
     if persons:
         side += (f'<section class="side-group"><h2 class="side-h">ملفات مرتبطة <span class="mono">{len(persons)}</span></h2><ul class="rows rows-tight">'
-                 + ''.join(f'<li><a class="row row-person" href="{person_href(q, rel)}"><span class="row-body"><span class="tag-kind">{esc(STATUS[q["status"]][0])}</span><h3>{esc(q["name_ar"])}</h3></span><span class="row-end"><span class="mono">{esc(q["id"])}</span></span></a></li>' for q in persons)
+                 + ''.join(person_row(q, rel) for q in persons)
                  + '</ul></section>')
     demo = (f'<p class="note">{icon("info")}<span>مقال تجريبي كتبته هيئة التحرير لعرض التصميم؛ الوقائع والمواد فيه حقيقية ومربوطة بمصادرها.</span></p>'
             if x.get('demo') else '')
     main = f'''<div class="wrap">{S.crumbs(rel, [("المقالات", "articles/index.html"), (x["title_ar"], None)])}</div>
 <article class="sec article"><div class="wrap article-grid">
  <div class="article-main">
-  <p class="acard-meta"><span>{esc(x["topic_ar"])}</span><span>{esc(S.date_ar(x["date"]))}</span></p>
+  <p class="acard-kick">{icon(TOPIC_ICON.get(x["topic_ar"], "doc"))}{esc(x["topic_ar"])}</p>
   <h1 class="h1 article-h">{esc(x["title_ar"])}</h1>
   <p class="lead">{esc(x["dek_ar"])}</p>
-  <p class="article-by">{esc(x["author_ar"])}</p>
+  <div class="article-by"><span class="acard-by"><img src="{rel}assets/brand/mark.svg?v={S.V}" alt="" width="32" height="32">{esc(x["author_ar"])}</span>
+   <span class="acard-meta"><span>{icon("cal")}{esc(S.date_ar(x["date"]))}</span><span>{icon("clock")}قراءة {count_ar(read_min(x), "دقيقة واحدة", "دقيقتين", "دقائق", "دقيقة")}</span>{f'<span>{icon("scale")}{count_ar(len(rules), "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>' if rules else ""}</span></div>
   {demo}
   <div class="prose">{prose(x["body_ar"])}</div>
   <h2 class="h2">المصادر</h2>
@@ -405,10 +418,10 @@ def write_article():
   {field("a-body", "نص المقال", '<textarea class="input" id="a-body" required minlength="400" aria-describedby="a-body-e" rows="12"></textarea>', True, "كل واقعة بمصدرها، وكل مادة قانونية برقمها.", "النص أقصر من الحد الأدنى (400 حرف).")}
   {field("a-src", "المصادر والروابط", '<textarea class="input" id="a-src" required aria-describedby="a-src-e" rows="4" placeholder="رابط في كل سطر"></textarea>', True, "", "أضف مصدرا واحدا على الأقل.")}
   <label class="check"><input type="checkbox" required id="a-own"><span>المقال من تأليفي ولم ينشر في مكان آخر، وأوافق على التحكيم والتعديل التحريري.</span></label>
-  <button class="btn btn-ink btn-block" type="submit" style="margin-top:18px">أرسل للتحكيم (تجريبي)</button>
+  <button class="btn btn-wax btn-block" type="submit" style="margin-top:18px">أرسل للتحكيم (تجريبي)</button>
   <div class="note" id="art-out" hidden tabindex="-1">{seal("in_progress", label=False)}<span><b>استلمنا المقال برقم <span class="mono" data-ref></span>.</b> لم يرسل إلى أي جهة؛ في المنصة الفعلية يبدأ من مرحلة الاستلام.</span></div>
  </form>
- <div><h2 class="h3">مراحل النشر</h2>{review_path()}
+ <div class="write-side"><h2 class="h3">مراحل النشر</h2>{review_path()}
   <p class="note is-quiet" style="margin-top:22px">{icon("shield")}<span>لا ينشر مقال يكشف بيانات شخصية لأحد، أو ينسب فعلا لشخص دون مصدر موثوق.</span></p></div>
 </div></section>'''
     P(rel, 'articles/write.html', 'اكتب مقالا', 'أرسل مقالا في القانون الدولي وجرائم الحرب للتحكيم قبل النشر.', 'articles', main)

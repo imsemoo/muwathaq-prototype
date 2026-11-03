@@ -1932,3 +1932,55 @@ main, .foot { position: relative; z-index: 1; }
 .tag.is-reversed .tag-pic figcaption b { color: var(--on-ink); }
 .tag.is-reversed .tag-pic figcaption a { color: var(--on-ink-2); }
 @media (max-width: 720px) { .tag-pic img { aspect-ratio: 4 / 3; } }
+
+/* ---------- person head: the person leads the file ---------- */
+.tag-person { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; }
+.tp-face { width: clamp(120px, 12vw, 168px); height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; border-radius: 18px; background: var(--ink-2); }
+.tp-face.is-none { display: grid; place-items: center; color: var(--on-ink-2); background: #23272C; }
+.tp-face.is-none .icon { width: 42px; height: 42px; }
+.tp-body { display: grid; gap: 6px; min-width: 0; }
+.tp-status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-sm); font-weight: 800; color: var(--wax-hi); }
+.tp-status .sg { width: 20px; height: 14px; }
+.tag:not(.is-reversed) .tp-status { color: var(--wax); }
+.tp-name { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem); font-weight: 900; line-height: 1.35; text-wrap: balance; }
+.tp-role { font-size: var(--fs-ui); color: var(--on-ink-2); }
+.tp-body .tag-by { display: inline-flex; align-items: flex-start; gap: 7px; margin-top: 4px; font-size: var(--fs-xs); }
+.tp-body .tag-by .icon { width: 15px; height: 15px; margin-top: 3px; flex: none; }
+.tag-person + div { margin-top: 24px !important; }
+.lg-rules .rule .rule-ref { font-size: 12.5px; font-weight: 800; color: var(--wax); }
+@media (max-width: 720px) {
+  .tag-person { grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .tp-face { width: 96px; }
+  .tp-name { font-size: 1.5rem; }
+}
+/* current item in the contents: a wax bar at the start edge, not a bracket */
+.toc a.is-here { box-shadow: none; position: relative; color: var(--ink); }
+.toc a.is-here::before { content: ""; position: absolute; inset-block: 7px; inset-inline-start: 0; width: 3px; border-radius: 3px; background: var(--wax); }
+.row.is-hot { box-shadow: none; position: relative; }
+.row.is-hot::before { content: ""; position: absolute; inset-block: 12px; inset-inline-start: 0; width: 3px; border-radius: 3px; background: var(--wax); }
+
+/* ---------- method page steps: icon nodes like the home strip, phases named at their first step ---------- */
+.steps .k { font: inherit; border-width: 1.5px; color: var(--ink); }
+.steps .k .icon { width: 22px; height: 22px; }
+.steps li.is-seal .k { background: var(--wax); border-color: var(--wax); color: var(--on-ink); }
+.steps li.is-ongoing .k { border-style: dashed; border-color: var(--cord); }
+.steps h3 { display: flex; align-items: baseline; gap: 10px; }
+.steps h3 .mono { font-size: 13px; color: var(--mute); }
+.steps-ph { display: flex; align-items: baseline; gap: 10px; margin: 2px 0 6px; font-size: var(--fs-xs); font-weight: 800; color: var(--wax); }
+.steps-ph .mono { font-size: 12px; color: var(--mute); }
+.steps-ph + h3 { padding-top: 0; }
+.steps li:has(.steps-ph):not(:first-child) { margin-top: 12px; }
+.triad > div > .icon { width: 40px; height: 40px; padding: 10px; border-radius: 50%; background: var(--table); color: var(--ink); }
+/* the review path stands up in a narrow side column */
+.write-side .review-path { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 14px; }
+.write-side .review-path li { grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; row-gap: 0; padding-bottom: 16px; }
+.write-side .review-path li:not(:last-child)::after { inset-inline-start: 21.25px; inset-inline-end: auto; top: 44px; bottom: 0; width: 1.5px; height: auto; }
+.write-side .rp-node { grid-row: span 2; width: 44px; height: 44px; margin: 0; }
+.write-side .review-path b { align-self: end; }
+
+/* article page head: subject in wax, the author with the seal, date, reading time and articles with icons */
+.article-main > .acard-kick { margin-bottom: 10px; font-size: var(--fs-sm); }
+.article-by { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin-top: 18px; padding-block: 14px; border-block: 1px solid var(--line-2); }
+.article-by .acard-by img { width: 32px; height: 32px; }
+.article-by .acard-by { font-size: var(--fs-sm); }
+.row-person { grid-template-columns: 48px minmax(0, 1fr) auto; }

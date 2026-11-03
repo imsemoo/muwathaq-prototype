@@ -661,7 +661,7 @@ def acts_block(p, rel):
     items = ''
     for x in p['acts']:
         rules = [B.RULE_BY_ID[r] for r in x['rule_ids'] if r in B.RULE_BY_ID]
-        chips = ''.join(f'<a class="rule" href="{rel}law/{slug(r["id"])}.html"><span class="mono">{esc(B.rule_short(r))}</span>'
+        chips = ''.join(f'<a class="rule" href="{rel}law/{slug(r["id"])}.html"><span class="num rule-ref">{esc(B.rule_short(r))}</span>'
                         f'<b>{esc(r.get("title_ar", ""))}</b><small>{esc(r.get("instrument_ar", ""))}</small></a>' for r in rules)
         basis = f'<p class="lg-basis">{esc(x["basis_ar"])}</p>' if x.get('basis_ar') else ''
         items += (f'<li class="lg"><h3 class="lg-act">{esc(x["act_ar"])}</h3>{basis}'
@@ -692,9 +692,9 @@ def demo_tag(p, rel):
   <span class="tag-hole" aria-hidden="true"></span>
   <div class="tag-top"><span class="tag-no">{esc(p["id"])}</span><span class="tag-kind">ملف تجريبي</span></div>
   <div class="tag-seal">{S.wax("in_progress")}</div>
-  <h1 class="tag-status">{esc(STATUS[p["status"]][0])}</h1>
-  <p class="tag-by">رصد أولي من مواد مصورة منشورة — مثال توضيحي</p>
-  <div class="tag-who"><span class="tag-face sil-face">{SILHOUETTE}</span><div class="tag-name"><b>{esc(p["name_ar"])}</b><span>{esc(p["role_ar"])}</span></div></div>
+  <div class="tag-person"><span class="tp-face is-none" aria-hidden="true">{icon("user")}</span>
+   <div class="tp-body"><p class="tp-status"><i class="sg {stamp_form(p['status'])}"></i>{esc(STATUS[p["status"]][0])}</p><h1 class="tp-name">{esc(p["name_ar"])}</h1>
+    <p class="tp-role">{esc(p["role_ar"])}</p><p class="tag-by">{icon("video")}<span>رصد أولي من مواد مصورة منشورة — مثال توضيحي</span></p></div></div>
   <div style="margin-top:18px">{knots(p["status"])}</div>
   <p class="tag-not">{icon("info")}<span>ملف تجريبي لا يخص شخصا حقيقيا. الادعاء ليس اتهاما ولا إدانة، ويفترض براءة الشخص حتى تثبت إدانته.</span></p>
   <dl class="fields">
@@ -739,7 +739,7 @@ def person_page(p):
     side = (side_list('الوقائع', [B.inc_mini_row(i, rel) for i in incs], dup=True) + side_list('الوثائق', [B.doc_row(d, rel) for d in docs]) +
             side_list('القواعد', [B.rule_row(r, rel) for r in rules])) or f'<p class="small mute">لا سجلات مرتبطة بعد.</p>'
     tag = B.person_tag(p, rel, actions=False).replace('<span class="tag-hole" aria-hidden="true"></span>', '<span class="tag-hole" aria-hidden="true"></span>', 1)
-    tag = tag.replace('<p class="tag-status', '<h1 class="tag-status', 1).replace('</p>\n  <p class="tag-by', '</h1>\n  <p class="tag-by', 1)
+    tag = re.sub(r'<p class="tp-name">(.*?)</p>', r'<h1 class="tp-name">\1</h1>', tag, count=1)
     timeline = ''.join(f'''<li><span class="tl-date num">{esc(date_ar(s.get("date")))}</span><div class="tl-body"><p class="tl-kind">{esc(STATUS.get(s.get("type"), (s.get("type", ""),))[0] if s.get("type") in STATUS else ("قرار إجرائي" if s.get("type") == "procedural" else s.get("type", "")))}</p>
       <h3>{esc(s.get("doc_title_ar") or s.get("doc_title_en", ""))}</h3><p class="small mute">{esc(s.get("body_ar", ""))}{(" · " + mono(s["doc_symbol"])) if s.get("doc_symbol") else ""}</p>
       <p class="small">{esc(s.get("summary_ar", ""))}</p>{ext(s["url"], "الوثيقة الرسمية", "small") if s.get("url") else ""}</div></li>''' for s in sorted(p.get('statuses', []), key=lambda s: s.get('date', '')))

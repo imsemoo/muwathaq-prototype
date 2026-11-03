@@ -371,6 +371,11 @@ def person_mini(p, rel, vtn=True):
             f'<span class="mini-meta">{esc(by)}</span>{knots(p["status"], mini=True)}</a>')
 
 
+def stamp_form_of(status):
+    lv = STATUS[status][1]
+    return 'is-firm' if lv >= 4 else ('is-charged' if lv == 3 else ('is-open' if lv == 2 else 'is-loose'))
+
+
 def person_tag(p, rel, lead=False, actions=True):
     label, by, main = person_status_line(p)
     st = state_of(p['id'], 'complete')
@@ -398,13 +403,13 @@ def person_tag(p, rel, lead=False, actions=True):
   <span class="tag-hole" aria-hidden="true"></span>
   <div class="tag-top"><span class="tag-no">{esc(p["id"])}</span><span class="tag-kind">ملف شخص</span></div>
   <div class="tag-seal" data-cord-from>{S.wax(st)}</div>
-  <p class="tag-status open-1">{esc(label)}</p>
-  <p class="tag-by open-1">{esc(by)}</p>
-  <div class="tag-who open-2">{face(photo_of(p["id"]), rel)}<div class="tag-name"><b>{esc(p["name_ar"])}</b><span>{esc(p.get("role_ar", ""))}</span></div></div>
+  <div class="tag-person open-1">{face(photo_of(p["id"]), rel, "tp-face", 320) or '<span class="tp-face is-none" aria-hidden="true">' + icon("user") + '</span>'}
+   <div class="tp-body"><p class="tp-status"><i class="sg {stamp_form_of(p['status'])}"></i>{esc(label)}</p><p class="tp-name">{esc(p["name_ar"])}</p>
+    <p class="tp-role">{esc(p.get("role_ar", ""))}</p><p class="tag-by">{icon("official")}<span>{esc(by)}</span></p></div></div>
   <div class="open-2" style="margin-top:18px">{knots(p["status"])}</div>
   <p class="tag-not open-3">{icon("info")}<span>{esc(STATUS[p["status"]][2])} ويُفترض براءة الشخص حتى تثبت إدانته بحكم قضائي.</span></p>
   <dl class="fields open-3">
-   <div><dt>رقم الوثيقة أو الحالة</dt><dd>{mono(symbol)}</dd></div>
+   {f"<div><dt>رقم الوثيقة أو الحالة</dt><dd>{mono(symbol)}</dd></div>" if symbol != "—" else ""}
    <div><dt>حالة التحقق من الملف</dt><dd>{seal_row(st)}</dd></div>
    {f"<div><dt>الفترة المشمولة</dt><dd>{esc(period)}</dd></div>" if period else ""}
    <div class="wide"><dt>الأفعال الواردة في الوثائق</dt><dd>{crimes}</dd></div>

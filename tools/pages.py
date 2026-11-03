@@ -208,8 +208,7 @@ STAMP = {'convicted': ('مدان', 'حكم قضائي نهائي'), 'warrant': (
 
 def fstamp(p):
     word, basis = STAMP[p['status']]
-    lv = STATUS[p['status']][1]
-    form = 'is-firm' if lv >= 4 else ('is-charged' if lv == 3 else ('is-open' if lv == 2 else 'is-loose'))
+    form = stamp_form(p['status'])
     _, _, main = B.person_status_line(p) if not p.get('demo') else (None, None, {})
     year = (main.get('date') or '')[:4]
     return (f'<span class="fstamp {form}" aria-hidden="true"><b>{esc(word)}</b>'
@@ -250,8 +249,16 @@ def all_people():
     return B.PERSONS + B.DEMO
 
 
-def people_filter(persons, legend='الوضع القانوني'):
-    opts = [(k, STATUS[k][0], f'<span class="mono">{STATUS[k][1]}/5</span>', sum(p['status'] == k for p in persons))
+def stamp_form(k):
+    lv = STATUS[k][1]
+    return 'is-firm' if lv >= 4 else ('is-charged' if lv == 3 else ('is-open' if lv == 2 else 'is-loose'))
+
+
+def people_filter(persons, legend='الوضع القانوني', tabs=False):
+    """The legal-standing filter. As tabs, each one is named by the word of its stamp and drawn with that stamp's frame."""
+    opts = [(k, STAMP[k][0] if tabs else STATUS[k][0],
+             f'<i class="sg {stamp_form(k)}"></i>' if tabs else f'<span class="mono">{STATUS[k][1]}/5</span>',
+             sum(p['status'] == k for p in persons))
             for k in STATUS if any(p['status'] == k for p in persons)]
     return facet('status', legend, opts)
 
@@ -531,7 +538,7 @@ def home():
     pdb = f"""<section class="sec" id="accused" aria-labelledby="accused-h">
  <div class="wrap">
   <div class="sec-head"><div><h2 class="h2" id="accused-h">الأشخاص المتهمون</h2><p>قاعدة بيانات الأشخاص والملفات القانونية: كل ملف يربط الشخص بالأفعال المنسوبة إليه وبالمواد القانونية التي قد تنطبق عليها، مع حالته القانونية ومصدرها.</p></div><a class="link-arrow" href="people/index.html">كل الملفات {icon("arrow")}</a></div>
-  <form class="chips-filter" data-filter="home-people" data-count="home-people-count" data-empty="home-people-empty" aria-label="تصفية الأشخاص حسب الوضع القانوني">{people_filter(people)}</form>
+  <form class="chips-filter" data-filter="home-people" data-count="home-people-count" data-empty="home-people-empty" aria-label="تصفية الأشخاص حسب الوضع القانوني">{people_filter(people, tabs=True)}</form>
   <p class="count" id="home-people-count" aria-live="polite"></p>
   <ul class="fcards" id="home-people">{"".join(fcard_li(p, rel) for p in people)}</ul>
   <div class="empty" id="home-people-empty" hidden>{seal("not_started", label=False)}<p><b>لا ملفات بهذا الوضع القانوني بعد.</b></p></div>

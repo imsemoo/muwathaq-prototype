@@ -1670,3 +1670,30 @@ main, .foot { position: relative; z-index: 1; }
 /* the hero portraits in black and white (user, 3 Nov 2026); other photos stay as they are */
 .wanted-ph img { filter: grayscale(1) contrast(1.05); }
 .foot-top { min-height: 44px; padding-inline: 4px; }
+
+/* ---------- the standing filter as tabs: each named by its stamp's word, drawn with its stamp's frame;
+   the picked tab is ink with the wax rule under it ---------- */
+.chips-filter { margin-bottom: 18px; border-bottom: 1px solid var(--line-2); }
+.chips-filter .facet { flex-wrap: nowrap; gap: 0; overflow-x: auto; scrollbar-width: none; margin-bottom: -1px; }
+.chips-filter .facet::-webkit-scrollbar { display: none; }
+.chips-filter .facet-opt, .chips-filter .facet-opt:hover { position: relative; flex: none; min-height: 48px; gap: 9px; padding: 10px 16px 12px; border-radius: 10px 10px 0 0;
+  background: none; box-shadow: none; color: var(--mute); font-weight: 700; transition: color var(--t-fast), background-color var(--t-fast); }
+.chips-filter .facet-opt:hover { color: var(--ink); background: rgb(21 23 26 / .035); }
+.chips-filter .facet-opt::after { content: ""; position: absolute; inset-inline: 12px; bottom: 0; height: 2.5px; border-radius: 2px 2px 0 0; background: transparent; transition: background-color var(--t-fast); }
+.chips-filter .facet-opt:has(input:checked) { background: none; color: var(--ink); }
+.chips-filter .facet-opt:has(input:checked)::after { background: var(--wax); }
+.chips-filter .facet-opt:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: -4px; }
+.chips-filter .facet-mark { display: inline-flex; }
+.chips-filter .facet-opt:first-child .facet-mark { display: none; }
+.chips-filter .facet-n, .chips-filter .facet-opt:has(input:checked) .facet-n { min-width: 22px; padding: 1px 6px; border-radius: 6px; background: var(--table-2); color: var(--ink-2); text-align: center; font-size: 12px; line-height: 1.6; }
+.chips-filter .facet-opt:has(input:checked) .facet-n { background: var(--ink); color: var(--on-ink); }
+.band-paper .chips-filter .facet-n { background: var(--table); }
+/* the stamp's frame in small: double for a warrant or conviction, lighter double for a charge, single, dashed */
+.sg { display: block; width: 18px; height: 13px; border-radius: 3px; border: 1.5px solid currentColor; opacity: .9; }
+.sg.is-firm { border: 4px double var(--wax); }
+.sg.is-charged { border: 3px double currentColor; }
+.sg.is-loose { border-style: dashed; }
+@media (max-width: 720px) {
+  .chips-filter .facet { flex-wrap: wrap; overflow: visible; }
+  .chips-filter .facet-opt, .chips-filter .facet-opt:hover { min-height: 44px; padding: 8px 10px 10px; }
+}

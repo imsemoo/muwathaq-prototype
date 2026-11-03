@@ -448,7 +448,7 @@ def database():
  <div class="explorer" data-explorer>
   <div class="ex-col">
    <div class="ex-head"><h2 class="h3">الأشخاص <span class="mono">{len(people)}</span></h2>
-    <form class="chips-filter" data-filter="db-people" data-count="db-people-count" data-empty="db-people-empty" aria-label="تصفية الأشخاص">{people_filter(people)}</form>
+    <form class="chips-filter" data-filter="db-people" data-count="db-people-count" data-empty="db-people-empty" aria-label="تصفية الأشخاص">{people_filter(people, tabs=True)}</form>
     <p class="count" id="db-people-count" aria-live="polite"></p></div>
    <ul class="nodes" id="db-people">{p_items}</ul>
    <div class="empty" id="db-people-empty" hidden><p><b>لا ملفات بهذا الوضع.</b></p></div>

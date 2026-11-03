@@ -314,55 +314,48 @@ def bar_li(r, rel, total):
 COVER_KIND = {'icj': 'أمر أو فتوى قضائية', 'icc': 'قرار قضائي', 'un_coi': 'تقرير لجنة تحقيق', 'un_sr': 'تقرير مقرر خاص',
               'un_agency': 'تقرير أممي', 'ngo': 'تقرير حقوقي', 'journalism': 'تحقيق صحفي', 'forensic': 'تحقيق جنائي رقمي',
               'ipc': 'تحليل للأمن الغذائي'}
+KNOT_KIND = {'arrest_warrant': ('k-warrant', 'أمر قبض'), 'indictment': ('k-warrant', 'اتهام'),
+             'investigation': ('k-inv', 'تحقيق'), 'case_accepted': ('k-inv', 'قبول دعوى'), 'questioning': ('k-ask', 'استجواب')}
 
 
-def doc_cover(d, rel):
-    """A document as its cover: who issued it, what kind of text it is, its symbol, under the platform's seal."""
-    sym = B.doc_face(d)
-    return (f'<span class="dcover" aria-hidden="true"><span class="dcover-seal">{S.wax("complete")}</span>'
-            f'<span class="dcover-by">{esc(d.get("publisher_ar", ""))}</span>'
-            f'<span class="dcover-kind">{esc(d.get("action_ar") or COVER_KIND.get(d.get("cat"), nature_short(d)))}</span>'
-            f'<span class="dcover-sym mono">{esc(sym)}</span></span>')
+# the emblem on each cover: what kind of body issued the text
+COVER_GLYPH = {'icj': 'scale', 'icc': 'scale', 'un_coi': 'search', 'un_sr': 'user', 'un_agency': 'official',
+               'ngo': 'shield', 'journalism': 'doc', 'forensic': 'sat', 'ipc': 'layers', 'national': 'official'}
+
+
+def cover(d, rel):
+    """A document as its cover on the shelf: the issuing body, its emblem, the kind of text and the date; the title under it."""
+    by = re.sub(r'\s*\(.*?\)', '', B.DOC_CAT.get(d.get('cat'), ''))
+    return (f'<a class="cover" href="{rel}reports/{slug(d["id"])}.html"><span class="cv">'
+            f'<span class="cv-by">{esc(by)}</span>{icon(COVER_GLYPH.get(d.get("cat"), "doc"), "icon cv-glyph")}'
+            f'<span class="cv-kind">{esc(COVER_KIND.get(d.get("cat"), nature_short(d)))}</span>'
+            f'<span class="cv-foot"><span class="num">{esc(date_ar(d["date"]))}</span>{icon("arrow")}</span></span>'
+            f'<b class="cv-t">{esc(d.get("title_ar", ""))}</b></a>')
 
 
 def reports_home(rel, docs):
     intl = [d for d in docs if d.get('cat') != 'national']
-    national = [d for d in docs if d.get('cat') == 'national']
+    national = sorted([d for d in docs if d.get('cat') == 'national'], key=lambda d: d['date'])
     lead = B.DOC_BY_ID.get(B.PICKS.get('home', {}).get('lead_report', '')) or intl[0]
-    named = [B.P_BY_ID[i] for i in lead.get('persons', []) if i in B.P_BY_ID]
-    names = ''.join(f'<a href="{rel}people/{slug(p["id"])}.html">{esc(p["name_ar"])}</a>' for p in named)
-    latest = ''.join(f'<li><a href="{rel}reports/{slug(d["id"])}.html"><span class="rep-d num">{esc(date_ar(d["date"]))}</span>'
-                     f'<b>{esc(d.get("title_ar", ""))}</b><small>{esc(d.get("publisher_ar", ""))}</small></a></li>'
-                     for d in [x for x in intl if x is not lead][:4])
-    by_country = {}
-    for d in national:   # newest first, so the first record per country is its latest step
-        by_country.setdefault(d['country_ar'], []).append(d)
-    cells = ''
-    for country, recs in by_country.items():
-        last = recs[0]
-        who = f' · {last["persons_count"]} مشتبها بهم' if (last.get('persons_count') or 0) > 2 else ''
-        cells += (f'<li><a class="nat" href="{rel}reports/{slug(last["id"])}.html"><b class="nat-c">{esc(country)}</b>'
-                  f'<span class="nat-a">{esc(last["action_ar"])}{esc(who)}</span><span class="nat-d num">{esc(date_ar(last["date"]))}</span>'
-                  f'<span class="nat-n">{count_ar(len(recs), "سجل واحد", "سجلان", "سجلات", "سجلا")} {icon("arrow")}</span></a></li>')
-    links = (f'<a class="btn btn-ink" href="{rel}reports/{slug(lead["id"])}.html">اقرأ الوثيقة</a>' +
-             (ext(lead["url"], "النص الرسمي", "btn btn-line") if lead.get("url") else ''))
+    shelf = [lead] + [x for x in intl if x is not lead][:3]
+    knots_ = ''
+    year = ''
+    for d in national:
+        cls, kind = KNOT_KIND.get(d.get('action'), ('k-inv', 'تحقيق'))
+        y = d['date'][:4]
+        mark = f'<span class="cl-year mono">{y}</span>' if y != year else ''
+        year = y
+        many = f'<em>{d["persons_count"]} مشتبها بهم</em>' if (d.get('persons_count') or 0) > 2 else ''
+        knots_ += (f'<li>{mark}<a href="{rel}reports/{slug(d["id"])}.html" title="{esc(d.get("title_ar", ""))}">'
+                   f'<b>{esc(d["country_ar"])}</b><i class="cl-knot {cls}" aria-hidden="true"></i>'
+                   f'<span class="num">{esc(" ".join(date_ar(d["date"]).split()[:-1]) or date_ar(d["date"]))}</span>{many}'
+                   f'<span class="sr">{esc(kind)}</span></a></li>')
+    key = ''.join(f'<li><i class="cl-knot {c}"></i>{t}</li>' for c, t in (('k-warrant', 'أمر قبض'), ('k-inv', 'تحقيق'), ('k-ask', 'استجواب')))
     return f"""<section class="sec band-paper" aria-labelledby="reports-h">
  <div class="wrap">
-  <div class="sec-head"><div><h2 class="h2" id="reports-h">التقارير الدولية</h2><p>وثائق قضائية وأممية وحقوقية، وإجراءات قضاء وطني في عدة دول، كل منها بطبيعته القانونية.</p></div><a class="link-arrow" href="{rel}reports/index.html">كل التقارير ({len(docs)}) {icon("arrow")}</a></div>
-  <div class="rep-grid">
-   <article class="rep-lead">
-    {doc_cover(lead, rel)}
-    <div class="rep-body">
-     <p class="rep-cat">{esc(B.DOC_CAT.get(lead.get("cat"), ""))} · {esc(date_ar(lead["date"]))}</p>
-     <h3 class="rep-t"><a href="{rel}reports/{slug(lead["id"])}.html">{esc(lead.get("title_ar", ""))}</a></h3>
-     <p class="rep-x">{esc(lead.get("summary_ar", ""))}</p>
-     {f'<p class="rep-named"><span>الأشخاص الوارد ذكرهم</span>{names}</p>' if names else ''}
-     <div class="rep-links">{links}</div>
-    </div>
-   </article>
-   <div class="rep-latest"><h3 class="side-h">الأحدث</h3><ol>{latest}</ol></div>
-  </div>
-  {f'<div class="nat-head"><h3 class="h3">إجراءات قضائية وطنية</h3><p>دول اتخذ قضاؤها خطوة رسمية: أمر قبض، أو تحقيق، أو استجواب. الإجراء ليس حكما بالإدانة.</p></div><ul class="nats">{cells}</ul>' if cells else ''}
+  <div class="sec-head"><div><h2 class="h2" id="reports-h">التقارير الدولية</h2><p>قرارات وتقارير دولية، وخطوات القضاء الوطني.</p></div><a class="link-arrow" href="{rel}reports/index.html">كل التقارير ({len(docs)}) {icon("arrow")}</a></div>
+  <ul class="shelf">{"".join(f"<li>{cover(d, rel)}</li>" for d in shelf)}</ul>
+  {f'<div class="cl-head"><h3 class="h3">القضاء الوطني يتحرك</h3><ul class="cl-key" aria-label="مفتاح العقد">{key}</ul></div><ol class="cordline">{knots_}</ol>' if knots_ else ''}
  </div>
 </section>"""
 

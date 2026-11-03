@@ -346,7 +346,7 @@ def rule_label(rid):
     r = RULE_BY_ID.get(rid)
     if not r:
         return esc(rid)
-    return f'<span class="mono">{esc(rule_short(r))}</span> <b>{esc(r.get("title_ar", ""))}</b>'
+    return f'<span class="num rule-ref">{esc(rule_short(r))}</span> <b>{esc(r.get("title_ar", ""))}</b>'
 
 
 def vt(rec_id):

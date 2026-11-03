@@ -1988,3 +1988,5 @@ main, .foot { position: relative; z-index: 1; }
 .id-stamps { list-style: none; display: grid; gap: 8px; margin-top: 14px; }
 .id-stamps li { display: grid; grid-template-columns: 26px auto minmax(0, 1fr); align-items: center; gap: 10px; }
 .id-stamps .sg { width: 24px; height: 17px; }
+.rule-ref { font-weight: 800; color: var(--wax); }
+.facet-mark .sg { width: 18px; height: 13px; }

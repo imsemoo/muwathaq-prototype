@@ -266,7 +266,7 @@ def stamp_form(k):
 def people_filter(persons, legend='الوضع القانوني', tabs=False):
     """The legal-standing filter. As tabs, each one is named by the word of its stamp and drawn with that stamp's frame."""
     opts = [(k, STAMP[k][0] if tabs else STATUS[k][0],
-             f'<i class="sg {stamp_form(k)}"></i>' if tabs else f'<span class="mono">{STATUS[k][1]}/5</span>',
+             f'<i class="sg {stamp_form(k)}"></i>',
              sum(p['status'] == k for p in persons))
             for k in STATUS if any(p['status'] == k for p in persons)]
     return facet('status', legend, opts)
@@ -822,7 +822,7 @@ def incident_page(inc):
  {'<p class="note">' + icon("alert") + '<span>الروايتان كما وردتا، وترجيح إحداهما يذكر سببه.</span></p>' if inc.get('conflict') else ''}'''
     # one block per act: the act, the rules it engages, then why and what must be proven side by side
     legal_rows = ''.join(f'''<li class="lg"><h3 class="lg-act">{esc(L.get("act_ar", ""))}</h3>
-      <div class="lg-rules">{"".join(f'<a class="rule" href="{rel}law/{slug(r)}.html"><span class="mono">{esc(B.rule_short(B.RULE_BY_ID[r]))}</span><b>{esc(B.RULE_BY_ID[r].get("title_ar", ""))}</b></a>' for r in L.get("ids", []) if r in B.RULE_BY_ID) or esc("، ".join(L.get("rules", [])))}</div>
+      <div class="lg-rules">{"".join(f'<a class="rule" href="{rel}law/{slug(r)}.html"><span class="num rule-ref">{esc(B.rule_short(B.RULE_BY_ID[r]))}</span><b>{esc(B.RULE_BY_ID[r].get("title_ar", ""))}</b></a>' for r in L.get("ids", []) if r in B.RULE_BY_ID) or esc("، ".join(L.get("rules", [])))}</div>
       <div class="lg-cols"><div><p class="lg-h">لماذا قد تنطبق</p><p>{esc(L.get("why_ar", ""))}</p></div><div><p class="lg-h">ما يلزم إثباته</p><p>{esc(L.get("to_prove_ar", ""))}</p></div></div></li>''' for L in inc.get('legal', []))
     resp = (f'<p>ورد في هذا السجل {"، ".join(esc(p["name_ar"]) for p in persons)} لأن وثيقة رسمية ربطت وضعهم القانوني بالأفعال محل التحليل؛ لا يعني ذلك ثبوت مسؤوليتهم الفردية عن هذه الواقعة بعينها.</p>'
             if persons else '<p>لم يُربط هذا السجل بشخص بعينه. تحديد المسؤولية الفردية يتطلب أدلة على المساهمة الشخصية أو شروط المسؤولية القيادية، وهو خارج نطاق هذا السجل.</p>')

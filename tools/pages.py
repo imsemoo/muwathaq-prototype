@@ -198,6 +198,22 @@ def charge_of(p):
     return B.PICKS.get('charge_ar', {}).get(p['id'], '')
 
 
+# the stamp's word and its basis line, per legal standing
+STAMP = {'convicted': ('مدان', 'حكم قضائي نهائي'), 'warrant': ('مطلوب', 'أمر قبض دولي'),
+         'charged': ('متهم', 'لائحة اتهام رسمية'), 'named': ('ورد اسمه', 'في تحقيق أممي موثق'),
+         'sanctioned': ('عقوبات', 'قرار حكومي إداري'), 'alleged': ('قيد التحقق', 'ادعاءات لم تراجع')}
+
+
+def fstamp(p):
+    word, basis = STAMP[p['status']]
+    lv = STATUS[p['status']][1]
+    form = 'is-firm' if lv >= 4 else ('is-charged' if lv == 3 else ('is-open' if lv == 2 else 'is-loose'))
+    _, _, main = B.person_status_line(p) if not p.get('demo') else (None, None, {})
+    year = (main.get('date') or '')[:4]
+    return (f'<span class="fstamp {form}" aria-hidden="true"><b>{esc(word)}</b><small>{esc(basis)}</small>'
+            f'{f"<i class=mono>{year}</i>" if year else ""}</span><span class="sr">{esc(STATUS[p["status"]][0])}.</span>')
+
+
 def fcard(p, rel):
     """A file in the persons database: photo, then legal standing, name, role and the charge; one quiet line
     for the articles the acts engage. The standing label weighs what it means: a warrant or a conviction is
@@ -210,14 +226,12 @@ def fcard(p, rel):
                f'loading="lazy" decoding="async">')
     else:
         pic = f'{SILHOUETTE}<small>{"ملف تجريبي — لا صورة" if demo else "لا صورة منشورة في الملف"}</small>'
-    lv = STATUS[p['status']][1]
-    weight = 'is-firm' if lv >= 4 else ('is-open' if lv >= 2 else 'is-loose')
     n = len(p['rule_ids'])
     badge = '<span class="fcard-demo">تجريبي</span>' if demo else ''
     charge = charge_of(p)
     return (f'<a class="fcard{" is-demo" if demo else ""}" href="{person_href(p, rel)}">'
-            f'<span class="fcard-ph{"" if ph else " is-empty"}">{pic}{badge}</span>'
-            f'<span class="fcard-body"><span class="fcard-status {weight}">{esc(STATUS[p["status"]][0])}</span>'
+            f'<span class="fcard-ph{"" if ph else " is-empty"}">{pic}{badge}{fstamp(p)}</span>'
+            f'<span class="fcard-body">'
             f'<b class="fcard-name">{esc(p["name_ar"])}</b><span class="fcard-role">{esc(p.get("role_ar", ""))}</span>'
             f'{f"<span class=fcard-charge>{esc(charge)}</span>" if charge else ""}</span>'
             f'<span class="fcard-foot"><span>{count_ar(n, "مادة قانونية واحدة", "مادتان قانونيتان", "مواد قانونية", "مادة قانونية")}</span>'

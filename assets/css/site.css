@@ -1153,11 +1153,6 @@ main, .foot { position: relative; z-index: 1; }
 .fcard-body { display: grid; align-content: start; gap: 2px; padding: 14px 16px 14px; min-width: 0; }
 .fcard-name { font-size: clamp(1.125rem, 1.03rem + .35vw, 1.3125rem); font-weight: 800; line-height: 1.5; margin-top: 10px; }
 .fcard-role { font-size: var(--fs-sm); color: var(--mute); line-height: 1.7; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; }
-/* the standing label: its fill follows its legal weight, never a colour */
-.fcard-status { justify-self: start; padding: 3px 10px; border-radius: 8px; font-size: var(--fs-xs); font-weight: 700; line-height: 1.7; }
-.fcard-status.is-firm { background: var(--ink); color: var(--on-ink); }
-.fcard-status.is-open { box-shadow: inset 0 0 0 1.5px var(--ink); color: var(--ink); }
-.fcard-status.is-loose { outline: 1.5px dashed var(--cord); outline-offset: -1.5px; color: var(--ink-2); }
 .fcard-charge { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: var(--fs-sm); font-weight: 600; line-height: 1.75; color: var(--ink);
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .fcard-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 16px; border-top: 1px solid var(--line); font-size: var(--fs-xs); color: var(--mute); }
@@ -1260,7 +1255,6 @@ main, .foot { position: relative; z-index: 1; }
   .fcards, .list-main .fcards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .fcard-body { padding: 12px 12px 10px; }
   .fcard-name { font-size: 1rem; }
-  .fcard-status { padding: 2px 8px; }
   .fcard-charge { font-size: var(--fs-xs); }
   .fcard-foot { padding: 9px 12px; flex-wrap: wrap; }
   .fcard-foot > span:first-child { display: none; }
@@ -1279,3 +1273,31 @@ main, .foot { position: relative; z-index: 1; }
 .path-h { margin-top: 44px; }
 .path-h + .review-path { margin-top: 14px; }
 .fcard-demo { background: var(--on-ink); }
+
+/* ---------- the stamp on each file's photo: the legal standing, told apart by the form of the stamp ---------- */
+.fcard-ph:not(.is-empty)::after { content: ""; position: absolute; inset: auto 0 0; height: 58%; background: linear-gradient(to top, rgb(21 23 26 / .72), transparent); pointer-events: none; }
+.fstamp { position: absolute; z-index: 1; bottom: 14px; inset-inline-start: 14px; max-width: calc(100% - 28px); display: grid; justify-items: center; gap: 1px;
+  padding: 6px 14px 7px; border-radius: 10px; color: var(--on-ink); text-align: center; transform: rotate(var(--r, -4deg));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 10 -3.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 10 -3.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); -webkit-mask-size: 180px; mask-size: 180px; }
+.fstamp b { font-size: clamp(1.125rem, 1rem + .45vw, 1.375rem); font-weight: 900; line-height: 1.35; }
+.fstamp small { position: static; inset: auto; color: inherit; text-align: center; font-size: 11.5px; font-weight: 700; line-height: 1.5; }   /* not the photo caption */
+.fstamp i { position: absolute; inset-block-start: -9px; inset-inline-end: 10px; padding: 0 5px; font-style: normal; font-size: 10.5px; line-height: 16px; background: var(--ink); border-radius: 4px; }
+.fstamp.is-firm { border: 6px double currentColor; padding: 5px 16px 6px; }
+.fstamp.is-firm b { font-size: clamp(1.375rem, 1.2rem + .6vw, 1.75rem); }
+.fstamp.is-charged { border: 4px double currentColor; }
+.fstamp.is-open { border: 2px solid currentColor; }
+.fstamp.is-loose { border: 2px dashed currentColor; opacity: .86; }
+.fcards > li:nth-child(4n+1) .fstamp { --r: -5deg; }
+.fcards > li:nth-child(4n+2) .fstamp { --r: 3deg; }
+.fcards > li:nth-child(4n+3) .fstamp { --r: -2deg; }
+.fcards > li:nth-child(4n+4) .fstamp { --r: 4.5deg; }
+.fcard-ph .fcard-demo { z-index: 2; }
+.fcard-ph > small { bottom: auto; top: 16px; }
+.fcard.is-demo .fcard-ph > small { top: 46px; }
+@media (max-width: 720px) {
+  .fstamp { bottom: 10px; inset-inline-start: 10px; padding: 4px 9px 5px; }
+  .fstamp.is-firm { border-width: 5px; padding: 3px 10px 4px; }
+  .fstamp b, .fstamp.is-firm b { font-size: 1.0625rem; }
+  .fstamp small { display: none; }   /* on a phone the word and the year; the basis is in the file */
+  .fcard-ph { aspect-ratio: 1 / 1; }   /* the stamp lands on the chest, never on the face */
+}

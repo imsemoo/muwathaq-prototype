@@ -2,7 +2,7 @@
 import build as B
 import shell as S
 import arabize as AR
-from pages import P, archive_card, article_card, review_path, fcard, all_people, people_filter, register, count_ar, person_href
+from pages import P, archive_card, article_card, review_path, fcard, all_people, people_filter, register, count_ar, person_href, stamp_form, STAMP
 from shell import esc, icon, seal, seal_row, knots, ext, mono, VERIF, STATUS, KNOTS
 
 STEPS = [
@@ -415,48 +415,91 @@ def write_article():
 
 
 def database():
+    slug = B.slug
     rel = ''
     people = all_people()
     linked = [r for r in B.RULES if any(r['id'] in p['rule_ids'] for p in people)]
+    who = {r['id']: [p for p in people if r['id'] in p['rule_ids']] for r in linked}
     by_branch = {}
     for r in linked:
         by_branch.setdefault(r.get('branch', ''), []).append(r)
+    first = people[0]
+
+    def face(p, size=40):
+        ph = None if p.get('demo') else B.photo_of(p['id'])
+        return (f'<img src="{rel}assets/img/photo/{ph}-240.webp" alt="" width="{size}" height="{size}" loading="lazy" decoding="async">' if ph
+                else f'<span class="dbx-noface">{icon("user")}</span>')
+
+    def rule_ref(r):
+        return f'<span class="dbx-ref num">{esc(B.rule_short(r))}</span>'
+
+    def act_li(x):
+        """One act of a file, with the articles it may engage, each opening its law page."""
+        rules = ''.join(f'<li><a href="{rel}law/{slug(r)}.html">{rule_ref(B.RULE_BY_ID[r])}<span>{esc(B.RULE_BY_ID[r].get("title_ar", ""))}</span></a></li>'
+                        for r in x['rule_ids'] if r in B.RULE_BY_ID)
+        basis = f'<p class="dx-basis">{esc(x["basis_ar"])}</p>' if x.get('basis_ar') else ''
+        return f'<li><p class="dx-act">{esc(x["act_ar"])}</p>{basis}<ul class="dx-rules">{rules}</ul></li>'
+
+    # the people pane
     p_items = ''.join(
         f'<li data-status="{p["status"]}" data-kind="{"demo" if p.get("demo") else "file"}" data-text="{esc(p["name_ar"])}">'
-        f'<button class="node" type="button" data-node="{esc(p["id"])}" data-links="{esc(" ".join(p["rule_ids"]))}" aria-pressed="false">'
-        f'<span class="node-t"><b>{esc(p["name_ar"])}</b><small>{esc(STATUS[p["status"]][0])}{" · تجريبي" if p.get("demo") else ""}</small></span>'
-        f'<span class="node-n mono">{len(p["rule_ids"])}</span></button></li>' for p in people)
+        f'<button class="dbx-node dbx-p{" is-on" if p is first else ""}" type="button" data-node="{esc(p["id"])}" data-links="{esc(" ".join(p["rule_ids"]))}" aria-pressed="{"true" if p is first else "false"}" aria-controls="dbx-detail">'
+        f'{face(p)}<span class="dbx-t"><b>{esc(p["name_ar"])}</b><small><i class="sg {stamp_form(p["status"])}"></i>{esc(STAMP[p["status"]][0])}{" · تجريبي" if p.get("demo") else ""}</small></span>'
+        f'<span class="dbx-n">{len(p["rule_ids"])}</span></button></li>' for p in people)
+
+    # the articles pane, by branch
     groups = ''
     for br, rules in sorted(by_branch.items(), key=lambda kv: -len(kv[1])):
         rows = ''.join(
-            f'<li><button class="node" type="button" data-node="{esc(r["id"])}" data-links="{esc(" ".join(p["id"] for p in people if r["id"] in p["rule_ids"]))}" aria-pressed="false">'
-            f'<span class="node-t"><span class="mono">{esc(B.rule_short(r))}</span><b>{esc(r.get("title_ar", ""))}</b></span>'
-            f'<span class="node-n mono">{sum(r["id"] in p["rule_ids"] for p in people)}</span></button></li>'
-            for r in sorted(rules, key=lambda r: -sum(r["id"] in p["rule_ids"] for p in people)))
-        groups += f'<li class="node-group"><h3 class="side-h">{esc(B.BRANCH.get(br, br) or "أخرى")} <span class="mono">{len(rules)}</span></h3><ul>{rows}</ul></li>'
-    real_links = sum(len(p['rule_ids']) for p in B.PERSONS)
+            f'<li><button class="dbx-node dbx-r{" is-hit" if r["id"] in first["rule_ids"] else ""}" type="button" data-node="{esc(r["id"])}" data-links="{esc(" ".join(p["id"] for p in who[r["id"]]))}" aria-pressed="false" aria-controls="dbx-detail">'
+            f'<span class="dbx-t">{rule_ref(r)}<b>{esc(r.get("title_ar", ""))}</b></span><span class="dbx-n">{len(who[r["id"]])}</span></button></li>'
+            for r in sorted(rules, key=lambda r: (-len(who[r["id"]]), r['id'])))
+        groups += f'<li class="dbx-group"><h3>{esc(B.BRANCH.get(br, br) or "أخرى")}<span>{len(rules)}</span></h3><ul>{rows}</ul></li>'
+
+    # the open record: one panel per person and per article, the first person shown
+    details = ''
+    for p in people:
+        acts = ''.join(act_li(x) for x in p['acts'])
+        n = len(p['rule_ids'])
+        details += (f'<section class="dx" data-dx="{esc(p["id"])}"{"" if p is first else " hidden"} aria-label="{esc(p["name_ar"])}">'
+                    f'<div class="dx-head"><span class="dx-ph">{face(p, 96)}</span><div><p class="dx-kicker"><i class="sg {stamp_form(p["status"])}"></i>{esc(STATUS[p["status"]][0])}</p>'
+                    f'<h2 class="dx-h">{esc(p["name_ar"])}</h2><p class="dx-role">{esc(p.get("role_ar", ""))}</p></div></div>'
+                    f'<dl class="dx-stats"><div><dt>أفعال منسوبة</dt><dd class="num">{len(p["acts"])}</dd></div><div><dt>مواد قانونية</dt><dd class="num">{n}</dd></div></dl>'
+                    f'<h3 class="dx-sub">الأفعال والمواد التي قد تنطبق عليها</h3><ol class="dx-acts">{acts}</ol>'
+                    f'<a class="btn btn-ink" href="{person_href(p, rel)}">افتح الملف {icon("arrow")}</a></section>')
+    for r in linked:
+        ps = who[r['id']]
+        rows = ''.join(
+            f'<li><a href="{person_href(p, rel)}">{face(p, 36)}<span><b>{esc(p["name_ar"])}</b>'
+            f'<small>{esc("؛ ".join(x["act_ar"] for x in p["acts"] if r["id"] in x["rule_ids"]))}</small></span></a></li>' for p in ps)
+        quote = f'<blockquote class="dx-text">{esc(r["paraphrase_ar"])}</blockquote>' if r.get('paraphrase_ar') else ''
+        details += (f'<section class="dx" data-dx="{esc(r["id"])}" hidden aria-label="{esc(r.get("title_ar", ""))}">'
+                    f'<div class="dx-head is-rule"><span class="dx-law">{icon("scale")}</span><div><p class="dx-kicker">{esc(B.BRANCH.get(r.get("branch"), ""))}</p>'
+                    f'<h2 class="dx-h">{esc(r.get("title_ar", ""))}</h2><p class="dx-role">{rule_ref(r)} · {esc(r.get("instrument_ar", ""))}</p></div></div>'
+                    f'{quote}'
+                    f'<h3 class="dx-sub">{count_ar(len(ps), "شخص واحد مرتبط بها", "شخصان مرتبطان بها", "أشخاص مرتبطون بها", "شخصا مرتبطا بها")}</h3><ul class="dx-people">{rows}</ul>'
+                    f'<a class="btn btn-ink" href="{rel}law/{slug(r["id"])}.html">نص المادة {icon("arrow")}</a></section>')
+
+    stats = [('user', len(B.PERSONS), 'ملفات أشخاص موثقة'), ('alert', sum(len(p['acts']) for p in B.PERSONS), 'أفعال منسوبة'),
+             ('scale', len({r for p in B.PERSONS for r in p['rule_ids']}), 'مواد قانونية مرتبطة'), ('link', sum(len(p['rule_ids']) for p in B.PERSONS), 'روابط بين شخص ومادة')]
+    stat = ''.join(f'<div>{icon(g)}<dd class="num">{n}</dd><dt>{esc(t)}</dt></div>' for g, n, t in stats)
     main = f'''<div class="wrap">{S.crumbs(rel, [("قاعدة البيانات", None)])}</div>
-<section class="list-head"><div class="wrap"><h1 class="h1">قاعدة البيانات التفاعلية</h1><p class="lead">الأشخاص الموثقة ملفاتهم والمواد القانونية التي قد تنطبق على الأفعال المنسوبة إليهم. اختر شخصا لترى مواده، أو مادة لترى من ترتبط بهم.</p></div></section>
-<section class="sec"><div class="wrap">
- <dl class="db-stats">
-  <div><dt>ملفات أشخاص موثقة</dt><dd class="mono">{len(B.PERSONS)}</dd></div>
-  <div><dt>أفعال منسوبة في الملفات</dt><dd class="mono">{sum(len(p["acts"]) for p in B.PERSONS)}</dd></div>
-  <div><dt>مواد قانونية مرتبطة</dt><dd class="mono">{len({r for p in B.PERSONS for r in p["rule_ids"]})}</dd></div>
-  <div><dt>روابط بين شخص ومادة</dt><dd class="mono">{real_links}</dd></div>
- </dl>
- <p class="xs mute" style="margin-top:10px">الأرقام من الملفات الموثقة وحدها؛ الملفات التجريبية ({len(B.DEMO)}) تظهر في المستكشف ولا تدخل في العد.</p>
- <div class="explorer" data-explorer>
-  <div class="ex-col">
-   <div class="ex-head"><h2 class="h3">الأشخاص <span class="mono">{len(people)}</span></h2>
-    <form class="chips-filter" data-filter="db-people" data-count="db-people-count" data-empty="db-people-empty" aria-label="تصفية الأشخاص">{people_filter(people, tabs=True)}</form>
-    <p class="count" id="db-people-count" aria-live="polite"></p></div>
-   <ul class="nodes" id="db-people">{p_items}</ul>
+<section class="list-head"><div class="wrap"><h1 class="h1">قاعدة البيانات التفاعلية</h1><p class="lead">كل شخص، والأفعال المنسوبة إليه، والمواد القانونية التي قد تنطبق عليها.</p></div></section>
+<section class="sec dbx-sec"><div class="wrap">
+ <dl class="dbx-stats">{stat}</dl>
+ <p class="dbx-note">{icon("info")}<span>الأرقام من الملفات الموثقة وحدها؛ الملفات التجريبية ({len(B.DEMO)}) تظهر هنا ولا تدخل في العد.</span></p>
+ <div class="dbx" data-dbx>
+  <div class="dbx-pane dbx-people">
+   <div class="dbx-pane-h"><h2>{icon("user")}الأشخاص<span>{len(people)}</span></h2></div>
+   <form class="chips-filter dbx-tabs" data-filter="db-people" data-count="db-people-count" data-empty="db-people-empty" aria-label="تصفية الأشخاص">{people_filter(people, tabs=True)}</form>
+   <p class="count sr" id="db-people-count" aria-live="polite"></p>
+   <ul class="dbx-list" id="db-people">{p_items}</ul>
    <div class="empty" id="db-people-empty" hidden><p><b>لا ملفات بهذا الوضع.</b></p></div>
   </div>
-  <div class="ex-col">
-   <div class="ex-head"><h2 class="h3">المواد القانونية <span class="mono">{len(linked)}</span></h2><p class="small mute" data-ex-say aria-live="polite">اختر شخصا أو مادة.</p>
-    <button class="btn btn-line btn-sm" type="button" data-ex-clear hidden>إلغاء الاختيار</button></div>
-   <ul class="nodes node-groups">{groups}</ul>
+  <div class="dbx-detail" id="dbx-detail" aria-live="polite">{details}</div>
+  <div class="dbx-pane dbx-rules">
+   <div class="dbx-pane-h"><h2>{icon("scale")}المواد القانونية<span>{len(linked)}</span></h2></div>
+   <ul class="dbx-list dbx-groups">{groups}</ul>
   </div>
  </div>
  <p class="note">{icon("scale")}<span>الربط بين فعل ومادة تحليل أولي يبين ما قد ينطبق؛ لا يعني ثبوت الفعل ولا المسؤولية الجنائية.</span></p>

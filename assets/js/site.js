@@ -88,6 +88,22 @@
     });
   });
 
+  /* ---------- database workspace: one record is always open; its links light on both sides ---------- */
+  $$('[data-dbx]').forEach((box) => {
+    const nodes = $$('[data-node]', box), panels = $$('[data-dx]', box), detail = $('#dbx-detail', box);
+    const pick = (n, scroll) => {
+      const links = new Set(n.dataset.links.split(' ').filter(Boolean));
+      nodes.forEach((m) => {
+        const on = m === n;
+        m.classList.toggle('is-on', on); m.setAttribute('aria-pressed', String(on));
+        m.classList.toggle('is-hit', links.has(m.dataset.node));
+      });
+      panels.forEach((p) => { p.hidden = p.dataset.dx !== n.dataset.node; });
+      if (scroll && matchMedia('(max-width: 1100px)').matches) detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    nodes.forEach((n) => n.addEventListener('click', () => pick(n, true)));
+  });
+
   /* ---------- prototype note ---------- */
   const proto = $('#proto');
   if (proto && store.get('mw-proto') === 'hidden') proto.hidden = true;

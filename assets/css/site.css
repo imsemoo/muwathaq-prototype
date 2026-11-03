@@ -1098,11 +1098,9 @@ main, .foot { position: relative; z-index: 1; }
 .wanted { background: var(--ink); color: var(--on-ink); overflow: hidden; }
 .wanted-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(16px, 3vw, 44px); min-height: clamp(460px, 64vh, 640px); }
 .wanted-face { position: relative; display: block; min-width: 0; color: inherit; text-decoration: none; }
-.wanted-face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; filter: grayscale(1) contrast(1.05); }
+.wanted-face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; }
 /* the photograph gives way to the ink under its caption and towards the middle, so the type stays readable */
 .wanted-face::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
-.wanted-face.is-start::after { background: linear-gradient(to top, var(--ink) 6%, transparent 48%), linear-gradient(to left, transparent 55%, var(--ink)); }
-.wanted-face.is-end::after { background: linear-gradient(to top, var(--ink) 6%, transparent 48%), linear-gradient(to right, transparent 55%, var(--ink)); }
 .wanted-cap { position: absolute; z-index: 1; inset-inline: 0; bottom: clamp(20px, 3vw, 36px); display: grid; gap: 2px; padding-inline: 4px; }
 .wanted-face.is-end .wanted-cap { text-align: end; }
 .wanted-cap b { font-size: clamp(1.125rem, 1rem + .5vw, 1.5rem); font-weight: 800; line-height: 1.5; }
@@ -1119,7 +1117,6 @@ main, .foot { position: relative; z-index: 1; }
   .wanted-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "a b" "mid mid"; min-height: 0; gap: 0 12px; }
   .wanted-face.is-start { grid-area: a; } .wanted-face.is-end { grid-area: b; }
   .wanted-face { height: clamp(260px, 62vw, 420px); }
-  .wanted-face.is-start::after, .wanted-face.is-end::after { background: linear-gradient(to top, var(--ink) 4%, transparent 52%); }
   .wanted-mid { grid-area: mid; padding-block: 18px 40px; }
 }
 
@@ -1139,7 +1136,7 @@ main, .foot { position: relative; z-index: 1; }
 .fcard { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; background: var(--sheet); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-tag); color: var(--ink); text-decoration: none; transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease); }
 @media (hover: hover) and (pointer: fine) { .fcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); } }
 .fcard-ph { position: relative; display: grid; place-items: center; aspect-ratio: 5 / 4; background: var(--table-2); overflow: hidden; }
-.fcard-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; filter: grayscale(1); }
+.fcard-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; }
 .fcard-ph .sil { width: 40%; fill: var(--line-2); margin-top: auto; }
 .fcard-ph small { position: absolute; bottom: 10px; inset-inline: 0; text-align: center; font-size: var(--fs-xs); color: var(--mute); }
 .fcard-ph.is-empty { background: var(--ink); }
@@ -1256,7 +1253,6 @@ main, .foot { position: relative; z-index: 1; }
 .fcard-demo { background: var(--on-ink); }
 
 /* ---------- the stamp on each file's photo: the legal standing, told apart by the form of the stamp ---------- */
-.fcard-ph:not(.is-empty)::after { content: ""; position: absolute; inset: auto 0 0; height: 58%; background: linear-gradient(to top, rgb(21 23 26 / .72), transparent); pointer-events: none; }
 .fstamp { position: absolute; z-index: 1; bottom: 14px; inset-inline-start: 14px; max-width: calc(100% - 28px); display: grid; justify-items: center; gap: 2px;
   padding: 8px 16px 9px; border-radius: 10px; background: rgb(21 23 26 / .58); color: var(--on-ink); text-align: center; transform: rotate(var(--r, -4deg)); }
 /* the frame carries the worn ink; the words stay crisp */
@@ -1463,7 +1459,7 @@ main, .foot { position: relative; z-index: 1; }
   color: var(--on-ink-2); font: inherit; text-align: start; cursor: pointer; transition: background-color var(--t-fast), color var(--t-fast); }
 .lm-p { grid-template-columns: 44px minmax(0, 1fr) 12px; padding-inline-end: 0; }
 .lm-b { grid-template-columns: 12px minmax(0, 1fr); padding-inline-start: 0; }
-.lm-p img, .lm-face { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; filter: grayscale(1); opacity: .7; transition: opacity var(--t-fast), box-shadow var(--t-fast); }
+.lm-p img, .lm-face { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; opacity: .75; transition: opacity var(--t-fast), box-shadow var(--t-fast); }
 .lm-face { display: grid; place-items: center; background: #23272C; }
 .lm-face .icon { width: 20px; height: 20px; }
 .lm-t { display: grid; min-width: 0; }
@@ -1603,4 +1599,30 @@ main, .foot { position: relative; z-index: 1; }
   .wanted-facts dd { font-size: 1.125rem; white-space: normal; }
   .wanted-charges a { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
   .wc-ref { grid-column: 1; grid-row: auto; margin-top: 2px; }
+}
+
+/* ---------- photos as they are (management, 3 Nov 2026: no filter, no black effect over them; the final
+   pictures will be designed by the client's team): the portrait sits above its caption, not under a fade ---------- */
+.wanted-face { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 14px; padding-block: clamp(20px, 2.4vw, 32px); }
+.wanted-face img { position: relative; inset: auto; height: 100%; min-height: 0; border-radius: 18px; }
+.wanted-cap { position: static; padding-inline: 2px; }
+.wanted-face .fstamp, .wanted-face.is-start .fstamp, .wanted-face.is-end .fstamp { top: calc(clamp(20px, 2.4vw, 32px) + 14px); bottom: auto; }
+.wanted-face.is-start .fstamp { inset-inline-start: 14px; }
+.wanted-face.is-end .fstamp { inset-inline-end: 14px; }
+@media (max-width: 1100px) {
+  .wanted-face { height: auto; grid-template-rows: clamp(220px, 52vw, 380px) auto; gap: 10px; padding-block: 16px 0; }
+  .wanted-face .fstamp, .wanted-face.is-start .fstamp, .wanted-face.is-end .fstamp { top: 26px; }
+}
+
+/* ---------- send and support: two compact rows, not two big sheets ---------- */
+.act { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; justify-items: stretch; gap: 2px 18px; padding: 20px 24px; border-radius: 18px; }
+.act > .seal { grid-row: 1 / span 3; width: 40px; height: 40px; }
+.act .h3 { grid-column: 2; }
+.act > p { grid-column: 2; font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.7; }
+.act > p.note { display: flex; align-items: center; gap: 6px; padding: 0; background: none; box-shadow: none; border: 0; font-size: var(--fs-xs); color: var(--mute); }
+.act > p.note .icon { width: 15px; height: 15px; }
+.act .btn { grid-column: 3; grid-row: 1 / span 3; margin: 0; }
+@media (max-width: 720px) {
+  .act { grid-template-columns: auto minmax(0, 1fr); padding: 18px; }
+  .act .btn { grid-column: 1 / -1; grid-row: auto; justify-self: start; margin-top: 10px; }
 }

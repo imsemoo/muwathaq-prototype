@@ -547,14 +547,14 @@ def home():
  <div class="wrap act-grid">
   <div class="sheet act">
    {seal("in_progress", label=False)}
-   <h2 class="h2">أرسل مادة للمراجعة</h2>
+   <h2 class="h3">أرسل مادة للمراجعة</h2>
    <p>كل مساهمة تفحص وتراجع قانونيا قبل أي نشر.</p>
    <p class="note is-quiet">{icon("shield")}<span>لا ترسل ما يعرضك أو يعرض غيرك للخطر.</span></p>
    <a class="btn btn-wax" href="submit.html">ابدأ الإرسال</a>
   </div>
   <div class="sheet act">
    {seal("complete", label=False)}
-   <h2 class="h2">ادعم التوثيق المستقل</h2>
+   <h2 class="h3">ادعم التوثيق المستقل</h2>
    <p>تمول المساهمات حفظ الأدلة والتحقق والمراجعة القانونية.</p>
    <p class="note is-quiet">{icon("lock")}<span>الدفع غير مفعل في هذا النموذج.</span></p>
    <a class="btn btn-line" href="donate.html">طرق الدعم</a>

@@ -1990,3 +1990,17 @@ main, .foot { position: relative; z-index: 1; }
 .id-stamps .sg { width: 24px; height: 17px; }
 .rule-ref { font-weight: 800; color: var(--wax); }
 .facet-mark .sg { width: 18px; height: 13px; }
+/* the "/" shortcut means nothing on a touch screen, and in the phone menu it sat on the magnifier */
+.nav .find kbd { display: none; }
+@media (hover: none), (pointer: coarse) { .find kbd { display: none; } }
+.nav .find .icon { inset-inline-start: 16px; width: 20px; height: 20px; }
+.nav .find input { padding-inline: 48px 16px; }
+/* phones: the emblem tile sits small beside the kind line, and the title takes the full width */
+@media (max-width: 720px) {
+  .row-doc, .row-x.row-rule { grid-template-columns: minmax(0, 1fr); position: relative; }
+  .row-doc .row-thumb.doc-face, .row-x.row-rule .row-thumb { position: absolute; top: 14px; inset-inline-start: 16px; width: 32px !important; height: 32px !important; border-radius: 9px; padding: 0; }
+  .row-doc .doc-face .icon, .row-x.row-rule .rule-face .icon { width: 18px; height: 18px; padding: 0; box-shadow: none; }
+  .row-x.row-rule .rule-face span { display: none; }
+  .row-doc .row-body > .tag-kind, .row-x.row-rule .row-body > .tag-kind { min-height: 32px; display: flex; align-items: center; padding-inline-start: 42px; }
+  .row-doc .row-end, .row-x.row-rule .row-end { grid-column: 1; }
+}
